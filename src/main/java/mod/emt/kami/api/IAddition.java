@@ -1,4 +1,4 @@
-package mod.emt.thaumictinkerer.api;
+package mod.emt.kami.api;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;

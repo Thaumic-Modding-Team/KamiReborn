@@ -1,4 +1,4 @@
-package mod.emt.thaumictinkerer.proxy;
+package mod.emt.kami.proxy;
 
 public class CommonProxy {
     public void preInit() {

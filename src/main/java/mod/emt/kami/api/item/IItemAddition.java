@@ -1,6 +1,6 @@
-package mod.emt.thaumictinkerer.api.item;
+package mod.emt.kami.api.item;
 
-import mod.emt.thaumictinkerer.api.IAddition;
+import mod.emt.kami.api.IAddition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;

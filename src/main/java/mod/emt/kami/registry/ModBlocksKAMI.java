@@ -1,4 +1,4 @@
-package mod.emt.thaumictinkerer.registry;
+package mod.emt.kami.registry;
 
 public class ModBlocksKAMI {
 

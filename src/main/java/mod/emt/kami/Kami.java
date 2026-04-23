@@ -1,9 +1,8 @@
-package mod.emt.thaumictinkerer;
+package mod.emt.kami;
 
-import mod.emt.kami.Tags;
-import mod.emt.thaumictinkerer.proxy.CommonProxy;
-import mod.emt.thaumictinkerer.registry.CreativeTabsKAMI;
-import mod.emt.thaumictinkerer.utils.helpers.LogHelper;
+import mod.emt.kami.proxy.CommonProxy;
+import mod.emt.kami.registry.CreativeTabsKAMI;
+import mod.emt.kami.utils.helpers.LogHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -21,7 +20,7 @@ public class Kami {
     public static final String MOD_ID = Tags.MOD_ID;
     public static final String MOD_NAME = Tags.MOD_NAME;
     public static final String MOD_VERSION = Tags.VERSION;
-    public static final String DEPENDENCIES = "required-after:thaumcraft;required-after:thaumictinkerer;";
+    public static final String DEPENDENCIES = "required-after:thaumcraft;";
 
     public static final String CLIENT_PROXY = "mod.emt.kami.proxy.ClientProxy";
     public static final String COMMON_PROXY = "mod.emt.kami.proxy.CommonProxy";

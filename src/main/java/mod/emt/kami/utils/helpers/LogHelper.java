@@ -1,6 +1,6 @@
-package mod.emt.thaumictinkerer.utils.helpers;
+package mod.emt.kami.utils.helpers;
 
-import mod.emt.thaumictinkerer.Kami;
+import mod.emt.kami.Kami;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

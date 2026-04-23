@@ -1,6 +1,6 @@
-package mod.emt.thaumictinkerer.api.block;
+package mod.emt.kami.api.block;
 
-import mod.emt.thaumictinkerer.Kami;
+import mod.emt.kami.Kami;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;

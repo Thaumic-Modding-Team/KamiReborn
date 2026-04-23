@@ -1,4 +1,4 @@
-package mod.emt.thaumictinkerer.registry;
+package mod.emt.kami.registry;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;

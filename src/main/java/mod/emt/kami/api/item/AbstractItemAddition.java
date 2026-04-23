@@ -1,6 +1,6 @@
-package mod.emt.thaumictinkerer.api.item;
+package mod.emt.kami.api.item;
 
-import mod.emt.thaumictinkerer.Kami;
+import mod.emt.kami.Kami;
 import net.minecraft.item.Item;
 
 import java.util.Objects;

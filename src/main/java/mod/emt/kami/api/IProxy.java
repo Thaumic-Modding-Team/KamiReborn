@@ -1,4 +1,4 @@
-package mod.emt.thaumictinkerer.api;
+package mod.emt.kami.api;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

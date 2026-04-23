@@ -1,4 +1,4 @@
-package mod.emt.thaumictinkerer.registry;
+package mod.emt.kami.registry;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;

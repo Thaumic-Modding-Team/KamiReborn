@@ -1,4 +1,4 @@
-package mod.emt.thaumictinkerer.proxy;
+package mod.emt.kami.proxy;
 
 public class ClientProxy extends CommonProxy {
     @Override
