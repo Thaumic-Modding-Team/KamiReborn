@@ -2,11 +2,14 @@ package mod.emt.kami.registry;
 
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.item.ItemIchorArmor;
+import mod.emt.kami.item.base.ItemBase;
 import mod.emt.kami.items.tools.ItemIchoriumAxe;
 import mod.emt.kami.items.tools.ItemIchoriumPickaxe;
 import mod.emt.kami.items.tools.ItemIchoriumShovel;
 import mod.emt.kami.items.tools.ItemIchoriumSword;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
@@ -18,10 +21,17 @@ public class ModItemsKAMI {
     public static ItemArmor.ArmorMaterial MATERIAL_ICHORCLOTH = EnumHelper.addArmorMaterial("ICHORCLOTH", Kami.MOD_ID + ":ichorcloth",-1, new int[] {3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 3.0f);
     public static Item.ToolMaterial MATERIAL_ICHORIUM = EnumHelper.addToolMaterial("ICHORIUM", 5, -1, 10, 5f, 25);
 
+    public static Item ICHOR;
     public static Item ICHORIUM_AXE;
+    public static Item ICHORIUM_INGOT;
     public static Item ICHORIUM_PICKAXE;
     public static Item ICHORIUM_SHOVEL;
     public static Item ICHORIUM_SWORD;
+    public static Item ICHORWEAVE_BOOTS;
+    public static Item ICHORWEAVE_FABRIC;
+    public static Item ICHORWEAVE_HOOD;
+    public static Item ICHORWEAVE_LEGGINGS;
+    public static Item ICHORWEAVE_ROBE;
     public static Item AWAKENED_ICHORIUM_AXE;
     public static Item AWAKENED_ICHORIUM_PICKAXE;
     public static Item AWAKENED_ICHORIUM_SHOVEL;
@@ -30,6 +40,13 @@ public class ModItemsKAMI {
     public static final List<Item> MOD_ITEMS = new ArrayList<>();
 
     public static void initItems() {
+        MOD_ITEMS.add(ICHORIUM_SWORD = new ItemBase("ichor", "ichor"));
+        MOD_ITEMS.add(ICHORWEAVE_FABRIC = new ItemBase("ichorweave_fabric", "fabricIchor"));
+        MOD_ITEMS.add(ICHORIUM_INGOT = new ItemBase("ichorium_ingot", "ichoriumIngot"));
+        MOD_ITEMS.add(ICHORWEAVE_HOOD = new ItemIchorArmor("ichorweave_hood", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.HEAD, "ichorweave_layer_1.png"));
+        MOD_ITEMS.add(ICHORWEAVE_ROBE = new ItemIchorArmor("ichorweave_robe", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.CHEST, "ichorweave_layer_1.png"));
+        MOD_ITEMS.add(ICHORWEAVE_LEGGINGS = new ItemIchorArmor("ichorweave_leggings", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.LEGS, "ichorweave_layer_2.png"));
+        MOD_ITEMS.add(ICHORWEAVE_BOOTS = new ItemIchorArmor("ichorweave_boots", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.FEET, "ichorweave_layer_1.png"));
         MOD_ITEMS.add(ICHORIUM_SWORD = new ItemIchoriumSword());
         MOD_ITEMS.add(ICHORIUM_SHOVEL = new ItemIchoriumShovel());
         MOD_ITEMS.add(ICHORIUM_PICKAXE = new ItemIchoriumPickaxe());

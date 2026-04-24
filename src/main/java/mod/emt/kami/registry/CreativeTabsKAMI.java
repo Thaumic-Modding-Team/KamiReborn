@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
-import thaumcraft.api.items.ItemsTC;
 
 public class CreativeTabsKAMI extends CreativeTabs {
     public CreativeTabsKAMI(int length, String name) {
@@ -16,6 +15,6 @@ public class CreativeTabsKAMI extends CreativeTabs {
     @SideOnly(Side.CLIENT)
     @Override
     public @NotNull ItemStack createIcon() {
-        return new ItemStack(ItemsTC.casterBasic);
+        return new ItemStack(ModItemsKAMI.ICHOR);
     }
 }

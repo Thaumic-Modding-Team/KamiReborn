@@ -4,7 +4,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 
 public class ModRecipesKAMI {
-
     public static void initRecipes(RegistryEvent.Register<IRecipe> event) {
         initArcaneWorkbenchRecipes();
         initCrucibleRecipes();
