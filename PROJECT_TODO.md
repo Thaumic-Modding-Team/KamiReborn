@@ -1,32 +1,32 @@
 # Planned Content
 ## Thaumic Tinkerer: Kami Reborn
-|                      Feature                      | Code | Model | Texture  | Config | Research | Recipe |
-|:-------------------------------------------------:|:----:|:-----:|:--------:|:------:|:--------:|:------:|
-| (Armor - Awakened) Boots of the Horizontal Shield |      |       |          |        |          |        |
-|   (Armor - Awakened) Cowl of the Abyssal Depths   |      |       |          |        |          |        |
-| (Armor - Awakened) Leggings of the Burning Mantle |      |       |          |        |          |        |
-|   (Armor - Awakened) Robes of the Stratosphere    |      |       |          |        |          |        |
-|             (Armor) Ichorcloth Boots              |      |       |          |        |          |        |
-|              (Armor) Ichorcloth Cowl              |      |       |          |        |          |        |
-|            (Armor) Ichorcloth Leggings            |      |       |          |        |          |        |
-|             (Armor) Ichorcloth Pouch              |      |       |          |        |          |        |
-|              (Armor) Ichorcloth Robe              |      |       |          |        |          |        |
-|           (Tool) Awakened Ichorium Axe            |      |       |          |        |          |        |
-|         (Tool) Awakened Ichorium Pickaxe          |      |       |          |        |          |        |
-|          (Tool) Awakened Ichorium Shovel          |      |       |          |        |          |        |
-|          (Tool) Awakened Ichorium Sword           |      |       |          |        |          |        |
-|                (Tool) Ichorium Axe                |      |       |          |        |          |        |
-|              (Tool) Ichorium Pickaxe              |      |       |          |        |          |        |
-|              (Tool) Ichorium Shovel               |      |       |          |        |          |        |
-|               (Tool) Ichorium Sword               |      |       |          |        |          |        |
-|                       Ichor                       |      |       |          |        |          |        |
-|                    Ichor Block                    |      |       |          |        |          |        |
-|                    Ichor Cloth                    |      |       |          |        |          |        |
-|                  Ichorium Ingot                   |      |       |          |        |          |        |
-|                  Ichorium Nugget                  |      |       |          |        |          |        |
-|             Infusion Enchant: Eternal             |      |  N/A  | COMPLETE |        |          |        |
-|                    Proto Clay                     |      |       |          |        |          |        |
-|             Sword of the Dragonslayer             |      |       |          |        |          |        |
+|                      Feature                      |   Code   |  Model   | Texture  | Config | Research | Recipe |
+|:-------------------------------------------------:|:--------:|:--------:|:--------:|:------:|:--------:|:------:|
+| (Armor - Awakened) Boots of the Horizontal Shield |          |          |          |        |          |        |
+|   (Armor - Awakened) Cowl of the Abyssal Depths   |          |          |          |        |          |        |
+| (Armor - Awakened) Leggings of the Burning Mantle |          |          |          |        |          |        |
+|   (Armor - Awakened) Robes of the Stratosphere    |          |          |          |        |          |        |
+|             (Armor) Ichorcloth Boots              |          |          |          |        |          |        |
+|              (Armor) Ichorcloth Cowl              |          |          |          |        |          |        |
+|            (Armor) Ichorcloth Leggings            |          |          |          |        |          |        |
+|             (Armor) Ichorcloth Pouch              |          |          |          |        |          |        |
+|              (Armor) Ichorcloth Robe              |          |          |          |        |          |        |
+|           (Tool) Awakened Ichorium Axe            |          |          |          |        |          |        |
+|         (Tool) Awakened Ichorium Pickaxe          |          |          |          |        |          |        |
+|          (Tool) Awakened Ichorium Shovel          |          |          |          |        |          |        |
+|          (Tool) Awakened Ichorium Sword           |          |          |          |        |          |        |
+|                (Tool) Ichorium Axe                | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|              (Tool) Ichorium Pickaxe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|              (Tool) Ichorium Shovel               | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|               (Tool) Ichorium Sword               | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|                       Ichor                       |          |          |          |        |          |        |
+|                    Ichor Block                    |          |          |          |        |          |        |
+|                    Ichor Cloth                    |          |          |          |        |          |        |
+|                  Ichorium Ingot                   |          |          |          |        |          |        |
+|                  Ichorium Nugget                  |          |          |          |        |          |        |
+|             Infusion Enchant: Eternal             |          |   N/A    | COMPLETE |        |          |        |
+|                    Proto Clay                     |          |          |          |        |          |        |
+|             Sword of the Dragonslayer             |          |          |          |        |          |        |
 
 ---
 

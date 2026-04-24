@@ -2,13 +2,14 @@ package mod.emt.kami;
 
 import mod.emt.kami.proxy.CommonProxy;
 import mod.emt.kami.registry.CreativeTabsKAMI;
-import mod.emt.kami.utils.helpers.LogHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(
         modid = Kami.MOD_ID,
@@ -27,6 +28,8 @@ public class Kami {
 
     public static final CreativeTabs tabKAMI = new CreativeTabsKAMI(CreativeTabs.CREATIVE_TAB_ARRAY.length, "KamiTab");
 
+    public static final Logger LOGGER = LogManager.getLogger(Kami.MOD_NAME);
+
     @Mod.Instance(MOD_ID)
     public static Kami instance;
 
@@ -35,20 +38,20 @@ public class Kami {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        LogHelper.info("Starting " + MOD_NAME);
+        LOGGER.info("Starting " + MOD_NAME);
         proxy.preInit();
-        LogHelper.debug("Finished preInit phase.");
+        LOGGER.debug("Finished preInit phase.");
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init();
-        LogHelper.debug("Finished init phase.");
+        LOGGER.debug("Finished init phase.");
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit();
-        LogHelper.debug("Finished postInit phase.");
+        LOGGER.debug("Finished postInit phase.");
     }
 }
