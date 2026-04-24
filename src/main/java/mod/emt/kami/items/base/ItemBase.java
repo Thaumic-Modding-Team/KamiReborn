@@ -1,4 +1,4 @@
-package mod.emt.kami.item.base;
+package mod.emt.kami.items.base;
 
 import mod.emt.kami.api.item.AbstractItemAddition;
 import net.minecraft.item.EnumRarity;

@@ -1,4 +1,4 @@
-package mod.emt.kami.item.base;
+package mod.emt.kami.items.base;
 
 import mod.emt.kami.Kami;
 import net.minecraft.entity.Entity;

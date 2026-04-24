@@ -1,9 +1,12 @@
 package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.recipe.DyeableItemRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -38,5 +41,10 @@ public class RegistrarKAMI {
             ModelResourceLocation loc = new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()), "inventory");
             ModelLoader.setCustomModelResourceLocation(item, 0, loc);
         });
+    }
+
+    @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        event.getRegistry().register(new DyeableItemRecipe().setRegistryName(new ResourceLocation(Kami.MOD_ID, "dyeable_item")));
     }
 }

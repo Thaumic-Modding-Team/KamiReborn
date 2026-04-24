@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "kami:items/ichorweave_hood_dyed_overlay",
+    "layer1": "kami:items/ichorweave_hood_dyed"
+  }
+}

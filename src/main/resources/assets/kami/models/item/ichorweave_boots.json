@@ -2,5 +2,13 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "kami:items/ichorweave_boots"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "dyed": 1
+      },
+      "model": "kami:item/ichorweave_boots_dyed"
+    }
+  ]
 }
