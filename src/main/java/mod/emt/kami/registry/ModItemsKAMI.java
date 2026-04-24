@@ -40,7 +40,7 @@ public class ModItemsKAMI {
     public static final List<Item> MOD_ITEMS = new ArrayList<>();
 
     public static void initItems() {
-        MOD_ITEMS.add(ICHORIUM_SWORD = new ItemBase("ichor", "ichor"));
+        MOD_ITEMS.add(ICHOR = new ItemBase("ichor", "ichor"));
         MOD_ITEMS.add(ICHORWEAVE_FABRIC = new ItemBase("ichorweave_fabric", "fabricIchor"));
         MOD_ITEMS.add(ICHORIUM_INGOT = new ItemBase("ichorium_ingot", "ichoriumIngot"));
         MOD_ITEMS.add(ICHORWEAVE_HOOD = new ItemIchorArmor("ichorweave_hood", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.HEAD, "ichorweave_layer_1.png"));
