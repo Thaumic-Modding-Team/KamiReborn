@@ -4,10 +4,7 @@ package mod.emt.kami.registry;
 import mod.emt.kami.Kami;
 import mod.emt.kami.items.armor.ItemIchorArmor;
 import mod.emt.kami.items.base.ItemBase;
-import mod.emt.kami.items.tools.ItemIchoriumAxe;
-import mod.emt.kami.items.tools.ItemIchoriumPickaxe;
-import mod.emt.kami.items.tools.ItemIchoriumShovel;
-import mod.emt.kami.items.tools.ItemIchoriumSword;
+import mod.emt.kami.items.tools.*;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -51,5 +48,6 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(ICHORIUM_SHOVEL = new ItemIchoriumShovel());
         MOD_ITEMS.add(ICHORIUM_PICKAXE = new ItemIchoriumPickaxe());
         MOD_ITEMS.add(ICHORIUM_AXE = new ItemIchoriumAxe());
+        MOD_ITEMS.add(AWAKENED_ICHORIUM_PICKAXE = new ItemAwakenedPickaxe());
     }
 }

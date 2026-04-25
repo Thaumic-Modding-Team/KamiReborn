@@ -2,7 +2,6 @@ package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IOreDictProvider;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;

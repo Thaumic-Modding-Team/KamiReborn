@@ -9,7 +9,6 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.IRarity;
 import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.items.IWarpingGear;
