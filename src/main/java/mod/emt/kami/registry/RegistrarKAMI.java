@@ -45,6 +45,9 @@ public class RegistrarKAMI {
 
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        ModRecipesKAMI.initRecipes(event);
+        //IForgeRegistry<IRecipe> registry = event.getRegistry();
+        //getAdditions().forEach(addition -> addition.registerRecipe(registry));
         event.getRegistry().register(new DyeableItemRecipe().setRegistryName(new ResourceLocation(Kami.MOD_ID, "dyeable_item")));
     }
 }
