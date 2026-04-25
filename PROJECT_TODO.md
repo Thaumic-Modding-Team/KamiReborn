@@ -6,11 +6,11 @@
 |   (Armor - Awakened) Cowl of the Abyssal Depths   |          |          |          |        |          |        |
 | (Armor - Awakened) Leggings of the Burning Mantle |          |          |          |        |          |        |
 |   (Armor - Awakened) Robes of the Stratosphere    |          |          |          |        |          |        |
-|             (Armor) Ichorcloth Boots              |          |          |          |        |          |        |
-|              (Armor) Ichorcloth Cowl              |          |          |          |        |          |        |
-|            (Armor) Ichorcloth Leggings            |          |          |          |        |          |        |
+|             (Armor) Ichorcloth Boots              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|              (Armor) Ichorcloth Cowl              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|            (Armor) Ichorcloth Leggings            | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |             (Armor) Ichorcloth Pouch              |          |          |          |        |          |        |
-|              (Armor) Ichorcloth Robe              |          |          |          |        |          |        |
+|              (Armor) Ichorcloth Robe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |           (Tool) Awakened Ichorium Axe            |          |          |          |        |          |        |
 |         (Tool) Awakened Ichorium Pickaxe          |          |          |          |        |          |        |
 |          (Tool) Awakened Ichorium Shovel          |          |          |          |        |          |        |
