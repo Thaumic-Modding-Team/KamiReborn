@@ -4,16 +4,18 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.ItemHelper;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.IRarity;
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.api.items.IWarpingGear;
 
 import java.util.Objects;
 
-public class ItemIchoriumSword extends ItemSword {
+public class ItemIchoriumSword extends ItemSword implements IWarpingGear {
     public ItemIchoriumSword() {
         this("ichorium_sword");
     }
@@ -42,5 +44,10 @@ public class ItemIchoriumSword extends ItemSword {
     @Override
     public @NotNull IRarity getForgeRarity(@NotNull ItemStack stack) {
         return EnumRarity.EPIC;
+    }
+
+    @Override
+    public int getWarp(ItemStack itemstack, EntityPlayer player) {
+        return 1;
     }
 }

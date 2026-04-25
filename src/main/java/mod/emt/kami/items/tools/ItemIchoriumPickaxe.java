@@ -12,10 +12,11 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.IRarity;
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.api.items.IWarpingGear;
 
 import java.util.Objects;
 
-public class ItemIchoriumPickaxe extends ItemPickaxe {
+public class ItemIchoriumPickaxe extends ItemPickaxe implements IWarpingGear {
     public ItemIchoriumPickaxe() {
         this("ichorium_pickaxe");
     }
@@ -44,5 +45,10 @@ public class ItemIchoriumPickaxe extends ItemPickaxe {
     @Override
     public @NotNull IRarity getForgeRarity(@NotNull ItemStack stack) {
         return EnumRarity.EPIC;
+    }
+
+    @Override
+    public int getWarp(ItemStack itemstack, EntityPlayer player) {
+        return 1;
     }
 }
