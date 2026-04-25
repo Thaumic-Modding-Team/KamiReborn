@@ -1,6 +1,8 @@
 package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.api.item.IOreDictProvider;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +21,11 @@ public class ModRecipesKAMI {
         initArcaneWorkbenchRecipes();
         initCrucibleRecipes();
         initInfusionRecipes();
+    }
+
+    public static void registerOreDicts() {
+        ModBlocksKAMI.MOD_BLOCKS.stream().filter(block -> block instanceof IOreDictProvider).forEach(block -> ((IOreDictProvider) block).registerOreDicts());
+        ModItemsKAMI.MOD_ITEMS.stream().filter(item -> item instanceof IOreDictProvider).forEach(item -> ((IOreDictProvider) item).registerOreDicts());
     }
 
     private static void initArcaneWorkbenchRecipes() {

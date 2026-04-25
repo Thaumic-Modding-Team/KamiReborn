@@ -1,29 +1,40 @@
 package mod.emt.kami.items.base;
 
-import mod.emt.kami.api.item.AbstractItemAddition;
+import mod.emt.kami.Kami;
+import mod.emt.kami.api.item.IOreDictProvider;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.IRarity;
-import net.minecraftforge.oredict.OreDictionary;
 import org.jetbrains.annotations.NotNull;
 
-public class ItemBase extends AbstractItemAddition {
-    String oreDict;
+import java.util.Objects;
+
+public class ItemBase extends Item implements IOreDictProvider {
+    private IRarity rarity;
+    private String oreDict;
 
     public ItemBase(String unlocName, String oreDict) {
-        super(unlocName);
+        this.setRegistryName(Kami.MOD_ID, unlocName);
+        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
+        this.setCreativeTab(Kami.tabKAMI);
+        this.setRarity(EnumRarity.EPIC);
         this.oreDict = oreDict;
+    }
+
+    public Item setRarity(@NotNull IRarity rarity) {
+        this.rarity = rarity;
+        return this;
     }
 
     @Override
     public void registerOreDicts() {
         if (oreDict != null) {
-            OreDictionary.registerOre(oreDict, this);
         }
     }
 
     @Override
     public @NotNull IRarity getForgeRarity(@NotNull ItemStack stack) {
-        return EnumRarity.EPIC;
+        return this.rarity;
     }
 }
