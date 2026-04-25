@@ -144,13 +144,9 @@ public class ItemIchorArmor extends ItemBaseArmor implements IItemAddition, IDye
             } else {
                 return type == null ? TEXTURE_PATH_DYED_1 : TEXTURE_PATH_DYED_OVERLAY_1;
             }
-        } else {
-            if (slot == EntityEquipmentSlot.LEGS) {
-                return type == null ? TEXTURE_PATH_2 : TEXTURE_PATH_DYED_OVERLAY_2;
-            }
         }
 
-        return type == null ? TEXTURE_PATH_1 : TEXTURE_PATH_DYED_OVERLAY_1;
+        return slot == EntityEquipmentSlot.LEGS ? TEXTURE_PATH_2 : TEXTURE_PATH_1;
     }
 
     @Override
