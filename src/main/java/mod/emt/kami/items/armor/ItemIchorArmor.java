@@ -153,7 +153,7 @@ public class ItemIchorArmor extends ItemBaseArmor implements IItemAddition, IDye
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> list, @NotNull ITooltipFlag tooltip) {
+    public void addInformation(@NotNull ItemStack stack, @Nullable World world, @NotNull List<String> list, @NotNull ITooltipFlag tooltip) {
         int color = getDyedColor(stack);
 
         // If it's dyed, show it on the tooltip

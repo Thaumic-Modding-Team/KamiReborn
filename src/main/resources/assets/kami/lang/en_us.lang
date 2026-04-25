@@ -21,3 +21,6 @@ item.kami:ichorium_axe.name=Ichorium Axe
 item.kami:ichorium_pickaxe.name=Ichorium Pickaxe
 item.kami:ichorium_shovel.name=Ichorium Shovel
 item.kami:ichorium_sword.name=Ichorium Sword
+
+# Tooltips
+tooltip.kami.revealing=Revealing
