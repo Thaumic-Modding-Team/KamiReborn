@@ -1,26 +1,21 @@
 itemGroup.KamiTab=KAMI: Reborn
 
+# Blocks
+tile.kami:ichor_block.name=Block of Ichor
+
 # Items
+item.kami:awakened_ichorium_axe.name=Awakened Ichorium Axe
+item.kami:ichorium_axe.name=Ichorium Axe
 item.kami:ichorium_ingot.name=Ichorium Ingot
+item.kami:ichorium_pickaxe.name=Ichorium Pickaxe
+item.kami:ichorium_shovel.name=Ichorium Shovel
+item.kami:ichorium_sword.name=Ichorium Sword
 item.kami:ichorweave_fabric.name=Ichorweave Fabric
 item.kami:ichorweave_boots.name=Ichorweave Boots
 item.kami:ichorweave_hood.name=Ichorweave Hood
 item.kami:ichorweave_leggings.name=Ichorweave Leggings
 item.kami:ichorweave_robe.name=Ichorweave Robe
 item.kami:ichor.name=Ichor
-
-# Items
-item.kami:ichorium_ingot.name=Ichorium Ingot
-item.kami:ichorweave_fabric.name=Ichorweave Fabric
-item.kami:ichorweave_hood.name=Ichorweave Hood
-item.kami:ichor.name=Ichor
-
-# Items
-item.kami:awakened_ichorium_axe.name=Awakened Ichorium Axe
-item.kami:ichorium_axe.name=Ichorium Axe
-item.kami:ichorium_pickaxe.name=Ichorium Pickaxe
-item.kami:ichorium_shovel.name=Ichorium Shovel
-item.kami:ichorium_sword.name=Ichorium Sword
 
 # Tooltips
 tooltip.kami.revealing=Revealing

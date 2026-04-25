@@ -24,7 +24,7 @@ public class RegistrarKAMI {
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
-
+        ModBlocksKAMI.MOD_BLOCKS.forEach(registry::register);
     }
 
     @SubscribeEvent
