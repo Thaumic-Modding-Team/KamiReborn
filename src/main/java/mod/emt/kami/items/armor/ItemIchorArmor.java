@@ -27,11 +27,13 @@ import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.api.items.IVisDiscountGear;
+import thaumcraft.api.items.IWarpingGear;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemIchorArmor extends ItemBaseArmor implements IItemAddition, IDyeableGear {
+public class ItemIchorArmor extends ItemBaseArmor implements IItemAddition, IDyeableGear, IWarpingGear, IVisDiscountGear {
     protected static final String TEXTURE_PATH_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1.png").toString();
     protected static final String TEXTURE_PATH_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_2.png").toString();
     protected static final String TEXTURE_PATH_DYED_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1_dyed.png").toString();
@@ -149,6 +151,16 @@ public class ItemIchorArmor extends ItemBaseArmor implements IItemAddition, IDye
         }
 
         return type == null ? TEXTURE_PATH_1 : TEXTURE_PATH_DYED_OVERLAY_1;
+    }
+
+    @Override
+    public int getVisDiscount(ItemStack itemStack, EntityPlayer entityPlayer) {
+        return 7;
+    }
+
+    @Override
+    public int getWarp(ItemStack itemstack, EntityPlayer player) {
+        return 1;
     }
 
     @SideOnly(Side.CLIENT)
