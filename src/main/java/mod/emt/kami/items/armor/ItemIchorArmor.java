@@ -1,7 +1,6 @@
 package mod.emt.kami.items.armor;
 
 import mod.emt.kami.Kami;
-import mod.emt.kami.api.item.IItemAddition;
 import mod.emt.kami.client.model.armor.ModelIchorArmor;
 import mod.emt.kami.items.IDyeableGear;
 import mod.emt.kami.items.base.ItemBaseArmor;
@@ -16,6 +15,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
@@ -27,13 +27,14 @@ import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.api.items.IGoggles;
 import thaumcraft.api.items.IVisDiscountGear;
 import thaumcraft.api.items.IWarpingGear;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemIchorArmor extends ItemBaseArmor implements IItemAddition, IDyeableGear, IWarpingGear, IVisDiscountGear {
+public class ItemIchorArmor extends ItemBaseArmor implements IDyeableGear, IWarpingGear, IVisDiscountGear, IGoggles {
     protected static final String TEXTURE_PATH_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1.png").toString();
     protected static final String TEXTURE_PATH_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_2.png").toString();
     protected static final String TEXTURE_PATH_DYED_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1_dyed.png").toString();
@@ -172,5 +173,13 @@ public class ItemIchorArmor extends ItemBaseArmor implements IItemAddition, IDye
                 list.add(TextFormatting.ITALIC + new TextComponentTranslation("item.dyed").getFormattedText());
             }
         }
+        if(stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).armorType == EntityEquipmentSlot.HEAD) {
+            list.add(TextFormatting.DARK_PURPLE + new TextComponentTranslation("tooltip." + Kami.MOD_ID + ".revealing").getFormattedText());
+        }
+    }
+
+    @Override
+    public boolean showIngamePopups(ItemStack stack, EntityLivingBase entity) {
+        return stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).armorType == EntityEquipmentSlot.HEAD;
     }
 }

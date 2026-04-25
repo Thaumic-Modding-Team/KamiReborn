@@ -3,7 +3,6 @@ package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.items.armor.ItemIchorArmor;
-import mod.emt.kami.items.armor.ItemIchorHood;
 import mod.emt.kami.items.base.ItemBase;
 import mod.emt.kami.items.tools.ItemIchoriumAxe;
 import mod.emt.kami.items.tools.ItemIchoriumPickaxe;
@@ -44,7 +43,7 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(ICHOR = new ItemBase("ichor", "ichor"));
         MOD_ITEMS.add(ICHORWEAVE_FABRIC = new ItemBase("ichorweave_fabric", "fabricIchor"));
         MOD_ITEMS.add(ICHORIUM_INGOT = new ItemBase("ichorium_ingot", "ingotIchorium"));
-        MOD_ITEMS.add(ICHORWEAVE_HOOD = new ItemIchorHood("ichorweave_hood", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.HEAD));
+        MOD_ITEMS.add(ICHORWEAVE_HOOD = new ItemIchorArmor("ichorweave_hood", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.HEAD));
         MOD_ITEMS.add(ICHORWEAVE_ROBE = new ItemIchorArmor("ichorweave_robe", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.CHEST));
         MOD_ITEMS.add(ICHORWEAVE_LEGGINGS = new ItemIchorArmor("ichorweave_leggings", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.LEGS));
         MOD_ITEMS.add(ICHORWEAVE_BOOTS = new ItemIchorArmor("ichorweave_boots", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.FEET));
