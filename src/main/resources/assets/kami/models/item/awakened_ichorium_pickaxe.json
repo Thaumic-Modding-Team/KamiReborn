@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "kami:items/ichorium_pickaxe"
+    "layer0": "kami:items/awakened_ichorium_pickaxe_inactive"
   },
   "overrides": [
     {

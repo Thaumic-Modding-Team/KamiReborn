@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "kami:items/ichorium_shovel"
+    "layer0": "kami:items/awakened_ichorium_shovel_inactive"
   },
   "overrides": [
     {
