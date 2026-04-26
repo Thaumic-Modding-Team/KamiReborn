@@ -21,6 +21,7 @@ public class ModItemsKAMI {
     public static Item ICHOR;
     public static Item ICHORIUM_AXE;
     public static Item ICHORIUM_INGOT;
+    public static Item ICHORIUM_NUGGET;
     public static Item ICHORIUM_PICKAXE;
     public static Item ICHORIUM_SHOVEL;
     public static Item ICHORIUM_SWORD;
@@ -40,6 +41,7 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(ICHOR = new ItemBase("ichor", "ichor"));
         MOD_ITEMS.add(ICHORWEAVE_FABRIC = new ItemBase("ichorweave_fabric", "fabricIchor"));
         MOD_ITEMS.add(ICHORIUM_INGOT = new ItemBase("ichorium_ingot", "ingotIchorium"));
+        MOD_ITEMS.add(ICHORIUM_NUGGET = new ItemBase("ichorium_nugget", "nuggetIchorium"));
         MOD_ITEMS.add(ICHORWEAVE_HOOD = new ItemIchorArmor("ichorweave_hood", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.HEAD));
         MOD_ITEMS.add(ICHORWEAVE_ROBE = new ItemIchorArmor("ichorweave_robe", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.CHEST));
         MOD_ITEMS.add(ICHORWEAVE_LEGGINGS = new ItemIchorArmor("ichorweave_leggings", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.LEGS));
