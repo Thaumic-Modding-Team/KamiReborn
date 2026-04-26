@@ -6,19 +6,19 @@
   "overrides": [
     {
       "predicate": {
-        "aoemode": 1
+        "aoe_mode": 1
       },
       "model": "kami:item/awakened_ichorium_pickaxe_blue"
     },
     {
       "predicate": {
-        "aoemode": 2
+        "aoe_mode": 2
       },
       "model": "kami:item/awakened_ichorium_pickaxe_green"
     },
     {
       "predicate": {
-        "aoemode": 3
+        "aoe_mode": 3
       },
       "model": "kami:item/awakened_ichorium_pickaxe_red"
     }
