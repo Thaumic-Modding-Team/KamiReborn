@@ -15,12 +15,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import thaumcraft.client.fx.FXDispatcher;
@@ -32,6 +34,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
 
     public ItemAwakenedPickaxe() {
         super("awakened_ichorium_pickaxe");
+        this.addPropertyOverride(new ResourceLocation("aoemode"), ((stack, worldIn, entityIn) -> EnumAoeMode.getAoeMode(stack).ordinal()));
     }
 
     @Override
@@ -42,7 +45,8 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
                 int duration = player.getItemInUseMaxCount();
                 int stages = Math.min(MAX_DEPTH, duration / 10);
                 if(stages > 0 && duration % 10 == 0) {
-                    player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.depth", stages).setStyle(new Style().setColor(TextFormatting.BLUE)), true);
+                    EnumAoeMode mode = EnumAoeMode.getAoeMode(stack);
+                    player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.depth", stages).setStyle(new Style().setColor(mode.getTextColor())), true);
                 }
             }
         }
@@ -55,7 +59,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
             if(!worldIn.isRemote) {
                 EnumAoeMode mode = EnumAoeMode.getAoeMode(heldStack).nextMode();
                 EnumAoeMode.setAoeMode(heldStack, mode);
-                playerIn.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.aoemode", mode.getBreakAreaSize()).setStyle(new Style().setColor(TextFormatting.BLUE)), true);
+                playerIn.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.aoemode", mode.getBreakAreaSize()).setStyle(new Style().setColor(mode.getTextColor())), true);
             }
         } else {
             playerIn.setActiveHand(handIn);
@@ -73,24 +77,12 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
                 int diameter = this.getBreakAreaSize(stack);
                 int depth = Math.min(MAX_DEPTH, duration / 10);
                 ImmutableList<BlockPos> harvestPositions = HarvestHelper.getHarvestArea(player.world, player, trace, diameter, depth, true);
-
-
-                //TODO: use one of these or the other.
-                //Thaumcraft breaking
                 if(worldIn.isRemote) {
                     for(BlockPos pos : harvestPositions) {
+                        //TODO: Change effect color?
                         FXDispatcher.INSTANCE.drawBamf(pos, 0x7AA721, true, true, trace.sideHit);
                     }
                 }
-                //Minecraft breaking
-//                if(!worldIn.isRemote) {
-//                    for(BlockPos pos : harvestPositions) {
-//                        IBlockState state = worldIn.getBlockState(pos);
-//                        worldIn.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, pos, Block.getStateId(state));
-//                    }
-//                }
-
-
                 HarvestHelper.harvestExtraBlocks(player, stack, harvestPositions);
             }
         }
@@ -115,9 +107,11 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
         return false;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.kami.tool.aoemode", EnumAoeMode.getAoeMode(stack).getBreakAreaSize()));
+        EnumAoeMode mode = EnumAoeMode.getAoeMode(stack);
+        tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.aoemode", mode.getBreakAreaSize()));
     }
 
     @Override

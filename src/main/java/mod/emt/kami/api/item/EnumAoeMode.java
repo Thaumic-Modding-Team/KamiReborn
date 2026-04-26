@@ -3,17 +3,20 @@ package mod.emt.kami.api.item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 
 public enum EnumAoeMode {
-    ONE(1),
-    THREE(3),
-    FIVE(5),
-    SEVEN(7);
+    ONE(1, TextFormatting.WHITE),
+    THREE(3, TextFormatting.BLUE),
+    FIVE(5, TextFormatting.DARK_GREEN),
+    SEVEN(7, TextFormatting.DARK_RED);
 
     private final int breakAreaSize;
+    private final TextFormatting textColor;
 
-    EnumAoeMode(int breakAreaSize) {
+    EnumAoeMode(int breakAreaSize, TextFormatting textColor) {
         this.breakAreaSize = breakAreaSize;
+        this.textColor = textColor;
     }
 
     @Override
@@ -23,6 +26,10 @@ public enum EnumAoeMode {
 
     public int getBreakAreaSize() {
         return this.breakAreaSize;
+    }
+
+    public TextFormatting getTextColor() {
+        return this.textColor;
     }
 
     public EnumAoeMode nextMode() {

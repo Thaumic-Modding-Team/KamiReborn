@@ -34,7 +34,7 @@ public class ItemIchoriumPickaxe extends ItemPickaxe implements IWarpingGear {
             ItemStack stack = new ItemStack(this);
             ItemHelper.setUnbreakable(stack);
             EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.SOUNDING, 2);
-            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.REFINING, 4);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.REFINING, 3);
             items.add(stack);
         }
     }
