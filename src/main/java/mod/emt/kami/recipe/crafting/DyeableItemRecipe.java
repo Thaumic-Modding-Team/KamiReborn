@@ -1,4 +1,4 @@
-package mod.emt.kami.recipe;
+package mod.emt.kami.recipe.crafting;
 
 import mod.emt.kami.items.IDyeableGear;
 import net.minecraft.inventory.InventoryCrafting;
