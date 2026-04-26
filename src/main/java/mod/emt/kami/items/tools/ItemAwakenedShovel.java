@@ -1,38 +1,46 @@
 package mod.emt.kami.items.tools;
 
 import com.google.common.collect.ImmutableList;
-import mod.emt.kami.api.item.EnumAoeMode;
 import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.utils.helpers.HarvestHelper;
 import mod.emt.kami.utils.helpers.PlayerHelper;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import thaumcraft.client.fx.FXDispatcher;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreakTool {
     public static final int MAX_DEPTH = 15;
 
     public ItemAwakenedShovel() {
         super("awakened_ichorium_shovel");
-        this.addPropertyOverride(new ResourceLocation("aoemode"), ((stack, worldIn, entityIn) -> EnumAoeMode.getAoeMode(stack).ordinal()));
+        this.addPropertyOverride(new ResourceLocation("bury_area"), ((stack, worldIn, entityIn) -> EnumBuryMode.getBuryMode(stack).ordinal()));
     }
 
     @Override
@@ -43,8 +51,8 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
                 int duration = player.getItemInUseMaxCount();
                 int stages = Math.min(MAX_DEPTH, duration / 10);
                 if(stages > 0 && duration % 10 == 0) {
-                    EnumAoeMode mode = EnumAoeMode.getAoeMode(stack);
-                    player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.depth", stages).setStyle(new Style().setColor(mode.getTextColor())), true);
+                    EnumBuryMode mode = EnumBuryMode.getBuryMode(stack);
+                    player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.bury_area", stages).setStyle(new Style().setColor(mode.getTextColor())), true);
                 }
             }
         }
@@ -55,9 +63,9 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
         ItemStack heldStack = playerIn.getHeldItem(handIn);
         if(playerIn.isSneaking()) {
             if(!worldIn.isRemote) {
-                EnumAoeMode mode = EnumAoeMode.getAoeMode(heldStack).nextMode();
-                EnumAoeMode.setAoeMode(heldStack, mode);
-                playerIn.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.aoemode", mode.getBreakAreaSize()).setStyle(new Style().setColor(mode.getTextColor())), true);
+                EnumBuryMode mode = EnumBuryMode.getBuryMode(heldStack).nextMode();
+                EnumBuryMode.setBuryMode(heldStack, mode);
+                playerIn.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.bury_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
             }
         } else {
             playerIn.setActiveHand(handIn);
@@ -70,28 +78,28 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
         int duration = stack.getMaxItemUseDuration() - timeLeft;
         if(entityLiving instanceof EntityPlayer && duration > 10) {
             EntityPlayer player = (EntityPlayer) entityLiving;
-            RayTraceResult trace = PlayerHelper.getPlayerTrace(player, 0);
-            int diameter = this.getBreakAreaSize(stack);
             int depth = Math.min(MAX_DEPTH, duration / 10);
-            if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit != null) {
-                ImmutableList<BlockPos> harvestPositions = HarvestHelper.getHarvestArea(player.world, player, trace, diameter, depth, true);
-                if(worldIn.isRemote) {
-                    for(BlockPos pos : harvestPositions) {
-                        //TODO: Change effect color?
-                        FXDispatcher.INSTANCE.drawBamf(pos, 0x7AA721, true, true, trace.sideHit);
-                    }
-                }
-                HarvestHelper.harvestExtraBlocks(player, stack, harvestPositions);
-            }
-            AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(depth);
-            for (EntityLivingBase entity : worldIn.getEntitiesWithinAABB(EntityLivingBase.class, area, entity -> entity.isEntityAlive() && entity.isNonBoss() && entity.isEntityUndead())) {
+            EnumBuryMode mode = EnumBuryMode.getBuryMode(stack);
+            AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(depth, 2, depth);
+            for (Entity entity : worldIn.getEntitiesWithinAABB(mode.getEntityClass(), area, mode::isEntityValid)) {
                 if(!worldIn.isRemote) {
+                    worldIn.playSound(null, entity.getPosition(), SoundEvents.BLOCK_GRAVEL_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
                     double posX = entity.posX;
                     double posY = entity.posY - (int) Math.ceil(entity.height + 1.0);
                     double posZ = entity.posZ;
                     entity.setPositionAndUpdate(posX, posY, posZ);
                 } else {
-                    //TODO: Bury FX
+                    IBlockState state = worldIn.getBlockState(entity.getPosition().down());
+                    if(state.getBlock() != Blocks.AIR && state.getRenderType() != EnumBlockRenderType.INVISIBLE) {
+                        for (int i = 0; i < 12; i++) {
+                            worldIn.spawnParticle(EnumParticleTypes.BLOCK_CRACK,
+                                    entity.posX + (worldIn.rand.nextFloat() - 0.5D) * entity.width,
+                                    entity.getEntityBoundingBox().minY + 0.1D,
+                                    entity.posZ + (worldIn.rand.nextFloat() - 0.5D) * entity.width,
+                                    -entity.motionX * 4.0D, 1.5D, -entity.motionZ * 4.0D,
+                                    Block.getStateId(state));
+                        }
+                    }
                 }
             }
         }
@@ -119,8 +127,9 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        EnumAoeMode mode = EnumAoeMode.getAoeMode(stack);
-        tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.aoemode", mode.getBreakAreaSize()));
+        EnumBuryMode mode = EnumBuryMode.getBuryMode(stack);
+        tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.aoe_mode", 3));
+        tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.bury_mode." + mode));
     }
 
     @Override
@@ -128,8 +137,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
         if(!player.isSneaking() && !player.world.isAirBlock(origin)) {
             RayTraceResult trace = PlayerHelper.getPlayerTrace(player, 0);
             if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit != null) {
-                int diameter = this.getBreakAreaSize(stack);
-                return HarvestHelper.getHarvestArea(player.world, player, trace, diameter, 1, includeOrigin);
+                return HarvestHelper.getHarvestArea(player.world, player, trace, 3, 1, includeOrigin);
             }
         }
         return ImmutableList.of();
@@ -140,7 +148,56 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
         return true;
     }
 
-    public int getBreakAreaSize(ItemStack stack) {
-        return EnumAoeMode.getAoeMode(stack).getBreakAreaSize();
+    public enum EnumBuryMode {
+        UNDEAD(TextFormatting.GOLD, EntityLivingBase.class, EntityLivingBase::isEntityUndead),     //White
+        ANIMALS(TextFormatting.DARK_GREEN, EntityAnimal.class),     //Green
+        ALL(TextFormatting.BLUE, EntityLivingBase.class),           //Blue
+        HOSTILE(TextFormatting.DARK_RED, EntityMob.class);          //Red
+
+        private final TextFormatting textColor;
+        private final Class<? extends EntityLivingBase> entityClass;
+        private final Predicate<EntityLivingBase> predicate;
+
+        EnumBuryMode(TextFormatting textColor, Class<? extends EntityLivingBase> entityClass, Predicate<EntityLivingBase> predicate) {
+            this.textColor = textColor;
+            this.entityClass = entityClass;
+            this.predicate = predicate;
+        }
+
+        EnumBuryMode(TextFormatting textColor, Class<? extends EntityLivingBase> entityClass) {
+            this(textColor, entityClass, entity -> true);
+        }
+
+        @Override
+        public String toString() {
+            return super.toString().toLowerCase();
+        }
+
+        public TextFormatting getTextColor() {
+            return this.textColor;
+        }
+
+        public Class<? extends EntityLivingBase> getEntityClass() {
+            return this.entityClass;
+        }
+
+        public boolean isEntityValid(EntityLivingBase entity) {
+            return entity.isEntityAlive() && entity.isNonBoss() && !(entity instanceof EntityPlayer) && this.predicate.test(entity);
+        }
+
+        public EnumBuryMode nextMode() {
+            EnumBuryMode[] values = EnumBuryMode.values();
+            return values[(this.ordinal() + 1) % values.length];
+        }
+
+        public static EnumBuryMode getBuryMode(ItemStack stack) {
+            EnumBuryMode[] values = EnumBuryMode.values();
+            int ordinal = stack.getTagCompound() != null ? stack.getTagCompound().getInteger("mode") : 0;
+            return values[MathHelper.clamp(ordinal, 0, values.length - 1)];
+        }
+
+        public static void setBuryMode(ItemStack stack, EnumBuryMode mode) {
+            stack.setTagInfo("mode", new NBTTagInt(mode.ordinal()));
+        }
     }
 }

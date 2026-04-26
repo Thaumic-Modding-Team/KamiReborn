@@ -6,19 +6,19 @@
   "overrides": [
     {
       "predicate": {
-        "aoemode": 1
+        "bury_area": 1
       },
       "model": "kami:item/awakened_ichorium_shovel_blue"
     },
     {
       "predicate": {
-        "aoemode": 2
+        "bury_area": 2
       },
       "model": "kami:item/awakened_ichorium_shovel_green"
     },
     {
       "predicate": {
-        "aoemode": 3
+        "bury_area": 3
       },
       "model": "kami:item/awakened_ichorium_shovel_red"
     }
