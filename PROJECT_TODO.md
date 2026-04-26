@@ -9,11 +9,10 @@
 |             (Armor) Ichorcloth Boots              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |              (Armor) Ichorcloth Cowl              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |            (Armor) Ichorcloth Leggings            | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|             (Armor) Ichorcloth Pouch              |          |          |          |        |          |        |
 |              (Armor) Ichorcloth Robe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |           (Tool) Awakened Ichorium Axe            |          |          |          |        |          |        |
-|         (Tool) Awakened Ichorium Pickaxe          |          |          |          |        |          |        |
-|          (Tool) Awakened Ichorium Shovel          |          |          |          |        |          |        |
+|         (Tool) Awakened Ichorium Pickaxe          | COMPLETE | COMPLETE | COMPLETE |        |          |        |
+|          (Tool) Awakened Ichorium Shovel          | COMPLETE | COMPLETE | COMPLETE |        |          |        |
 |          (Tool) Awakened Ichorium Sword           |          |          |          |        |          |        |
 |                (Tool) Ichorium Axe                | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |              (Tool) Ichorium Pickaxe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
@@ -22,9 +21,10 @@
 |                       Ichor                       |          |          |          |        |          |        |
 |                    Ichor Block                    |          |          |          |        |          |        |
 |                    Ichor Cloth                    |          |          |          |        |          |        |
+|                 Ichorcloth Pouch                  |          |          |          |        |          |        |
 |                  Ichorium Ingot                   |          |          |          |        |          |        |
 |                  Ichorium Nugget                  |          |          |          |        |          |        |
-|             Infusion Enchant: Eternal             |          |   N/A    | COMPLETE |        |          |        |
+|             Infusion Enchant: Eternal             | COMPLETE |   N/A    | COMPLETE |        |          |        |
 |                    Proto Clay                     |          |          |          |        |          |        |
 |             Sword of the Dragonslayer             |          |          |          |        |          |        |
 
