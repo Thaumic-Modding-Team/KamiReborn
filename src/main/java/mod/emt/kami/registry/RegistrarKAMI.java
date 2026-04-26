@@ -1,7 +1,7 @@
 package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
-import mod.emt.kami.recipe.DyeableItemRecipe;
+import mod.emt.kami.recipe.crafting.DyeableItemRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
