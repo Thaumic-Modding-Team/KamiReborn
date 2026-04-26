@@ -1,0 +1,26 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "kami:items/ichorium_shovel"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "aoemode": 1
+      },
+      "model": "kami:item/awakened_ichorium_shovel_blue"
+    },
+    {
+      "predicate": {
+        "aoemode": 2
+      },
+      "model": "kami:item/awakened_ichorium_shovel_green"
+    },
+    {
+      "predicate": {
+        "aoemode": 3
+      },
+      "model": "kami:item/awakened_ichorium_shovel_red"
+    }
+  ]
+}
