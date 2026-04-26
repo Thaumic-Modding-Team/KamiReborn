@@ -5,6 +5,9 @@ tile.kami:ichor_block.name=Block of Ichor
 
 # Items
 item.kami:awakened_ichorium_axe.name=Awakened Ichorium Axe
+item.kami:awakened_ichorium_pickaxe.name=Awakened Ichorium Pickaxe
+item.kami:awakened_ichorium_shovel.name=Awakened Ichorium Shovel
+item.kami:awakened_ichorium_sword.name=Awakened Ichorium Sword
 item.kami:ichorium_axe.name=Ichorium Axe
 item.kami:ichorium_ingot.name=Ichorium Ingot
 item.kami:ichorium_pickaxe.name=Ichorium Pickaxe
@@ -19,3 +22,5 @@ item.kami:ichor.name=Ichor
 
 # Tooltips
 tooltip.kami.revealing=Revealing
+tooltip.kami.tool.aoemode=Harvest Area: %1$dx%1$d
+tooltip.kami.tool.depth=Harvest Depth: %d
