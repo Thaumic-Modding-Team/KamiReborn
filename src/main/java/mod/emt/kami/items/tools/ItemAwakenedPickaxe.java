@@ -2,6 +2,7 @@ package mod.emt.kami.items.tools;
 
 import com.google.common.collect.ImmutableList;
 import mod.emt.kami.api.item.IAreaBreakTool;
+import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.HarvestHelper;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.client.resources.I18n;
@@ -12,10 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagInt;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -58,6 +56,8 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World worldIn, @NotNull EntityPlayer playerIn, @NotNull EnumHand handIn) {
         ItemStack heldStack = playerIn.getHeldItem(handIn);
         if(playerIn.isSneaking()) {
+            worldIn.playSound(null, playerIn.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
+
             if(!worldIn.isRemote) {
                 EnumAoeMode mode = EnumAoeMode.getAoeMode(heldStack).nextMode();
                 EnumAoeMode.setAoeMode(heldStack, mode);

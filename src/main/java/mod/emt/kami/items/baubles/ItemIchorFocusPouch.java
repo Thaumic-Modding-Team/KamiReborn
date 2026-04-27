@@ -3,18 +3,17 @@ package mod.emt.kami.items.baubles;
 import mod.emt.kami.Kami;
 import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.handlers.GuiHandlerKami;
+import mod.emt.kami.registry.ModSoundsKAMI;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IRarity;
 import net.minecraftforge.fml.relauncher.Side;
@@ -80,5 +79,17 @@ public class ItemIchorFocusPouch extends ItemFocusPouch {
         if(keyId >= 0) {
             tooltip.add(I18n.format("tooltip.kami.focus_pouch.keybind", Keyboard.getKeyName(keyId)));
         }
+    }
+
+    @Override
+    public void onEquipped(ItemStack stack, EntityLivingBase player)
+    {
+        player.world.playSound(null, player.posX, player.posY, player.posZ, ModSoundsKAMI.EQUIP_BAUBLE.getSoundEvent(), SoundCategory.PLAYERS, 0.8F, 1.0F);
+    }
+
+    @Override
+    public void onUnequipped(ItemStack stack, EntityLivingBase player)
+    {
+        player.world.playSound(null, player.posX, player.posY, player.posZ, ModSoundsKAMI.UNEQUIP_BAUBLE.getSoundEvent(), SoundCategory.PLAYERS, 0.8F, 1.0F);
     }
 }
