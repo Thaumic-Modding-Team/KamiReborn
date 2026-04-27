@@ -4,6 +4,7 @@ package mod.emt.kami.registry;
 import mod.emt.kami.Kami;
 import mod.emt.kami.items.armor.ItemIchorArmor;
 import mod.emt.kami.items.base.ItemBase;
+import mod.emt.kami.items.baubles.ItemIchorFocusPouch;
 import mod.emt.kami.items.tools.*;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -18,6 +19,7 @@ public class ModItemsKAMI {
     public static ItemArmor.ArmorMaterial MATERIAL_ICHORCLOTH = EnumHelper.addArmorMaterial("ICHORCLOTH", Kami.MOD_ID + ":ichorcloth",-1, new int[] {2, 5, 7, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2.0F);
     public static Item.ToolMaterial MATERIAL_ICHORIUM = EnumHelper.addToolMaterial("ICHORIUM", 5, -1, 10, 4f, 25);
 
+    public static Item FOCUS_POUCH;
     public static Item ICHOR;
     public static Item ICHORIUM_AXE;
     public static Item ICHORIUM_INGOT;
@@ -42,6 +44,7 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(ICHORWEAVE_FABRIC = new ItemBase("ichorweave_fabric", "fabricIchor"));
         MOD_ITEMS.add(ICHORIUM_INGOT = new ItemBase("ichorium_ingot", "ingotIchorium"));
         MOD_ITEMS.add(ICHORIUM_NUGGET = new ItemBase("ichorium_nugget", "nuggetIchorium"));
+        MOD_ITEMS.add(FOCUS_POUCH = new ItemIchorFocusPouch());
         MOD_ITEMS.add(ICHORWEAVE_HOOD = new ItemIchorArmor("ichorweave_hood", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.HEAD));
         MOD_ITEMS.add(ICHORWEAVE_ROBE = new ItemIchorArmor("ichorweave_robe", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.CHEST));
         MOD_ITEMS.add(ICHORWEAVE_LEGGINGS = new ItemIchorArmor("ichorweave_leggings", MATERIAL_ICHORCLOTH, EntityEquipmentSlot.LEGS));

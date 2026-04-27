@@ -8,6 +8,7 @@ item.kami:awakened_ichorium_axe.name=Awakened Ichorium Axe
 item.kami:awakened_ichorium_pickaxe.name=Ichorium Pickaxe of the Tunneler
 item.kami:awakened_ichorium_shovel.name=Ichorium Shovel of the Gravedigger
 item.kami:awakened_ichorium_sword.name=Awakened Ichorium Sword
+item.kami.focus_pouch.name=Ichorweave Focus Pouch
 item.kami:ichorium_axe.name=Ichorium Axe
 item.kami:ichorium_ingot.name=Ichorium Ingot
 item.kami:ichorium_pickaxe.name=Ichorium Pickaxe
@@ -21,11 +22,12 @@ item.kami:ichorweave_robe.name=Ichorweave Robe
 item.kami:ichor.name=Ichor
 
 # Tooltips
+tooltip.kami.focus_pouch.keybind=Press [%s] to open Gui when equipped.
 tooltip.kami.revealing=Revealing
 tooltip.kami.tool.aoe_mode=Harvest Area: %1$dx%1$d
 tooltip.kami.tool.bury_area=Interment Radius: %d
 tooltip.kami.tool.bury_mode.all=Bury Mode: All
 tooltip.kami.tool.bury_mode.animals=Bury Mode: Animals
-tooltip.kami.tool.bury_mode.hostile=Bury Mode: Hostiles
+tooltip.kami.tool.bury_mode.hostile=Bury Mode: Hostile
 tooltip.kami.tool.bury_mode.undead=Bury Mode: Undead
 tooltip.kami.tool.dig_depth=Harvest Depth: %d

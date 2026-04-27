@@ -1,8 +1,13 @@
 package mod.emt.kami.handlers;
 
+import baubles.api.BaublesApi;
 import com.google.common.collect.ImmutableList;
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IAreaBreakTool;
+import mod.emt.kami.client.KeyBindingsKami;
+import mod.emt.kami.network.PacketHandler;
+import mod.emt.kami.network.packets.PacketOpenPouchGui;
+import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -26,6 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
@@ -63,6 +69,19 @@ public class ClientEventHandler {
                     if (!stack.isEmpty() && stack.getItem() instanceof IAreaBreakTool) {
                         drawBlockDamageTexture(Tessellator.getInstance(), Tessellator.getInstance().getBuffer(), player, event.getPartialTicks(), player.getEntityWorld(), extraBlocks);
                     }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onKeyInput(InputEvent.KeyInputEvent event) {
+        EntityPlayer player = Minecraft.getMinecraft().player;
+        if (player != null) {
+            if(KeyBindingsKami.openFocusPouch.isPressed()) {
+                int pouchSlot = BaublesApi.isBaubleEquipped(player, ModItemsKAMI.FOCUS_POUCH);
+                if (pouchSlot > -1) {
+                    PacketHandler.INSTANCE.sendToServer(new PacketOpenPouchGui());
                 }
             }
         }

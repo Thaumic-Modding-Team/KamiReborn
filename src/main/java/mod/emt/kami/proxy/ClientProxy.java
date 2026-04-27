@@ -1,5 +1,6 @@
 package mod.emt.kami.proxy;
 
+import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.items.IDyeableGear;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
@@ -14,6 +15,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init() {
         super.init();
+        KeyBindingsKami.init();
         IItemColor itemColorHandler = (stack, tintIndex) -> {
             if (tintIndex == 1 && stack.getItem() instanceof IDyeableGear) {
                 return ((IDyeableGear) stack.getItem()).getDyedColor(stack);
