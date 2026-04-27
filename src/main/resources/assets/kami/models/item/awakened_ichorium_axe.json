@@ -1,0 +1,26 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "kami:items/ichorium_axe"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "aoe_mode": 1
+      },
+      "model": "kami:item/awakened_ichorium_axe_blue"
+    },
+    {
+      "predicate": {
+        "aoe_mode": 2
+      },
+      "model": "kami:item/awakened_ichorium_axe_green"
+    },
+    {
+      "predicate": {
+        "aoe_mode": 3
+      },
+      "model": "kami:item/awakened_ichorium_axe_red"
+    }
+  ]
+}
