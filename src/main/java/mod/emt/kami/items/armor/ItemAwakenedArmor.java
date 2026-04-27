@@ -6,25 +6,38 @@ import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler.Movemen
 import mod.emt.kami.handlers.CommonEventHandler;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.util.Constants;
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.client.fx.FXDispatcher;
+import thaumcraft.common.items.baubles.ItemCloudRing;
+import thaumcraft.common.lib.network.PacketHandler;
+import thaumcraft.common.lib.network.playerdata.PacketPlayerFlagToServer;
 
 import java.util.UUID;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 
 public class ItemAwakenedArmor extends ItemIchorweaveArmor {
+    public static final int POTION_DURATION_MAX = 310;
+    public static final int POTION_DURATION_MIN = 301;
+
     protected static final BiFunction<EntityPlayer, MovementType, Float> MOVEMENT_FUNC = (player, type) -> {
         //TODO: Configs for all of these.
         float boost = 0;
@@ -113,11 +126,11 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
         if(!world.isRemote) {
             PotionEffect effect = player.getActivePotionEffect(MobEffects.NIGHT_VISION);
             if(activateNightVision) {
-                if(effect == null || effect.getDuration() <= 241) {
+                if(effect == null || effect.getDuration() <= POTION_DURATION_MIN) {
                     player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 250, 0, false, false));
                 }
             } else {
-                if(effect != null && effect.getDuration() <= 250) {
+                if(effect != null && effect.getDuration() <= POTION_DURATION_MAX) {
                     player.removePotionEffect(MobEffects.NIGHT_VISION);
                 }
             }
@@ -162,7 +175,42 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
     }
 
     protected void tickLeggings(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {
+        if(!world.isRemote) {
+            PotionEffect effect = player.getActivePotionEffect(MobEffects.FIRE_RESISTANCE);
+            if(effect == null || effect.getDuration() <= POTION_DURATION_MIN) {
+                player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, POTION_DURATION_MAX, 0, false, false));
+            }
+        } else {
+            boolean spacePressed = Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed();
+            if (spacePressed && !ItemCloudRing.jumpList.containsKey(player.getName())) {
+                ItemCloudRing.jumpList.put(player.getName(), true);
+            }
 
+            if (spacePressed && !player.onGround && !player.isInWater() && player.jumpTicks == 0 && ItemCloudRing.jumpList.containsKey(player.getName()) && ItemCloudRing.jumpList.get(player.getName())) {
+                FXDispatcher.INSTANCE.drawBamf(player.posX, player.posY + (double)0.5F, player.posZ, 1.0F, 1.0F, 1.0F, false, false, EnumFacing.UP);
+                player.getEntityWorld().playSound(player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.PLAYERS, 0.1F, 1.0F + (float)player.getEntityWorld().rand.nextGaussian() * 0.05F, false);
+                ItemCloudRing.jumpList.put(player.getName(), false);
+                player.motionY = 0.75F;
+                PotionEffect effect = player.getActivePotionEffect(MobEffects.JUMP_BOOST);
+                if (effect != null) {
+                    player.motionY += (effect.getAmplifier() + 1.0) * 0.1;
+                }
+
+                if (player.isSprinting()) {
+                    float f = player.rotationYaw * ((float)Math.PI / 180F);
+                    player.motionX -= MathHelper.sin(f) * 0.2;
+                    player.motionZ += MathHelper.cos(f) * 0.2;
+                }
+
+                player.fallDistance = 0.0F;
+                PacketHandler.INSTANCE.sendToServer(new PacketPlayerFlagToServer(player, 1));
+                ForgeHooks.onLivingJump(player);
+            }
+
+            if (player.onGround && player.jumpTicks == 0) {
+                ItemCloudRing.jumpList.remove(player.getName());
+            }
+        }
     }
 
     protected void tickBoots(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {

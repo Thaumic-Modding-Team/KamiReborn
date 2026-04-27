@@ -24,6 +24,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
 import io.netty.buffer.ByteBuf;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -35,17 +36,23 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
     public ItemStack boomerangItem;
     public Entity owner;
     public int thrownFromSlot;
+    public double damage;
 
     public EntityThrownAxe(World world, EntityLivingBase entity, ItemStack boomerangThrown) {
         super(world, entity);
-        returnTime = MAX_THROW_TIME;
-        boomerangItem = boomerangThrown;
-        noClip = false;
-        owner = entity;
+        this.returnTime = MAX_THROW_TIME;
+        this.boomerangItem = boomerangThrown;
+        this.noClip = false;
+        this.owner = entity;
+        this.damage = BOOMERANG_DAMAGE;
     }
 
     public EntityThrownAxe(World world) {
         super(world);
+    }
+
+    public void setDamage(double damage) {
+        this.damage = damage;
     }
 
     @Override
@@ -124,7 +131,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onImpact(@NotNull RayTraceResult result) {
         if (world.isRemote) return;
         if (result.typeOfHit == RayTraceResult.Type.ENTITY && result.entityHit instanceof EntityLivingBase) {
             if (result.entityHit == getThrower() && returnTime <= 0 && result.entityHit instanceof EntityPlayer) {
@@ -156,7 +163,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
                     world.playSound(null, getPosition(), SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1.0F, 0.8F);
                     setDead();
                 }
-                el.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), BOOMERANG_DAMAGE);
+                el.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), (float) this.damage);
             }
         } else {
             BlockPos blockPos = result.getBlockPos();
@@ -173,13 +180,13 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
     }
 
     @Override
-    public void writeEntityToNBT(NBTTagCompound tagCompound) {
+    public void writeEntityToNBT(@NotNull NBTTagCompound tagCompound) {
         super.writeEntityToNBT(tagCompound);
         tagCompound.setTag("Item", boomerangItem.writeToNBT(new NBTTagCompound()));
     }
 
     @Override
-    public void readEntityFromNBT(NBTTagCompound tagCompound) {
+    public void readEntityFromNBT(@NotNull NBTTagCompound tagCompound) {
         super.readEntityFromNBT(tagCompound);
         boomerangItem = new ItemStack(tagCompound.getCompoundTag("Item"));
     }

@@ -2,19 +2,25 @@ package mod.emt.kami.handlers;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IAreaBreakTool;
+import mod.emt.kami.items.armor.ItemAwakenedArmor;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import thaumcraft.common.items.baubles.ItemCloudRing;
 
 import java.util.*;
 
@@ -45,6 +51,22 @@ public class CommonEventHandler {
     }
 
     @SubscribeEvent
+    public static void onLivingFall(LivingFallEvent event) {
+        float distance = event.getDistance();
+        ItemStack legs = event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+        ItemStack boots = event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.FEET);
+        if(event.getEntityLiving() instanceof EntityPlayer) {
+            if (!legs.isEmpty() && legs.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS && ItemCloudRing.jumpList.containsKey(event.getEntityLiving().getName())) {
+                distance = (distance / 3.0f) - 2.0f;
+            }
+        }
+        if(!boots.isEmpty() && boots.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS) {
+            distance -= 2.0f;
+        }
+        event.setDistance(Math.max(0, distance));
+    }
+
+    @SubscribeEvent
     public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
         //Disable flying for players without chest
         if(event.getEntityLiving() instanceof EntityPlayer) {
@@ -54,22 +76,33 @@ public class CommonEventHandler {
                 ItemStack chestStack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
                 if(chestStack.isEmpty() && chestStack.getItem() != ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBES) {
                     player.capabilities.allowFlying = false;
+                    player.capabilities.isFlying = false;
                     FLYING_PLAYERS.remove(playerId);
                 }
             }
         }
     }
 
-//    @SubscribeEvent
-//    public static void onPlayerJump(LivingEvent.LivingJumpEvent event) {
-//        if(event.getEntityLiving() instanceof EntityPlayer) {
-//            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-//            ItemStack bootStack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
-//            if(!bootStack.isEmpty() && bootStack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS) {
-//                player.motionY += 0.30;
-//            }
-//        }
-//    }
+    @SubscribeEvent
+    public static void onEquipmentChanged(LivingEquipmentChangeEvent event) {
+        ItemStack from = event.getFrom();
+        ItemStack to = event.getTo();
+        if(event.getSlot() == EntityEquipmentSlot.HEAD) {
+            if(from.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD && (to.isEmpty() && to.getItem() != ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD)) {
+                PotionEffect effect = event.getEntityLiving().getActivePotionEffect(MobEffects.NIGHT_VISION);
+                if(effect != null && effect.getDuration() <= ItemAwakenedArmor.POTION_DURATION_MAX) {
+                    event.getEntityLiving().removePotionEffect(MobEffects.NIGHT_VISION);
+                }
+            }
+        } else if(event.getSlot() == EntityEquipmentSlot.LEGS) {
+            if(from.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS && (to.isEmpty() && to.getItem() != ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS)) {
+                PotionEffect effect = event.getEntityLiving().getActivePotionEffect(MobEffects.FIRE_RESISTANCE);
+                if(effect != null && effect.getDuration() <= ItemAwakenedArmor.POTION_DURATION_MAX) {
+                    event.getEntityLiving().removePotionEffect(MobEffects.FIRE_RESISTANCE);
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
