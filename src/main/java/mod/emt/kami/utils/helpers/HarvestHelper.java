@@ -42,7 +42,7 @@ public class HarvestHelper {
         } else {
             startPos = startPos.add(
                     -(side.getAxis() == EnumFacing.Axis.X ? (side == EnumFacing.EAST  ? depth - 1 : 0) : diameter / 2),
-                    -(side.getAxis() == EnumFacing.Axis.Y ? (side == EnumFacing.UP    ? depth - 1 : 0) : 1),
+                    -(side.getAxis() == EnumFacing.Axis.Y ? (side == EnumFacing.UP    ? depth - 1 : 0) : (diameter <= 1 ? 0 : 1)),
                     -(side.getAxis() == EnumFacing.Axis.Z ? (side == EnumFacing.SOUTH ? depth - 1 : 0) : diameter / 2));
         }
 
