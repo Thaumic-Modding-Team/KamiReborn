@@ -5,6 +5,7 @@ import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.handlers.GuiHandlerKami;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.EnumRarity;
@@ -31,6 +32,14 @@ public class ItemIchorFocusPouch extends ItemFocusPouch {
         super();
         this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
         this.setCreativeTab(Kami.tabKAMI);
+    }
+
+    //This is necessary, otherwise it won't show up on the creative tab
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (tab == Kami.tabKAMI || tab == CreativeTabs.SEARCH) {
+            items.add(new ItemStack(this, 1, 0));
+        }
     }
 
     @Override
