@@ -24,6 +24,10 @@ public class ClientProxy extends CommonProxy {
             }
         };
 
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS);
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD);
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS);
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE);
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_BOOTS);
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_HOOD);
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_LEGGINGS);

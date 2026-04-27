@@ -3,10 +3,12 @@ package mod.emt.kami.items.armor;
 import com.google.common.collect.Multimap;
 import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler;
 import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler.MovementType;
+import mod.emt.kami.Kami;
 import mod.emt.kami.handlers.CommonEventHandler;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -17,6 +19,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -35,6 +38,13 @@ import java.util.function.BiFunction;
 import java.util.function.Predicate;
 
 public class ItemAwakenedArmor extends ItemIchorweaveArmor {
+    protected static final String TEXTURE_PATH_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_1.png").toString();
+    protected static final String TEXTURE_PATH_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_2.png").toString();
+    protected static final String TEXTURE_PATH_DYED_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_1_dyed.png").toString();
+    protected static final String TEXTURE_PATH_DYED_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_2_dyed.png").toString();
+    protected static final String TEXTURE_PATH_DYED_OVERLAY_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_1_dyed_overlay.png").toString();
+    protected static final String TEXTURE_PATH_DYED_OVERLAY_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_2_dyed_overlay.png").toString();
+
     public static final int POTION_DURATION_MAX = 310;
     public static final int POTION_DURATION_MIN = 301;
 
@@ -90,6 +100,20 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
             }
         }
         return multimap;
+    }
+
+    @Override
+    public String getArmorTexture(@NotNull ItemStack stack, @NotNull Entity entity, @NotNull EntityEquipmentSlot slot, @NotNull String type) {
+        // If dye is never used on it, it'll use a dyeless texture instead
+        if (this.getDyedColor(stack) != getDefaultDyedColorForMeta(stack.getMetadata())) {
+            if (slot == EntityEquipmentSlot.LEGS) {
+                return type == null ? TEXTURE_PATH_DYED_2 : TEXTURE_PATH_DYED_OVERLAY_2;
+            } else {
+                return type == null ? TEXTURE_PATH_DYED_1 : TEXTURE_PATH_DYED_OVERLAY_1;
+            }
+        }
+
+        return slot == EntityEquipmentSlot.LEGS ? TEXTURE_PATH_2 : TEXTURE_PATH_1;
     }
 
     @Override

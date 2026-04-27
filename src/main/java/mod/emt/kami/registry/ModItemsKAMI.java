@@ -27,7 +27,7 @@ public class ModItemsKAMI {
     public static ItemArmor AWAKENED_ICHORWEAVE_BOOTS;
     public static ItemArmor AWAKENED_ICHORWEAVE_HOOD;
     public static ItemArmor AWAKENED_ICHORWEAVE_LEGGINGS;
-    public static ItemArmor AWAKENED_ICHORWEAVE_ROBES;
+    public static ItemArmor AWAKENED_ICHORWEAVE_ROBE;
     public static Item FOCUS_POUCH;
     public static Item ICHOR;
     public static Item ICHORIUM_AXE;
@@ -55,7 +55,7 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(ICHORWEAVE_LEGGINGS = new ItemIchorweaveArmor("ichorweave_leggings", EntityEquipmentSlot.LEGS));
         MOD_ITEMS.add(ICHORWEAVE_BOOTS = new ItemIchorweaveArmor("ichorweave_boots", EntityEquipmentSlot.FEET));
         MOD_ITEMS.add(AWAKENED_ICHORWEAVE_HOOD = new ItemAwakenedArmor("awakened_ichorweave_hood", EntityEquipmentSlot.HEAD));
-        MOD_ITEMS.add(AWAKENED_ICHORWEAVE_ROBES = new ItemAwakenedArmor("awakened_ichorweave_robes", EntityEquipmentSlot.CHEST));
+        MOD_ITEMS.add(AWAKENED_ICHORWEAVE_ROBE = new ItemAwakenedArmor("awakened_ichorweave_robe", EntityEquipmentSlot.CHEST));
         MOD_ITEMS.add(AWAKENED_ICHORWEAVE_LEGGINGS = new ItemAwakenedArmor("awakened_ichorweave_leggings", EntityEquipmentSlot.LEGS));
         MOD_ITEMS.add(AWAKENED_ICHORWEAVE_BOOTS = new ItemAwakenedArmor("awakened_ichorweave_boots", EntityEquipmentSlot.FEET));
         MOD_ITEMS.add(ICHORIUM_SWORD = new ItemIchoriumSword());

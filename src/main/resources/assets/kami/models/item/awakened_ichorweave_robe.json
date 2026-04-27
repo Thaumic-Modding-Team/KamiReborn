@@ -1,14 +1,14 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "kami:items/awakened_ichorweave_hood"
+    "layer0": "kami:items/awakened_ichorweave_robe"
   },
   "overrides": [
     {
       "predicate": {
         "dyed": 1
       },
-      "model": "kami:item/awakened_ichorweave_hood_dyed"
+      "model": "kami:item/awakened_ichorweave_robe_dyed"
     }
   ]
 }
