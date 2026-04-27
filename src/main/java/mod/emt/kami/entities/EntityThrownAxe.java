@@ -44,6 +44,10 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
         owner = entity;
     }
 
+    public EntityThrownAxe(World world) {
+        super(world);
+    }
+
     @Override
     public void writeSpawnData(ByteBuf data) {
         data.writeInt(thrower != null ? thrower.getEntityId() : -1);
