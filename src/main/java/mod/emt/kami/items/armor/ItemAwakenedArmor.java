@@ -1,6 +1,8 @@
 package mod.emt.kami.items.armor;
 
 import com.google.common.collect.Multimap;
+import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler;
+import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler.MovementType;
 import mod.emt.kami.handlers.CommonEventHandler;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.material.Material;
@@ -19,13 +21,39 @@ import net.minecraftforge.common.util.Constants;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
+import java.util.function.BiFunction;
+import java.util.function.Predicate;
 
 public class ItemAwakenedArmor extends ItemIchorweaveArmor {
-    public final UUID KNOCKBACK_UUID;
+    protected static final BiFunction<EntityPlayer, MovementType, Float> MOVEMENT_FUNC = (player, type) -> {
+        //TODO: Configs for all of these.
+        float boost = 0;
+        switch (type) {
+            case DRY_GROUND:
+                boost = (float) 0.06;
+                return player.isSneaking() ? boost / 4.0f : boost;
+            case WATER_GROUND:
+                boost = (float) Math.max(0.06 / 4.0f, 0.03);
+                return player.isSneaking() ? boost / 4.0f : boost;
+            case WATER_SWIM:
+                boost = (float) 0.03;
+                return player.isSneaking() ? boost / 4.0f : boost;
+            case JUMP_BEGIN:
+                return (float) 0.3;
+            case JUMP_FACTOR:
+                return (float) 0.03;
+            case STEP_HEIGHT:
+                return !player.isSneaking() ? (float) 0.75 : 0;
+            default:
+                return boost;
+        }
+    };
+    protected static final Predicate<EntityPlayer> CONTINUE_FUNC = player -> player.getItemStackFromSlot(EntityEquipmentSlot.FEET).getItem() instanceof ItemAwakenedArmor;
+    public final UUID MODIFIER_UUID;
 
     public ItemAwakenedArmor(String unlocName, EntityEquipmentSlot equipmentSlot) {
         super(unlocName, equipmentSlot);
-        this.KNOCKBACK_UUID = new UUID((this.getTranslationKey() + this.armorType + "knockback").hashCode(), 0);
+        this.MODIFIER_UUID = new UUID((this.getTranslationKey() + this.armorType).hashCode(), 0);
     }
 
     @Override
@@ -34,16 +62,17 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
         if(slot == this.armorType) {
             switch (slot) {
                 case HEAD:
-                    multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(KNOCKBACK_UUID, "Ichorweave modifier " + this.armorType, 0.2, Constants.AttributeModifierOperation.MULTIPLY));
+                    multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(MODIFIER_UUID, "Ichorweave modifier " + this.armorType, 0.2, Constants.AttributeModifierOperation.MULTIPLY));
                     break;
                 case CHEST:
-                    multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(KNOCKBACK_UUID, "Ichorweave modifier " + this.armorType, 0.3, Constants.AttributeModifierOperation.MULTIPLY));
+                    multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(MODIFIER_UUID, "Ichorweave modifier " + this.armorType, 0.3, Constants.AttributeModifierOperation.MULTIPLY));
                     break;
                 case LEGS:
-                    multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(KNOCKBACK_UUID, "Ichorweave modifier " + this.armorType, 0.3, Constants.AttributeModifierOperation.MULTIPLY));
+                    multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(MODIFIER_UUID, "Ichorweave modifier " + this.armorType, 0.3, Constants.AttributeModifierOperation.MULTIPLY));
                     break;
                 case FEET:
-                    multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(KNOCKBACK_UUID, "Ichorweave modifier " + this.armorType, 0.2, Constants.AttributeModifierOperation.MULTIPLY));
+                    multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(MODIFIER_UUID, "Ichorweave modifier " + this.armorType, 0.2, Constants.AttributeModifierOperation.MULTIPLY));
+                    //multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(MODIFIER_UUID, "Ichorweave modifier " + this.armorType, 0.3, Constants.AttributeModifierOperation.MULTIPLY));
                     break;
             }
         }
@@ -60,10 +89,10 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
                 case CHEST:
                     this.tickChestplate(world, player, itemStack);
                     break;
-                case FEET:
+                case LEGS:
                     this.tickLeggings(world, player, itemStack);
                     break;
-                case LEGS:
+                case FEET:
                     this.tickBoots(world, player, itemStack);
                     break;
             }
@@ -137,6 +166,15 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
     }
 
     protected void tickBoots(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {
+        //Jump Height and Movement Speed
+        if(world.isRemote) {
+            boolean apply = !player.capabilities.isFlying && !player.isElytraFlying();
+            if (apply && !PlayerMovementAbilityHandler.playerHasAbility(player, MOVEMENT_FUNC, CONTINUE_FUNC)) {
+                PlayerMovementAbilityHandler.put(player, MOVEMENT_FUNC, CONTINUE_FUNC);
+            } else if (!apply && PlayerMovementAbilityHandler.playerHasAbility(player, MOVEMENT_FUNC, CONTINUE_FUNC)) {
+                PlayerMovementAbilityHandler.remove(player, MOVEMENT_FUNC, CONTINUE_FUNC);
+            }
+        }
     }
 
     protected void tickArmorSet(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {

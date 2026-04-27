@@ -60,6 +60,17 @@ public class CommonEventHandler {
         }
     }
 
+//    @SubscribeEvent
+//    public static void onPlayerJump(LivingEvent.LivingJumpEvent event) {
+//        if(event.getEntityLiving() instanceof EntityPlayer) {
+//            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+//            ItemStack bootStack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+//            if(!bootStack.isEmpty() && bootStack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS) {
+//                player.motionY += 0.30;
+//            }
+//        }
+//    }
+
     @SubscribeEvent
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         UUID playerId = PlayerHelper.getUUIDFromPlayer(event.player);
