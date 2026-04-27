@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModItemsKAMI {
-    public static ItemArmor.ArmorMaterial MATERIAL_ICHORCLOTH = EnumHelper.addArmorMaterial("ICHORCLOTH", Kami.MOD_ID + ":ichorcloth",-1, new int[] {3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 3.0F);
+    public static ItemArmor.ArmorMaterial MATERIAL_ICHORCLOTH = EnumHelper.addArmorMaterial("ICHORCLOTH", Kami.MOD_ID + ":ichorcloth",-1, new int[] {3, 6, 8, 3}, 20, ModSoundsKAMI.EQUIP_ROBE.getSoundEvent(), 3.0F);
     public static Item.ToolMaterial MATERIAL_ICHORIUM = EnumHelper.addToolMaterial("ICHORIUM", 5, -1, 10, 4f, 25);
 
     public static Item AWAKENED_ICHORIUM_AXE;

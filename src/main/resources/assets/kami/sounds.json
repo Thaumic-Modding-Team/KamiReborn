@@ -1,0 +1,44 @@
+{
+  "equip.bauble": {
+    "sounds": [
+      "kami:equip/bauble/equip1",
+      "kami:equip/bauble/equip2",
+      "kami:equip/bauble/equip3"
+    ]
+  },
+  "equip.robe": {
+    "sounds": [
+      "kami:equip/robe/equip1",
+      "kami:equip/robe/equip2",
+      "kami:equip/robe/equip3",
+      "kami:equip/robe/equip4"
+    ]
+  },
+  "item.ichor.bury": {
+    "sounds": [
+      "kami:items/ichor/shovel/bury1",
+      "kami:items/ichor/shovel/bury2"
+    ]
+  },
+  "item.ichor.dig": {
+    "sounds": [
+      "kami:items/ichor/pickaxe/dig1",
+      "kami:items/ichor/pickaxe/dig2"
+    ]
+  },
+  "item.ichor.toggle": {
+    "sounds": [
+      "kami:items/ichor/toggle1",
+      "kami:items/ichor/toggle2",
+      "kami:items/ichor/toggle3",
+      "kami:items/ichor/toggle4"
+    ]
+  },
+  "unequip.bauble": {
+    "sounds": [
+      "kami:equip/bauble/unequip1",
+      "kami:equip/bauble/unequip2",
+      "kami:equip/bauble/unequip3"
+    ]
+  }
+}

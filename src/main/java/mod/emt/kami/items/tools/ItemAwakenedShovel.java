@@ -2,6 +2,7 @@ package mod.emt.kami.items.tools;
 
 import com.google.common.collect.ImmutableList;
 import mod.emt.kami.api.item.IAreaBreakTool;
+import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.HarvestHelper;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.Block;
@@ -62,6 +63,8 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World worldIn, @NotNull EntityPlayer playerIn, @NotNull EnumHand handIn) {
         ItemStack heldStack = playerIn.getHeldItem(handIn);
         if(playerIn.isSneaking()) {
+            worldIn.playSound(null, playerIn.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0F, 1.5F);
+
             if(!worldIn.isRemote) {
                 EnumBuryMode mode = EnumBuryMode.getBuryMode(heldStack).nextMode();
                 EnumBuryMode.setBuryMode(heldStack, mode);
@@ -83,6 +86,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
             AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(depth, 2, depth);
             for (Entity entity : worldIn.getEntitiesWithinAABB(mode.getEntityClass(), area, mode::isEntityValid)) {
                 if(!worldIn.isRemote) {
+                    worldIn.playSound(null, entity.getPosition(), ModSoundsKAMI.ITEM_ICHOR_BURY.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.0f);
                     worldIn.playSound(null, entity.getPosition(), SoundEvents.BLOCK_GRAVEL_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
                     double posX = entity.posX;
                     double posY = entity.posY - (int) Math.ceil(entity.height + 1.0);
