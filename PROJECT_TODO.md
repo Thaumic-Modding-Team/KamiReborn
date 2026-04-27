@@ -2,14 +2,14 @@
 ## Thaumic Tinkerer: Kami Reborn
 |                      Feature                      |   Code   |  Model   | Texture  | Config | Research | Recipe |
 |:-------------------------------------------------:|:--------:|:--------:|:--------:|:------:|:--------:|:------:|
-| (Armor - Awakened) Boots of the Horizontal Shield |          |          |          |  N/A   |          |        |
-|   (Armor - Awakened) Cowl of the Abyssal Depths   |          |          |          |  N/A   |          |
-| (Armor - Awakened) Leggings of the Burning Mantle |          |          |          |  N/A   |          |        |
-|   (Armor - Awakened) Robes of the Stratosphere    |          |          |          |  N/A   |          |        |
-|             (Armor) Ichorcloth Boots              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|              (Armor) Ichorcloth Cowl              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|            (Armor) Ichorcloth Leggings            | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|              (Armor) Ichorcloth Robe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|         (Armor) Awakened Ichorweave Boots         |          |          |          |  N/A   |          |        |
+|         (Armor) Awakened Ichorweave Cowl          | COMPLETE |          |          |  N/A   |          |        |
+|        (Armor) Awakened Ichoreave Leggings        |          |          |          |  N/A   |          |        |
+|         (Armor) Awakened Ichorweave Robe          | COMPLETE |          |          |  N/A   |          |        |
+|             (Armor) Ichorweave Boots              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|              (Armor) Ichorweave Cowl              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|            (Armor) Ichoreave Leggings             | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|              (Armor) Ichorweave Robe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |           (Tool) Awakened Ichorium Axe            |          |          |          |  N/A   |          |        |
 |         (Tool) Awakened Ichorium Pickaxe          | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |          (Tool) Awakened Ichorium Shovel          | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
@@ -21,7 +21,7 @@
 |                       Ichor                       | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |                    Ichor Block                    |          |          |          |  N/A   |          |        |
 |                    Ichor Cloth                    | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|                 Ichorcloth Pouch                  | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|                 Ichorweave Pouch                  | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |                  Ichorium Ingot                   | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |                  Ichorium Nugget                  | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |             Infusion Enchant: Eternal             | COMPLETE |   N/A    | COMPLETE |  N/A   |          |        |

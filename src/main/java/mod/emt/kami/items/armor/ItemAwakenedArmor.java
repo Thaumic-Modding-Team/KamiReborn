@@ -1,6 +1,7 @@
 package mod.emt.kami.items.armor;
 
 import com.google.common.collect.Multimap;
+import mod.emt.kami.handlers.CommonEventHandler;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -122,7 +123,13 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
     }
 
     protected void tickChestplate(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {
-
+        //Creative Flight
+        if(!player.capabilities.allowFlying) {
+            player.capabilities.allowFlying = true;
+            CommonEventHandler.FLYING_PLAYERS.add(PlayerHelper.getUUIDFromPlayer(player));
+        }
+        //No fall damage
+        player.fallDistance = 0;
     }
 
     protected void tickLeggings(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {
@@ -130,8 +137,6 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
     }
 
     protected void tickBoots(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {
-        //No fall damage
-        player.fallDistance = 0;
     }
 
     protected void tickArmorSet(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {

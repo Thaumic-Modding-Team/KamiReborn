@@ -2,17 +2,26 @@ package mod.emt.kami.handlers;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IAreaBreakTool;
+import mod.emt.kami.registry.ModItemsKAMI;
+import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+
+import java.util.*;
 
 @Mod.EventBusSubscriber(modid = Kami.MOD_ID)
 public class CommonEventHandler {
+    public static final Set<UUID> FLYING_PLAYERS = new HashSet<>();
+
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onBlockHarvestPost(BlockEvent.HarvestDropsEvent event) {
         if(event.getHarvester() instanceof EntityPlayer && !event.getHarvester().world.isRemote) {
@@ -33,5 +42,27 @@ public class CommonEventHandler {
                 event.getDrops().clear();
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
+        //Disable flying for players without chest
+        if(event.getEntityLiving() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+            UUID playerId = PlayerHelper.getUUIDFromPlayer(player);
+            if(!player.isCreative() && player.capabilities.allowFlying && FLYING_PLAYERS.contains(playerId)) {
+                ItemStack chestStack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+                if(chestStack.isEmpty() && chestStack.getItem() != ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBES) {
+                    player.capabilities.allowFlying = false;
+                    FLYING_PLAYERS.remove(playerId);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
+        UUID playerId = PlayerHelper.getUUIDFromPlayer(event.player);
+        FLYING_PLAYERS.remove(playerId);
     }
 }
