@@ -135,7 +135,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
     @Override
     public ImmutableList<BlockPos> getBreakAreaPositions(EntityPlayer player, ItemStack stack, BlockPos origin, boolean includeOrigin) {
         if(!player.isSneaking() && !player.world.isAirBlock(origin)) {
-            RayTraceResult trace = PlayerHelper.getPlayerTrace(player, 0);
+            RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
             if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit != null) {
                 return HarvestHelper.getHarvestArea(player.world, player, trace, 3, 1, includeOrigin);
             }

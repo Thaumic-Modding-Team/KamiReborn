@@ -2,18 +2,18 @@
 ## Thaumic Tinkerer: Kami Reborn
 |                      Feature                      |   Code   |  Model   | Texture  | Config | Research | Recipe |
 |:-------------------------------------------------:|:--------:|:--------:|:--------:|:------:|:--------:|:------:|
-| (Armor - Awakened) Boots of the Horizontal Shield |          |          |          |        |          |        |
-|   (Armor - Awakened) Cowl of the Abyssal Depths   |          |          |          |        |          |        |
-| (Armor - Awakened) Leggings of the Burning Mantle |          |          |          |        |          |        |
-|   (Armor - Awakened) Robes of the Stratosphere    |          |          |          |        |          |        |
+| (Armor - Awakened) Boots of the Horizontal Shield |          |          |          |  N/A   |          |        |
+|   (Armor - Awakened) Cowl of the Abyssal Depths   |          |          |          |  N/A   |          |
+| (Armor - Awakened) Leggings of the Burning Mantle |          |          |          |  N/A   |          |        |
+|   (Armor - Awakened) Robes of the Stratosphere    |          |          |          |  N/A   |          |        |
 |             (Armor) Ichorcloth Boots              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |              (Armor) Ichorcloth Cowl              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |            (Armor) Ichorcloth Leggings            | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |              (Armor) Ichorcloth Robe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|           (Tool) Awakened Ichorium Axe            |          |          |          |        |          |        |
+|           (Tool) Awakened Ichorium Axe            |          |          |          |  N/A   |          |        |
 |         (Tool) Awakened Ichorium Pickaxe          | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |          (Tool) Awakened Ichorium Shovel          | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|          (Tool) Awakened Ichorium Sword           |          |          |          |        |          |        |
+|          (Tool) Awakened Ichorium Sword           |          |          |          |  N/A   |          |        |
 |                (Tool) Ichorium Axe                | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |              (Tool) Ichorium Pickaxe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |              (Tool) Ichorium Shovel               | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
@@ -21,7 +21,7 @@
 |                       Ichor                       | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |                    Ichor Block                    |          |          |          |  N/A   |          |        |
 |                    Ichor Cloth                    | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|                 Ichorcloth Pouch                  |          |          |          |        |          |        |
+|                 Ichorcloth Pouch                  | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |                  Ichorium Ingot                   | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |                  Ichorium Nugget                  | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |             Infusion Enchant: Eternal             | COMPLETE |   N/A    | COMPLETE |  N/A   |          |        |

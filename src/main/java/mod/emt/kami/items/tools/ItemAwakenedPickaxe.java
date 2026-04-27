@@ -74,7 +74,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
         int duration = stack.getMaxItemUseDuration() - timeLeft;
         if(entityLiving instanceof EntityPlayer && duration > 10) {
             EntityPlayer player = (EntityPlayer) entityLiving;
-            RayTraceResult trace = PlayerHelper.getPlayerTrace(player, 0);
+            RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
             if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit != null) {
                 int diameter = this.getBreakAreaSize(stack);
                 int depth = Math.min(MAX_DEPTH, duration / 10);
@@ -119,7 +119,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
     @Override
     public ImmutableList<BlockPos> getBreakAreaPositions(EntityPlayer player, ItemStack stack, BlockPos origin, boolean includeOrigin) {
         if(!player.isSneaking() && !player.world.isAirBlock(origin)) {
-            RayTraceResult trace = PlayerHelper.getPlayerTrace(player, 0);
+            RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
             if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit != null) {
                 int diameter = this.getBreakAreaSize(stack);
                 return HarvestHelper.getHarvestArea(player.world, player, trace, diameter, 1, includeOrigin);

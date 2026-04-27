@@ -1,5 +1,6 @@
 package mod.emt.kami.utils.helpers;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -15,12 +16,21 @@ public class PlayerHelper {
     }
 
     @Nullable
-    public static RayTraceResult getPlayerTrace(EntityPlayer player, float partialTicks) {
-        double reachDistance = getReachDistance(player);
-        Vec3d vec3d = player.getPositionEyes(partialTicks);
-        Vec3d vec3d1 = player.getLook(partialTicks);
-        Vec3d vec3d2 = vec3d.add(vec3d1.x * reachDistance, vec3d1.y * reachDistance, vec3d1.z * reachDistance);
-        return player.world.rayTraceBlocks(vec3d, vec3d2, false, false, true);
+    public static RayTraceResult rayTrace(EntityLivingBase player, float partialTicks) {
+        return rayTrace(player, player.getAttributeMap().getAttributeInstance(EntityPlayer.REACH_DISTANCE).getAttributeValue(), partialTicks);
+    }
+
+    @Nullable
+    public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double blockReachDistance, float partialTicks) {
+        return rayTrace(entityLiving, blockReachDistance, partialTicks, false);
+    }
+
+    @Nullable
+    public static RayTraceResult rayTrace(EntityLivingBase entityLiving, double blockReachDistance, float partialTicks, boolean stopOnLiquid) {
+        Vec3d height = entityLiving.getPositionEyes(partialTicks);
+        Vec3d look = entityLiving.getLook(partialTicks);
+        Vec3d reach = height.add(look.x * blockReachDistance, look.y * blockReachDistance, look.z * blockReachDistance);
+        return entityLiving.world.rayTraceBlocks(height, reach, stopOnLiquid, false, true);
     }
 
     public static EnumFacing getPlayerFacing(EntityPlayer player) {

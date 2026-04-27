@@ -4,6 +4,7 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.client.model.armor.ModelIchorArmor;
 import mod.emt.kami.items.IDyeableGear;
 import mod.emt.kami.items.base.ItemBaseArmor;
+import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.model.ModelBiped;
@@ -34,7 +35,7 @@ import thaumcraft.api.items.IWarpingGear;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemIchorArmor extends ItemBaseArmor implements IDyeableGear, IWarpingGear, IVisDiscountGear, IGoggles {
+public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, IWarpingGear, IVisDiscountGear, IGoggles {
     protected static final String TEXTURE_PATH_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1.png").toString();
     protected static final String TEXTURE_PATH_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_2.png").toString();
     protected static final String TEXTURE_PATH_DYED_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1_dyed.png").toString();
@@ -45,8 +46,8 @@ public class ItemIchorArmor extends ItemBaseArmor implements IDyeableGear, IWarp
     public static final ModelIchorArmor ARMOR_OUTER = new ModelIchorArmor(1.0F);
     public static final ModelIchorArmor ARMOR_INNER = new ModelIchorArmor(0.5F);
 
-    public ItemIchorArmor(String unlocName, ArmorMaterial material, EntityEquipmentSlot equipmentSlot) {
-        super(unlocName, material, equipmentSlot, null);
+    public ItemIchorweaveArmor(String unlocName, EntityEquipmentSlot equipmentSlot) {
+        super(unlocName, ModItemsKAMI.MATERIAL_ICHORCLOTH, equipmentSlot, null);
         this.addPropertyOverride(new ResourceLocation("dyed"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(@NotNull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
