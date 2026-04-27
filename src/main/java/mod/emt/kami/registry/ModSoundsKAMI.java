@@ -8,6 +8,7 @@ public enum ModSoundsKAMI {
     EQUIP_BAUBLE("equip.bauble"),
     EQUIP_ROBE("equip.robe"),
     ITEM_ICHOR_BURY("item.ichor.bury"),
+    ITEM_ICHOR_DIG("item.ichor.dig"),
     ITEM_ICHOR_TOGGLE("item.ichor.toggle"),
     UNEQUIP_BAUBLE("unequip.bauble");
 

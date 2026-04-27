@@ -20,6 +20,12 @@
       "kami:items/ichor/shovel/bury2"
     ]
   },
+  "item.ichor.dig": {
+    "sounds": [
+      "kami:items/ichor/pickaxe/dig1",
+      "kami:items/ichor/pickaxe/dig2"
+    ]
+  },
   "item.ichor.toggle": {
     "sounds": [
       "kami:items/ichor/toggle1",

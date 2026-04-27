@@ -85,6 +85,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
                         FXDispatcher.INSTANCE.drawBamf(pos, 0x7AA721, true, true, trace.sideHit);
                     }
                 }
+                worldIn.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_DIG.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.0f);
                 HarvestHelper.harvestExtraBlocks(player, stack, harvestPositions);
             }
         }
