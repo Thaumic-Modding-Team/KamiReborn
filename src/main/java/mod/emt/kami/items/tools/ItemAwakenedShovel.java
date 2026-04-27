@@ -128,7 +128,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
         EnumBuryMode mode = EnumBuryMode.getBuryMode(stack);
-        tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.aoe_mode", 3));
+        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.kami.tool.aoe_mode", 3));
         tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.bury_mode." + mode));
     }
 
