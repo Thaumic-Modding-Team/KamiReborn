@@ -76,7 +76,7 @@ public class CommonEventHandler {
             UUID playerId = PlayerHelper.getUUIDFromPlayer(player);
             if(!player.isCreative() && player.capabilities.allowFlying && FLYING_PLAYERS.contains(playerId)) {
                 ItemStack chestStack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-                if(chestStack.isEmpty() && chestStack.getItem() != ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBES) {
+                if(chestStack.isEmpty() && chestStack.getItem() != ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE) {
                     player.capabilities.allowFlying = false;
                     player.capabilities.isFlying = false;
                     FLYING_PLAYERS.remove(playerId);

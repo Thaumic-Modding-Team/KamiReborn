@@ -9,7 +9,10 @@ public enum ModSoundsKAMI {
     EQUIP_ROBE("equip.robe"),
     ITEM_ICHOR_BURY("item.ichor.bury"),
     ITEM_ICHOR_DIG("item.ichor.dig"),
+    ITEM_ICHOR_FLY("item.ichor.fly"),
+    ITEM_ICHOR_JUMP("item.ichor.jump"),
     ITEM_ICHOR_TOGGLE("item.ichor.toggle"),
+    //ITEM_ICHOR_THROW("item.ichor.throw"),
     UNEQUIP_BAUBLE("unequip.bauble");
 
     private final SoundEvent soundEvent;
