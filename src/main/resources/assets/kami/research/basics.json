@@ -1,0 +1,21 @@
+{
+  "entries": [
+    {
+      "key": "ZENITH_BASE",
+      "name": "kami.research.zenith_base.title",
+      "icons": [
+        "kami:textures/research/r_zenith.png"
+      ],
+      "category": "ZENITH",
+      "parents": ["~FIRSTSTEPS"],
+      "siblings": ["~FIRSTSTEPS"],
+      "meta": ["ROUND", "SPIKY", "HIDDEN"],
+      "location": [0, 0],
+      "stages": [
+        {
+          "text": "kami.research.zenith_base.stage.1"
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@ package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IOreDictProvider;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -10,6 +11,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 
@@ -130,6 +132,13 @@ public class ModRecipesKAMI {
     }
 
     private static void initInfusionRecipes() {
-
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor"),
+                new InfusionRecipe("KAMI_ICHOR", new ItemStack(ModItemsKAMI.ICHOR), 10,
+                        new AspectList().add(Aspect.AIR, 75).add(Aspect.AURA, 50).add(Aspect.ENERGY, 65)
+                                .add(Aspect.FLIGHT, 125).add(Aspect.MAGIC, 50).add(Aspect.MOTION, 75),
+                        "gemDiamond",
+                        new ItemStack(Items.ENDER_EYE),
+                        ItemsTC.primordialPearl,
+                        new ItemStack(Items.GHAST_TEAR)));
     }
 }
