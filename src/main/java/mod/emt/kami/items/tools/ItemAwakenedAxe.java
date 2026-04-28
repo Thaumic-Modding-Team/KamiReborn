@@ -44,6 +44,7 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
         if(player.isSneaking()) {
             EnumImpactMode mode = EnumImpactMode.getImpactMode(heldStack).nextMode();
             EnumImpactMode.setImpactMode(heldStack, mode);
+            world.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
             player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.impact_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
         } else if(hand == EnumHand.MAIN_HAND) {
             player.setActiveHand(hand);
