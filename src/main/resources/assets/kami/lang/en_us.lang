@@ -36,3 +36,7 @@ tooltip.kami.tool.bury_mode.animals=Bury Mode: Animals
 tooltip.kami.tool.bury_mode.hostile=Bury Mode: Hostile
 tooltip.kami.tool.bury_mode.undead=Bury Mode: Undead
 tooltip.kami.tool.dig_depth=Harvest Depth: %d
+tooltip.kami.tool.impact_mode.damage=Impact Mode: Damage
+tooltip.kami.tool.impact_mode.lightning=Impact Mode: Lightning
+tooltip.kami.tool.impact_mode.detonation=Impact Mode: Detonation
+tooltip.kami.tool.impact_mode.explosion=Impact Mode: Explosion

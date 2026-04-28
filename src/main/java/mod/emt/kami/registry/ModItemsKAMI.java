@@ -7,7 +7,6 @@ import mod.emt.kami.items.armor.ItemIchorweaveArmor;
 import mod.emt.kami.items.base.ItemBase;
 import mod.emt.kami.items.baubles.ItemIchorFocusPouch;
 import mod.emt.kami.items.tools.*;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;

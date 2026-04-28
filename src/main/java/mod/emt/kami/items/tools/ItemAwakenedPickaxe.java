@@ -101,6 +101,13 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
         return 72000;
     }
 
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
+        EnumAoeMode mode = EnumAoeMode.getAoeMode(stack);
+        tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.aoe_mode", mode.getBreakAreaSize()));
+    }
+
     @Override
     public boolean onBlockStartBreak(@NotNull ItemStack stack, @NotNull BlockPos pos, @NotNull EntityPlayer player) {
         if(stack.getItem() instanceof IAreaBreakTool && player.getHeldItemMainhand() == stack) {
@@ -108,13 +115,6 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
             HarvestHelper.harvestExtraBlocks(player, stack, harvestPositions);
         }
         return false;
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        EnumAoeMode mode = EnumAoeMode.getAoeMode(stack);
-        tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.aoe_mode", mode.getBreakAreaSize()));
     }
 
     @Override
