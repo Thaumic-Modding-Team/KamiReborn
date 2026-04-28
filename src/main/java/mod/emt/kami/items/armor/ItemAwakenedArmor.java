@@ -5,6 +5,7 @@ import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler;
 import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler.MovementType;
 import mod.emt.kami.Kami;
 import mod.emt.kami.handlers.CommonEventHandler;
+import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -211,8 +212,8 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
             }
 
             if (spacePressed && !player.onGround && !player.isInWater() && player.jumpTicks == 0 && ItemCloudRing.jumpList.containsKey(player.getName()) && ItemCloudRing.jumpList.get(player.getName())) {
-                FXDispatcher.INSTANCE.drawBamf(player.posX, player.posY + (double)0.5F, player.posZ, 1.0F, 1.0F, 1.0F, false, false, EnumFacing.UP);
-                player.getEntityWorld().playSound(player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.PLAYERS, 0.1F, 1.0F + (float)player.getEntityWorld().rand.nextGaussian() * 0.05F, false);
+                FXDispatcher.INSTANCE.drawBamf(player.posX, player.posY + (double)0.5F, player.posZ, 16719133, false, true, EnumFacing.UP);
+                player.getEntityWorld().playSound(player.posX, player.posY, player.posZ, ModSoundsKAMI.ITEM_ICHOR_JUMP.getSoundEvent(), SoundCategory.PLAYERS, 0.1F, 1.0F + (float)player.getEntityWorld().rand.nextGaussian() * 0.05F, false);
                 ItemCloudRing.jumpList.put(player.getName(), false);
                 player.motionY = 0.75F;
                 PotionEffect effect = player.getActivePotionEffect(MobEffects.JUMP_BOOST);
