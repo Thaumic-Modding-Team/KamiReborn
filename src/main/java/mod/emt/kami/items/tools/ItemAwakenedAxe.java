@@ -3,6 +3,7 @@ package mod.emt.kami.items.tools;
 import com.google.common.collect.ImmutableList;
 import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.entities.EntityThrownAxe;
+import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.HarvestHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -65,7 +66,7 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
                 }
                 entityAxe.thrownFromSlot = player.inventory.currentItem;
                 worldIn.spawnEntity(entityAxe);
-                worldIn.playSound(null, player.getPosition(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 3.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
+                worldIn.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_THROW.getSoundEvent(), SoundCategory.PLAYERS, 3.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
                 stack.setCount(0);
             }
         }

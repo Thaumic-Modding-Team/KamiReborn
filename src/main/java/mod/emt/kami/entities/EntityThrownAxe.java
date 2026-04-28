@@ -2,6 +2,7 @@ package mod.emt.kami.entities;
 
 import io.netty.buffer.ByteBuf;
 import mod.emt.kami.items.tools.ItemAwakenedAxe;
+import mod.emt.kami.registry.ModSoundsKAMI;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -119,7 +120,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
                 }
 
                 if (this.returnTime % 3 == 0) {
-                    this.world.playSound(null, getPosition(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 2.0F, 1.0F + 1.0F / (1.0F + getDistance(thrower) / 16));
+                    this.world.playSound(null, getPosition(), ModSoundsKAMI.ITEM_ICHOR_THROW.getSoundEvent(), SoundCategory.PLAYERS, 2.0F, 3.0F + 1.0F / (1.0F + getDistance(thrower) / 16));
                 }
 
                 this.returnTime--;
