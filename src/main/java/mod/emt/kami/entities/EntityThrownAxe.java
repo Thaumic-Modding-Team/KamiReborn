@@ -131,7 +131,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
                 if (this.returnTime <= 0) {
                     float currentHeading = (float) Math.atan2(this.motionZ, this.motionX);
                     float headingToThrower = (float) Math.atan2(thrower.posZ - this.posZ, thrower.posX - this.posX);
-                    float curveScale = 0.3f;
+                    float curveScale = Math.max(0.3f, this.returnTime * 0.007f);
                     float newHeading = this.updateRotationRadians(currentHeading, headingToThrower, curveScale);
                     double currentPitch = Math.atan2(this.motionY, Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ));
                     double targetPitch = Math.atan2(thrower.posY + (double) thrower.getEyeHeight() - this.posY, Math.sqrt((thrower.posX - this.posX) * (thrower.posX - this.posX) + (thrower.posZ - this.posZ) * (thrower.posZ - this.posZ)));
