@@ -43,13 +43,13 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
         float boost = 0;
         switch (type) {
             case DRY_GROUND:
-                boost = (float) 0.06;
+                boost = (float) 0.08;
                 return player.isSneaking() ? boost / 4.0f : boost;
             case WATER_GROUND:
-                boost = (float) Math.max(0.06 / 4.0f, 0.03);
+                boost = (float) Math.max(0.08 / 4.0f, 0.04);
                 return player.isSneaking() ? boost / 4.0f : boost;
             case WATER_SWIM:
-                boost = (float) 0.03;
+                boost = (float) 0.04;
                 return player.isSneaking() ? boost / 4.0f : boost;
             case JUMP_BEGIN:
                 return (float) 0.3;
