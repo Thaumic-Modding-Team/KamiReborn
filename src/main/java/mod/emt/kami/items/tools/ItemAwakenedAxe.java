@@ -4,6 +4,8 @@ import com.google.common.collect.ImmutableList;
 import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.entities.EntityThrownAxe;
 import mod.emt.kami.utils.helpers.HarvestHelper;
+import mod.emt.kami.utils.helpers.PlayerHelper;
+import mod.emt.kami.utils.helpers.TreeHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,6 +21,7 @@ import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -32,6 +35,30 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
+    public static BiConsumer<EntityThrownAxe, EntityLivingBase> DAMAGE_CONSUMER = (entityAxe, hitEntity) -> {
+        if(!entityAxe.world.isRemote && hitEntity != null) {
+            hitEntity.attackEntityFrom(DamageSource.causeThrownDamage(entityAxe, entityAxe.owner), entityAxe.getDamage());
+        }
+    };
+    public static BiConsumer<EntityThrownAxe, EntityLivingBase> LIGHTNING_CONSUMER = (entityAxe, hitEntity) -> {
+        if (hitEntity != null) {
+            hitEntity.attackEntityFrom(DamageSource.LIGHTNING_BOLT, entityAxe.getDamage() - 5.0f);
+            entityAxe.world.spawnEntity(new EntityLightningBolt(entityAxe.world, hitEntity.posX, hitEntity.posY, hitEntity.posZ, false));
+        } else {
+            entityAxe.world.spawnEntity(new EntityLightningBolt(entityAxe.world, entityAxe.posX, entityAxe.posY, entityAxe.posZ, false));
+        }
+    };
+    public static BiConsumer<EntityThrownAxe, EntityLivingBase> DETONATION_CONSUMER = (entityAxe, hitEntity) -> {
+        if(!entityAxe.world.isRemote) {
+            entityAxe.world.createExplosion(entityAxe.owner, entityAxe.posX, entityAxe.posY, entityAxe.posZ, entityAxe.getSpeed() * 2.0f, false);
+        }
+    };
+    public static BiConsumer<EntityThrownAxe, EntityLivingBase> EXPLOSION_CONSUMER = (entityAxe, hitEntity) -> {
+        if(!entityAxe.world.isRemote) {
+            entityAxe.world.createExplosion(entityAxe.owner, entityAxe.posX, entityAxe.posY, entityAxe.posZ, entityAxe.getSpeed() * 5.0f, true);
+        }
+    };
+
     public ItemAwakenedAxe() {
         super("awakened_ichorium_axe");
         this.addPropertyOverride(new ResourceLocation("impact_mode"), ((stack, worldIn, entityIn) -> EnumImpactMode.getImpactMode(stack).ordinal()));
@@ -91,8 +118,12 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
     @Override
     public boolean onBlockStartBreak(ItemStack stack, @NotNull BlockPos pos, @NotNull EntityPlayer player) {
         if(stack.getItem() instanceof IAreaBreakTool && player.getHeldItemMainhand() == stack) {
-            ImmutableList<BlockPos> harvestPositions = this.getBreakAreaPositions(player, stack, pos, false);
-            HarvestHelper.harvestExtraBlocks(player, stack, harvestPositions);
+            if(TreeHelper.isTreeStructure(player.world, pos)) {
+                return TreeHelper.fellTree(stack, pos, player);
+            } else {
+                ImmutableList<BlockPos> harvestPositions = this.getBreakAreaPositions(player, stack, pos, false);
+                HarvestHelper.harvestExtraBlocks(player, stack, harvestPositions);
+            }
         }
         return false;
     }
@@ -100,7 +131,10 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
     @Override
     public ImmutableList<BlockPos> getBreakAreaPositions(EntityPlayer player, ItemStack stack, BlockPos origin, boolean includeOrigin) {
         if(!player.isSneaking() && !player.world.isAirBlock(origin)) {
-            //TODO: Tree harvesting, get all wood blocks attached to tree.
+            RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
+            if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit != null && !TreeHelper.isTreeStructure(player.world, trace.getBlockPos())) {
+                return HarvestHelper.getHarvestArea(player.world, player, trace, 3, 1, includeOrigin, true);
+            }
         }
         return ImmutableList.of();
     }
@@ -109,30 +143,6 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
     public boolean spawnDropsAtPlayer(EntityPlayer player, ItemStack stack) {
         return true;
     }
-
-    public static BiConsumer<EntityThrownAxe, EntityLivingBase> DAMAGE_CONSUMER = (entityAxe, hitEntity) -> {
-        if(!entityAxe.world.isRemote && hitEntity != null) {
-            hitEntity.attackEntityFrom(DamageSource.causeThrownDamage(entityAxe, entityAxe.owner), entityAxe.getDamage());
-        }
-    };
-    public static BiConsumer<EntityThrownAxe, EntityLivingBase> LIGHTNING_CONSUMER = (entityAxe, hitEntity) -> {
-        if (hitEntity != null) {
-            hitEntity.attackEntityFrom(DamageSource.LIGHTNING_BOLT, entityAxe.getDamage() - 5.0f);
-            entityAxe.world.spawnEntity(new EntityLightningBolt(entityAxe.world, hitEntity.posX, hitEntity.posY, hitEntity.posZ, false));
-        } else {
-            entityAxe.world.spawnEntity(new EntityLightningBolt(entityAxe.world, entityAxe.posX, entityAxe.posY, entityAxe.posZ, false));
-        }
-    };
-    public static BiConsumer<EntityThrownAxe, EntityLivingBase> DETONATION_CONSUMER = (entityAxe, hitEntity) -> {
-        if(!entityAxe.world.isRemote) {
-            entityAxe.world.createExplosion(entityAxe.owner, entityAxe.posX, entityAxe.posY, entityAxe.posZ, entityAxe.getSpeed() * 2.0f, false);
-        }
-    };
-    public static BiConsumer<EntityThrownAxe, EntityLivingBase> EXPLOSION_CONSUMER = (entityAxe, hitEntity) -> {
-        if(!entityAxe.world.isRemote) {
-            entityAxe.world.createExplosion(entityAxe.owner, entityAxe.posX, entityAxe.posY, entityAxe.posZ, entityAxe.getSpeed() * 5.0f, true);
-        }
-    };
 
     public enum EnumImpactMode {
         DAMAGE(TextFormatting.GOLD, DAMAGE_CONSUMER),
