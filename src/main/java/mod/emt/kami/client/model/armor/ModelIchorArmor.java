@@ -14,17 +14,11 @@ public class ModelIchorArmor extends ModelCustomArmor {
     @Override
     public void render(@NotNull Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240f, 240f);
-
-        if (GL11.glIsEnabled(GL11.GL_LIGHTING)) {
-            GlStateManager.disableLighting();
-        }
+        GlStateManager.disableLighting();
 
         super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 
-        if (GL11.glIsEnabled(GL11.GL_LIGHTING)) {
-            GlStateManager.enableLighting();
-        }
-
+        GlStateManager.enableLighting();
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, OpenGlHelper.lastBrightnessX, OpenGlHelper.lastBrightnessY);
     }
 }
