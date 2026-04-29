@@ -14,7 +14,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
@@ -118,8 +117,8 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
     }
 
     @Override
-    public boolean onBlockStartBreak(ItemStack stack, @NotNull BlockPos pos, @NotNull EntityPlayer player) {
-        if(stack.getItem() instanceof IAreaBreakTool && player.getHeldItemMainhand() == stack) {
+    public boolean onBlockStartBreak(@NotNull ItemStack stack, @NotNull BlockPos pos, @NotNull EntityPlayer player) {
+        if(!player.isSneaking() && stack.getItem() instanceof IAreaBreakTool && player.getHeldItemMainhand() == stack) {
             if(TreeHelper.isTreeStructure(player.world, pos)) {
                 return TreeHelper.fellTree(stack, pos, player);
             } else {
