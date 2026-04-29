@@ -5,6 +5,7 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.items.armor.ItemAwakenedArmor;
 import mod.emt.kami.items.armor.ItemIchorweaveArmor;
 import mod.emt.kami.items.base.ItemBase;
+import mod.emt.kami.items.base.ItemBaseEnchanted;
 import mod.emt.kami.items.baubles.ItemIchorFocusPouch;
 import mod.emt.kami.items.tools.*;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -27,6 +28,7 @@ public class ModItemsKAMI {
     public static ItemArmor AWAKENED_ICHORWEAVE_HOOD;
     public static ItemArmor AWAKENED_ICHORWEAVE_LEGGINGS;
     public static ItemArmor AWAKENED_ICHORWEAVE_ROBE;
+    public static Item BLESSED_SILVERWOOD_ROD;
     public static Item FOCUS_POUCH;
     public static Item ICHOR;
     public static Item ICHORIUM_AXE;
@@ -48,6 +50,7 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(ICHORWEAVE_FABRIC = new ItemBase("ichorweave_fabric", "fabricIchor"));
         MOD_ITEMS.add(ICHORIUM_INGOT = new ItemBase("ichorium_ingot", "ingotIchorium"));
         MOD_ITEMS.add(ICHORIUM_NUGGET = new ItemBase("ichorium_nugget", "nuggetIchorium"));
+        MOD_ITEMS.add(BLESSED_SILVERWOOD_ROD = new ItemBaseEnchanted("blessed_silverwood_rod", null));
         MOD_ITEMS.add(FOCUS_POUCH = new ItemIchorFocusPouch());
         MOD_ITEMS.add(ICHORWEAVE_HOOD = new ItemIchorweaveArmor("ichorweave_hood", EntityEquipmentSlot.HEAD));
         MOD_ITEMS.add(ICHORWEAVE_ROBE = new ItemIchorweaveArmor("ichorweave_robe", EntityEquipmentSlot.CHEST));

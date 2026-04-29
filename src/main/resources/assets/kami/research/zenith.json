@@ -27,6 +27,132 @@
           ]
         }
       ]
+    },
+    {
+      "key": "KAMI_ICHORIUM_TOOLS",
+      "name": "kami.research.ichorium_tools.title",
+      "category": "ZENITH",
+      "icons": [
+        "kami:ichorium_sword",
+        "kami:ichorium_shovel",
+        "kami:ichorium_pickaxe",
+        "kami:ichorium_axe"
+      ],
+      "parents": [
+        "KAMI_ICHORIUM"
+      ],
+      "location": [
+        3,
+        -4
+      ],
+      "stages": [
+        {
+          "text": "kami.research.ichorium_tools.stage.1",
+          "required_knowledge": [
+          ]
+        },
+        {
+          "text": "kami.research.ichorium_tools.stage.2",
+          "recipes": [
+            "kami:ichorium_sword",
+            "kami:ichorium_shovel",
+            "kami:ichorium_pickaxe",
+            "kami:ichorium_axe",
+            "kami:blessed_silverwood_rod"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "KAMI_ICHORIUM",
+      "name": "kami.research.ichorium.title",
+      "category": "ZENITH",
+      "icons": [
+        "kami:ichorium_ingot"
+      ],
+      "parents": [
+        "KAMI_ICHOR"
+      ],
+      "location": [
+        1,
+        -4
+      ],
+      "stages": [
+        {
+          "text": "kami.research.ichorium.stage.1",
+          "required_knowledge": [
+          ]
+        },
+        {
+          "text": "kami.research.ichorium.stage.2",
+          "recipes": [
+            "kami:ichorium_ingot"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "KAMI_ICHORWEAVE_ARMOR",
+      "name": "kami.research.ichorweave_armor.title",
+      "category": "ZENITH",
+      "icons": [
+        "kami:ichorweave_hood",
+        "kami:ichorweave_robe",
+        "kami:ichorweave_leggings",
+        "kami:ichorweave_boots"
+      ],
+      "parents": [
+        "KAMI_ICHORWEAVE_FABRIC"
+      ],
+      "location": [
+        -3,
+        -4
+      ],
+      "stages": [
+        {
+          "text": "kami.research.ichorweave_armor.stage.1",
+          "required_knowledge": [
+          ]
+        },
+        {
+          "text": "kami.research.ichorweave_armor.stage.2",
+          "recipes": [
+            "kami:ichorweave_hood",
+            "kami:ichorweave_robe",
+            "kami:ichorweave_leggings",
+            "kami:ichorweave_boots"
+
+          ]
+        }
+      ]
+    },
+    {
+      "key": "KAMI_ICHORWEAVE_FABRIC",
+      "name": "kami.research.ichorweave_fabric.title",
+      "category": "ZENITH",
+      "icons": [
+        "kami:ichorweave_fabric"
+      ],
+      "parents": [
+        "KAMI_ICHOR"
+      ],
+      "location": [
+        -1,
+        -4
+      ],
+      "stages": [
+        {
+          "text": "kami.research.ichorweave_fabric.stage.1",
+          "required_knowledge": [
+          ]
+        },
+        {
+          "text": "kami.research.ichorweave_fabric.stage.2",
+          "recipes": [
+            "kami:ichorweave_fabric"
+          ]
+        }
+      ]
     }
   ]
 }

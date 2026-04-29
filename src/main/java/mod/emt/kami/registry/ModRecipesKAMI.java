@@ -11,9 +11,11 @@ import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.common.items.consumables.ItemPhial;
 
 public class ModRecipesKAMI {
     private static ResourceLocation defaultGroup = new ResourceLocation("");
@@ -32,7 +34,7 @@ public class ModRecipesKAMI {
     private static void initArcaneWorkbenchRecipes() {
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_fabric"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORWEAVE_FABRIC",
                 50,
                 new AspectList().add(Aspect.AIR, 2).add(Aspect.EARTH, 2).add(Aspect.WATER, 2).add(Aspect.FIRE, 2).add(Aspect.ORDER, 2).add(Aspect.ENTROPY, 2),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC, 3),
@@ -42,7 +44,7 @@ public class ModRecipesKAMI {
                 'I', new ItemStack(ModItemsKAMI.ICHOR)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_hood"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORWEAVE_ARMOR",
                 250,
                 new AspectList().add(Aspect.WATER, 8),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_HOOD, 1),
@@ -52,7 +54,7 @@ public class ModRecipesKAMI {
                 'G', new ItemStack(ItemsTC.goggles, 1, OreDictionary.WILDCARD_VALUE)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_robe"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORWEAVE_ARMOR",
                 250,
                 new AspectList().add(Aspect.AIR, 8),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_ROBE, 1),
@@ -62,7 +64,7 @@ public class ModRecipesKAMI {
                 'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_leggings"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORWEAVE_ARMOR",
                 250,
                 new AspectList().add(Aspect.FIRE, 8),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_LEGGINGS, 1),
@@ -72,7 +74,7 @@ public class ModRecipesKAMI {
                 'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_boots"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORWEAVE_ARMOR",
                 250,
                 new AspectList().add(Aspect.EARTH, 8),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_BOOTS, 1),
@@ -81,7 +83,7 @@ public class ModRecipesKAMI {
                 'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_sword"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORIUM_TOOLS",
                 250,
                 new AspectList().add(Aspect.AIR, 8),
                 new ItemStack(ModItemsKAMI.ICHORIUM_SWORD, 1),
@@ -89,10 +91,10 @@ public class ModRecipesKAMI {
                 "I",
                 "B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', "bone"));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_shovel"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORIUM_TOOLS",
                 250,
                 new AspectList().add(Aspect.EARTH, 8),
                 new ItemStack(ModItemsKAMI.ICHORIUM_SHOVEL, 1),
@@ -100,10 +102,10 @@ public class ModRecipesKAMI {
                 "B",
                 "B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', "bone"));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_pickaxe"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORIUM_TOOLS",
                 250,
                 new AspectList().add(Aspect.FIRE, 8),
                 new ItemStack(ModItemsKAMI.ICHORIUM_PICKAXE, 1),
@@ -111,10 +113,10 @@ public class ModRecipesKAMI {
                 " B ",
                 " B ",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', "bone"));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_axe"), new ShapedArcaneRecipe(
                 defaultGroup,
-                "FIRSTSTEPS", // TODO: Research
+                "KAMI_ICHORIUM_TOOLS",
                 250,
                 new AspectList().add(Aspect.WATER, 8),
                 new ItemStack(ModItemsKAMI.ICHORIUM_AXE, 1),
@@ -122,7 +124,7 @@ public class ModRecipesKAMI {
                 "IB",
                 " B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', "bone"));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
     }
 
     private static void initCrucibleRecipes() {
@@ -130,6 +132,16 @@ public class ModRecipesKAMI {
     }
 
     private static void initInfusionRecipes() {
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "blessed_silverwood_rod"),
+                new InfusionRecipe("KAMI_ICHORIUM_TOOLS", new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD), 10,
+                        new AspectList().add(Aspect.BEAST, 100).add(Aspect.MAN, 100).add(Aspect.MIND, 100).add(Aspect.PLANT, 100).add(Aspect.SENSES, 100),
+                        new ItemStack(BlocksTC.saplingSilverwood),
+                        new ItemStack(ItemsTC.nuggets, 1, 10),
+                        new ItemStack(BlocksTC.logSilverwood),
+                        "quicksilver",
+                        new ItemStack(BlocksTC.shimmerleaf),
+                        new ItemStack(ModItemsKAMI.ICHORIUM_NUGGET),
+                        new ItemStack(ModItemsKAMI.ICHORIUM_NUGGET)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor"),
                 new InfusionRecipe("KAMI_ICHOR", new ItemStack(ModItemsKAMI.ICHOR), 10,
                         new AspectList().add(Aspect.AURA, 75).add(Aspect.CRYSTAL, 75).add(Aspect.DARKNESS, 75)
@@ -138,5 +150,13 @@ public class ModRecipesKAMI {
                         new ItemStack(Items.ENDER_EYE),
                         ItemsTC.primordialPearl,
                         new ItemStack(Items.GHAST_TEAR)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_ingot"),
+                new InfusionRecipe("KAMI_ICHORIUM", new ItemStack(ModItemsKAMI.ICHORIUM_INGOT), 10,
+                        new AspectList().add(Aspect.AIR, 100).add(Aspect.EARTH, 100).add(Aspect.FIRE, 100).add(Aspect.METAL, 100).add(Aspect.WATER, 100),
+                        "ingotVoid",
+                        new ItemStack(ModItemsKAMI.ICHOR),
+                        ItemPhial.makeFilledPhial(Aspect.ENTROPY),
+                        new ItemStack(ItemsTC.salisMundus),
+                        ItemPhial.makeFilledPhial(Aspect.ORDER)));
     }
 }
