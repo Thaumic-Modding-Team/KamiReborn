@@ -2,5 +2,31 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "kami:items/awakened_ichorium_sword_inactive"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "slayer_mode": 1
+      },
+      "model": "kami:item/awakened_ichorium_sword_green"
+    },
+    {
+      "predicate": {
+        "slayer_mode": 2
+      },
+      "model": "kami:item/awakened_ichorium_sword_blue"
+    },
+    {
+      "predicate": {
+        "slayer_mode": 3
+      },
+      "model": "kami:item/awakened_ichorium_sword_blue"
+    },
+    {
+      "predicate": {
+        "slayer_mode": 4
+      },
+      "model": "kami:item/awakened_ichorium_sword_purple"
+    }
+  ]
 }
