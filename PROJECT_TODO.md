@@ -13,7 +13,7 @@
 |    (Tool) Awakened Ichorium Axe     | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |  (Tool) Awakened Ichorium Pickaxe   | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |   (Tool) Awakened Ichorium Shovel   | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|   (Tool) Awakened Ichorium Sword    |          |          |          |  N/A   |          |        |
+|   (Tool) Awakened Ichorium Sword    | COMPLETE |          |          |  N/A   |          |        |
 |         (Tool) Ichorium Axe         | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |       (Tool) Ichorium Pickaxe       | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |       (Tool) Ichorium Shovel        | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
@@ -26,7 +26,6 @@
 |           Ichorium Nugget           | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |      Infusion Enchant: Eternal      | COMPLETE |   N/A    | COMPLETE |  N/A   |          |        |
 |             Proto Clay              |          |          |          |        |          |        |
-|      Sword of the Dragonslayer      |          |          |          |        |          |        |
 
 ---
 

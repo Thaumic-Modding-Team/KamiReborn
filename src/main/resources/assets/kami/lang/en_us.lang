@@ -4,10 +4,10 @@ itemGroup.KamiTab=KAMI: Reborn
 tile.kami:ichor_block.name=Block of Ichor
 
 # Items
-item.kami:awakened_ichorium_axe.name=Awakened Ichorium Axe
+item.kami:awakened_ichorium_axe.name=Ichorium Axe of the Stormbreaker
 item.kami:awakened_ichorium_pickaxe.name=Ichorium Pickaxe of the Tunneler
 item.kami:awakened_ichorium_shovel.name=Ichorium Shovel of the Gravedigger
-item.kami:awakened_ichorium_sword.name=Awakened Ichorium Sword
+item.kami:awakened_ichorium_sword.name=Ichorium Sword of the Titanslayer
 item.kami:awakened_ichorweave_boots.name=Ichorweave Boots of the Biosphere
 item.kami:awakened_ichorweave_hood.name=Ichorweave Hood of the Abyssal Depths
 item.kami:awakened_ichorweave_leggings.name=Ichorweave Leggings of the Burning Mantle
@@ -39,6 +39,11 @@ tooltip.kami.tool.bury_mode.animals=Bury Mode: Animals
 tooltip.kami.tool.bury_mode.hostile=Bury Mode: Hostile
 tooltip.kami.tool.bury_mode.undead=Bury Mode: Undead
 tooltip.kami.tool.dig_depth=Harvest Depth: %d
+tooltip.kami.tool.slayer_mode.abomination=Abomination Slayer
+tooltip.kami.tool.slayer_mode.dragon=Dragon Slayer
+tooltip.kami.tool.slayer_mode.living=Living Slayer
+tooltip.kami.tool.slayer_mode.normal=Unfocused
+tooltip.kami.tool.slayer_mode.undead=Undead Slayer
 
 # Research
 tc.research_category.ZENITH=Zenith

@@ -61,6 +61,7 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(ICHORIUM_SHOVEL = new ItemIchoriumShovel());
         MOD_ITEMS.add(ICHORIUM_PICKAXE = new ItemIchoriumPickaxe());
         MOD_ITEMS.add(ICHORIUM_AXE = new ItemIchoriumAxe());
+        MOD_ITEMS.add(AWAKENED_ICHORIUM_SWORD = new ItemAwakenedSword());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_SHOVEL = new ItemAwakenedShovel());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_PICKAXE = new ItemAwakenedPickaxe());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_AXE = new ItemAwakenedAxe());
