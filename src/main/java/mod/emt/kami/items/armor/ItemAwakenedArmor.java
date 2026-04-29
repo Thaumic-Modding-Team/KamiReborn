@@ -15,7 +15,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -168,21 +167,21 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
         int playerLight = world.getLightFromNeighbors(playerPos);
         if (world.isThundering()) {
             int skyLight = world.getSkylightSubtracted();
-            world.setSkylightSubtracted(10);
+            world.setSkylightSubtracted(9);
             playerLight = world.getLightFromNeighbors(playerPos);
             world.setSkylightSubtracted(skyLight);
         }
-        if (playerLight < 10) {
+        if (playerLight < 9) {
             return true;
         } else {
             RayTraceResult trace = PlayerHelper.rayTrace(entityLiving, 24, 0, true);
             if (trace != null) {
                 switch (trace.typeOfHit) {
                     case BLOCK:
-                        return world.getLight(trace.getBlockPos().offset(trace.sideHit)) < 10;
+                        return world.getLight(trace.getBlockPos().offset(trace.sideHit)) < 9;
                     case MISS:
                     case ENTITY:
-                        return world.getLight(trace.getBlockPos()) < 10;
+                        return world.getLight(trace.getBlockPos()) < 9;
                 }
             }
             return false;
