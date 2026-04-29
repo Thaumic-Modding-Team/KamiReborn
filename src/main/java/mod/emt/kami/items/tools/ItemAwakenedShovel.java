@@ -153,7 +153,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
     }
 
     public enum EnumBuryMode {
-        UNDEAD(TextFormatting.GOLD, EntityLivingBase.class, EntityLivingBase::isEntityUndead),     //White
+        UNDEAD(TextFormatting.GRAY, EntityLivingBase.class, EntityLivingBase::isEntityUndead),     //White
         ANIMALS(TextFormatting.DARK_GREEN, EntityAnimal.class),     //Green
         ALL(TextFormatting.BLUE, EntityLivingBase.class),           //Blue
         HOSTILE(TextFormatting.DARK_RED, EntityMob.class);          //Red

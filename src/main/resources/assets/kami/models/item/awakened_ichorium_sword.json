@@ -8,13 +8,13 @@
       "predicate": {
         "slayer_mode": 1
       },
-      "model": "kami:item/awakened_ichorium_sword_green"
+      "model": "kami:item/awakened_ichorium_sword_red"
     },
     {
       "predicate": {
         "slayer_mode": 2
       },
-      "model": "kami:item/awakened_ichorium_sword_blue"
+      "model": "kami:item/awakened_ichorium_sword_green"
     },
     {
       "predicate": {

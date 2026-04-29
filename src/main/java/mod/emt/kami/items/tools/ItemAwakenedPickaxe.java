@@ -139,7 +139,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
     }
 
     public enum EnumAoeMode {
-        ONE(1, TextFormatting.GOLD),
+        ONE(1, TextFormatting.GRAY),
         THREE(3, TextFormatting.BLUE),
         FIVE(5, TextFormatting.DARK_GREEN),
         SEVEN(7, TextFormatting.DARK_RED);

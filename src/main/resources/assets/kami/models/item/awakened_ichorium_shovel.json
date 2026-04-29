@@ -8,13 +8,13 @@
       "predicate": {
         "bury_area": 1
       },
-      "model": "kami:item/awakened_ichorium_shovel_blue"
+      "model": "kami:item/awakened_ichorium_shovel_green"
     },
     {
       "predicate": {
         "bury_area": 2
       },
-      "model": "kami:item/awakened_ichorium_shovel_green"
+      "model": "kami:item/awakened_ichorium_shovel_blue"
     },
     {
       "predicate": {

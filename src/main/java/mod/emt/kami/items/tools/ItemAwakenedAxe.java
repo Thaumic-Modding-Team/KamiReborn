@@ -147,7 +147,7 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
     }
 
     public enum EnumImpactMode {
-        DAMAGE(TextFormatting.GOLD, DAMAGE_CONSUMER),
+        DAMAGE(TextFormatting.GRAY, DAMAGE_CONSUMER),
         LIGHTNING(TextFormatting.BLUE, LIGHTNING_CONSUMER),
         DETONATION(TextFormatting.DARK_GREEN, DETONATION_CONSUMER),
         EXPLOSION(TextFormatting.DARK_RED, EXPLOSION_CONSUMER);
