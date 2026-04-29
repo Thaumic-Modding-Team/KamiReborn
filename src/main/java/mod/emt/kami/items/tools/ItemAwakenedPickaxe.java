@@ -78,7 +78,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
             if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit != null) {
                 int diameter = this.getBreakAreaSize(stack);
                 int depth = Math.min(MAX_DEPTH, duration / 10);
-                ImmutableList<BlockPos> harvestPositions = HarvestHelper.getHarvestArea(player.world, player, trace, diameter, depth, true);
+                ImmutableList<BlockPos> harvestPositions = HarvestHelper.getHarvestArea(player.world, player, trace, diameter, depth, true, false);
                 if(worldIn.isRemote) {
                     for(BlockPos pos : harvestPositions) {
                         //TODO: Change effect color?
@@ -123,7 +123,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
             RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
             if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit != null) {
                 int diameter = this.getBreakAreaSize(stack);
-                return HarvestHelper.getHarvestArea(player.world, player, trace, diameter, 1, includeOrigin);
+                return HarvestHelper.getHarvestArea(player.world, player, trace, diameter, 1, includeOrigin, false);
             }
         }
         return ImmutableList.of();

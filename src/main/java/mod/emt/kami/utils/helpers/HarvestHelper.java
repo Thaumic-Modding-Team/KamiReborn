@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class HarvestHelper {
 
-    public static ImmutableList<BlockPos> getHarvestArea(World world, EntityPlayer player, @NotNull RayTraceResult trace, int diameter, int depth, boolean includeOrigin) {
+    public static ImmutableList<BlockPos> getHarvestArea(World world, EntityPlayer player, @NotNull RayTraceResult trace, int diameter, int depth, boolean includeOrigin, boolean strictHarvestCheck) {
         EnumFacing side = trace.sideHit;
         BlockPos startPos = trace.getBlockPos();
         IBlockState state = world.getBlockState(startPos);
@@ -58,7 +58,7 @@ public class HarvestHelper {
                     if (!pos.equals(trace.getBlockPos()) || includeOrigin) {
                         state = world.getBlockState(pos);
                         block = state.getBlock();
-                        if(ForgeHooks.canHarvestBlock(block, player, world, pos)) {
+                        if(canHarvestBlock(world, pos, state, player, strictHarvestCheck)) {
                             posBuilder.add(pos);
                         }
                     }
@@ -67,6 +67,17 @@ public class HarvestHelper {
         }
 
         return posBuilder.build();
+    }
+
+    public static boolean canHarvestBlock(World world, BlockPos pos, IBlockState state, EntityPlayer player, boolean strict) {
+        float hardness = state.getPlayerRelativeBlockHardness(player, world, pos);
+
+        boolean toolCheck = true;
+        if(strict) {
+            ItemStack heldStack = player.getHeldItemMainhand();
+            toolCheck = heldStack.getItem().getToolClasses(heldStack).contains(state.getBlock().getHarvestTool(state)) || heldStack.getItem().canHarvestBlock(state, player.getHeldItemMainhand());
+        }
+        return toolCheck && hardness > 0 && ForgeHooks.canHarvestBlock(state.getBlock(), player, world, pos);
     }
 
     public static void harvestExtraBlocks(EntityPlayer player, ItemStack stack, ImmutableList<BlockPos> harvestPositions) {
