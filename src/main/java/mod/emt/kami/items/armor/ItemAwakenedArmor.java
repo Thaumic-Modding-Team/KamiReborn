@@ -137,7 +137,7 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
                 tooltip.add(I18n.format("tooltip.kami.awakened_set.desc"));
                 tooltip.add((this.hasHelm(player)    ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD.getTranslationKey() + ".name"));
                 tooltip.add((this.hasChest(player)   ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE.getTranslationKey() + ".name"));
-                tooltip.add((this.hasLeggins(player) ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS.getTranslationKey() + ".name"));
+                tooltip.add((this.hasLeggings(player) ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS.getTranslationKey() + ".name"));
                 tooltip.add((this.hasBoots(player)   ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS.getTranslationKey() + ".name"));
             }
         }
@@ -312,7 +312,7 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
         int count = 0;
         if(this.hasHelm(player))        count++;
         if(this.hasChest(player))       count++;
-        if(this.hasLeggins(player))    count++;
+        if(this.hasLeggings(player))    count++;
         if(this.hasBoots(player))       count++;
         return count;
     }
@@ -327,7 +327,7 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
         return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE;
     }
 
-    public boolean hasLeggins(EntityLivingBase player) {
+    public boolean hasLeggings(EntityLivingBase player) {
         ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS;
     }
