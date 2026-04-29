@@ -62,7 +62,7 @@ public class ItemAwakenedSword extends ItemIchoriumSword {
 
     public ItemAwakenedSword() {
         super("awakened_ichorium_sword");
-        this.addPropertyOverride(new ResourceLocation("slayer_mode"), ((stack, worldIn, entityIn) -> ItemAwakenedPickaxe.EnumAoeMode.getMode(stack).ordinal()));
+        this.addPropertyOverride(new ResourceLocation("slayer_mode"), ((stack, worldIn, entityIn) -> EnumSlayerMode.getMode(stack).ordinal()));
         MinecraftForge.EVENT_BUS.register(this);
     }
 
