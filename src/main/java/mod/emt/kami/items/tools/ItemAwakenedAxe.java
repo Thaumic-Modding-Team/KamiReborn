@@ -61,15 +61,15 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
 
     public ItemAwakenedAxe() {
         super("awakened_ichorium_axe");
-        this.addPropertyOverride(new ResourceLocation("impact_mode"), ((stack, worldIn, entityIn) -> EnumImpactMode.getImpactMode(stack).ordinal()));
+        this.addPropertyOverride(new ResourceLocation("impact_mode"), ((stack, worldIn, entityIn) -> EnumImpactMode.getMode(stack).ordinal()));
     }
 
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, @NotNull EntityPlayer player, @NotNull EnumHand hand) {
         ItemStack heldStack = player.getHeldItem(hand);
         if(player.isSneaking()) {
-            EnumImpactMode mode = EnumImpactMode.getImpactMode(heldStack).nextMode();
-            EnumImpactMode.setImpactMode(heldStack, mode);
+            EnumImpactMode mode = EnumImpactMode.getMode(heldStack).nextMode();
+            EnumImpactMode.setMode(heldStack, mode);
             world.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
             player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.impact_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
         } else if(hand == EnumHand.MAIN_HAND) {
@@ -92,6 +92,7 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
                     entityAxe.setDamage((float) instance.getAttributeValue());
                 }
                 entityAxe.thrownFromSlot = player.inventory.currentItem;
+                entityAxe.setSpeedModifier(velocity);
                 worldIn.spawnEntity(entityAxe);
                 worldIn.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_THROW.getSoundEvent(), SoundCategory.PLAYERS, 3.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
                 stack.setCount(0);
@@ -112,7 +113,7 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        EnumImpactMode mode = EnumImpactMode.getImpactMode(stack);
+        EnumImpactMode mode = EnumImpactMode.getMode(stack);
         tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.impact_mode." + mode));
     }
 
@@ -177,14 +178,14 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
             return values[(this.ordinal() + 1) % values.length];
         }
 
-        public static EnumImpactMode getImpactMode(ItemStack stack) {
+        public static EnumImpactMode getMode(ItemStack stack) {
             EnumImpactMode[] values = EnumImpactMode.values();
             int ordinal = stack.getTagCompound() != null ? stack.getTagCompound().getInteger("mode") : 0;
             ordinal = MathHelper.clamp(ordinal, 0, values.length - 1);
             return values[ordinal];
         }
 
-        public static void setImpactMode(ItemStack stack, EnumImpactMode mode) {
+        public static void setMode(ItemStack stack, EnumImpactMode mode) {
             stack.setTagInfo("mode", new NBTTagInt(mode.ordinal()));
         }
     }

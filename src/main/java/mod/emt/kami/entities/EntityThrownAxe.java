@@ -207,7 +207,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
 
             if (result.entityHit != getThrower() && getThrower() != null) {
                 EntityLivingBase entityLiving = (EntityLivingBase) result.entityHit;
-                ItemAwakenedAxe.EnumImpactMode mode = ItemAwakenedAxe.EnumImpactMode.getImpactMode(this.getBoomerangItem());
+                ItemAwakenedAxe.EnumImpactMode mode = ItemAwakenedAxe.EnumImpactMode.getMode(this.getBoomerangItem());
                 mode.onImpact(this, entityLiving);
                 this.getBoomerangItem().damageItem(1, getThrower());
                 if (this.getBoomerangItem().getCount() == 0) {
@@ -221,7 +221,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
             IBlockState blockState = world.getBlockState(blockPos);
             boolean solid = blockState.getCollisionBoundingBox(world, blockPos) != null;
             if (!this.noClip && solid) {
-                ItemAwakenedAxe.EnumImpactMode mode = ItemAwakenedAxe.EnumImpactMode.getImpactMode(this.getBoomerangItem());
+                ItemAwakenedAxe.EnumImpactMode mode = ItemAwakenedAxe.EnumImpactMode.getMode(this.getBoomerangItem());
                 mode.onImpact(this, null);
                 this.reverseDirection(true);
             }

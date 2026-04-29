@@ -34,7 +34,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
 
     public ItemAwakenedPickaxe() {
         super("awakened_ichorium_pickaxe");
-        this.addPropertyOverride(new ResourceLocation("aoe_mode"), ((stack, worldIn, entityIn) -> EnumAoeMode.getAoeMode(stack).ordinal()));
+        this.addPropertyOverride(new ResourceLocation("aoe_mode"), ((stack, worldIn, entityIn) -> EnumAoeMode.getMode(stack).ordinal()));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
                 int duration = player.getItemInUseMaxCount();
                 int stages = Math.min(MAX_DEPTH, duration / 10);
                 if(stages > 0 && duration % 10 == 0) {
-                    EnumAoeMode mode = EnumAoeMode.getAoeMode(stack);
+                    EnumAoeMode mode = EnumAoeMode.getMode(stack);
                     player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.dig_depth", stages).setStyle(new Style().setColor(mode.getTextColor())), true);
                 }
             }
@@ -59,8 +59,8 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
             worldIn.playSound(null, playerIn.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
 
             if(!worldIn.isRemote) {
-                EnumAoeMode mode = EnumAoeMode.getAoeMode(heldStack).nextMode();
-                EnumAoeMode.setAoeMode(heldStack, mode);
+                EnumAoeMode mode = EnumAoeMode.getMode(heldStack).nextMode();
+                EnumAoeMode.setMode(heldStack, mode);
                 playerIn.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.aoe_mode", mode.getBreakAreaSize()).setStyle(new Style().setColor(mode.getTextColor())), true);
             }
         } else {
@@ -104,7 +104,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        EnumAoeMode mode = EnumAoeMode.getAoeMode(stack);
+        EnumAoeMode mode = EnumAoeMode.getMode(stack);
         tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.aoe_mode", mode.getBreakAreaSize()));
     }
 
@@ -135,7 +135,7 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
     }
 
     public int getBreakAreaSize(ItemStack stack) {
-        return EnumAoeMode.getAoeMode(stack).getBreakAreaSize();
+        return EnumAoeMode.getMode(stack).getBreakAreaSize();
     }
 
     public enum EnumAoeMode {
@@ -170,14 +170,14 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
             return values[(this.ordinal() + 1) % values.length];
         }
 
-        public static EnumAoeMode getAoeMode(ItemStack stack) {
+        public static EnumAoeMode getMode(ItemStack stack) {
             EnumAoeMode[] values = EnumAoeMode.values();
             int ordinal = stack.getTagCompound() != null ? stack.getTagCompound().getInteger("mode") : 0;
             ordinal = MathHelper.clamp(ordinal, 0, values.length - 1);
             return values[ordinal];
         }
 
-        public static void setAoeMode(ItemStack stack, EnumAoeMode mode) {
+        public static void setMode(ItemStack stack, EnumAoeMode mode) {
             stack.setTagInfo("mode", new NBTTagInt(mode.ordinal()));
         }
     }

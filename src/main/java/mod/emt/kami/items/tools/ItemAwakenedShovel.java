@@ -41,7 +41,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
 
     public ItemAwakenedShovel() {
         super("awakened_ichorium_shovel");
-        this.addPropertyOverride(new ResourceLocation("bury_area"), ((stack, worldIn, entityIn) -> EnumBuryMode.getBuryMode(stack).ordinal()));
+        this.addPropertyOverride(new ResourceLocation("bury_area"), ((stack, worldIn, entityIn) -> EnumBuryMode.getMode(stack).ordinal()));
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
                 int duration = player.getItemInUseMaxCount();
                 int stages = Math.min(MAX_DEPTH, duration / 10);
                 if(stages > 0 && duration % 10 == 0) {
-                    EnumBuryMode mode = EnumBuryMode.getBuryMode(stack);
+                    EnumBuryMode mode = EnumBuryMode.getMode(stack);
                     player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.bury_area", stages).setStyle(new Style().setColor(mode.getTextColor())), true);
                 }
             }
@@ -66,8 +66,8 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
             worldIn.playSound(null, playerIn.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0F, 1.5F);
 
             if(!worldIn.isRemote) {
-                EnumBuryMode mode = EnumBuryMode.getBuryMode(heldStack).nextMode();
-                EnumBuryMode.setBuryMode(heldStack, mode);
+                EnumBuryMode mode = EnumBuryMode.getMode(heldStack).nextMode();
+                EnumBuryMode.setMode(heldStack, mode);
                 playerIn.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.bury_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
             }
         } else {
@@ -82,7 +82,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
         if(entityLiving instanceof EntityPlayer && duration > 10) {
             EntityPlayer player = (EntityPlayer) entityLiving;
             int depth = Math.min(MAX_DEPTH, duration / 10);
-            EnumBuryMode mode = EnumBuryMode.getBuryMode(stack);
+            EnumBuryMode mode = EnumBuryMode.getMode(stack);
             AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(depth, 2, depth);
             for (Entity entity : worldIn.getEntitiesWithinAABB(mode.getEntityClass(), area, mode::isEntityValid)) {
                 if(!worldIn.isRemote) {
@@ -131,7 +131,7 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        EnumBuryMode mode = EnumBuryMode.getBuryMode(stack);
+        EnumBuryMode mode = EnumBuryMode.getMode(stack);
         tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.kami.tool.aoe_mode", 3));
         tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.bury_mode." + mode));
     }
@@ -194,13 +194,13 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
             return values[(this.ordinal() + 1) % values.length];
         }
 
-        public static EnumBuryMode getBuryMode(ItemStack stack) {
+        public static EnumBuryMode getMode(ItemStack stack) {
             EnumBuryMode[] values = EnumBuryMode.values();
             int ordinal = stack.getTagCompound() != null ? stack.getTagCompound().getInteger("mode") : 0;
             return values[MathHelper.clamp(ordinal, 0, values.length - 1)];
         }
 
-        public static void setBuryMode(ItemStack stack, EnumBuryMode mode) {
+        public static void setMode(ItemStack stack, EnumBuryMode mode) {
             stack.setTagInfo("mode", new NBTTagInt(mode.ordinal()));
         }
     }
