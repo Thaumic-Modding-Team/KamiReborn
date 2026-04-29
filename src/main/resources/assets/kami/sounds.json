@@ -26,18 +26,18 @@
       "kami:items/ichor/pickaxe/dig2"
     ]
   },
-  "item.ichor.fly": {
-    "sounds": [
-      "kami:items/ichor/axe/fly1",
-      "kami:items/ichor/axe/fly2",
-      "kami:items/ichor/axe/fly3",
-      "kami:items/ichor/axe/fly4"
-    ]
-  },
   "item.ichor.jump": {
     "sounds": [
       "kami:items/ichor/leggings/jump1",
       "kami:items/ichor/leggings/jump2"
+    ]
+  },
+  "item.ichor.throw": {
+    "sounds": [
+      "kami:items/ichor/axe/throw1",
+      "kami:items/ichor/axe/throw2",
+      "kami:items/ichor/axe/throw3",
+      "kami:items/ichor/axe/throw4"
     ]
   },
   "item.ichor.toggle": {

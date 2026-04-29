@@ -3,6 +3,7 @@ package mod.emt.kami.items.tools;
 import com.google.common.collect.ImmutableList;
 import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.entities.EntityThrownAxe;
+import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.HarvestHelper;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import mod.emt.kami.utils.helpers.TreeHelper;
@@ -70,6 +71,7 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
         if(player.isSneaking()) {
             EnumImpactMode mode = EnumImpactMode.getImpactMode(heldStack).nextMode();
             EnumImpactMode.setImpactMode(heldStack, mode);
+            world.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
             player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.impact_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
         } else if(hand == EnumHand.MAIN_HAND) {
             player.setActiveHand(hand);
@@ -92,7 +94,7 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
                 }
                 entityAxe.thrownFromSlot = player.inventory.currentItem;
                 worldIn.spawnEntity(entityAxe);
-                worldIn.playSound(null, player.getPosition(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 3.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
+                worldIn.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_THROW.getSoundEvent(), SoundCategory.PLAYERS, 3.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
                 stack.setCount(0);
             }
         }

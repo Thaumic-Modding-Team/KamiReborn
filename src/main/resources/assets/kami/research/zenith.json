@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "key": "KAMI_ICHOR",
+      "name": "kami.research.ichor.title",
+      "category": "ZENITH",
+      "icons": [
+        "kami:ichor"
+      ],
+      "parents": [
+        "ZENITH_BASE"
+      ],
+      "location": [
+        0,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "kami.research.ichor.stage.1",
+          "required_knowledge": [
+          ]
+        },
+        {
+          "text": "kami.research.ichor.stage.2",
+          "recipes": [
+            "kami:ichor"
+          ]
+        }
+      ]
+    }
+  ]
+}
