@@ -35,18 +35,16 @@ public class ModRecipesKAMI {
                 "FIRSTSTEPS", // TODO: Research
                 50,
                 new AspectList().add(Aspect.AIR, 2).add(Aspect.EARTH, 2).add(Aspect.WATER, 2).add(Aspect.FIRE, 2).add(Aspect.ORDER, 2).add(Aspect.ENTROPY, 2),
-                new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC, 2),
+                new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC, 3),
                 " F ",
-                "SIS",
-                " F ",
+                "FIF",
                 'F', new ItemStack(ItemsTC.fabric),
-                'S', "string",
                 'I', new ItemStack(ModItemsKAMI.ICHOR)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_hood"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "FIRSTSTEPS", // TODO: Research
                 250,
-                new AspectList().add(Aspect.WATER, 4),
+                new AspectList().add(Aspect.WATER, 8),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_HOOD, 1),
                 "FFF",
                 "FGF",
@@ -56,7 +54,7 @@ public class ModRecipesKAMI {
                 defaultGroup,
                 "FIRSTSTEPS", // TODO: Research
                 250,
-                new AspectList().add(Aspect.AIR, 4),
+                new AspectList().add(Aspect.AIR, 8),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_ROBE, 1),
                 "F F",
                 "FFF",
@@ -66,7 +64,7 @@ public class ModRecipesKAMI {
                 defaultGroup,
                 "FIRSTSTEPS", // TODO: Research
                 250,
-                new AspectList().add(Aspect.FIRE, 4),
+                new AspectList().add(Aspect.FIRE, 8),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_LEGGINGS, 1),
                 "FFF",
                 "F F",
@@ -76,7 +74,7 @@ public class ModRecipesKAMI {
                 defaultGroup,
                 "FIRSTSTEPS", // TODO: Research
                 250,
-                new AspectList().add(Aspect.EARTH, 4),
+                new AspectList().add(Aspect.EARTH, 8),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_BOOTS, 1),
                 "F F",
                 "F F",
@@ -85,7 +83,7 @@ public class ModRecipesKAMI {
                 defaultGroup,
                 "FIRSTSTEPS", // TODO: Research
                 250,
-                new AspectList().add(Aspect.AIR, 4),
+                new AspectList().add(Aspect.AIR, 8),
                 new ItemStack(ModItemsKAMI.ICHORIUM_SWORD, 1),
                 "I",
                 "I",
@@ -96,7 +94,7 @@ public class ModRecipesKAMI {
                 defaultGroup,
                 "FIRSTSTEPS", // TODO: Research
                 250,
-                new AspectList().add(Aspect.EARTH, 4),
+                new AspectList().add(Aspect.EARTH, 8),
                 new ItemStack(ModItemsKAMI.ICHORIUM_SHOVEL, 1),
                 "I",
                 "B",
@@ -107,7 +105,7 @@ public class ModRecipesKAMI {
                 defaultGroup,
                 "FIRSTSTEPS", // TODO: Research
                 250,
-                new AspectList().add(Aspect.FIRE, 4),
+                new AspectList().add(Aspect.FIRE, 8),
                 new ItemStack(ModItemsKAMI.ICHORIUM_PICKAXE, 1),
                 "III",
                 " B ",
@@ -118,7 +116,7 @@ public class ModRecipesKAMI {
                 defaultGroup,
                 "FIRSTSTEPS", // TODO: Research
                 250,
-                new AspectList().add(Aspect.WATER, 4),
+                new AspectList().add(Aspect.WATER, 8),
                 new ItemStack(ModItemsKAMI.ICHORIUM_AXE, 1),
                 "II",
                 "IB",
@@ -134,8 +132,8 @@ public class ModRecipesKAMI {
     private static void initInfusionRecipes() {
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor"),
                 new InfusionRecipe("KAMI_ICHOR", new ItemStack(ModItemsKAMI.ICHOR), 10,
-                        new AspectList().add(Aspect.AIR, 75).add(Aspect.AURA, 50).add(Aspect.ENERGY, 65)
-                                .add(Aspect.FLIGHT, 125).add(Aspect.MAGIC, 50).add(Aspect.MOTION, 75),
+                        new AspectList().add(Aspect.AURA, 75).add(Aspect.CRYSTAL, 75).add(Aspect.DARKNESS, 75)
+                                .add(Aspect.ENERGY, 75).add(Aspect.LIFE, 75).add(Aspect.LIGHT, 75).add(Aspect.SOUL, 75),
                         "gemDiamond",
                         new ItemStack(Items.ENDER_EYE),
                         ItemsTC.primordialPearl,
