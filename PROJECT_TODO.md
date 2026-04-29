@@ -1,32 +1,32 @@
 # Planned Content
 ## Thaumic Tinkerer: Kami Reborn
-|                      Feature                      |   Code   |  Model   | Texture  | Config | Research | Recipe |
-|:-------------------------------------------------:|:--------:|:--------:|:--------:|:------:|:--------:|:------:|
-|         (Armor) Awakened Ichorweave Boots         |          |          |          |  N/A   |          |        |
-|         (Armor) Awakened Ichorweave Cowl          | COMPLETE |          |          |  N/A   |          |        |
-|        (Armor) Awakened Ichoreave Leggings        |          |          |          |  N/A   |          |        |
-|         (Armor) Awakened Ichorweave Robe          | COMPLETE |          |          |  N/A   |          |        |
-|             (Armor) Ichorweave Boots              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|              (Armor) Ichorweave Cowl              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|            (Armor) Ichoreave Leggings             | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|              (Armor) Ichorweave Robe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|           (Tool) Awakened Ichorium Axe            |          |          |          |  N/A   |          |        |
-|         (Tool) Awakened Ichorium Pickaxe          | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|          (Tool) Awakened Ichorium Shovel          | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|          (Tool) Awakened Ichorium Sword           |          |          |          |  N/A   |          |        |
-|                (Tool) Ichorium Axe                | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|              (Tool) Ichorium Pickaxe              | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|              (Tool) Ichorium Shovel               | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|               (Tool) Ichorium Sword               | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|                       Ichor                       | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|                    Ichor Block                    |          |          |          |  N/A   |          |        |
-|                    Ichor Cloth                    | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|                 Ichorweave Pouch                  | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|                  Ichorium Ingot                   | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|                  Ichorium Nugget                  | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
-|             Infusion Enchant: Eternal             | COMPLETE |   N/A    | COMPLETE |  N/A   |          |        |
-|                    Proto Clay                     |          |          |          |        |          |        |
-|             Sword of the Dragonslayer             |          |          |          |        |          |        |
+|               Feature               |   Code   |  Model   | Texture  | Config | Research | Recipe |
+|:-----------------------------------:|:--------:|:--------:|:--------:|:------:|:--------:|:------:|
+|  (Armor) Awakened Ichorweave Boots  | COMPLETE |          |          |  N/A   |          |        |
+|  (Armor) Awakened Ichorweave Cowl   | COMPLETE |          |          |  N/A   |          |        |
+| (Armor) Awakened Ichoreave Leggings | COMPLETE |          |          |  N/A   |          |        |
+|  (Armor) Awakened Ichorweave Robe   | COMPLETE |          |          |  N/A   |          |        |
+|      (Armor) Ichorweave Boots       | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|       (Armor) Ichorweave Cowl       | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|     (Armor) Ichoreave Leggings      | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|       (Armor) Ichorweave Robe       | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|    (Tool) Awakened Ichorium Axe     | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|  (Tool) Awakened Ichorium Pickaxe   | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|   (Tool) Awakened Ichorium Shovel   | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|   (Tool) Awakened Ichorium Sword    |          |          |          |  N/A   |          |        |
+|         (Tool) Ichorium Axe         | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|       (Tool) Ichorium Pickaxe       | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|       (Tool) Ichorium Shovel        | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|        (Tool) Ichorium Sword        | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|                Ichor                | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|             Ichor Block             |          |          |          |  N/A   |          |        |
+|             Ichor Cloth             | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|          Ichorweave Pouch           | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|           Ichorium Ingot            | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|           Ichorium Nugget           | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
+|      Infusion Enchant: Eternal      | COMPLETE |   N/A    | COMPLETE |  N/A   |          |        |
+|             Proto Clay              |          |          |          |        |          |        |
+|      Sword of the Dragonslayer      |          |          |          |        |          |        |
 
 ---
 

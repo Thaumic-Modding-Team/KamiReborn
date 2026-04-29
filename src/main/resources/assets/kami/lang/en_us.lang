@@ -27,6 +27,9 @@ item.kami:ichorweave_robe.name=Ichorweave Robe
 item.kami:ichor.name=Ichor
 
 # Tooltips
+tooltip.kami.awakened=Awakened
+tooltip.kami.awakened_set.info=§bArmor Set§r: Awakened Ichor (%d/4)
+tooltip.kami.awakened_set.desc=Reduces all damage taken by 80%%
 tooltip.kami.focus_pouch.keybind=When equipped, press [%s] to open pouch.
 tooltip.kami.revealing=Revealing
 tooltip.kami.tool.aoe_mode=Harvest Area: %1$dx%1$d

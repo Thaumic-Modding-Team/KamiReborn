@@ -5,10 +5,14 @@ import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler;
 import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler.MovementType;
 import mod.emt.kami.Kami;
 import mod.emt.kami.handlers.CommonEventHandler;
+import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -18,26 +22,31 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.util.Constants;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.items.baubles.ItemCloudRing;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.playerdata.PacketPlayerFlagToServer;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 
-public class ItemAwakenedArmor extends ItemIchorweaveArmor {
+public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialArmor {
     protected static final String TEXTURE_PATH_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_1.png").toString();
     protected static final String TEXTURE_PATH_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_2.png").toString();
     protected static final String TEXTURE_PATH_DYED_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_awakened_layer_1_dyed.png").toString();
@@ -95,7 +104,6 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
                     break;
                 case FEET:
                     multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(MODIFIER_UUID, "Ichorweave modifier " + this.armorType, 0.2, Constants.AttributeModifierOperation.MULTIPLY));
-                    //multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(MODIFIER_UUID, "Ichorweave modifier " + this.armorType, 0.3, Constants.AttributeModifierOperation.MULTIPLY));
                     break;
             }
         }
@@ -114,6 +122,49 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
         }
 
         return slot == EntityEquipmentSlot.LEGS ? TEXTURE_PATH_2 : TEXTURE_PATH_1;
+    }
+
+    @Override
+    public void addInformation(@NotNull ItemStack stack, @Nullable World world, @NotNull List<String> tooltip, @NotNull ITooltipFlag tooltipFlag) {
+        tooltip.add(TextFormatting.GREEN + I18n.format("tooltip.kami.awakened"));
+        super.addInformation(stack, world, tooltip, tooltipFlag);
+        if(Minecraft.getMinecraft().player != null) {
+            EntityPlayer player = Minecraft.getMinecraft().player;
+            int setCount = this.getEquippedPieces(player);
+            tooltip.add("");
+            tooltip.add(I18n.format("tooltip.kami.awakened_set.info", setCount));
+            if(GuiScreen.isShiftKeyDown()) {
+                tooltip.add(I18n.format("tooltip.kami.awakened_set.desc"));
+                tooltip.add((this.hasHelm(player)    ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD.getTranslationKey() + ".name"));
+                tooltip.add((this.hasChest(player)   ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE.getTranslationKey() + ".name"));
+                tooltip.add((this.hasLeggins(player) ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS.getTranslationKey() + ".name"));
+                tooltip.add((this.hasBoots(player)   ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS.getTranslationKey() + ".name"));
+            }
+        }
+    }
+
+    @Override
+    public ArmorProperties getProperties(EntityLivingBase player, @NotNull ItemStack armor, DamageSource source, double damage, int slot) {
+        int priority = 0;
+        double ratio = 0;
+        if(this.hasArmorSet(player)) {
+            priority = 1;
+            ratio = 0.2;
+        }
+        return new ArmorProperties(priority, ratio, Integer.MAX_VALUE);
+    }
+
+    @Override
+    public int getArmorDisplay(EntityPlayer player, @NotNull ItemStack armor, int slot) {
+        return 0;
+    }
+
+    @Override
+    public void damageArmor(EntityLivingBase entity, @NotNull ItemStack stack, DamageSource source, int damage, int slot) {}
+
+    @Override
+    public boolean handleUnblockableDamage(EntityLivingBase entity, @NotNull ItemStack armor, DamageSource source, double damage, int slot) {
+        return this.hasArmorSet(entity);
     }
 
     @Override
@@ -251,5 +302,38 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor {
 
     protected void tickArmorSet(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack) {
 
+    }
+
+    public boolean hasArmorSet(EntityLivingBase player) {
+        return this.getEquippedPieces(player) == 4;
+    }
+
+    public int getEquippedPieces(EntityLivingBase player) {
+        int count = 0;
+        if(this.hasHelm(player))        count++;
+        if(this.hasChest(player))       count++;
+        if(this.hasLeggins(player))    count++;
+        if(this.hasBoots(player))       count++;
+        return count;
+    }
+
+    public boolean hasHelm(EntityLivingBase player) {
+        ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+        return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD;
+    }
+
+    public boolean hasChest(EntityLivingBase player) {
+        ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+        return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE;
+    }
+
+    public boolean hasLeggins(EntityLivingBase player) {
+        ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+        return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS;
+    }
+
+    public boolean hasBoots(EntityLivingBase player) {
+        ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+        return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS;
     }
 }
