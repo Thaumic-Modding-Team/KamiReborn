@@ -142,6 +142,16 @@ public class ModRecipesKAMI {
                         new ItemStack(BlocksTC.shimmerleaf),
                         new ItemStack(ModItemsKAMI.ICHORIUM_NUGGET),
                         new ItemStack(ModItemsKAMI.ICHORIUM_NUGGET)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "bottomless_pouch"),
+                new InfusionRecipe("KAMI_BOTTOMLESS_POUCH", new ItemStack(ModItemsKAMI.FOCUS_POUCH), 10,
+                        new AspectList().add(Aspect.AIR, 150).add(Aspect.CRAFT, 150).add(Aspect.ELDRITCH, 150).add(Aspect.MAN, 150).add(Aspect.VOID, 150),
+                        new ItemStack(ItemsTC.focusPouch),
+                        new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
+                        new ItemStack(ItemsTC.primordialPearl),
+                        new ItemStack(Items.NETHER_STAR),
+                        new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
+                        new ItemStack(BlocksTC.hungryChest),
+                        new ItemStack(BlocksTC.jarVoid)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor"),
                 new InfusionRecipe("KAMI_ICHOR", new ItemStack(ModItemsKAMI.ICHOR), 10,
                         new AspectList().add(Aspect.AURA, 75).add(Aspect.CRYSTAL, 75).add(Aspect.DARKNESS, 75)

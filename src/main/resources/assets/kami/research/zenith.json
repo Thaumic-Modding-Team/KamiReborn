@@ -1,6 +1,36 @@
 {
   "entries": [
     {
+      "key": "KAMI_BOTTOMLESS_POUCH",
+      "name": "kami.research.bottomless_pouch.title",
+      "category": "ZENITH",
+      "icons": [
+        "kami:focus_pouch"
+      ],
+      "parents": [
+        "KAMI_ICHORIUM",
+        "KAMI_ICHORWEAVE_FABRIC"
+      ],
+      "meta": ["REVERSE"],
+      "location": [
+        0,
+        -6
+      ],
+      "stages": [
+        {
+          "text": "kami.research.bottomless_pouch.stage.1",
+          "required_knowledge": [
+          ]
+        },
+        {
+          "text": "kami.research.bottomless_pouch.stage.2",
+          "recipes": [
+            "kami:bottomless_pouch"
+          ]
+        }
+      ]
+    },
+    {
       "key": "KAMI_ICHOR",
       "name": "kami.research.ichor.title",
       "category": "ZENITH",
