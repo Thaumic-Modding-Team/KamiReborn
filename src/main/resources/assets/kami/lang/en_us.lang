@@ -15,6 +15,7 @@ item.kami:awakened_ichorweave_robe.name=Ichorweave Robe of the Stratosphere
 item.kami:blessed_silverwood_rod.name=Blessed Silverwood Rod
 item.kami:focus_pouch.name=Bottomless Pouch
 item.kami:ichorium_axe.name=Ichorium Axe
+item.kami:ichorium_caster.name=Ichorium Caster's Gauntlet
 item.kami:ichorium_ingot.name=Ichorium Ingot
 item.kami:ichorium_nugget.name=Ichorium Nugget
 item.kami:ichorium_pickaxe.name=Ichorium Pickaxe
@@ -40,9 +41,13 @@ tooltip.kami.tool.bury_mode.animals=Bury Mode: Animals
 tooltip.kami.tool.bury_mode.hostile=Bury Mode: Hostile
 tooltip.kami.tool.bury_mode.undead=Bury Mode: Undead
 tooltip.kami.tool.dig_depth=Harvest Depth: %d
+tooltip.kami.tool.impact_mode.damage=Impact Mode: Damage
+tooltip.kami.tool.impact_mode.lightning=Impact Mode: Lightning
+tooltip.kami.tool.impact_mode.detonation=Impact Mode: Detonation
+tooltip.kami.tool.impact_mode.explosion=Impact Mode: Explosion
 tooltip.kami.tool.slayer_mode.abomination=Abomination Slayer
 tooltip.kami.tool.slayer_mode.dragon=Dragon Slayer
-tooltip.kami.tool.slayer_mode.living=Living Slayer
+tooltip.kami.tool.slayer_mode.living=Mortal Slayer
 tooltip.kami.tool.slayer_mode.normal=Unfocused
 tooltip.kami.tool.slayer_mode.undead=Undead Slayer
 
@@ -53,8 +58,8 @@ kami.research.zenith_base.title.subtitle=The highest point
 kami.research.zenith_base.stage.1=This might be my magnum opus out of all of the research I've done. I have potential to reach power beyond anything I can ever imagine, and perhaps... become a god myself.
 
 # -- AWAKENED ICHORIUM AXE
-kami.research.awakened_ichorium_axe.title=[WIP]
-kami.research.awakened_ichorium_axe.title.subtitle=[WIP]
+kami.research.awakened_ichorium_axe.title=Ichorium Axe of the Stormbreaker
+kami.research.awakened_ichorium_axe.title.subtitle=Rainbow bridge not yet implemented.
 kami.research.awakened_ichorium_axe.stage.1=[WIP]
 kami.research.awakened_ichorium_axe.stage.2=[WIP]
 
@@ -66,13 +71,13 @@ kami.research.awakened_ichorium_pickaxe.stage.2=[WIP]
 
 # -- AWAKENED ICHORIUM SHOVEL
 kami.research.awakened_ichorium_shovel.title=Ichorium Shovel of the Gravedigger
-kami.research.awakened_ichorium_shovel.title.subtitle=Dead and Buried
+kami.research.awakened_ichorium_shovel.title.subtitle=I cast mold earth!
 kami.research.awakened_ichorium_shovel.stage.1=[WIP]
 kami.research.awakened_ichorium_shovel.stage.2=[WIP]
 
 # -- AWAKENED ICHORIUM SWORD
-kami.research.awakened_ichorium_sword.title=[WIP]
-kami.research.awakened_ichorium_sword.title.subtitle=[WIP]
+kami.research.awakened_ichorium_sword.title=Ichorium Sword of the Titanslayer
+kami.research.awakened_ichorium_sword.title.subtitle=Situationally effective.
 kami.research.awakened_ichorium_sword.stage.1=[WIP]
 kami.research.awakened_ichorium_sword.stage.2=[WIP]
 
@@ -96,7 +101,7 @@ kami.research.awakened_ichorweave_leggings.stage.2=[WIP]
 
 # -- AWAKENED ICHORWEAVE ROBE
 kami.research.awakened_ichorweave_robe.title=Ichorweave Robe of the Stratosphere
-kami.research.awakened_ichorweave_robe.title.subtitle=[WIP]
+kami.research.awakened_ichorweave_robe.title.subtitle=Oxygen not included.
 kami.research.awakened_ichorweave_robe.stage.1=[WIP]
 kami.research.awakened_ichorweave_robe.stage.2=[WIP]
 
@@ -135,13 +140,3 @@ kami.research.ichorweave_fabric.title=Ichorweave Fabric
 kami.research.ichorweave_fabric.title.subtitle=Hope you brought a strong needle
 kami.research.ichorweave_fabric.stage.1=[WIP]
 kami.research.ichorweave_fabric.stage.2=[WIP]
-
-# -- PROTOCLAY
-kami.research.protoclay.title=Protoclay
-kami.research.protoclay.title.subtitle=Stolen from the Creation
-kami.research.protoclay.stage.1=[WIP]
-kami.research.protoclay.stage.2=[WIP]
-tooltip.kami.tool.impact_mode.damage=Impact Mode: Damage
-tooltip.kami.tool.impact_mode.lightning=Impact Mode: Lightning
-tooltip.kami.tool.impact_mode.detonation=Impact Mode: Detonation
-tooltip.kami.tool.impact_mode.explosion=Impact Mode: Explosion

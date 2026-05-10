@@ -1,0 +1,6 @@
+{
+  "parent": "thaumcraft:item/caster_gauntlet",
+  "textures": {
+    "skin": "kami:models/ichorium_caster"
+  }
+}

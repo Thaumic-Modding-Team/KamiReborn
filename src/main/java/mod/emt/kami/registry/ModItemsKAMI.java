@@ -32,6 +32,7 @@ public class ModItemsKAMI {
     public static Item FOCUS_POUCH;
     public static Item ICHOR;
     public static Item ICHORIUM_AXE;
+    public static ItemIchoriumCaster ICHORIUM_CASTER;
     public static Item ICHORIUM_INGOT;
     public static Item ICHORIUM_NUGGET;
     public static Item ICHORIUM_PICKAXE;
@@ -68,5 +69,6 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(AWAKENED_ICHORIUM_SHOVEL = new ItemAwakenedShovel());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_PICKAXE = new ItemAwakenedPickaxe());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_AXE = new ItemAwakenedAxe());
+        MOD_ITEMS.add(ICHORIUM_CASTER = new ItemIchoriumCaster());
     }
 }

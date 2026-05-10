@@ -1,0 +1,13 @@
+{
+  "parent": "item/generated",
+  "overrides": [
+    {
+      "predicate": {"thaumicapi:focus": 0},
+      "model": "kami:item/ichorium_caster_model"
+    },
+    {
+      "predicate": {"thaumicapi:focus": 1},
+      "model": "kami:item/ichorium_caster_focus_model"
+    }
+  ]
+}

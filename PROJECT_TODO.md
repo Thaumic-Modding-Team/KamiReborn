@@ -25,7 +25,6 @@
 |           Ichorium Ingot            | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |           Ichorium Nugget           | COMPLETE | COMPLETE | COMPLETE |  N/A   |          |        |
 |      Infusion Enchant: Eternal      | COMPLETE |   N/A    | COMPLETE |  N/A   |          |        |
-|             Proto Clay              |          |          |          |        |          |        |
 
 ---
 
