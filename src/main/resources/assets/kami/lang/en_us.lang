@@ -46,20 +46,20 @@ tooltip.kami.tool.impact_mode.lightning=Impact Mode: Lightning
 tooltip.kami.tool.impact_mode.detonation=Impact Mode: Detonation
 tooltip.kami.tool.impact_mode.explosion=Impact Mode: Explosion
 tooltip.kami.tool.slayer_mode.abomination=Abomination Slayer
-tooltip.kami.tool.slayer_mode.dragon=Dragon Slayer
-tooltip.kami.tool.slayer_mode.living=Mortal Slayer
-tooltip.kami.tool.slayer_mode.normal=Unfocused
+tooltip.kami.tool.slayer_mode.dragon=Dragonslayer
+tooltip.kami.tool.slayer_mode.living=Mortal's Bane
+tooltip.kami.tool.slayer_mode.normal=Unattuned
 tooltip.kami.tool.slayer_mode.undead=Undead Slayer
 
 # Research
 tc.research_category.ZENITH=Zenith
 kami.research.zenith_base.title=Zenith
 kami.research.zenith_base.title.subtitle=The highest point
-kami.research.zenith_base.stage.1=This might be my magnum opus out of all of the research I've done. I have potential to reach power beyond anything I can ever imagine, and perhaps... become a god myself.
+kami.research.zenith_base.stage.1=This might be my magnum opus. I have the potential to reach beyond anything I could ever imagine, and perhaps... become a god myself.
 
 # -- AWAKENED ICHORIUM AXE
 kami.research.awakened_ichorium_axe.title=Ichorium Axe of the Stormbreaker
-kami.research.awakened_ichorium_axe.title.subtitle=Rainbow bridge not yet implemented.
+kami.research.awakened_ichorium_axe.title.subtitle=Rainbow bridge not yet implemented
 kami.research.awakened_ichorium_axe.stage.1=[WIP]
 kami.research.awakened_ichorium_axe.stage.2=[WIP]
 
@@ -77,9 +77,9 @@ kami.research.awakened_ichorium_shovel.stage.2=[WIP]
 
 # -- AWAKENED ICHORIUM SWORD
 kami.research.awakened_ichorium_sword.title=Ichorium Sword of the Titanslayer
-kami.research.awakened_ichorium_sword.title.subtitle=Situationally effective.
+kami.research.awakened_ichorium_sword.title.subtitle=Situationally effective
 kami.research.awakened_ichorium_sword.stage.1=[WIP]
-kami.research.awakened_ichorium_sword.stage.2=[WIP]
+kami.research.awakened_ichorium_sword.stage.2=The awakened ichorium sword, dubbed the titanslayer, has the unique ability to attune itself to specific enemy types, granting bonuses when striking attuned enemies.<PAGE>Unattuned<DIV>When not attuned, the awakened sword forgoes foregoes any entity attunement bonus.<BR>Instead all energy within the sword is channeled into the blade, doubling the base damage of the weapon.<PAGE>Mortal's Bane<DIV>A bane to all living creatures, when attuned to motrals, the awakened sword bypasses all armor and deals up to 20% of a living entity's maximum hp on every hit.<PAGE>Undead Slayer<DIV>Some might call it a holy sword, but I know better.<BR>When attuned to undeath, the awakened sword bypassses all armor and deals up to 20% of an undead target's maxium health.<PAGE>Dragonslayer<DIV>Legends speak of the greatest warriors who ever lived slaying mighty dragons. While I may not be able to achieve their level of noteriety, the awkanened sword can get me close to achieving their feats.<BR>When attuned to dragons, the awakened sword bypasses all armor and deals up to 20% of a dragon's maximum health.<BR>Interestingly, this effect also appears to extend to entities wearing dragon-based armor.<PAGE>Abomination Slayer<DIV>During my studies I have encountered entities that do not fit into any standard categories.<BR>These creatures seem to either be otherworldly Eldritch beings, or Tainted abominations that revel in high-flux environments.<BR>When attuned to abominations, the awakened sword bypasses all armor and deal up to 20% of the target's maximum health.
 
 # -- AWAKENED ICHORWEAVE BOOTS
 kami.research.awakened_ichorweave_boots.title=Ichorweave Boots of the Biosphere
@@ -101,7 +101,7 @@ kami.research.awakened_ichorweave_leggings.stage.2=[WIP]
 
 # -- AWAKENED ICHORWEAVE ROBE
 kami.research.awakened_ichorweave_robe.title=Ichorweave Robe of the Stratosphere
-kami.research.awakened_ichorweave_robe.title.subtitle=Oxygen not included.
+kami.research.awakened_ichorweave_robe.title.subtitle=Oxygen not included
 kami.research.awakened_ichorweave_robe.stage.1=[WIP]
 kami.research.awakened_ichorweave_robe.stage.2=[WIP]
 
