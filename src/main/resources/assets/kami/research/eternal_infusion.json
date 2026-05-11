@@ -1,0 +1,38 @@
+{
+  "entries": [
+    {
+      "key": "KAMI_ETERNAL_INFUSION",
+      "name": "kami.research.eternal_infusion.title",
+      "icons": [
+        "kami:textures/research/r_eternal_infusion.png"
+      ],
+      "category": "ZENITH",
+      "parents": [
+        "ZENITH_BASE",
+        "~KAMI_AWAKENED_ICHORIUM_AXE",
+        "~KAMI_AWAKENED_ICHORIUM_PICKAXE",
+        "~KAMI_AWAKENED_ICHORIUM_SHOVEL",
+        "~KAMI_AWAKENED_ICHORIUM_SWORD",
+        "~KAMI_AWAKENED_ICHORWEAVE_BOOTS",
+        "~KAMI_AWAKENED_ICHORWEAVE_HOOD",
+        "~KAMI_AWAKENED_ICHORWEAVE_LEGGINGS",
+        "~KAMI_AWAKENED_ICHORWEAVE_ROBE"
+      ],
+      "meta": ["HIDDEN","SPIKY"],
+      "location": [0, 2],
+      "stages": [
+        {
+          "text": "kami.research.eternal_infusion.stage.1",
+          "required_knowledge": [
+          ]
+        },
+        {
+          "text": "kami.research.eternal_infusion.stage.2",
+          "recipes": [
+            "kami:ichor"
+          ]
+        }
+      ]
+    }
+  ]
+}

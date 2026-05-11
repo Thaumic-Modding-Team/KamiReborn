@@ -1,0 +1,16 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "kami:ichorium_ingot"
+    }
+  },
+  "result": {
+    "item": "kami:ichorium_block"
+  }
+}
