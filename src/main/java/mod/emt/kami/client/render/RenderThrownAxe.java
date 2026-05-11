@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderThrownAxe extends Render<EntityThrownAxe> {
-    private static final ItemStack BOOMERANG = new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_AXE);
+    private static final ItemStack AXE = new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_AXE);
     private final RenderItem itemRenderer;
 
     public RenderThrownAxe(RenderManager renderManager, RenderItem itemRenderer)
@@ -34,7 +34,21 @@ public class RenderThrownAxe extends Render<EntityThrownAxe> {
         GlStateManager.rotate(entity.prevRotationYaw + (entity.rotationYaw - entity.prevRotationYaw) * partialTicks + (entity.rotationYaw < 0 ? -90.0F : 90.0F), 1.0F, 0.0F, 0.0F);
         GlStateManager.rotate(entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks, 0.0F, 0.0F, 1.0F);
         bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-        itemRenderer.renderItem(BOOMERANG, ItemCameraTransforms.TransformType.GROUND);
+
+        if (renderOutlines)
+        {
+            GlStateManager.enableColorMaterial();
+            GlStateManager.enableOutlineMode(16748812);
+        }
+
+        itemRenderer.renderItem(AXE, ItemCameraTransforms.TransformType.GROUND);
+
+        if (renderOutlines)
+        {
+            GlStateManager.disableOutlineMode();
+            GlStateManager.disableColorMaterial();
+        }
+
         GlStateManager.popMatrix();
     }
 
