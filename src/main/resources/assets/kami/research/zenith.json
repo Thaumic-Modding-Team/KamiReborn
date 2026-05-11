@@ -295,6 +295,35 @@
       ]
     },
     {
+      "key": "KAMI_ICHORIUM_CASTER",
+      "name": "kami.research.ichorium_caster.title",
+      "category": "ZENITH",
+      "icons": [
+        "kami:ichorium_caster"
+      ],
+      "parents": [
+        "KAMI_BOTTOMLESS_POUCH"
+      ],
+      "meta": ["REVERSE"],
+      "location": [
+        0,
+        -8
+      ],
+      "stages": [
+        {
+          "text": "kami.research.ichorium_caster.stage.1",
+          "required_knowledge": [
+          ]
+        },
+        {
+          "text": "kami.research.ichorium_caster.stage.2",
+          "recipes": [
+            "kami:ichor"
+          ]
+        }
+      ]
+    },
+    {
       "key": "KAMI_ICHORIUM_TOOLS",
       "name": "kami.research.ichorium_tools.title",
       "category": "ZENITH",

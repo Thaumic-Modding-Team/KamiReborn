@@ -15,7 +15,7 @@ item.kami:awakened_ichorweave_robe.name=Ichorweave Robe of the Stratosphere
 item.kami:blessed_silverwood_rod.name=Blessed Silverwood Rod
 item.kami:focus_pouch.name=Bottomless Pouch
 item.kami:ichorium_axe.name=Ichorium Axe
-item.kami:ichorium_caster.name=Ichorium Caster's Gauntlet
+item.kami:ichorium_caster.name=Ichorium Caster's Gauntlet of the Ascended
 item.kami:ichorium_ingot.name=Ichorium Ingot
 item.kami:ichorium_nugget.name=Ichorium Nugget
 item.kami:ichorium_pickaxe.name=Ichorium Pickaxe
@@ -122,6 +122,12 @@ kami.research.ichorium.title=Ichorium
 kami.research.ichorium.title.subtitle=A metal harder than diamond
 kami.research.ichorium.stage.1=[WIP]
 kami.research.ichorium.stage.2=[WIP]
+
+# -- ICHORIUM CASTER
+kami.research.ichorium_caster.title=Ichorium Caster's Gauntlet of the Ascended
+kami.research.ichorium_caster.title.subtitle="I could simply snap my fingers and they would all cease to exist."
+kami.research.ichorium_caster.stage.1=[WIP]
+kami.research.ichorium_caster.stage.2=[WIP]
 
 # -- ICHORIUM TOOLS
 kami.research.ichorium_tools.title=Ichorium Tools

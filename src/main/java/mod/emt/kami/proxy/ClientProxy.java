@@ -6,6 +6,8 @@ import mod.emt.kami.items.tools.ItemIchoriumCaster;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
+import thaumcraft.api.casters.ICaster;
+import thaumcraft.common.items.casters.ItemFocus;
 
 public class ClientProxy extends CommonProxy {
     @Override
@@ -33,7 +35,19 @@ public class ClientProxy extends CommonProxy {
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_HOOD);
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_LEGGINGS);
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_ROBE);
-        ItemIchoriumCaster.initClient(ModItemsKAMI.ICHORIUM_CASTER);
+
+        IItemColor gauntletColorHandler = (stack, tintIndex) -> {
+            if (tintIndex == 1 && stack.getItem() instanceof ICaster && ((ICaster) stack.getItem()).getFocus(stack) != null)
+                return ((ItemFocus) ((ICaster) stack.getItem()).getFocus(stack)).getFocusColor(((ICaster) stack.getItem()).getFocusStack(stack));
+            else if (tintIndex == 2 && stack.getItem() instanceof IDyeableGear) {
+                return ((IDyeableGear) stack.getItem()).getDyedColor(stack);
+            }
+
+            return -1;
+        };
+
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(gauntletColorHandler, ModItemsKAMI.ICHORIUM_CASTER);
+        //ItemIchoriumCaster.initClient(ModItemsKAMI.ICHORIUM_CASTER);
     }
 
     @Override

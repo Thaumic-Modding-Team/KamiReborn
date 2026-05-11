@@ -1,6 +1,6 @@
 {
-  "parent": "thaumcraft:item/caster_gauntlet_focus",
+  "parent": "kami:item/caster_gauntlet_focus",
   "textures": {
-    "skin": "kami:models/ichorium_caster"
+    "overlay": "kami:models/caster_ichorium"
   }
 }
