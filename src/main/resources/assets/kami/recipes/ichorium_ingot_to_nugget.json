@@ -1,0 +1,12 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "kami:ichorium_ingot"
+    }
+  ],
+  "result": {
+    "item": "kami:ichorium_nugget",
+    "count": 9
+  }
+}

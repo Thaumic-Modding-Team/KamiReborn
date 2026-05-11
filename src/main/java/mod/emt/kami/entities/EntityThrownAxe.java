@@ -42,9 +42,10 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
     public float damage;
     public float speed;
 
-    public EntityThrownAxe(World world, EntityLivingBase entity, ItemStack boomerangThrown) {
+    public EntityThrownAxe(World world, EntityLivingBase entity, ItemStack axeThrown) {
         super(world, entity);
-        this.setBoomerangItem(boomerangThrown);
+        this.setAxeItem(axeThrown);
+        this.setGlowing(true);
         this.isImmuneToFire = true;
         this.returnTime = MAX_THROW_TIME;
         this.noClip = false;
@@ -78,12 +79,12 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
         this.getDataManager().register(ITEM, ItemStack.EMPTY);
     }
 
-    public void setBoomerangItem(ItemStack stack) {
+    public void setAxeItem(ItemStack stack) {
         this.getDataManager().set(ITEM, stack);
         this.getDataManager().setDirty(ITEM);
     }
 
-    public ItemStack getBoomerangItem() {
+    public ItemStack getAxeItem() {
         return this.getDataManager().get(ITEM);
     }
 
@@ -109,7 +110,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
             if (thrower != null) {
                 if (thrower.capabilities.isCreativeMode) {
                     ItemStack hand = thrower.inventory.mainInventory.get(thrower.inventory.currentItem);
-                    if (this.getBoomerangItem().isItemEqual(hand)) {
+                    if (this.getAxeItem().isItemEqual(hand)) {
                         thrower.inventory.mainInventory.set(thrower.inventory.currentItem, new ItemStack(Items.AIR));
                     }
                 }
@@ -158,7 +159,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
                 if(this.owner != null && this.owner.world.provider.getDimension() == this.world.provider.getDimension()) {
                     this.setPositionAndUpdate(this.owner.posX, this.owner.posY, this.owner.posZ);
                 } else {
-                    this.world.spawnEntity(new EntityItem(this.world, this.posX, this.posY, this.posZ, this.getBoomerangItem()));
+                    this.world.spawnEntity(new EntityItem(this.world, this.posX, this.posY, this.posZ, this.getAxeItem()));
                 }
                 this.setDead();
             }
@@ -207,10 +208,10 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
 
             if (result.entityHit != getThrower() && getThrower() != null) {
                 EntityLivingBase entityLiving = (EntityLivingBase) result.entityHit;
-                ItemAwakenedAxe.EnumImpactMode mode = ItemAwakenedAxe.EnumImpactMode.getMode(this.getBoomerangItem());
+                ItemAwakenedAxe.EnumImpactMode mode = ItemAwakenedAxe.EnumImpactMode.getMode(this.getAxeItem());
                 mode.onImpact(this, entityLiving);
-                this.getBoomerangItem().damageItem(1, getThrower());
-                if (this.getBoomerangItem().getCount() == 0) {
+                this.getAxeItem().damageItem(1, getThrower());
+                if (this.getAxeItem().getCount() == 0) {
                     this.world.playSound(null, getPosition(), SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1.0F, 0.8F);
                     this.setDead();
                 }
@@ -221,7 +222,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
             IBlockState blockState = world.getBlockState(blockPos);
             boolean solid = blockState.getCollisionBoundingBox(world, blockPos) != null;
             if (!this.noClip && solid) {
-                ItemAwakenedAxe.EnumImpactMode mode = ItemAwakenedAxe.EnumImpactMode.getMode(this.getBoomerangItem());
+                ItemAwakenedAxe.EnumImpactMode mode = ItemAwakenedAxe.EnumImpactMode.getMode(this.getAxeItem());
                 mode.onImpact(this, null);
                 this.reverseDirection(true);
             }
@@ -241,7 +242,7 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
     private void returnBoomerangToPlayer(EntityPlayer player) {
         if (!this.world.isRemote) {
             ItemStack crowdedItem = player.inventory.getStackInSlot(this.thrownFromSlot);
-            player.inventory.mainInventory.set(this.thrownFromSlot, this.getBoomerangItem());
+            player.inventory.mainInventory.set(this.thrownFromSlot, this.getAxeItem());
             if (!crowdedItem.isEmpty()) {
                 ItemHandlerHelper.giveItemToPlayer(player, crowdedItem);
             }

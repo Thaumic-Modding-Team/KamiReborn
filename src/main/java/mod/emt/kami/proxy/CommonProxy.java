@@ -36,5 +36,8 @@ public class CommonProxy {
 
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/basics"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/zenith"));
+
+        // TODO: Add config setting for this
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/eternal_infusion"));
     }
 }

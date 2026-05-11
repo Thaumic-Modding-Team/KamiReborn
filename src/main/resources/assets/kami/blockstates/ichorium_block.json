@@ -3,7 +3,7 @@
   "defaults": {
     "model": "cube_all",
     "textures": {
-      "all": "kami:blocks/ichor_block"
+      "all": "kami:blocks/ichorium_block"
     }
   },
   "variants": {

@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModBlocksKAMI {
-    public static Block ICHOR_BLOCK;
+    public static Block ICHORIUM_BLOCK;
 
     public static final List<Block> MOD_BLOCKS = new ArrayList<>();
 
     public static void initBlocks() {
-        MOD_BLOCKS.add(ICHOR_BLOCK = new BlockMaterial("ichor_block", Material.ROCK, MapColor.GOLD, 0.8F, SoundType.STONE, "blockIchor"));
+        MOD_BLOCKS.add(ICHORIUM_BLOCK = new BlockMaterial("ichorium_block", Material.IRON, MapColor.GOLD, 5.0F, SoundType.METAL, "blockIchorium"));
     }
 }

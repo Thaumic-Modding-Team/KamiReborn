@@ -1,7 +1,7 @@
 itemGroup.KamiTab=KAMI: Reborn
 
 # Blocks
-tile.kami:ichor_block.name=Block of Ichor
+tile.kami:ichorium_block.name=Block of Ichorium
 
 # Items
 item.kami:awakened_ichorium_axe.name=Ichorium Axe of the Stormbreaker
@@ -15,7 +15,7 @@ item.kami:awakened_ichorweave_robe.name=Ichorweave Robe of the Stratosphere
 item.kami:blessed_silverwood_rod.name=Blessed Silverwood Rod
 item.kami:focus_pouch.name=Bottomless Pouch
 item.kami:ichorium_axe.name=Ichorium Axe
-item.kami:ichorium_caster.name=Ichorium Caster's Gauntlet
+item.kami:ichorium_caster.name=Ichorium Caster's Gauntlet of the Ascended
 item.kami:ichorium_ingot.name=Ichorium Ingot
 item.kami:ichorium_nugget.name=Ichorium Nugget
 item.kami:ichorium_pickaxe.name=Ichorium Pickaxe
@@ -123,6 +123,12 @@ kami.research.ichorium.title.subtitle=A metal harder than diamond
 kami.research.ichorium.stage.1=[WIP]
 kami.research.ichorium.stage.2=[WIP]
 
+# -- ICHORIUM CASTER
+kami.research.ichorium_caster.title=Ichorium Caster's Gauntlet of the Ascended
+kami.research.ichorium_caster.title.subtitle="I could simply snap my fingers and they would all cease to exist."
+kami.research.ichorium_caster.stage.1=[WIP]
+kami.research.ichorium_caster.stage.2=[WIP]
+
 # -- ICHORIUM TOOLS
 kami.research.ichorium_tools.title=Ichorium Tools
 kami.research.ichorium_tools.title.subtitle=Pinnacle of design
@@ -140,3 +146,9 @@ kami.research.ichorweave_fabric.title=Ichorweave Fabric
 kami.research.ichorweave_fabric.title.subtitle=Hope you brought a strong needle
 kami.research.ichorweave_fabric.stage.1=[WIP]
 kami.research.ichorweave_fabric.stage.2=[WIP]
+
+# -- INFUSION ENCHANTMENT: ETERNAL
+kami.research.eternal_infusion.title=Infusion Enchantment: Eternal
+kami.research.eternal_infusion.title.subtitle=Tools of divinity
+kami.research.eternal_infusion.stage.1=[WIP]
+kami.research.eternal_infusion.stage.2=[WIP]

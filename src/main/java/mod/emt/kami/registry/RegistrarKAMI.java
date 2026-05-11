@@ -33,6 +33,7 @@ public class RegistrarKAMI {
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
+        ModBlocksKAMI.initBlocks();
         ModBlocksKAMI.MOD_BLOCKS.forEach(registry::register);
     }
 
@@ -77,7 +78,7 @@ public class RegistrarKAMI {
 
     @SubscribeEvent
     public static void registerEntities(@Nonnull final RegistryEvent.Register<EntityEntry> event) {
-        registerEntity("eldritch_illusion", EntityThrownAxe.class, 4271710, 8149173);
+        registerEntity("thrown_awakened_ichorium_axe", EntityThrownAxe.class, 64, true);
     }
 
     @SideOnly(Side.CLIENT)
