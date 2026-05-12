@@ -50,7 +50,7 @@ public class TinkersConstruct {
                 new BowMaterialStats(1.2F, 1.0F, 8.0F));
         ICHORIUM.addTrait(GOD_COMPLEX);
         registerFluid(ICHORIUM_FLUID);
-        ICHORIUM_FLUID.setTemperature(580);
+        ICHORIUM_FLUID.setTemperature(1500);
         TinkerRegistry.integrate(ICHORIUM, ICHORIUM_FLUID, "Ichorium").preInit();
 
         modDivineMandate = new ModDivineMandate();
