@@ -1,0 +1,7 @@
+[
+  {
+    "type": "modifier",
+    "data": "modifiers/divine_mandate.json",
+    "module": "tconstruct:TinkerTools"
+  }
+]
