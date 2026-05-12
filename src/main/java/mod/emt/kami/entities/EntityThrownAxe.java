@@ -156,10 +156,10 @@ public class EntityThrownAxe extends EntityThrowable implements IEntityAdditiona
             }
 
             if (this.returnTime < -100) {
-                if(this.owner != null && this.owner.world.provider.getDimension() == this.world.provider.getDimension()) {
-                    this.setPositionAndUpdate(this.owner.posX, this.owner.posY, this.owner.posZ);
+                if(this.owner instanceof EntityPlayer && this.owner.world.provider.getDimension() == this.world.provider.getDimension()) {
+                    this.returnBoomerangToPlayer((EntityPlayer) this.owner);
                 } else {
-                    this.world.spawnEntity(new EntityItem(this.world, this.posX, this.posY, this.posZ, this.getAxeItem()));
+                    this.world.spawnEntity(new EntityItem(this.world, this.posX, this.posY, this.posZ, this.getAxeItem().copy()));
                 }
                 this.setDead();
             }

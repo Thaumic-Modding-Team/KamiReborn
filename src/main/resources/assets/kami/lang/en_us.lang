@@ -36,15 +36,15 @@ tooltip.kami.focus_pouch.keybind=When equipped, press [%s] to open pouch.
 tooltip.kami.revealing=Revealing
 tooltip.kami.tool.aoe_mode=Harvest Area: %1$dx%1$d
 tooltip.kami.tool.bury_area=Interment Radius: %d
-tooltip.kami.tool.bury_mode.all=Bury Mode: All
-tooltip.kami.tool.bury_mode.animals=Bury Mode: Animals
-tooltip.kami.tool.bury_mode.hostile=Bury Mode: Hostile
-tooltip.kami.tool.bury_mode.undead=Bury Mode: Undead
+tooltip.kami.tool.bury_mode.all=Inter All
+tooltip.kami.tool.bury_mode.animals=Inter Animals
+tooltip.kami.tool.bury_mode.hostiles=Inter Hostiles
+tooltip.kami.tool.bury_mode.undead=Inter Undead
 tooltip.kami.tool.dig_depth=Harvest Depth: %d
-tooltip.kami.tool.impact_mode.damage=Impact Mode: Damage
-tooltip.kami.tool.impact_mode.lightning=Impact Mode: Lightning
-tooltip.kami.tool.impact_mode.detonation=Impact Mode: Detonation
-tooltip.kami.tool.impact_mode.explosion=Impact Mode: Explosion
+tooltip.kami.tool.impact_mode.damage=Impact: Damaging
+tooltip.kami.tool.impact_mode.lightning=Impact: Thundering
+tooltip.kami.tool.impact_mode.detonation=Impact: Detonation
+tooltip.kami.tool.impact_mode.explosion=Impact: Explosion
 tooltip.kami.tool.slayer_mode.abomination=Abomination Slayer
 tooltip.kami.tool.slayer_mode.dragon=Dragonslayer
 tooltip.kami.tool.slayer_mode.living=Mortal's Bane
@@ -57,29 +57,32 @@ kami.research.zenith_base.title=Zenith
 kami.research.zenith_base.title.subtitle=The highest point
 kami.research.zenith_base.stage.1=This might be my magnum opus. I have the potential to reach beyond anything I could ever imagine, and perhaps... become a god myself.
 
+# -- AWAKENED ICHORIUM
+kami.research.awakened_ichorium.addenda.1=Interestingly, I have discovered that harvesting any block with an awakened ichorium tool will cause any drops to appear at my feet.<BR>While not very useful when harvesting single blocks, this effect will ensure that there is a much smaller chance of harvested materials being destroyed by falling into lava or the void when harvesting large areas.
+
 # -- AWAKENED ICHORIUM AXE
 kami.research.awakened_ichorium_axe.title=Ichorium Axe of the Stormbreaker
 kami.research.awakened_ichorium_axe.title.subtitle=Rainbow bridge not yet implemented
-kami.research.awakened_ichorium_axe.stage.1=[WIP]
-kami.research.awakened_ichorium_axe.stage.2=[WIP]
+kami.research.awakened_ichorium_axe.stage.1=With how readily Ichorium seems to accept aspects, I figure there must be a way to further empower the axe.<BR>Perhaps a heavy infusion of natural aspects will yield some result?
+kami.research.awakened_ichorium_axe.stage.2=This new axe, which I have named the Stormbreaker, is a truly fascinating tool.<BR>The amount of Herba essentia infused into the axe when it was created indicated some affiliation with plants, and that proved to be true.<BR>The axe is capable of chopping down entire trees with a single swing, even harvesting entire greatwood trees in seconds. Sneaking disables this power, allowing me to harvest single blocks at a time.<BR>Additionally, the axe shows a strange connection to the user. I once slipped and dropped the axe, yet no sooner had it impacted the ground than it bounced back into my hand.<BR>Upon testing, I found that throwing the axe appears to imbue it with power, traveling a short distance returning to my hand.<BR>I can cycle through the different impact effects by sneaking and interacting with the axe. The powers I have found are catalogued on the following pages.<PAGE>Impact: Damaging<DIV>Deals weapon damage when striking an enemy.<PAGE>Impact: Thundering<DIV>Summons a bolt of lighting when striking an enemy or the ground.<PAGE>Impact: Detonation<DIV>Spawns a small explosion that does not damage terrain when striking an enemy or the ground.<BR>Explosion strength increases with higher throw velocity.<PAGE>Impact: Explosion<DIV>Spawns a large explosion that damages terrain when colliding with an enemy or the ground.<BR>Explosion strength increases with higher throw velocity.
 
 # -- AWAKENED ICHORIUM PICKAXE
 kami.research.awakened_ichorium_pickaxe.title=Ichorium Pickaxe of the Tunneler
 kami.research.awakened_ichorium_pickaxe.title.subtitle=Who needs a quarry?
-kami.research.awakened_ichorium_pickaxe.stage.1=[WIP]
-kami.research.awakened_ichorium_pickaxe.stage.2=[WIP]
+kami.research.awakened_ichorium_pickaxe.stage.1=After journeying so far into the depths of the arcane, surely the answer isn't as simple as it seems?<BR>If ichorium tools are capable of achieving an "awakening" under the right circumstances, perhaps the best choice is to infuse the tool with the aspect it is normally associated with.
+kami.research.awakened_ichorium_pickaxe.stage.2=The awakened ichorium pickaxe can only be described as the tunneler's dream.<BR>Capable of mining up to 49 blocks simultaneously, it is truly a tool capable of reshaping the world.<BR>Sneak right-clicking while holding the tool allows me to cycle through the harvest area levels, allowing the pickaxe to harvest 1x1, 3x3, 5x5, and 7x7 areas.<BR>Additionally, holding right-click empowers the pickaxe, which, upon release, will dig a tunnel in the direction I am facing.
 
 # -- AWAKENED ICHORIUM SHOVEL
 kami.research.awakened_ichorium_shovel.title=Ichorium Shovel of the Gravedigger
 kami.research.awakened_ichorium_shovel.title.subtitle=I cast mold earth!
-kami.research.awakened_ichorium_shovel.stage.1=[WIP]
-kami.research.awakened_ichorium_shovel.stage.2=[WIP]
+kami.research.awakened_ichorium_shovel.stage.1=I have tried to infuse the ichorium shovel in so many ways, but none of the aspects I have found manage to bind to the tool.<BR>It is almost as if it has a purpose unknown to me... Maybe something more morbid is the answer.
+kami.research.awakened_ichorium_shovel.stage.2=I'm not sure if I can categorize this as a success...<BR>Empowering the shovel has allowed it to dig a larger area, but it also seems to have an unsettling affinity for burying creatures alive.<BR>Holding right click causes the shovel to build up charge. Upon release, all entities surrounding me are instantly buried underground, where they slowly suffocate to death.<BR>While effective, it is certainly unsettling to hear animal suffocate just below the surface. Luckily, the shovel can be attuned to only inter specific entities. The specific attunement can be cycled by sneak right clicking while holding the tool.<PAGE>Inter Undead<DIV>Buries all undead entities surrounding the player.<BR>Charge duration increases the interment area.<PAGE>Inter Animals<DIV>Buries all animals surrounding the player.<BR>Charge duration increases the interment area.<PAGE>Inter Hostiles<DIV>Buries all hostile entities surrounding the player.<BR>Charge duration increases the interment area.<PAGE>Inter All<DIV>Buries all creatures surrounding the player.<BR>Charge duration increases the interment area.
 
 # -- AWAKENED ICHORIUM SWORD
 kami.research.awakened_ichorium_sword.title=Ichorium Sword of the Titanslayer
 kami.research.awakened_ichorium_sword.title.subtitle=Situationally effective
-kami.research.awakened_ichorium_sword.stage.1=[WIP]
-kami.research.awakened_ichorium_sword.stage.2=The awakened ichorium sword, dubbed the titanslayer, has the unique ability to attune itself to specific enemy types, granting bonuses when striking attuned enemies.<PAGE>Unattuned<DIV>When not attuned, the awakened sword forgoes foregoes any entity attunement bonus.<BR>Instead all energy within the sword is channeled into the blade, doubling the base damage of the weapon.<PAGE>Mortal's Bane<DIV>A bane to all living creatures, when attuned to motrals, the awakened sword bypasses all armor and deals up to 20% of a living entity's maximum hp on every hit.<PAGE>Undead Slayer<DIV>Some might call it a holy sword, but I know better.<BR>When attuned to undeath, the awakened sword bypassses all armor and deals up to 20% of an undead target's maxium health.<PAGE>Dragonslayer<DIV>Legends speak of the greatest warriors who ever lived slaying mighty dragons. While I may not be able to achieve their level of noteriety, the awkanened sword can get me close to achieving their feats.<BR>When attuned to dragons, the awakened sword bypasses all armor and deals up to 20% of a dragon's maximum health.<BR>Interestingly, this effect also appears to extend to entities wearing dragon-based armor.<PAGE>Abomination Slayer<DIV>During my studies I have encountered entities that do not fit into any standard categories.<BR>These creatures seem to either be otherworldly Eldritch beings, or Tainted abominations that revel in high-flux environments.<BR>When attuned to abominations, the awakened sword bypasses all armor and deal up to 20% of the target's maximum health.
+kami.research.awakened_ichorium_sword.stage.1=The ichorium sword is almost too mundane considering its cost. I would have expected such a legendary weapon to be sharper at the very least.<BR>Perhaps it's not the weapon I should focus on, but rather the entity being struck...
+kami.research.awakened_ichorium_sword.stage.2=The awakened ichorium sword, which I have named the titanslayer, has the unique ability to attune itself to specific enemy types, granting bonuses when striking attuned enemies.<PAGE>Unattuned<DIV>When not attuned, the awakened sword foregoes any entity attunement bonus.<BR>Instead all energy within the sword is channeled into the blade, doubling the base damage of the weapon.<PAGE>Mortal's Bane<DIV>A bane to all living creatures, when attuned to mortals, the awakened sword bypasses all armor and deals up to 20% of a living entity's maximum hp on every hit.<PAGE>Undead Slayer<DIV>Some might call it a holy sword, but I know better.<BR>When attuned to undeath, the awakened sword bypasses all armor and deals up to 20% of an undead target's maximum health.<PAGE>Dragonslayer<DIV>Legends speak of the greatest warriors who ever lived slaying mighty dragons. While I may not be able to achieve their level of notoriety, the awakened sword can get me close to achieving their feats.<BR>When attuned to dragons, the awakened sword bypasses all armor and deals up to 20% of a dragon's maximum health.<BR>Interestingly, this effect also appears to extend to entities wearing dragon-based armor.<PAGE>Abomination Slayer<DIV>During my studies I have encountered entities that do not fit into any standard categories.<BR>These creatures seem to either be otherworldly Eldritch beings, or Tainted abominations that revel in high-flux environments.<BR>When attuned to abominations, the awakened sword bypasses the armor of tainted or eldritch creatures and deals up to 20% of the target's maximum health.
 
 # -- AWAKENED ICHORWEAVE BOOTS
 kami.research.awakened_ichorweave_boots.title=Ichorweave Boots of the Biosphere
@@ -150,5 +153,5 @@ kami.research.ichorweave_fabric.stage.2=[WIP]
 # -- INFUSION ENCHANTMENT: ETERNAL
 kami.research.eternal_infusion.title=Infusion Enchantment: Eternal
 kami.research.eternal_infusion.title.subtitle=Tools of divinity
-kami.research.eternal_infusion.stage.1=[WIP]
-kami.research.eternal_infusion.stage.2=[WIP]
+kami.research.eternal_infusion.stage.1=Ichor is such a strange substance. It is malleable enough to be worked into tools and armor relatively easily, yet the moment it takes its final shape it is nearly impossible to alter.<BR>Perhaps there is a way to imbue its properties into other tools. Even a thin coating would significantly improve a tool's durability.
+kami.research.eternal_infusion.stage.2=I can only describe what I have achieved as incredible.<BR>I set out to increase the durability of my tools, but instead I have found a way to make them completely invulnerable to damage.<BR>Taking what I know from infusion enchantments, I have managed to bind ichor to damagable items almost perfectly. Not only do the infused items retain their original properties, they also become completely unbreakable.

@@ -4,7 +4,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.entity.Entity;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.opengl.GL11;
 
 public class ModelIchorArmor extends ModelCustomArmor {
     public ModelIchorArmor(float modelSize) {

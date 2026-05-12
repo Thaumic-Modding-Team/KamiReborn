@@ -4,22 +4,14 @@
       "key": "KAMI_AWAKENED_ICHORIUM_AXE",
       "name": "kami.research.awakened_ichorium_axe.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:awakened_ichorium_axe"
-      ],
-      "parents": [
-        "KAMI_ICHORIUM_TOOLS"
-      ],
+      "icons": ["kami:awakened_ichorium_axe"],
+      "parents": ["KAMI_ICHORIUM_TOOLS"],
       "meta": ["REVERSE"],
-      "location": [
-        5,
-        -1
-      ],
+      "location": [5, -1],
       "stages": [
         {
           "text": "kami.research.awakened_ichorium_axe.stage.1",
-          "required_knowledge": [
-          ]
+          "required_knowledge": []
         },
         {
           "text": "kami.research.awakened_ichorium_axe.stage.2",
@@ -27,28 +19,26 @@
             "kami:ichorium_axe"
           ]
         }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorium.addenda.1",
+          "required_research": ["KAMI_AWAKENED_ICHORIUM_AXE@2"]
+        }
       ]
     },
     {
       "key": "KAMI_AWAKENED_ICHORIUM_PICKAXE",
       "name": "kami.research.awakened_ichorium_pickaxe.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:awakened_ichorium_pickaxe"
-      ],
-      "parents": [
-        "KAMI_ICHORIUM_TOOLS"
-      ],
+      "icons": ["kami:awakened_ichorium_pickaxe"],
+      "parents": ["KAMI_ICHORIUM_TOOLS"],
       "meta": ["REVERSE"],
-      "location": [
-        5,
-        -3
-      ],
+      "location": [5, -3],
       "stages": [
         {
           "text": "kami.research.awakened_ichorium_pickaxe.stage.1",
-          "required_knowledge": [
-          ]
+          "required_knowledge": []
         },
         {
           "text": "kami.research.awakened_ichorium_pickaxe.stage.2",
@@ -56,23 +46,22 @@
             "kami:ichorium_pickaxe"
           ]
         }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorium.addenda.1",
+          "required_research": ["KAMI_AWAKENED_ICHORIUM_PICKAXE@2"]
+        }
       ]
     },
     {
       "key": "KAMI_AWAKENED_ICHORIUM_SHOVEL",
       "name": "kami.research.awakened_ichorium_shovel.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:awakened_ichorium_shovel"
-      ],
-      "parents": [
-        "KAMI_ICHORIUM_TOOLS"
-      ],
+      "icons": ["kami:awakened_ichorium_shovel"],
+      "parents": ["KAMI_ICHORIUM_TOOLS"],
       "meta": ["REVERSE"],
-      "location": [
-        5,
-        -5
-      ],
+      "location": [5, -5],
       "stages": [
         {
           "text": "kami.research.awakened_ichorium_shovel.stage.1",
@@ -85,23 +74,22 @@
             "kami:ichorium_shovel"
           ]
         }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorium.addenda.1",
+          "required_research": ["KAMI_AWAKENED_ICHORIUM_SHOVEL@2"]
+        }
       ]
     },
     {
       "key": "KAMI_AWAKENED_ICHORIUM_SWORD",
       "name": "kami.research.awakened_ichorium_sword.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:awakened_ichorium_sword"
-      ],
-      "parents": [
-        "KAMI_ICHORIUM_TOOLS"
-      ],
+      "icons": ["kami:awakened_ichorium_sword"],
+      "parents": ["KAMI_ICHORIUM_TOOLS"],
       "meta": ["REVERSE"],
-      "location": [
-        5,
-        -7
-      ],
+      "location": [5, -7],
       "stages": [
         {
           "text": "kami.research.awakened_ichorium_sword.stage.1",
@@ -120,17 +108,10 @@
       "key": "KAMI_AWAKENED_ICHORWEAVE_BOOTS",
       "name": "kami.research.awakened_ichorweave_boots.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:awakened_ichorweave_boots"
-      ],
-      "parents": [
-        "KAMI_ICHORWEAVE_ARMOR"
-      ],
+      "icons": ["kami:awakened_ichorweave_boots"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR"],
       "meta": ["REVERSE"],
-      "location": [
-        -5,
-        -1
-      ],
+      "location": [-5, -1],
       "stages": [
         {
           "text": "kami.research.awakened_ichorweave_boots.stage.1",
@@ -150,17 +131,10 @@
       "key": "KAMI_AWAKENED_ICHORWEAVE_HOOD",
       "name": "kami.research.awakened_ichorweave_hood.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:awakened_ichorweave_hood"
-      ],
-      "parents": [
-        "KAMI_ICHORWEAVE_ARMOR"
-      ],
+      "icons": ["kami:awakened_ichorweave_hood"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR"],
       "meta": ["REVERSE"],
-      "location": [
-        -5,
-        -7
-      ],
+      "location": [-5, -7],
       "stages": [
         {
           "text": "kami.research.awakened_ichorweave_hood.stage.1",
@@ -171,7 +145,6 @@
           "text": "kami.research.awakened_ichorweave_hood.stage.2",
           "recipes": [
             "kami:ichorweave_hood"
-
           ]
         }
       ]
@@ -180,17 +153,10 @@
       "key": "KAMI_AWAKENED_ICHORWEAVE_LEGGINGS",
       "name": "kami.research.awakened_ichorweave_leggings.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:awakened_ichorweave_leggings"
-      ],
-      "parents": [
-        "KAMI_ICHORWEAVE_ARMOR"
-      ],
+      "icons": ["kami:awakened_ichorweave_leggings"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR"],
       "meta": ["REVERSE"],
-      "location": [
-        -5,
-        -3
-      ],
+      "location": [-5, -3],
       "stages": [
         {
           "text": "kami.research.awakened_ichorweave_leggings.stage.1",
@@ -210,17 +176,10 @@
       "key": "KAMI_AWAKENED_ICHORWEAVE_ROBE",
       "name": "kami.research.awakened_ichorweave_robe.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:awakened_ichorweave_robe"
-      ],
-      "parents": [
-        "KAMI_ICHORWEAVE_ARMOR"
-      ],
+      "icons": ["kami:awakened_ichorweave_robe"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR"],
       "meta": ["REVERSE"],
-      "location": [
-        -5,
-        -5
-      ],
+      "location": [-5, -5],
       "stages": [
         {
           "text": "kami.research.awakened_ichorweave_robe.stage.1",
@@ -240,18 +199,10 @@
       "key": "KAMI_BOTTOMLESS_POUCH",
       "name": "kami.research.bottomless_pouch.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:focus_pouch"
-      ],
-      "parents": [
-        "KAMI_ICHORIUM",
-        "KAMI_ICHORWEAVE_FABRIC"
-      ],
+      "icons": ["kami:focus_pouch"],
+      "parents": ["KAMI_ICHORIUM", "KAMI_ICHORWEAVE_FABRIC"],
       "meta": ["REVERSE"],
-      "location": [
-        0,
-        -6
-      ],
+      "location": [0, -6],
       "stages": [
         {
           "text": "kami.research.bottomless_pouch.stage.1",
@@ -270,16 +221,9 @@
       "key": "KAMI_ICHOR",
       "name": "kami.research.ichor.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:ichor"
-      ],
-      "parents": [
-        "ZENITH_BASE"
-      ],
-      "location": [
-        0,
-        -2
-      ],
+      "icons": ["kami:ichor"],
+      "parents": ["ZENITH_BASE"],
+      "location": [0, -2],
       "stages": [
         {
           "text": "kami.research.ichor.stage.1",
@@ -298,17 +242,10 @@
       "key": "KAMI_ICHORIUM_CASTER",
       "name": "kami.research.ichorium_caster.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:ichorium_caster"
-      ],
-      "parents": [
-        "KAMI_BOTTOMLESS_POUCH"
-      ],
+      "icons": ["kami:ichorium_caster"],
+      "parents": ["KAMI_BOTTOMLESS_POUCH"],
       "meta": ["REVERSE"],
-      "location": [
-        0,
-        -8
-      ],
+      "location": [0, -8],
       "stages": [
         {
           "text": "kami.research.ichorium_caster.stage.1",
@@ -333,13 +270,8 @@
         "kami:ichorium_pickaxe",
         "kami:ichorium_axe"
       ],
-      "parents": [
-        "KAMI_ICHORIUM"
-      ],
-      "location": [
-        3,
-        -4
-      ],
+      "parents": ["KAMI_ICHORIUM"],
+      "location": [3, -4],
       "stages": [
         {
           "text": "kami.research.ichorium_tools.stage.1",
@@ -362,16 +294,9 @@
       "key": "KAMI_ICHORIUM",
       "name": "kami.research.ichorium.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:ichorium_ingot"
-      ],
-      "parents": [
-        "KAMI_ICHOR"
-      ],
-      "location": [
-        1,
-        -4
-      ],
+      "icons": ["kami:ichorium_ingot"],
+      "parents": ["KAMI_ICHOR"],
+      "location": [1, -4],
       "stages": [
         {
           "text": "kami.research.ichorium.stage.1",
@@ -396,13 +321,8 @@
         "kami:ichorweave_leggings",
         "kami:ichorweave_boots"
       ],
-      "parents": [
-        "KAMI_ICHORWEAVE_FABRIC"
-      ],
-      "location": [
-        -3,
-        -4
-      ],
+      "parents": ["KAMI_ICHORWEAVE_FABRIC"],
+      "location": [-3, -4],
       "stages": [
         {
           "text": "kami.research.ichorweave_armor.stage.1",
@@ -425,16 +345,9 @@
       "key": "KAMI_ICHORWEAVE_FABRIC",
       "name": "kami.research.ichorweave_fabric.title",
       "category": "ZENITH",
-      "icons": [
-        "kami:ichorweave_fabric"
-      ],
-      "parents": [
-        "KAMI_ICHOR"
-      ],
-      "location": [
-        -1,
-        -4
-      ],
+      "icons": ["kami:ichorweave_fabric"],
+      "parents": ["KAMI_ICHOR"],
+      "location": [-1, -4],
       "stages": [
         {
           "text": "kami.research.ichorweave_fabric.stage.1",
