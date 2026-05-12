@@ -1,0 +1,9 @@
+{
+  "type": "metal",
+  "suffix": "metal_base",
+  "parameters": {
+    "color": "D67B09",
+    "shinyness": 0.3,
+    "brightness": 0.1
+  }
+}

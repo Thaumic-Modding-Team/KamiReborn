@@ -1,6 +1,7 @@
 package mod.emt.kami.proxy;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.handlers.GuiHandlerKami;
 import mod.emt.kami.network.PacketHandler;
 import mod.emt.kami.registry.ModRecipesKAMI;
@@ -14,11 +15,13 @@ import thaumcraft.api.research.ResearchCategories;
 public class CommonProxy {
     public void preInit() {
         PacketHandler.init();
+        KamiCompatHandler.preInit();
     }
 
     public void init() {
         ModRecipesKAMI.registerOreDicts();
         registerResearch();
+        KamiCompatHandler.init();
     }
 
     public void postInit() {

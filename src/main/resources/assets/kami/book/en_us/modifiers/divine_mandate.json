@@ -1,0 +1,24 @@
+{
+  "modifier": "kami_divine_mandate",
+  "text": [{
+    "text": "Using the sheer power of Ichorium, you can now force harvested items to teleport towards you against their will!"
+  }],
+  "effects": [
+    "Harvested items are teleported towards you",
+    "Useful when flying or mining over lava",
+    "Does not work for weapons",
+    "No pickup delay",
+    "Single use"
+  ],
+  "demoTool": [
+    "tconstruct:pickaxe",
+    "tconstruct:shovel",
+    "tconstruct:hatchet",
+    "tconstruct:kama",
+    "tconstruct:mattock",
+    "tconstruct:hammer",
+    "tconstruct:lumberaxe",
+    "tconstruct:excavator",
+    "tconstruct:scythe"
+  ]
+}

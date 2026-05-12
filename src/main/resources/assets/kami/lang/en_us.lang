@@ -155,3 +155,10 @@ kami.research.eternal_infusion.title=Infusion Enchantment: Eternal
 kami.research.eternal_infusion.title.subtitle=Tools of divinity
 kami.research.eternal_infusion.stage.1=Ichor is such a strange substance. It is malleable enough to be worked into tools and armor relatively easily, yet the moment it takes its final shape it is nearly impossible to alter.<BR>Perhaps there is a way to imbue its properties into other tools. Even a thin coating would significantly improve a tool's durability.
 kami.research.eternal_infusion.stage.2=I can only describe what I have achieved as incredible.<BR>I set out to increase the durability of my tools, but instead I have found a way to make them completely invulnerable to damage.<BR>Taking what I know from infusion enchantments, I have managed to bind ichor to damagable items almost perfectly. Not only do the infused items retain their original properties, they also become completely unbreakable.
+
+# -- MOD COMPAT: TINKERS' CONSTRUCT
+material.kami_ichorium.name=Ichorium
+
+modifier.kami_divine_mandate.name=Divine Mandate
+modifier.kami_god_complex.name=God Complex
+modifier.kami_god_complex.desc=§oLemme show you how to scratch it.§r\nWhen at least three or more parts have this trait, the tool becomes unbreakable.
