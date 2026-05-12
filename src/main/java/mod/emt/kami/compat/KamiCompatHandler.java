@@ -1,6 +1,7 @@
 package mod.emt.kami.compat;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.compat.tinkers.ConstructsArmory;
 import mod.emt.kami.compat.tinkers.TinkersConstruct;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -17,7 +18,7 @@ public class KamiCompatHandler {
             // Only load Construct's Armory if Tinkers' Construct is also loaded
             if (Loader.isModLoaded("conarm"))
             {
-                //ConstructsArmory.preInit();
+                ConstructsArmory.preInit();
             }
         }
     }
@@ -27,6 +28,12 @@ public class KamiCompatHandler {
         if (Loader.isModLoaded("tconstruct"))
         {
             TinkersConstruct.init();
+
+            // Only load Construct's Armory if Tinkers' Construct is also loaded
+            if (Loader.isModLoaded("conarm"))
+            {
+                ConstructsArmory.init();
+            }
         }
     }
 }

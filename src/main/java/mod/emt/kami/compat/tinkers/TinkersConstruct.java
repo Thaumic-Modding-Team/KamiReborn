@@ -16,9 +16,10 @@ public class TinkersConstruct {
     // These materials are used universally between tools and armor
     public static final Material ICHORIUM = new Material("kami_ichorium", 0xFF910C);
 
-    // These traits are for tools and not armor
+    // Normally you'd need both tool and armor traits, but this one works with both just fine
     public static final AbstractTrait GOD_COMPLEX = new TraitGodComplex();
 
+    // Modifiers
     public static Modifier modDivineMandate;
 
     public static void preInit()
@@ -36,6 +37,7 @@ public class TinkersConstruct {
 
     public static void init()
     {
+        // We'd need this if we're also adding into Tinkers' Construct's guidebook
         TinkerBook.INSTANCE.addRepository(new ModuleFileRepository(new ResourceLocation(Kami.MOD_ID, "book").toString()));
 
         ICHORIUM.addCommonItems("Ichorium");
