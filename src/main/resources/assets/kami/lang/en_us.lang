@@ -32,7 +32,7 @@ item.kami:ichor.name=Ichor
 tooltip.kami.awakened=Awakened
 tooltip.kami.awakened_set.info=§bArmor Set§r: Awakened Ichor (%d/4)
 tooltip.kami.awakened_set.desc=Reduces all damage taken by 80%%
-tooltip.kami.focus_pouch.keybind=When equipped, press [%s] to open pouch.
+tooltip.kami.focus_pouch.keybind=When equipped, press [%s] to open.
 tooltip.kami.revealing=Revealing
 tooltip.kami.tool.aoe_mode=Harvest Area: %1$dx%1$d
 tooltip.kami.tool.bury_area=Interment Radius: %d
@@ -108,7 +108,7 @@ kami.research.awakened_ichorweave_robe.title.subtitle=Oxygen not included
 kami.research.awakened_ichorweave_robe.stage.1=[WIP]
 kami.research.awakened_ichorweave_robe.stage.2=[WIP]
 
-# -- Bottomless Pouch
+# -- BOTTOMLESS POUCH
 kami.research.bottomless_pouch.title=Bottomless Pouch
 kami.research.bottomless_pouch.title.subtitle=Try not to tear it
 kami.research.bottomless_pouch.stage.1=[WIP]
@@ -117,14 +117,14 @@ kami.research.bottomless_pouch.stage.2=[WIP]
 # -- ICHOR
 kami.research.ichor.title=Ichor
 kami.research.ichor.title.subtitle=Blood of the Gods
-kami.research.ichor.stage.1=[WIP]
-kami.research.ichor.stage.2=[WIP]
+kami.research.ichor.stage.1=All of my experiments into have, up to this point, resulted in relatively mundane materials.<BR>I feel as though there must be a way to go a step further, making a material that transcends physical limitations.
+kami.research.ichor.stage.2=Through extensive study in all subjects of thaumaturgy I have discovered a substance that can be considered to be the next step in my endeavours.<BR>This extremely powerful substance, which I am calling "Ichor" contains an unimaginable amount of raw awakened power.<BR>I am sure I will be able to put it to use for countless devices in the future.
 
 # -- ICHORIUM
 kami.research.ichorium.title=Ichorium
 kami.research.ichorium.title.subtitle=A metal harder than diamond
-kami.research.ichorium.stage.1=[WIP]
-kami.research.ichorium.stage.2=[WIP]
+kami.research.ichorium.stage.1=Experimentation has shown that Ichor is capable of bonding to most metals, but the results are useless to a degree that surprised even me.<BR>However, materials that are otherworldy ,for lack of a better term, are almost drawn to one another.<BR>While they mix about as well as water and oil, infusion may provide the key to transforming them into a homogeneous material.
+kami.research.ichorium.stage.2=I have managed to blend Ichor with void metal to create an entirely new material with completely unique properties.<BR>It is completely impervious to corrosion or damage, yet it is almost as malleable as clay.<BR>I haven't found any uses for it yet, but I know it shouldn't take me too long.
 
 # -- ICHORIUM CASTER
 kami.research.ichorium_caster.title=Ichorium Caster's Gauntlet of the Ascended
