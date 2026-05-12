@@ -70,7 +70,7 @@ kami.research.awakened_ichorium_axe.stage.2=This new axe, which I have named the
 kami.research.awakened_ichorium_pickaxe.title=Ichorium Pickaxe of the Tunneler
 kami.research.awakened_ichorium_pickaxe.title.subtitle=Who needs a quarry?
 kami.research.awakened_ichorium_pickaxe.stage.1=After journeying so far into the depths of the arcane, surely the answer isn't as simple as it seems?<BR>If ichorium tools are capable of achieving an "awakening" under the right circumstances, perhaps the best choice is to infuse the tool with the aspect it is normally associated with.
-kami.research.awakened_ichorium_pickaxe.stage.2=The awakened ichorium pickaxe can only be described as the tunneler's dream.<BR>Capable of mining up to 49 blocks simultaneously, it is truly a tool capable of reshaping the world.<BR>Sneak right-clicking while holding the tool allows me to cycle through the harvest area levels, allowing the pickaxe to harvest 1x1, 3x3, 5x5, and 7x7 areas.<BR>Additionally, holding right-click empowers the pickaxe, which, upon release, will dig a tunnel in the direction I am facing.
+kami.research.awakened_ichorium_pickaxe.stage.2=The awakened ichorium pickaxe can only be described as the tunneler's dream.<BR>Capable of harvesting massive areas of stone simultaneously, it is truly a marvel.<BR>Sneaking and right-clicking while holding the tool allows me to cycle through the harvest area levels.<BR>Holding right-click empowers the pickaxe, which, upon release, will dig a tunnel in the direction I am facing.
 
 # -- AWAKENED ICHORIUM SHOVEL
 kami.research.awakened_ichorium_shovel.title=Ichorium Shovel of the Gravedigger
