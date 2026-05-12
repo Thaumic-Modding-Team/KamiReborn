@@ -26,6 +26,7 @@ public class CommonProxy {
 
     public void postInit() {
         NetworkRegistry.INSTANCE.registerGuiHandler(Kami.instance, new GuiHandlerKami());
+        KamiCompatHandler.postInit();
     }
 
     private void registerResearch() {

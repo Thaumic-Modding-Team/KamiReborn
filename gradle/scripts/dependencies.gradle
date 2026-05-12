@@ -58,7 +58,8 @@ dependencies {
     def modMap = [:]
     def loadMap = [:]
 
-    modMap.put(["curse.maven:tinkers-antique-1242239:7339332", "curse.maven:mantle-74924:2713386"], project.use_tinkersconstruct)
+    modMap.put(["curse.maven:tinkers-antique-1242239:7999105", "curse.maven:mantle-74924:2713386"], project.use_tinkersconstruct)
+    modMap.put(["curse.maven:antique-armory-1394222:7339320"], project.use_constructsarmory)
 
     loadMap.clear()
     modMap.each{mods, load -> {
