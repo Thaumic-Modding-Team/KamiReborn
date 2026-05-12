@@ -152,3 +152,9 @@ kami.research.eternal_infusion.title=Infusion Enchantment: Eternal
 kami.research.eternal_infusion.title.subtitle=Tools of divinity
 kami.research.eternal_infusion.stage.1=[WIP]
 kami.research.eternal_infusion.stage.2=[WIP]
+
+# -- MOD COMPAT: TINKERS' CONSTRUCT
+material.kami_ichorium.name=Ichorium
+
+modifier.kami_god_complex.name=God Complex
+modifier.kami_god_complex.desc=§oLemme show you how to scratch it.§r\nWhen at least three or more parts have this trait, the tool becomes unbreakable.

@@ -22,7 +22,8 @@ public class Kami {
     public static final String MOD_NAME = Tags.MOD_NAME;
     public static final String MOD_VERSION = Tags.VERSION;
     public static final String DEPENDENCIES = "required-after:thaumcraft" +
-            ";required-after:thaumicapi";
+            ";required-after:thaumicapi" +
+            ";after:tconstruct";
 
     public static final String CLIENT_PROXY = "mod.emt.kami.proxy.ClientProxy";
     public static final String COMMON_PROXY = "mod.emt.kami.proxy.CommonProxy";
