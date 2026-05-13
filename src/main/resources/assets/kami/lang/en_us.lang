@@ -147,8 +147,8 @@ kami.research.ichorweave_armor.stage.2=I now have the ability to construct the I
 # -- ICHORWEAVE FABRIC
 kami.research.ichorweave_fabric.title=Ichorweave Fabric
 kami.research.ichorweave_fabric.title.subtitle=Hope you brought a strong needle
-kami.research.ichorweave_fabric.stage.1=[WIP]
-kami.research.ichorweave_fabric.stage.2=[WIP]
+kami.research.ichorweave_fabric.stage.1=Ichor shows a strong reaction towards cloth. If done correctly, I should be able to create the perfect fabric.
+kami.research.ichorweave_fabric.stage.2=I now am able to upgrade basic magical fabric into a special ichorweave fabric. It is immune to tearing and it is oddly flexible, imagine the possibilities!
 
 # -- INFUSION ENCHANTMENT: ETERNAL
 kami.research.eternal_infusion.title=Infusion Enchantment: Eternal
