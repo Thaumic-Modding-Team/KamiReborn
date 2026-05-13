@@ -125,6 +125,17 @@
 
           ]
         }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorweave.addenda.1",
+          "required_research": [
+            "KAMI_AWAKENED_ICHORWEAVE_HOOD@2",
+            "KAMI_AWAKENED_ICHORWEAVE_ROBE@2",
+            "KAMI_AWAKENED_ICHORWEAVE_LEGGINGS@2",
+            "KAMI_AWAKENED_ICHORWEAVE_BOOTS@2"
+          ]
+        }
       ]
     },
     {
@@ -145,6 +156,17 @@
           "text": "kami.research.awakened_ichorweave_hood.stage.2",
           "recipes": [
             "kami:ichorweave_hood"
+          ]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorweave.addenda.1",
+          "required_research": [
+            "KAMI_AWAKENED_ICHORWEAVE_HOOD@2",
+            "KAMI_AWAKENED_ICHORWEAVE_ROBE@2",
+            "KAMI_AWAKENED_ICHORWEAVE_LEGGINGS@2",
+            "KAMI_AWAKENED_ICHORWEAVE_BOOTS@2"
           ]
         }
       ]
@@ -170,6 +192,17 @@
 
           ]
         }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorweave.addenda.1",
+          "required_research": [
+            "KAMI_AWAKENED_ICHORWEAVE_HOOD@2",
+            "KAMI_AWAKENED_ICHORWEAVE_ROBE@2",
+            "KAMI_AWAKENED_ICHORWEAVE_LEGGINGS@2",
+            "KAMI_AWAKENED_ICHORWEAVE_BOOTS@2"
+          ]
+        }
       ]
     },
     {
@@ -191,6 +224,17 @@
           "recipes": [
             "kami:ichorweave_robe"
 
+          ]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorweave.addenda.1",
+          "required_research": [
+            "KAMI_AWAKENED_ICHORWEAVE_HOOD@2",
+            "KAMI_AWAKENED_ICHORWEAVE_ROBE@2",
+            "KAMI_AWAKENED_ICHORWEAVE_LEGGINGS@2",
+            "KAMI_AWAKENED_ICHORWEAVE_BOOTS@2"
           ]
         }
       ]
@@ -257,6 +301,12 @@
           "recipes": [
             "kami:ichor"
           ]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.ichorium_caster.addenda.1",
+          "required_research": ["GAUNTLET_AUGMENTATION"]
         }
       ]
     },

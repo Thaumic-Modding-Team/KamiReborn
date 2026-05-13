@@ -57,8 +57,9 @@ kami.research.zenith_base.title=Zenith
 kami.research.zenith_base.title.subtitle=The highest point
 kami.research.zenith_base.stage.1=This might be my magnum opus. I have the potential to reach beyond anything I could ever imagine, and perhaps... become a god myself.
 
-# -- AWAKENED ICHORIUM
+# -- AWAKENED ICHOR
 kami.research.awakened_ichorium.addenda.1=Interestingly, I have discovered that harvesting any block with an awakened ichorium tool will cause any drops to appear at my feet.<BR>While not very useful when harvesting single blocks, this effect will ensure that there is a much smaller chance of harvested materials being destroyed by falling into lava or the void when harvesting large areas.
+kami.research.awakened_ichorweave.addenda.1=It appears that awakened ichorweave equipment has a resonance that only occurs when worn by a living creature.<BR>When equipped with a full set of awakened ichorweave armor, all damage taken is reduced by 80%.
 
 # -- AWAKENED ICHORIUM AXE
 kami.research.awakened_ichorium_axe.title=Ichorium Axe of the Stormbreaker
@@ -87,32 +88,32 @@ kami.research.awakened_ichorium_sword.stage.2=The awakened ichorium sword, which
 # -- AWAKENED ICHORWEAVE BOOTS
 kami.research.awakened_ichorweave_boots.title=Ichorweave Boots of the Biosphere
 kami.research.awakened_ichorweave_boots.title.subtitle="Nature’s guardians" my foot!
-kami.research.awakened_ichorweave_boots.stage.1=[WIP]
-kami.research.awakened_ichorweave_boots.stage.2=[WIP]
+kami.research.awakened_ichorweave_boots.stage.1=Closer examination reveals that Ichor is unlike any material I have encountered, almost as though it is asleep...<BR>I wonder what would occur if I managed to awaken or empower ichorweave armor?
+kami.research.awakened_ichorweave_boots.stage.2=While I admit I was expecting more, I certainly cannot complain with the results.<BR>When awakened, the ichorweave boots grant the wearer increased movement speed and jump height, similar to the effects granted by the boots of the traveler.<BR>While the effects are relatively mundane, it certainly is nice to no longer have to worry about constantly recharging my boots.
 
 # -- AWAKENED ICHORWEAVE HOOD
 kami.research.awakened_ichorweave_hood.title=Ichorweave Hood of the Abyssal Depths
-kami.research.awakened_ichorweave_hood.title.subtitle=[WIP]
-kami.research.awakened_ichorweave_hood.stage.1=[WIP]
-kami.research.awakened_ichorweave_hood.stage.2=[WIP]
+kami.research.awakened_ichorweave_hood.title.subtitle=Peer into the darkness
+kami.research.awakened_ichorweave_hood.stage.1=Closer examination reveals that Ichor is unlike any material I have encountered, almost as though it is asleep...<BR>I wonder what would occur if I managed to awaken or empower ichorweave armor?
+kami.research.awakened_ichorweave_hood.stage.2=Awakened with tenebrae, it's no suprise the awakened ichorweave hood has an affinity for the depths of the world.<BR>When equipped, the awakened ichorweave hood grants the wearer infinite underwater breathing
 
 # -- AWAKENED ICHORWEAVE LEGGINGS
 kami.research.awakened_ichorweave_leggings.title=Ichorweave Leggings of the Burning Mantle
-kami.research.awakened_ichorweave_leggings.title.subtitle=[WIP]
-kami.research.awakened_ichorweave_leggings.stage.1=[WIP]
-kami.research.awakened_ichorweave_leggings.stage.2=[WIP]
+kami.research.awakened_ichorweave_leggings.title.subtitle=Liar liar pants on fire
+kami.research.awakened_ichorweave_leggings.stage.1=Closer examination reveals that Ichor is unlike any material I have encountered, almost as though it is asleep...<BR>I wonder what would occur if I managed to awaken or empower ichorweave armor?
+kami.research.awakened_ichorweave_leggings.stage.2=Though the amount of ignis involved in the process of awakening the ichorweave leggings was a bit concerning, I cannot argue with the results.<BR>When equipped, The awakened ichorweave leggings grants the wearer immunity to fire and lava as well as the ability to double jump.<BR>Unfortunately, the double jumping ability interferes with the same effect from the Cloudstepper Ring, but that just means I can find another ring to use instead.
 
 # -- AWAKENED ICHORWEAVE ROBE
 kami.research.awakened_ichorweave_robe.title=Ichorweave Robe of the Stratosphere
 kami.research.awakened_ichorweave_robe.title.subtitle=Oxygen not included
-kami.research.awakened_ichorweave_robe.stage.1=[WIP]
-kami.research.awakened_ichorweave_robe.stage.2=[WIP]
+kami.research.awakened_ichorweave_robe.stage.1=Closer examination reveals that Ichor is unlike any material I have encountered, almost as though it is asleep...<BR>I wonder what would occur if I managed to awaken or empower ichorweave armor?
+kami.research.awakened_ichorweave_robe.stage.2=The Ichorweave Robes have a a strong affinity for the air, similar to what I have experienced with an elytra.<BR>Unlike an elytra, these robes grant unrestricted flight as well as totally negating fall damage.
 
 # -- BOTTOMLESS POUCH
 kami.research.bottomless_pouch.title=Bottomless Pouch
 kami.research.bottomless_pouch.title.subtitle=Try not to tear it
-kami.research.bottomless_pouch.stage.1=[WIP]
-kami.research.bottomless_pouch.stage.2=[WIP]
+kami.research.bottomless_pouch.stage.1=I have noticed a very strange phenomenon that occurs when two pieces of ichorcloth are stacked on top of one another.<BR>Upon lifing the edge of the top cloth, I discovered an empty pocket of air between the two pieces of fabric.<BR>While that might not sound impressive, it wasn't until I was able to insert my entire arm into the space that I truly discovered how large it was.<BR>
+kami.research.bottomless_pouch.stage.2=The success of my experiment is slightly concerning. While I had originally thought that there might be a way to create something resembling a bag of holding, I did not consider just how much space would be created.<BR>The Bottomless Pouch is a 117 slot bag that can function as a focus pouch.
 
 # -- ICHOR
 kami.research.ichor.title=Ichor
@@ -129,8 +130,9 @@ kami.research.ichorium.stage.2=I have managed to blend Ichor with void metal to 
 # -- ICHORIUM CASTER
 kami.research.ichorium_caster.title=Ichorium Caster's Gauntlet of the Ascended
 kami.research.ichorium_caster.title.subtitle="I could simply snap my fingers and they would all cease to exist."
-kami.research.ichorium_caster.stage.1=[WIP]
-kami.research.ichorium_caster.stage.2=[WIP]
+kami.research.ichorium_caster.stage.1=With how successful my other experiments with ichor have been, I cannot help but wonder what would happen if I applied the material to a caster's gauntlet.
+kami.research.ichorium_caster.stage.2=Yet again my expectations have been shattered.<BR>Ichor has proven to be an incredible focus material. Spells channeled through the gauntlet have their vis costs reduced by 40%, not including any bonuses from equipment, and any remaining vis drain is distributed in a 5x5 chunk area centered on me.
+kami.research.ichorium_caster.addenda.1=Not only does the ichorium gauntlet have better resonance with the local aura, it also appears to be much more malleable than other materials, accepting up to five augments compared to the three of its thaumium or void counterparts.
 
 # -- ICHORIUM TOOLS
 kami.research.ichorium_tools.title=Ichorium Tools

@@ -135,10 +135,10 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
             tooltip.add(I18n.format("tooltip.kami.awakened_set.info", setCount));
             if(GuiScreen.isShiftKeyDown()) {
                 tooltip.add(I18n.format("tooltip.kami.awakened_set.desc"));
-                tooltip.add((this.hasHelm(player)    ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD.getTranslationKey() + ".name"));
-                tooltip.add((this.hasChest(player)   ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE.getTranslationKey() + ".name"));
-                tooltip.add((this.hasLeggings(player) ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS.getTranslationKey() + ".name"));
-                tooltip.add((this.hasBoots(player)   ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS.getTranslationKey() + ".name"));
+                tooltip.add((hasHelm(player)     ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD.getTranslationKey() + ".name"));
+                tooltip.add((hasChest(player)    ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE.getTranslationKey() + ".name"));
+                tooltip.add((hasLeggings(player) ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS.getTranslationKey() + ".name"));
+                tooltip.add((hasBoots(player)    ? TextFormatting.LIGHT_PURPLE : TextFormatting.GRAY) + " - " + I18n.format(ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS.getTranslationKey() + ".name"));
             }
         }
     }
@@ -310,29 +310,29 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
 
     public int getEquippedPieces(EntityLivingBase player) {
         int count = 0;
-        if(this.hasHelm(player))        count++;
-        if(this.hasChest(player))       count++;
-        if(this.hasLeggings(player))    count++;
-        if(this.hasBoots(player))       count++;
+        if(hasHelm(player))     count++;
+        if(hasChest(player))    count++;
+        if(hasLeggings(player)) count++;
+        if(hasBoots(player))    count++;
         return count;
     }
 
-    public boolean hasHelm(EntityLivingBase player) {
+    public static boolean hasHelm(EntityLivingBase player) {
         ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
         return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD;
     }
 
-    public boolean hasChest(EntityLivingBase player) {
+    public static boolean hasChest(EntityLivingBase player) {
         ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE;
     }
 
-    public boolean hasLeggings(EntityLivingBase player) {
+    public static boolean hasLeggings(EntityLivingBase player) {
         ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS;
     }
 
-    public boolean hasBoots(EntityLivingBase player) {
+    public static boolean hasBoots(EntityLivingBase player) {
         ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.FEET);
         return !stack.isEmpty() && stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS;
     }

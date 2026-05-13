@@ -11,7 +11,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 
 public class TreeHelper {
     public static boolean fellTree(ItemStack itemstack, BlockPos start, EntityPlayer player) {

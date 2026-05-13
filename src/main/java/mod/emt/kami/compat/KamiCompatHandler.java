@@ -1,16 +1,13 @@
 package mod.emt.kami.compat;
 
-import mod.emt.kami.Kami;
 import mod.emt.kami.compat.tinkers.ConstructsArmory;
 import mod.emt.kami.compat.tinkers.TinkersConstruct;
 import mod.emt.kami.compat.tinkers.TinkersConstructClient;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 
 // TODO: Add config options to checks
-@Mod.EventBusSubscriber(modid = Kami.MOD_ID)
 public class KamiCompatHandler {
     public static void preInit()
     {

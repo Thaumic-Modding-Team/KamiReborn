@@ -9,6 +9,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import thaumcraft.common.items.casters.ItemFocusPouch;
 
 public class PouchStackHandler extends ItemStackHandler implements ICapabilitySerializable<NBTTagCompound> {
     public ItemStack pouchStack;
@@ -18,6 +19,11 @@ public class PouchStackHandler extends ItemStackHandler implements ICapabilitySe
         this.pouchStack = pouchStack;
         NBTTagCompound invTag = this.pouchStack.getTagCompound() != null ? this.pouchStack.getTagCompound().getCompoundTag("inventory") : new NBTTagCompound();
         this.deserializeNBT(invTag);
+    }
+
+    @Override
+    public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+        return !(stack.getItem() instanceof ItemFocusPouch);
     }
 
     @Override
