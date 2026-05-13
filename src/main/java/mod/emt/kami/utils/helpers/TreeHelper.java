@@ -22,49 +22,41 @@ public class TreeHelper {
     }
 
     public static boolean isTreeStructure(World world, BlockPos origin) {
-        BlockPos pos = null;
-        Stack<BlockPos> candidates = new Stack<>();
-        candidates.add(origin);
-
-        while(!candidates.isEmpty()) {
-            BlockPos candidate = candidates.pop();
-            if ((pos == null || candidate.getY() > pos.getY()) && isLog(world, candidate)) {
-                for(pos = candidate.up(); isLog(world, pos); pos = pos.up()) {
-                }
-
-                candidates.add(pos.north());
-                candidates.add(pos.east());
-                candidates.add(pos.south());
-                candidates.add(pos.west());
-            }
-        }
-
-        if (pos != null) {
-            int d = 3;
-            int o = -1;
-            int leaves = 0;
-
-            for (int x = 0; x < d; ++x) {
-                for (int y = 0; y < d; ++y) {
-                    for (int z = 0; z < d; ++z) {
-                        BlockPos leaf = pos.add(o + x, o + y, o + z);
-                        IBlockState state = world.getBlockState(leaf);
-                        if (state.getBlock().isLeaves(state, world, leaf)) {
-                            ++leaves;
-                            if (leaves >= 5) {
-                                return true;
-                            }
-                        }
+        for(int y = 0; y < 32; y++) {
+            BlockPos checkPos = origin.up(y);
+            if(isLog(world, checkPos)) {
+                for(BlockPos adjacent : getAdjacentPositions(checkPos)) {
+                    if(isLeaves(world, adjacent)) {
+                        return true;
                     }
                 }
+            } else {
+                return false;
             }
-
         }
         return false;
     }
 
     private static boolean isLog(World world, BlockPos pos) {
         return world.getBlockState(pos).getBlock().isWood(world, pos);
+    }
+
+    private static boolean isLeaves(World world, BlockPos pos) {
+        IBlockState state = world.getBlockState(pos);
+        return state.getBlock().isLeaves(state, world, pos);
+    }
+
+    public static List<BlockPos> getAdjacentPositions(BlockPos pos) {
+        List<BlockPos> adjacent = new ArrayList<>();
+        for(int x = -1; x <= 1; x++) {
+            for(int y = -1; y <= 1; y++) {
+                for(int z = -1; z <= 1; z++) {
+                    if(x == 0 && y == 0 && z == 0) continue;
+                    adjacent.add(pos.add(x, y, z));
+                }
+            }
+        }
+        return adjacent;
     }
 
     public static class TreeChopTask {
@@ -84,7 +76,7 @@ public class TreeHelper {
         }
 
         @SubscribeEvent
-        public void chopChop(TickEvent.WorldTickEvent event) {
+        public void fellTree(TickEvent.WorldTickEvent event) {
             if (event.side.isClient()) {
                 this.finish();
             } else if (event.world.provider.getDimension() == this.world.provider.getDimension()) {
@@ -98,12 +90,13 @@ public class TreeHelper {
 
                     BlockPos pos = this.blocks.remove();
                     if (this.visited.add(pos) && isLog(this.world, pos) && HarvestHelper.canHarvestBlock(this.world, pos, this.world.getBlockState(pos), this.player, true)) {
-                        for(BlockPos adjacent : this.getAdjacentPositions(pos)) {
+                        for(BlockPos adjacent : getAdjacentPositions(pos)) {
                             if (!this.visited.contains(adjacent)) {
                                 this.blocks.add(adjacent);
                             }
                         }
 
+                        //Adding up to a 3x3 surrounding the harvested block
                         for(int x = 0; x < 3; ++x) {
                             for(int z = 0; z < 3; ++z) {
                                 BlockPos pos2 = pos.add(-1 + x, 1, -1 + z);
@@ -114,24 +107,11 @@ public class TreeHelper {
                         }
 
                         HarvestHelper.attemptHarvestBlock(this.world, this.player, pos);
-                        --left;
+                        left--;
                     }
                 }
 
             }
-        }
-
-        public List<BlockPos> getAdjacentPositions(BlockPos pos) {
-            List<BlockPos> adjacent = new ArrayList<>();
-            for(int x = -1; x <= 1; x++) {
-                for(int y = -1; y <= 1; y++) {
-                    for(int z = -1; z <= 1; z++) {
-                        if(x == 0 && y == 0 && z == 0) continue;
-                        adjacent.add(pos.add(x, y, z));
-                    }
-                }
-            }
-            return adjacent;
         }
 
         private void finish() {
