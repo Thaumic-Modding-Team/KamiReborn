@@ -89,7 +89,7 @@ kami.research.awakened_ichorium_sword.stage.2=The awakened ichorium sword, which
 kami.research.awakened_ichorweave_boots.title=Ichorweave Boots of the Biosphere
 kami.research.awakened_ichorweave_boots.title.subtitle="Nature’s guardians" my foot!
 kami.research.awakened_ichorweave_boots.stage.1=Closer examination reveals that Ichor is unlike any material I have encountered, almost as though it is asleep...<BR>I wonder what would occur if I managed to awaken or empower ichorweave armor?
-kami.research.awakened_ichorweave_boots.stage.2=While I admit I was expecting more, I certainly cannot complain with the results.<BR>When awakened, the ichorweave boots grant the wearer increased movement speed and jump height, similar to the effects granted by the boots of the traveler.<BR>While the effects are relatively mundane, it certainly is nice to no longer have to worry about constantly recharging my boots.
+kami.research.awakened_ichorweave_boots.stage.2=While I admit I was expecting more, I certainly cannot complain with the results.<BR>When awakened, the ichorweave boots grant the wearer increased movement speed and jump height, similar to the effects granted by the boots of the traveler.<BR>Additionally, the boots grant immunity to slowness effects.<BR>While the effects are relatively mundane, it certainly is nice to no longer have to worry about constantly recharging my boots.
 
 # -- AWAKENED ICHORWEAVE HOOD
 kami.research.awakened_ichorweave_hood.title=Ichorweave Hood of the Abyssal Depths
@@ -101,7 +101,7 @@ kami.research.awakened_ichorweave_hood.stage.2=Awakened with tenebrae, it's no s
 kami.research.awakened_ichorweave_leggings.title=Ichorweave Leggings of the Burning Mantle
 kami.research.awakened_ichorweave_leggings.title.subtitle=Liar liar pants on fire
 kami.research.awakened_ichorweave_leggings.stage.1=Closer examination reveals that Ichor is unlike any material I have encountered, almost as though it is asleep...<BR>I wonder what would occur if I managed to awaken or empower ichorweave armor?
-kami.research.awakened_ichorweave_leggings.stage.2=Though the amount of ignis involved in the process of awakening the ichorweave leggings was a bit concerning, I cannot argue with the results.<BR>When equipped, The awakened ichorweave leggings grants the wearer immunity to fire and lava as well as the ability to double jump.<BR>Unfortunately, the double jumping ability interferes with the same effect from the Cloudstepper Ring, but that just means I can find another ring to use instead.
+kami.research.awakened_ichorweave_leggings.stage.2=Though the amount of ignis involved in the process of awakening the ichorweave leggings was a bit concerning, I cannot argue with the results.<BR>When equipped, The awakened ichorweave leggings grants the wearer immunity to environmental hazards such as fire, lava, poison and wither.<BR>They also grant the ability to double jump. However, the double jumping ability interferes with the same effect from the Cloudstepper Ring.
 
 # -- AWAKENED ICHORWEAVE ROBE
 kami.research.awakened_ichorweave_robe.title=Ichorweave Robe of the Stratosphere

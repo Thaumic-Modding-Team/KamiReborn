@@ -5,18 +5,19 @@ import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.items.armor.ItemAwakenedArmor;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.PlayerHelper;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -105,6 +106,40 @@ public class CommonEventHandler {
             }
         }
     }
+
+    @SubscribeEvent
+    public static void onLivingHurt(LivingHurtEvent event) {
+        EntityLivingBase entityLiving = event.getEntityLiving();
+        ItemStack leggings = entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+        if(!leggings.isEmpty() && leggings.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS) {
+            if(event.getSource() == DamageSource.HOT_FLOOR) {
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+     public static void onPotionApplied(PotionEvent.PotionApplicableEvent event) {
+        if(event.getResult() != Event.Result.DENY) {
+            EntityLivingBase entityLiving = event.getEntityLiving();
+            ItemStack leggings = entityLiving.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
+            ItemStack boots = entityLiving.getItemStackFromSlot(EntityEquipmentSlot.FEET);
+            //Leggings remove Poison and Wither.
+            if(!leggings.isEmpty() && leggings.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS) {
+                PotionEffect effect = event.getPotionEffect();
+                if(effect.getPotion() == MobEffects.POISON || effect.getPotion() == MobEffects.WITHER) {
+                    event.setResult(Event.Result.DENY);
+                }
+            }
+            //Boots remove Slowness
+            if(!boots.isEmpty() && boots.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS) {
+                PotionEffect effect = event.getPotionEffect();
+                if(effect.getPotion() == MobEffects.SLOWNESS) {
+                    event.setResult(Event.Result.DENY);
+                }
+            }
+        }
+     }
 
     @SubscribeEvent
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
