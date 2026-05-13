@@ -218,21 +218,21 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
         int playerLight = world.getLightFromNeighbors(playerPos);
         if (world.isThundering()) {
             int skyLight = world.getSkylightSubtracted();
-            world.setSkylightSubtracted(9);
+            world.setSkylightSubtracted(7);
             playerLight = world.getLightFromNeighbors(playerPos);
             world.setSkylightSubtracted(skyLight);
         }
-        if (playerLight < 9) {
+        if (playerLight < 7) {
             return true;
         } else {
             RayTraceResult trace = PlayerHelper.rayTrace(entityLiving, 24, 0, true);
             if (trace != null) {
                 switch (trace.typeOfHit) {
                     case BLOCK:
-                        return world.getLight(trace.getBlockPos().offset(trace.sideHit)) < 9;
+                        return world.getLight(trace.getBlockPos().offset(trace.sideHit)) < 7;
                     case MISS:
                     case ENTITY:
-                        return world.getLight(trace.getBlockPos()) < 9;
+                        return world.getLight(trace.getBlockPos()) < 7;
                 }
             }
             return false;
