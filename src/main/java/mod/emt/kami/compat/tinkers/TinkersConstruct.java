@@ -3,8 +3,10 @@ package mod.emt.kami.compat.tinkers;
 import mod.emt.kami.Kami;
 import mod.emt.kami.compat.tinkers.modifiers.ModDivineMandate;
 import mod.emt.kami.compat.tinkers.traits.TraitGodComplex;
+import mod.emt.kami.registry.ModBlocksKAMI;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -66,7 +68,7 @@ public class TinkersConstruct {
         ICHORIUM.setFluid(ICHORIUM_FLUID);
         ICHORIUM.setCraftable(false).setCastable(true);
 
-        modDivineMandate.addItem(ModItemsKAMI.ICHORIUM_INGOT, 1, 1);
+        modDivineMandate.addItem(new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK), 1, 1);
     }
 
     public static void postInit()

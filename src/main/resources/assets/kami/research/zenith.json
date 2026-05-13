@@ -356,7 +356,8 @@
         {
           "text": "kami.research.ichorium.stage.2",
           "recipes": [
-            "kami:ichorium_ingot"
+            "kami:ichorium_ingot",
+            "kami:ichorium_stuff"
           ]
         }
       ]
