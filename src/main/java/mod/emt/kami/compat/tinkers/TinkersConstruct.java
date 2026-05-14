@@ -68,7 +68,7 @@ public class TinkersConstruct {
         ICHORIUM.setFluid(ICHORIUM_FLUID);
         ICHORIUM.setCraftable(false).setCastable(true);
 
-        modDivineMandate.addItem(new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK), 1, 1);
+        modDivineMandate.addItem(new ItemStack(ModItemsKAMI.ICHORIUM_INGOT), 1, 1);
     }
 
     public static void postInit()
