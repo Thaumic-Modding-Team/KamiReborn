@@ -1,6 +1,7 @@
 itemGroup.KamiTab=KAMI: Reborn
 
 # Blocks
+tile.kami:ichor_block.name=Block of Ichor
 tile.kami:ichorium_block.name=Block of Ichorium
 
 # Items

@@ -277,7 +277,9 @@
         {
           "text": "kami.research.ichor.stage.2",
           "recipes": [
-            "kami:ichor"
+            "kami:ichor",
+            "kami:ichor_block",
+            "kami:ichor_stuff"
           ]
         }
       ]
@@ -357,6 +359,7 @@
           "text": "kami.research.ichorium.stage.2",
           "recipes": [
             "kami:ichorium_ingot",
+            "kami:ichorium_block",
             "kami:ichorium_stuff"
           ]
         }

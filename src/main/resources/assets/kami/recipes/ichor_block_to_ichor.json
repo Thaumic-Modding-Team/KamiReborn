@@ -1,0 +1,13 @@
+{
+  "type": "forge:ore_shapeless",
+  "group": "kami:ichor_stuff",
+  "ingredients": [
+    {
+      "item": "kami:ichor_block"
+    }
+  ],
+  "result": {
+    "item": "kami:ichor",
+    "count": 9
+  }
+}

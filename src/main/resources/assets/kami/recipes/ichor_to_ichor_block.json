@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "kami:ichor_stuff",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "kami:ichor"
+    }
+  },
+  "result": {
+    "item": "kami:ichor_block"
+  }
+}

@@ -152,6 +152,22 @@ public class ModRecipesKAMI {
                         new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
                         new ItemStack(BlocksTC.hungryChest),
                         new ItemStack(BlocksTC.jarVoid)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor_block"),
+                new InfusionRecipe("KAMI_ICHOR", new ItemStack(ModBlocksKAMI.ICHOR_BLOCK), 10,
+                        new AspectList().add(Aspect.AURA, 675).add(Aspect.CRYSTAL, 675).add(Aspect.DARKNESS, 675)
+                                .add(Aspect.ENERGY, 675).add(Aspect.LIFE, 675).add(Aspect.LIGHT, 675).add(Aspect.SOUL, 675),
+                        "blockDiamond",
+                        new ItemStack(Items.ENDER_EYE),
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        new ItemStack(Items.GHAST_TEAR)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor"),
                 new InfusionRecipe("KAMI_ICHOR", new ItemStack(ModItemsKAMI.ICHOR), 10,
                         new AspectList().add(Aspect.AURA, 75).add(Aspect.CRYSTAL, 75).add(Aspect.DARKNESS, 75)
@@ -160,6 +176,14 @@ public class ModRecipesKAMI {
                         new ItemStack(Items.ENDER_EYE),
                         ItemsTC.primordialPearl,
                         new ItemStack(Items.GHAST_TEAR)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_block"),
+                new InfusionRecipe("KAMI_ICHORIUM", new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK), 10,
+                        new AspectList().add(Aspect.AIR, 900).add(Aspect.EARTH, 900).add(Aspect.FIRE, 900).add(Aspect.METAL, 900).add(Aspect.WATER, 900),
+                        "blockVoid",
+                        new ItemStack(ModBlocksKAMI.ICHOR_BLOCK),
+                        ItemPhial.makeFilledPhial(Aspect.ENTROPY),
+                        new ItemStack(ItemsTC.salisMundus),
+                        ItemPhial.makeFilledPhial(Aspect.ORDER)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_ingot"),
                 new InfusionRecipe("KAMI_ICHORIUM", new ItemStack(ModItemsKAMI.ICHORIUM_INGOT), 10,
                         new AspectList().add(Aspect.AIR, 100).add(Aspect.EARTH, 100).add(Aspect.FIRE, 100).add(Aspect.METAL, 100).add(Aspect.WATER, 100),
