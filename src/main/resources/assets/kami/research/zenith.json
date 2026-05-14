@@ -16,7 +16,7 @@
         {
           "text": "kami.research.awakened_ichorium_axe.stage.2",
           "recipes": [
-            "kami:ichorium_axe"
+            "kami:awakened_ichorium_axe"
           ]
         }
       ],
@@ -43,7 +43,7 @@
         {
           "text": "kami.research.awakened_ichorium_pickaxe.stage.2",
           "recipes": [
-            "kami:ichorium_pickaxe"
+            "kami:awakened_ichorium_pickaxe"
           ]
         }
       ],
@@ -71,7 +71,7 @@
         {
           "text": "kami.research.awakened_ichorium_shovel.stage.2",
           "recipes": [
-            "kami:ichorium_shovel"
+            "kami:awakened_ichorium_shovel"
           ]
         }
       ],
@@ -99,7 +99,7 @@
         {
           "text": "kami.research.awakened_ichorium_sword.stage.2",
           "recipes": [
-            "kami:ichorium_sword"
+            "kami:awakened_ichorium_sword"
           ]
         }
       ]
