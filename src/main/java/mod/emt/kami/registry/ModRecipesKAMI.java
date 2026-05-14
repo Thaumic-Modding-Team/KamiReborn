@@ -2,9 +2,11 @@ package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IOreDictProvider;
+import mod.emt.kami.recipe.infusion.InfusionEnchantmentRecipeEternal;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.oredict.OreDictionary;
@@ -13,9 +15,11 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.IngredientNBTTC;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.items.consumables.ItemPhial;
+import thaumcraft.common.lib.crafting.InfusionEnchantmentRecipe;
 
 public class ModRecipesKAMI {
     private static ResourceLocation defaultGroup = new ResourceLocation("");
@@ -200,10 +204,10 @@ public class ModRecipesKAMI {
                 new InfusionRecipe("KAMI_AWAKENED_ICHORWEAVE_BOOTS", new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS), 10,
                         new AspectList().add(Aspect.EARTH, 1000).add(Aspect.ENERGY, 1000).add(Aspect.ORDER, 1000).add(Aspect.MOTION, 1000).add(Aspect.PROTECT, 1000),
                         new ItemStack(ModItemsKAMI.ICHORWEAVE_BOOTS),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(BlocksTC.crystalEarth),
@@ -216,10 +220,10 @@ public class ModRecipesKAMI {
                 new InfusionRecipe("KAMI_AWAKENED_ICHORWEAVE_HOOD", new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD), 10,
                         new AspectList().add(Aspect.COLD, 1000).add(Aspect.DARKNESS, 1000).add(Aspect.PROTECT, 1000).add(Aspect.SENSES, 1000).add(Aspect.WATER, 1000),
                         new ItemStack(ModItemsKAMI.ICHORWEAVE_HOOD),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(BlocksTC.crystalWater),
@@ -232,10 +236,10 @@ public class ModRecipesKAMI {
                 new InfusionRecipe("KAMI_AWAKENED_ICHORWEAVE_LEGGINGS", new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS), 10,
                         new AspectList().add(Aspect.FIRE, 1000).add(Aspect.MOTION, 1000).add(Aspect.LIFE, 1000).add(Aspect.LIGHT, 1000).add(Aspect.PROTECT, 1000),
                         new ItemStack(ModItemsKAMI.ICHORWEAVE_LEGGINGS),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(BlocksTC.crystalFire),
@@ -248,10 +252,10 @@ public class ModRecipesKAMI {
                 new InfusionRecipe("KAMI_AWAKENED_ICHORWEAVE_ROBE", new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE), 10,
                         new AspectList().add(Aspect.AIR, 1000).add(Aspect.FLIGHT, 1000).add(Aspect.MAGIC, 1000).add(Aspect.MOTION, 1000).add(Aspect.PROTECT, 1000),
                         new ItemStack(ModItemsKAMI.ICHORWEAVE_ROBE),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
-                        new ItemStack(ItemsTC.primordialPearl),
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
+                        ItemsTC.primordialPearl,
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(BlocksTC.crystalAir),
@@ -328,5 +332,25 @@ public class ModRecipesKAMI {
                         ItemPhial.makeFilledPhial(Aspect.ENTROPY),
                         new ItemStack(ItemsTC.salisMundus),
                         ItemPhial.makeFilledPhial(Aspect.ORDER)));
+
+        InfusionEnchantmentRecipeEternal eternalInfusion = new InfusionEnchantmentRecipeEternal(
+                ModEnchantsKAMI.ETERNAL,
+                new AspectList().add(Aspect.AURA, 2000).add(Aspect.ELDRITCH, 2000).add(Aspect.ENERGY, 2000).add(Aspect.FLUX, 2000).add(Aspect.LIFE, 2000)
+                        .add(Aspect.ORDER, 2000).add(Aspect.PROTECT, 2000).add(Aspect.SENSES, 2000).add(Aspect.SOUL, 2000).add(Aspect.TOOL, 2000),
+                new IngredientNBTTC(new ItemStack(Items.ENCHANTED_BOOK)),
+                new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK),
+                new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK),
+                new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK),
+                new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK),
+                ItemsTC.primordialPearl,
+                ItemsTC.primordialPearl,
+                ItemsTC.primordialPearl,
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                new ItemStack(Items.NETHER_STAR),
+                new ItemStack(Items.NETHER_STAR),
+                new ItemStack(Items.NETHER_STAR));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "eternal_infusion"), eternalInfusion);
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "eternal_infusion_fake"), new InfusionEnchantmentRecipe(eternalInfusion, new ItemStack(ModItemsKAMI.ICHORIUM_SWORD)));
     }
 }

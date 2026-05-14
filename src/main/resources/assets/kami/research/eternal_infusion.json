@@ -29,7 +29,7 @@
         {
           "text": "kami.research.eternal_infusion.stage.2",
           "recipes": [
-            "kami:ichor"
+            "kami:eternal_infusion_fake"
           ]
         }
       ]

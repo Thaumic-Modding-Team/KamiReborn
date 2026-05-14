@@ -30,6 +30,8 @@ item.kami:ichorweave_robe.name=Ichorweave Robe
 item.kami:ichor.name=Ichor
 
 # Tooltips
+enchantment.infusion.KAMI_ETERNAL=Eternal
+
 tooltip.kami.awakened=Awakened
 tooltip.kami.awakened_set.info=§bArmor Set§r: Awakened Ichor (%d/4)
 tooltip.kami.awakened_set.desc=Reduces all damage taken by 80%%
