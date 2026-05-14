@@ -337,7 +337,6 @@ public class ModRecipesKAMI {
                 ModEnchantsKAMI.ETERNAL,
                 new AspectList().add(Aspect.AURA, 2000).add(Aspect.ELDRITCH, 2000).add(Aspect.ENERGY, 2000).add(Aspect.FLUX, 2000).add(Aspect.LIFE, 2000)
                         .add(Aspect.ORDER, 2000).add(Aspect.PROTECT, 2000).add(Aspect.SENSES, 2000).add(Aspect.SOUL, 2000).add(Aspect.TOOL, 2000),
-                new IngredientNBTTC(new ItemStack(Items.ENCHANTED_BOOK)),
                 new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK),
                 new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK),
                 new ItemStack(ModBlocksKAMI.ICHORIUM_BLOCK),
