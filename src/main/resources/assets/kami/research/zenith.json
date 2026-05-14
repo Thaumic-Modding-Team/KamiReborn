@@ -300,7 +300,7 @@
         {
           "text": "kami.research.ichorium_caster.stage.2",
           "recipes": [
-            "kami:ichor"
+            "kami:ichorium_caster"
           ]
         }
       ],
