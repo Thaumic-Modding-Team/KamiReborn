@@ -29,3 +29,15 @@ Upgraded Ichor equipment is extremely powerful, tools come in three modes (four 
 - **Ichorweave Robe of the Stratosphere:** Allows infinite flight and provides full immunity to fall damage.
 - **Ichorweave Leggings of the Burning Mantle:** Gives the ability to double jump and provides full immunity to fire, lava, poison, and wither damage.
 - **Ichorweave Boots of the Biosphere:** Acts like an improved Boots of the Traveler and provides full immunity to Slowness.
+
+---
+
+## 🙏 Special Thanks
+- Original Thaumic Tinkerer developers ~ gaeakat, pixlepix, Vazkii
+- Some textures used from Fake Thaummy Pack ~ Fakeginkgo
+
+---
+
+## Licensing
+
+New assets (textures, sounds, models, etc) for this mod are **All Rights Reserved** (see LICENSE_ASSETS). Everything else is **CC BY-NC-SA 3.0 Unported** (see LICENSE).
