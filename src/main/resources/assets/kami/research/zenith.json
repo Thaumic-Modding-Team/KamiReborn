@@ -109,7 +109,7 @@
       "name": "kami.research.awakened_ichorweave_boots.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorweave_boots"],
-      "parents": ["KAMI_ICHORWEAVE_ARMOR"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
       "meta": ["REVERSE"],
       "location": [-5, -1],
       "stages": [
@@ -121,7 +121,7 @@
         {
           "text": "kami.research.awakened_ichorweave_boots.stage.2",
           "recipes": [
-            "kami:ichorweave_boots"
+            "kami:awakened_ichorweave_boots"
 
           ]
         }
@@ -143,7 +143,7 @@
       "name": "kami.research.awakened_ichorweave_hood.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorweave_hood"],
-      "parents": ["KAMI_ICHORWEAVE_ARMOR"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
       "meta": ["REVERSE"],
       "location": [-5, -7],
       "stages": [
@@ -155,7 +155,7 @@
         {
           "text": "kami.research.awakened_ichorweave_hood.stage.2",
           "recipes": [
-            "kami:ichorweave_hood"
+            "kami:awakened_ichorweave_hood"
           ]
         }
       ],
@@ -176,7 +176,7 @@
       "name": "kami.research.awakened_ichorweave_leggings.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorweave_leggings"],
-      "parents": ["KAMI_ICHORWEAVE_ARMOR"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
       "meta": ["REVERSE"],
       "location": [-5, -3],
       "stages": [
@@ -188,7 +188,7 @@
         {
           "text": "kami.research.awakened_ichorweave_leggings.stage.2",
           "recipes": [
-            "kami:ichorweave_leggings"
+            "kami:awakened_ichorweave_leggings"
 
           ]
         }
@@ -210,7 +210,7 @@
       "name": "kami.research.awakened_ichorweave_robe.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorweave_robe"],
-      "parents": ["KAMI_ICHORWEAVE_ARMOR"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
       "meta": ["REVERSE"],
       "location": [-5, -5],
       "stages": [
@@ -222,7 +222,7 @@
         {
           "text": "kami.research.awakened_ichorweave_robe.stage.2",
           "recipes": [
-            "kami:ichorweave_robe"
+            "kami:awakened_ichorweave_robe"
 
           ]
         }
