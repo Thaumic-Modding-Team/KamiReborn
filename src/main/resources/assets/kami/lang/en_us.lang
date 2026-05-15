@@ -62,7 +62,7 @@ kami.research.zenith_base.stage.1=This might be my magnum opus. I have the poten
 
 # -- AWAKENED ICHOR
 kami.research.awakened_ichorium.addenda.1=Interestingly, I have discovered that harvesting any block with an awakened ichorium tool will cause any drops to appear at my feet.<BR>While not very useful when harvesting single blocks, this effect will ensure that there is a much smaller chance of harvested materials being destroyed by falling into lava or the void when harvesting large areas.
-kami.research.awakened_ichorweave.addenda.1=It appears that awakened ichorweave equipment has a resonance that only occurs when worn by a living creature.<BR>When equipped with a full set of awakened ichorweave armor, all damage taken is reduced by 80%.
+kami.research.awakened_ichorweave.addenda.1=It appears that awakened ichorweave equipment has a resonance that only occurs when worn by a living creature.<BR>When equipped with a full set of awakened ichorweave armor, all damage taken is reduced by 80%. It is also still fully dyeable like normal ichorweave armor.
 
 # -- AWAKENED ICHORIUM AXE
 kami.research.awakened_ichorium_axe.title=Ichorium Axe of the Stormbreaker
@@ -134,7 +134,7 @@ kami.research.ichorium.stage.2=I have managed to blend Ichor with void metal to 
 kami.research.ichorium_caster.title=Ichorium Caster's Gauntlet of the Ascended
 kami.research.ichorium_caster.title.subtitle="I could simply snap my fingers and they would all cease to exist."
 kami.research.ichorium_caster.stage.1=With how successful my other experiments with ichor have been, I cannot help but wonder what would happen if I applied the material to a caster's gauntlet.
-kami.research.ichorium_caster.stage.2=Yet again my expectations have been shattered.<BR>Ichor has proven to be an incredible focus material. Spells channeled through the gauntlet have their vis costs reduced by 40%, not including any bonuses from equipment, and any remaining vis drain is distributed in a 5x5 chunk area centered on me.
+kami.research.ichorium_caster.stage.2=Yet again my expectations have been shattered.<BR>Ichor has proven to be an incredible focus material. Spells channeled through the gauntlet have their vis costs reduced by 40%, not including any bonuses from equipment, and any remaining vis drain is distributed in a 5x5 chunk area centered on me.<BR>If I so choose, I can dye the gauntlet with any of the dye combinations I want.
 kami.research.ichorium_caster.addenda.1=Not only does the ichorium gauntlet have better resonance with the local aura, it also appears to be much more malleable than other materials, accepting up to five augments compared to the three of its thaumium or void counterparts.
 
 # -- ICHORIUM TOOLS
@@ -147,7 +147,7 @@ kami.research.ichorium_tools.stage.2=I now have the ability to construct Ichoriu
 kami.research.ichorweave_armor.title=Ichorweave Armor
 kami.research.ichorweave_armor.title.subtitle=Unbeatable, Unbreakable, Unpossible
 kami.research.ichorweave_armor.stage.1=Normally I would be able to create equipment right away with most other materials, Ichor-based materials however, will require some additional trial and error in order to successfully achieve this.
-kami.research.ichorweave_armor.stage.2=I now have the ability to construct the Ichorweave set. The armor set is so powerful that it is impossible for any of the pieces to break, I can also get a decent amount of vis discount out of them.
+kami.research.ichorweave_armor.stage.2=I now have the ability to construct the Ichorweave set. The armor set is so powerful that it is impossible for any of the pieces to break, I can also get a decent amount of vis discount out of them.<BR>If I so choose, I can dye the armor with any of the dye combinations I want.
 
 # -- ICHORWEAVE FABRIC
 kami.research.ichorweave_fabric.title=Ichorweave Fabric
