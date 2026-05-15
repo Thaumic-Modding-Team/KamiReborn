@@ -7,25 +7,26 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.handlers.CommonEventHandler;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.registry.ModSoundsKAMI;
+import mod.emt.kami.utils.helpers.ItemHelper;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -89,6 +90,15 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
     }
 
     @Override
+    public void getSubItems(@NotNull CreativeTabs tab, @NotNull NonNullList<ItemStack> items) {
+        if(this.isInCreativeTab(tab)) {
+            ItemStack stack = new ItemStack(this);
+            ItemHelper.setUnbreakable(stack);
+            items.add(stack);
+        }
+    }
+
+    @Override
     public @NotNull Multimap<String, AttributeModifier> getAttributeModifiers(@NotNull EntityEquipmentSlot slot, @NotNull ItemStack stack) {
         Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(slot, stack);
         if(slot == this.armorType) {
@@ -122,6 +132,16 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
         }
 
         return slot == EntityEquipmentSlot.LEGS ? TEXTURE_PATH_2 : TEXTURE_PATH_1;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack, @NotNull Enchantment enchantment) {
+        return enchantment != Enchantments.MENDING && enchantment != Enchantments.UNBREAKING && super.canApplyAtEnchantingTable(stack, enchantment);
+    }
+
+    @Override
+    public boolean isEnchantable(@NotNull ItemStack stack) {
+        return true;
     }
 
     @Override
