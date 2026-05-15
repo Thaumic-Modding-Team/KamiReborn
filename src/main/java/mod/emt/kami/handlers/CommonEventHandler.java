@@ -3,17 +3,25 @@ package mod.emt.kami.handlers;
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.items.armor.ItemAwakenedArmor;
+import mod.emt.kami.items.armor.ItemIchorweaveArmor;
+import mod.emt.kami.items.tools.ItemIchoriumAxe;
+import mod.emt.kami.items.tools.ItemIchoriumPickaxe;
+import mod.emt.kami.items.tools.ItemIchoriumShovel;
+import mod.emt.kami.items.tools.ItemIchoriumSword;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.PlayerHelper;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -145,5 +153,21 @@ public class CommonEventHandler {
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         UUID playerId = PlayerHelper.getUUIDFromPlayer(event.player);
         FLYING_PLAYERS.remove(playerId);
+    }
+
+    @SubscribeEvent
+    public static void onAnvilUpdate(AnvilUpdateEvent event) {
+        // Unbreaking still applies to items on anvils regardless of whether the items accept it in enchantment tables or not
+        // This event should fix that
+        if (event.getLeft().isEmpty() || event.getRight().isEmpty()) {
+            return;
+        }
+
+        if (event.getLeft().getItem() instanceof ItemIchoriumAxe || event.getLeft().getItem() instanceof ItemIchoriumPickaxe || event.getLeft().getItem() instanceof ItemIchoriumShovel
+                || event.getLeft().getItem() instanceof ItemIchoriumSword || event.getLeft().getItem() instanceof ItemIchorweaveArmor) {
+            if (EnchantmentHelper.getEnchantments(event.getRight()).keySet().stream().anyMatch(e -> e == Enchantments.UNBREAKING)) {
+                event.setCanceled(true);
+            }
+        }
     }
 }
