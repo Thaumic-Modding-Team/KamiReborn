@@ -4,7 +4,9 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.ItemHelper;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
@@ -29,7 +31,7 @@ public class ItemIchoriumAxe extends ItemAxe implements IWarpingGear {
 
     @Override
     public void getSubItems(@NotNull CreativeTabs tab, @NotNull NonNullList<ItemStack> items) {
-        if(this.isInCreativeTab(tab)) {
+        if (this.isInCreativeTab(tab)) {
             ItemStack stack = new ItemStack(this);
             ItemHelper.setUnbreakable(stack);
             items.add(stack);
@@ -49,5 +51,12 @@ public class ItemIchoriumAxe extends ItemAxe implements IWarpingGear {
     @Override
     public int getWarp(ItemStack itemstack, EntityPlayer player) {
         return 1;
+    }
+
+    //We don't want these enchantments since Ichor is completely unbreakable
+    @Override
+    public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack, @NotNull Enchantment enchantment) {
+        if (enchantment == Enchantments.MENDING || enchantment == Enchantments.UNBREAKING) return false;
+        return super.canApplyAtEnchantingTable(stack, enchantment);
     }
 }

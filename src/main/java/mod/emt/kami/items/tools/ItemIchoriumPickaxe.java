@@ -4,7 +4,9 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.ItemHelper;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
@@ -52,5 +54,12 @@ public class ItemIchoriumPickaxe extends ItemPickaxe implements IWarpingGear {
     @Override
     public int getWarp(ItemStack itemstack, EntityPlayer player) {
         return 1;
+    }
+
+    //We don't want these enchantments since Ichor is completely unbreakable
+    @Override
+    public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack, @NotNull Enchantment enchantment) {
+        if (enchantment == Enchantments.MENDING || enchantment == Enchantments.UNBREAKING) return false;
+        return super.canApplyAtEnchantingTable(stack, enchantment);
     }
 }
