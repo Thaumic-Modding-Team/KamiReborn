@@ -3,6 +3,7 @@ package mod.emt.kami.registry;
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IOreDictProvider;
 import mod.emt.kami.recipe.infusion.InfusionEnchantmentRecipeEternal;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -234,7 +235,7 @@ public class ModRecipesKAMI {
                         new ItemStack(Items.NETHER_STAR)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "blessed_silverwood_rod"),
                 new InfusionRecipe("KAMI_ICHORIUM_TOOLS", new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD), 10,
-                        new AspectList().add(Aspect.BEAST, 100).add(Aspect.MAN, 100).add(Aspect.MIND, 100).add(Aspect.PLANT, 100).add(Aspect.SENSES, 100),
+                        new AspectList().add(Aspect.BEAST, 50).add(Aspect.MAN, 50).add(Aspect.MIND, 50).add(Aspect.PLANT, 50).add(Aspect.SENSES, 50),
                         new ItemStack(BlocksTC.saplingSilverwood),
                         new ItemStack(ItemsTC.nuggets, 1, 10),
                         new ItemStack(BlocksTC.logSilverwood),
@@ -248,8 +249,10 @@ public class ModRecipesKAMI {
                         new ItemStack(ItemsTC.primordialPearl),
                         new ItemStack(Items.NETHER_STAR),
                         new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
+                        new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
+                        new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
                         new ItemStack(BlocksTC.hungryChest),
-                        new ItemStack(BlocksTC.jarVoid)));
+                        new ItemStack(Blocks.ENDER_CHEST)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor"),
                 new InfusionRecipe("KAMI_ICHOR", new ItemStack(ModItemsKAMI.ICHOR), 10,
                         new AspectList().add(Aspect.AURA, 75).add(Aspect.CRYSTAL, 75).add(Aspect.DARKNESS, 75)
