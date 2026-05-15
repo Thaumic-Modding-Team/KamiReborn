@@ -31,6 +31,8 @@ Upgraded Ichor equipment is extremely powerful, tools come in three modes (four 
 - **Ichorweave Boots of the Biosphere:** Acts like an improved Boots of the Traveler and provides full immunity to Slowness.
 
 ## 🔁 Mod Integration
+- **[Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-augmentation)**
+  - The Ichorium Caster's Gauntlet can access gauntlet augments (upwards to over 5 slots!). 
 - **[Tinkers' Antique](https://www.curseforge.com/minecraft/mc-mods/tinkers-antique) / [Antique Armory](https://www.curseforge.com/minecraft/mc-mods/antique-armory)**
   - Ichorium Tool/Armor Material
   - Divine Mandate Modifier: The affected tool will make dropped items instantly teleport to the player and have zero pickup delay.
