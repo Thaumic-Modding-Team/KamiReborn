@@ -3,37 +3,35 @@
 [![Requires MixinBooter](https://img.shields.io/badge/Requires-MixinBooter-C48733.svg?labelColor=A45104&style=for-the-badge)](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
 [![Requires ThaumicAPI](https://img.shields.io/badge/Requires-ThaumicAPI-C48733.svg?labelColor=A45104&style=for-the-badge)](https://www.curseforge.com/minecraft/mc-mods/thaumicapi)
 
-KAMI: Reborn is a port of the KAMI content from Thaumic Tinkerer for Thaumcraft 6, and has been rewritten from the ground up. Its main focus is to introduce high tier endgame content into the game.
+KAMI: Reborn is a port of the KAMI content from Thaumic Tinkerer for Thaumcraft 6, and has been rewritten from the ground up. Its main focus is to introduce high-tier endgame content into the game.
 
-Unlike the original, Thaumic Tinkerer is not required to run this addon nor does it require every single research to be completed to access.
+Unlike the original, Thaumic Tinkerer is not required dependency for this mod.
 
 ---
 
 ## Ichor
-The Eternal infusion enchantment is completely optional and can be turned off in the config if it's too overpowered.
-
-- **Ichor:** A very powerful material forged from diamond, primordial energy, and dimensional materials. It is used to make almost all the content throughout the mod.
+- **Ichor:** A powerful material forged from diamond, primordial energy, and dimensional materials. It is used to make almost all the content in this mod.
 - **Ichorweave Fabric / Ichorium:** Ichor is also used to create a powerful new metal and fabric material.
-- **Ichorium Tools / Ichorweave Armor:** Equipment made out of Ichor can never be broken.
-- **Bottomless Pouch:** An upgrade to the Focus Pouch that gives it over **117 slots** and the ability to carry anything!
-- **Ichorium Caster's Gauntlet of the Ascended:** An extremely powerful and fast casting gauntlet, vis cost is reduced by over 40%, and vis drain is distributed in a 5x5 chunk centered on the player.
-- **Infusion Enchantment: Eternal:** Thought Ichorium equipment never breaking is crazy? How about making any tool unbreakable!
+- **Ichorium Tools / Ichorweave Armor:** Equipment made out of Ichor is unbreakable.
+- **Bottomless Pouch:** An upgraded Focus Pouch that can has **117 slots** and the ability to carry any item!
+- **Ichorium Caster's Gauntlet of the Ascended:** A powerful casting gauntlet that reduces vis cost by 40%, and distributes vis drain across a 5x5 chunk area centered on the player.
+- **Infusion Enchantment: Eternal:** (Includes config disable) Thought Ichorium equipment never breaking is crazy? How about making any tool unbreakable!
 
 ## Awakened Ichor
-Upgraded Ichor equipment is extremely powerful, tools come in three modes (four modes for the sword) that can be switched when sneaking and right-clicking. The armor set provides a 80% reduction to total damage when the full set is worn.
+Awakened Ichor equipment is extremely powerful. Awakened tools have various "modes" that can be cycled by sneaking and right-clicking. Awakened armor grants individual item bonuses and grants an 80% reduction to damage taken when the full set is equipped.
 
-- **Ichorium Axe of the Stormbreaker:** Capable of chopping entire trees and be thrown around like a boomerang. The three modes will affect what it does when it impacts something.
-- **Ichorium Pickaxe of the Tunneler:** Fully focused on mining and making tunnels. The three modes will affect the radius of blocks mined at once.
-- **Ichorium Shovel of the Gravedigger:** Digging is not just its speciality, one can bury any nearby mobs with it! The three modes will affect what type of creatures it wants to bury.
-- **Ichorium Sword of the Titanslayer:** It has the ability to attune itself to different creature types to significantly deal more damage to them. The four modes will affect what type of creatures it will be more effective on.
+- **Ichorium Axe of the Stormbreaker:** Capable of chopping entire trees and be thrown around like a boomerang. Impact modes change the effect when the thrown axe collides with a surface or entity.
+- **Ichorium Pickaxe of the Tunneler:** Fully focused on mining and making tunnels. Hold right-click to dig massive tunnels instantly!
+- **Ichorium Shovel of the Gravedigger:** Digging is not just its speciality, one can bury any nearby mobs with it! Hold right click to inter all mobs near the player.
+- **Ichorium Sword of the Titanslayer:** Has the ability to attune itself to different creature types. While attuned the sword bypasses armor and deals significantly more damage.
 - **Ichorweave Hood of the Abyssal Depths:** Grants infinite Water Breathing and Night Vision for swimming underwater.
 - **Ichorweave Robe of the Stratosphere:** Allows infinite flight and provides full immunity to fall damage.
-- **Ichorweave Leggings of the Burning Mantle:** Gives the ability to double jump and provides full immunity to fire, lava, poison, and wither damage.
-- **Ichorweave Boots of the Biosphere:** Acts like an improved Boots of the Traveler and provides full immunity to Slowness.
+- **Ichorweave Leggings of the Burning Mantle:** Gives the ability to double jump, provides immunity to fire and lava, and prevents the wearer from being afflicted with poison or wither effects.
+- **Ichorweave Boots of the Biosphere:** Grants increased movement speed, jump height, swim speed and prevents the wearer from being afflicted with Slowness.
 
 ## 🔁 Mod Integration
 - **[Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-augmentation)**
-  - The Ichorium Caster's Gauntlet can access gauntlet augments (upwards to over 5 slots!). 
+  - The Ichorium Caster's Gauntlet can be modified with gauntlet augments (5 augment slots). 
 - **[ThaumicTweaker](https://www.curseforge.com/minecraft/mc-mods/thaumictweaker)**
   - Full subtitle support for all research entries, see [here](https://github.com/Thaumic-Modding-Team/ThaumicTweaker/wiki/Research-Subtitles) for more info!
 - **[Tinkers' Antique](https://www.curseforge.com/minecraft/mc-mods/tinkers-antique) / [Antique Armory](https://www.curseforge.com/minecraft/mc-mods/antique-armory)**
