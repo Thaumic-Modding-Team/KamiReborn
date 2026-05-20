@@ -6,6 +6,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.IRarity;
+import net.minecraftforge.oredict.OreDictionary;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -30,6 +31,7 @@ public class ItemBase extends Item implements IOreDictProvider {
     @Override
     public void registerOreDicts() {
         if (oreDict != null) {
+            OreDictionary.registerOre(oreDict, this);
         }
     }
 
