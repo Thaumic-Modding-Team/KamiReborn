@@ -37,7 +37,8 @@ public class ItemDataFixer implements IFixableData {
         ITEM_NAME_MAPPINGS.put(new ResourceLocation("thaumictinkerer", "kami_chest"), new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_robe"));
         ITEM_NAME_MAPPINGS.put(new ResourceLocation("thaumictinkerer", "kami_helm"), new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_hood"));
         ITEM_NAME_MAPPINGS.put(new ResourceLocation("thaumictinkerer", "kami_legs"), new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_leggings"));
-        ITEM_NAME_MAPPINGS.put(new ResourceLocation("thaumictinkerer", "kamiresource"), new ResourceLocation(Kami.MOD_ID, "ichor"));
+        ITEM_NAME_MAPPINGS.put(new ResourceLocation("thaumictinkerer", "kamiresource"), new ResourceLocation("minecraft", "air"));
+        ITEM_NAME_MAPPINGS.put(new ResourceLocation("tconstruct", "molten_molten_ichorium"), new ResourceLocation("tconstruct", "molten_ichorium"));
 
         // These items do not exist in this mod, turn them to something else
         ITEM_NAME_MAPPINGS.put(new ResourceLocation("thaumictinkerer", "bedrock_portal"), new ResourceLocation("minecraft", "bedrock"));

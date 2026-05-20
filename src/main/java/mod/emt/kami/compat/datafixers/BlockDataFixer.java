@@ -21,6 +21,7 @@ public class BlockDataFixer implements IFixableData {
 
     static {
         BLOCK_NAME_MAPPINGS.put(new ResourceLocation("thaumictinkerer", "ichor_block"), new ResourceLocation(Kami.MOD_ID, "ichor_block"));
+        BLOCK_NAME_MAPPINGS.put(new ResourceLocation("tconstruct", "molten_molten_ichorium"), new ResourceLocation("tconstruct", "molten_ichorium"));
 
         // These blocks do not exist in this mod, turn them to something else
         BLOCK_NAME_MAPPINGS.put(new ResourceLocation("thaumictinkerer", "bedrock_portal"), new ResourceLocation("minecraft", "bedrock"));
