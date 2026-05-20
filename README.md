@@ -39,7 +39,7 @@ Upgraded Ichor equipment is extremely powerful, tools come in three modes (four 
 - **[Tinkers' Antique](https://www.curseforge.com/minecraft/mc-mods/tinkers-antique) / [Antique Armory](https://www.curseforge.com/minecraft/mc-mods/antique-armory)**
   - Ichorium Tool/Armor Material
   - Divine Mandate Modifier: The affected tool will make dropped items instantly teleport to the player and have zero pickup delay.
-  - God Complex Trait: Having a tool with three or more parts of this trait will make it unbreakable.
+  - God Complex Trait: Having a tool with two (configurable) or more parts of this trait will make it unbreakable.
 
 ---
 
