@@ -40,7 +40,7 @@ public class CommonProxy {
 
     private void registerResearch() {
         ResearchCategories.registerCategory(
-                "ZENITH", "FIRSTSTEPS", new AspectList(),
+                "ZENITH", "BASEELDRITCH", new AspectList(),
                 new ResourceLocation(Kami.MOD_ID, "textures/research/r_zenith.png"),
                 new ResourceLocation(Kami.MOD_ID, "textures/gui/research_background.jpg"),
                 new ResourceLocation(Thaumcraft.MODID, "textures/gui/gui_research_back_over.png"));
