@@ -10,6 +10,7 @@ Unlike the original, Thaumic Tinkerer is not required to run this addon nor does
 ---
 
 ## Ichor
+The Eternal infusion enchantment is completely optional and can be turned off in the config if it's too overpowered.
 
 - **Ichor:** A very powerful material forged from diamond, primordial energy, and dimensional materials. It is used to make almost all the content throughout the mod.
 - **Ichorweave Fabric / Ichorium:** Ichor is also used to create a powerful new metal and fabric material.
