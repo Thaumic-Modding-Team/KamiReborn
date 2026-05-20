@@ -10,6 +10,11 @@ public class ConfigHandlerKami {
     public static IntegrationsCategory integrations = new IntegrationsCategory();
 
     public static class ArmorCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Awakened Ichorweave Armor")
+        @Config.Comment("Enables Awakened Ichorweave Armor, extremely powerful upgrades to Ichorweave Armor.")
+        public boolean awakenedArmor = true;
+
         @Config.Name("Awakened Boots: Movement Bonus")
         @Config.Comment("The movement speed bonus granted when wearing the Ichorweave Boots of the Biosphere.")
         public double bootsMovementBonus = 0.08;
@@ -47,6 +52,9 @@ public class ConfigHandlerKami {
     }
 
     public static class ToolCategory {
-
+        @Config.RequiresMcRestart
+        @Config.Name("Awakened Ichorium Tools")
+        @Config.Comment("Enables Awakened Ichorium Tools, extremely powerful upgrades to Ichorium Tools.")
+        public boolean awakenedTools = true;
     }
 }

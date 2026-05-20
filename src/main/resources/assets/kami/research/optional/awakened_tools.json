@@ -1,0 +1,106 @@
+{
+  "entries": [
+    {
+      "key": "KAMI_AWAKENED_ICHORIUM_AXE",
+      "name": "kami.research.awakened_ichorium_axe.title",
+      "category": "ZENITH",
+      "icons": ["kami:awakened_ichorium_axe"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
+      "meta": ["REVERSE"],
+      "location": [5, -1],
+      "stages": [
+        {
+          "text": "kami.research.awakened_ichorium_axe.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;2", "THEORY;INFUSION;2", "THEORY;ARTIFICE;2"]
+        },
+        {
+          "text": "kami.research.awakened_ichorium_axe.stage.2",
+          "recipes": [
+            "kami:awakened_ichorium_axe"
+          ]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorium.addenda.1",
+          "required_research": ["KAMI_AWAKENED_ICHORIUM_AXE@2"]
+        }
+      ]
+    },
+    {
+      "key": "KAMI_AWAKENED_ICHORIUM_PICKAXE",
+      "name": "kami.research.awakened_ichorium_pickaxe.title",
+      "category": "ZENITH",
+      "icons": ["kami:awakened_ichorium_pickaxe"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
+      "meta": ["REVERSE"],
+      "location": [5, -3],
+      "stages": [
+        {
+          "text": "kami.research.awakened_ichorium_pickaxe.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;2", "THEORY;INFUSION;2", "THEORY;ARTIFICE;2"]
+        },
+        {
+          "text": "kami.research.awakened_ichorium_pickaxe.stage.2",
+          "recipes": [
+            "kami:awakened_ichorium_pickaxe"
+          ]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorium.addenda.1",
+          "required_research": ["KAMI_AWAKENED_ICHORIUM_PICKAXE@2"]
+        }
+      ]
+    },
+    {
+      "key": "KAMI_AWAKENED_ICHORIUM_SHOVEL",
+      "name": "kami.research.awakened_ichorium_shovel.title",
+      "category": "ZENITH",
+      "icons": ["kami:awakened_ichorium_shovel"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
+      "meta": ["REVERSE"],
+      "location": [5, -5],
+      "stages": [
+        {
+          "text": "kami.research.awakened_ichorium_shovel.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;2", "THEORY;INFUSION;2", "THEORY;ARTIFICE;2"]
+        },
+        {
+          "text": "kami.research.awakened_ichorium_shovel.stage.2",
+          "recipes": [
+            "kami:awakened_ichorium_shovel"
+          ]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorium.addenda.1",
+          "required_research": ["KAMI_AWAKENED_ICHORIUM_SHOVEL@2"]
+        }
+      ]
+    },
+    {
+      "key": "KAMI_AWAKENED_ICHORIUM_SWORD",
+      "name": "kami.research.awakened_ichorium_sword.title",
+      "category": "ZENITH",
+      "icons": ["kami:awakened_ichorium_sword"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
+      "meta": ["REVERSE"],
+      "location": [5, -7],
+      "stages": [
+        {
+          "text": "kami.research.awakened_ichorium_sword.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;2", "THEORY;INFUSION;2", "THEORY;ARTIFICE;2"]
+        },
+        {
+          "text": "kami.research.awakened_ichorium_sword.stage.2",
+          "recipes": [
+            "kami:awakened_ichorium_sword"
+          ]
+        }
+      ]
+    }
+  ]
+}

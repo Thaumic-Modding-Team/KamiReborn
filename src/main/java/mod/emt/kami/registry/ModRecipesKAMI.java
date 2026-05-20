@@ -138,118 +138,6 @@ public class ModRecipesKAMI {
     }
 
     private static void initInfusionRecipes() {
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_axe"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORIUM_AXE",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_AXE)),
-                10,
-                new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.MOTION, 500).add(Aspect.ORDER, 500).add(Aspect.PLANT, 500).add(Aspect.TOOL, 500),
-                ModItemsKAMI.ICHORIUM_AXE,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_pickaxe"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORIUM_PICKAXE",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_PICKAXE)),
-                10,
-                new AspectList().add(Aspect.DESIRE, 500).add(Aspect.EARTH, 500).add(Aspect.ENTROPY, 500).add(Aspect.MOTION, 500).add(Aspect.TOOL, 500),
-                ModItemsKAMI.ICHORIUM_PICKAXE,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_shovel"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORIUM_SHOVEL",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SHOVEL)),
-                10,
-                new AspectList().add(Aspect.DEATH, 500).add(Aspect.EARTH, 500).add(Aspect.MOTION, 500).add(Aspect.TOOL, 500).add(Aspect.TRAP, 500),
-                ModItemsKAMI.ICHORIUM_SHOVEL,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_sword"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORIUM_SWORD",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SWORD)),
-                10,
-                new AspectList().add(Aspect.AVERSION, 500).add(Aspect.DEATH, 500).add(Aspect.ENTROPY, 500).add(Aspect.LIFE, 500).add(Aspect.MAGIC, 500),
-                ModItemsKAMI.ICHORIUM_SWORD,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_boots"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORWEAVE_BOOTS",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS)),
-                10,
-                new AspectList().add(Aspect.FLIGHT, 500).add(Aspect.MOTION, 500).add(Aspect.TRAP, 500),
-                ModItemsKAMI.ICHORWEAVE_BOOTS,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_hood"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORWEAVE_HOOD",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD)),
-                10,
-                new AspectList().add(Aspect.DARKNESS, 500).add(Aspect.LIGHT, 500).add(Aspect.WATER, 500),
-                ModItemsKAMI.ICHORWEAVE_HOOD,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_leggings"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORWEAVE_LEGGINGS",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS)),
-                10,
-                new AspectList().add(Aspect.AIR, 500).add(Aspect.FIRE, 500).add(Aspect.EXCHANGE, 500),
-                ModItemsKAMI.ICHORWEAVE_LEGGINGS,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_robe"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORWEAVE_ROBE",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE)),
-                10,
-                new AspectList().add(Aspect.AURA, 500).add(Aspect.FLIGHT, 500).add(Aspect.MOTION, 500),
-                ModItemsKAMI.ICHORWEAVE_ROBE,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "blessed_silverwood_rod"), new InfusionRecipe(
                 "KAMI_ICHORIUM_TOOLS",
                 new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD),
@@ -308,6 +196,125 @@ public class ModRecipesKAMI {
                 ItemPhial.makeFilledPhial(Aspect.ENTROPY),
                 new ItemStack(ItemsTC.salisMundus),
                 ItemPhial.makeFilledPhial(Aspect.ORDER)));
+
+        // Optional Research
+        if(ConfigHandlerKami.armor.awakenedArmor) {
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_boots"), new InfusionRecipe(
+                    "KAMI_AWAKENED_ICHORWEAVE_BOOTS",
+                    ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS)),
+                    10,
+                    new AspectList().add(Aspect.FLIGHT, 500).add(Aspect.MOTION, 500).add(Aspect.TRAP, 500),
+                    ModItemsKAMI.ICHORWEAVE_BOOTS,
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR)));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_hood"), new InfusionRecipe(
+                    "KAMI_AWAKENED_ICHORWEAVE_HOOD",
+                    ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD)),
+                    10,
+                    new AspectList().add(Aspect.DARKNESS, 500).add(Aspect.LIGHT, 500).add(Aspect.WATER, 500),
+                    ModItemsKAMI.ICHORWEAVE_HOOD,
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR)));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_leggings"), new InfusionRecipe(
+                    "KAMI_AWAKENED_ICHORWEAVE_LEGGINGS",
+                    ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS)),
+                    10,
+                    new AspectList().add(Aspect.AIR, 500).add(Aspect.FIRE, 500).add(Aspect.EXCHANGE, 500),
+                    ModItemsKAMI.ICHORWEAVE_LEGGINGS,
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR)));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_robe"), new InfusionRecipe(
+                    "KAMI_AWAKENED_ICHORWEAVE_ROBE",
+                    ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE)),
+                    10,
+                    new AspectList().add(Aspect.AURA, 500).add(Aspect.FLIGHT, 500).add(Aspect.MOTION, 500),
+                    ModItemsKAMI.ICHORWEAVE_ROBE,
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR)));
+        }
+
+        if(ConfigHandlerKami.tool.awakenedTools) {
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_axe"), new InfusionRecipe(
+                    "KAMI_AWAKENED_ICHORIUM_AXE",
+                    ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_AXE)),
+                    10,
+                    new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.MOTION, 500).add(Aspect.ORDER, 500).add(Aspect.PLANT, 500).add(Aspect.TOOL, 500),
+                    ModItemsKAMI.ICHORIUM_AXE,
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR)));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_pickaxe"), new InfusionRecipe(
+                    "KAMI_AWAKENED_ICHORIUM_PICKAXE",
+                    ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_PICKAXE)),
+                    10,
+                    new AspectList().add(Aspect.DESIRE, 500).add(Aspect.EARTH, 500).add(Aspect.ENTROPY, 500).add(Aspect.MOTION, 500).add(Aspect.TOOL, 500),
+                    ModItemsKAMI.ICHORIUM_PICKAXE,
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR)));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_shovel"), new InfusionRecipe(
+                    "KAMI_AWAKENED_ICHORIUM_SHOVEL",
+                    ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SHOVEL)),
+                    10,
+                    new AspectList().add(Aspect.DEATH, 500).add(Aspect.EARTH, 500).add(Aspect.MOTION, 500).add(Aspect.TOOL, 500).add(Aspect.TRAP, 500),
+                    ModItemsKAMI.ICHORIUM_SHOVEL,
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR)));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_sword"), new InfusionRecipe(
+                    "KAMI_AWAKENED_ICHORIUM_SWORD",
+                    ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SWORD)),
+                    10,
+                    new AspectList().add(Aspect.AVERSION, 500).add(Aspect.DEATH, 500).add(Aspect.ENTROPY, 500).add(Aspect.LIFE, 500).add(Aspect.MAGIC, 500),
+                    ModItemsKAMI.ICHORIUM_SWORD,
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR),
+                    ItemsTC.primordialPearl,
+                    new ItemStack(Items.NETHER_STAR)));
+        }
 
         if (ConfigHandlerKami.enchantments.eternal) {
             InfusionEnchantmentRecipeEternal eternalInfusion = new InfusionEnchantmentRecipeEternal(
