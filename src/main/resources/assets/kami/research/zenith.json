@@ -5,7 +5,7 @@
       "name": "kami.research.awakened_ichorium_axe.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_axe"],
-      "parents": ["KAMI_ICHORIUM_TOOLS"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
       "meta": ["REVERSE"],
       "location": [5, -1],
       "stages": [
@@ -32,7 +32,7 @@
       "name": "kami.research.awakened_ichorium_pickaxe.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_pickaxe"],
-      "parents": ["KAMI_ICHORIUM_TOOLS"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
       "meta": ["REVERSE"],
       "location": [5, -3],
       "stages": [
@@ -59,7 +59,7 @@
       "name": "kami.research.awakened_ichorium_shovel.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_shovel"],
-      "parents": ["KAMI_ICHORIUM_TOOLS"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
       "meta": ["REVERSE"],
       "location": [5, -5],
       "stages": [
@@ -87,7 +87,7 @@
       "name": "kami.research.awakened_ichorium_sword.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_sword"],
-      "parents": ["KAMI_ICHORIUM_TOOLS"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
       "meta": ["REVERSE"],
       "location": [5, -7],
       "stages": [
@@ -244,7 +244,7 @@
       "name": "kami.research.bottomless_pouch.title",
       "category": "ZENITH",
       "icons": ["kami:focus_pouch"],
-      "parents": ["KAMI_ICHORIUM", "KAMI_ICHORWEAVE_FABRIC"],
+      "parents": ["KAMI_ICHORIUM", "KAMI_ICHORWEAVE_FABRIC", "~FOCUSPOUCH"],
       "meta": ["REVERSE"],
       "location": [0, -6],
       "stages": [

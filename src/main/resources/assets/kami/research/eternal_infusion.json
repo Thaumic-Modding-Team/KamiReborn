@@ -9,6 +9,7 @@
       "category": "ZENITH",
       "parents": [
         "ZENITH_BASE",
+        "~INFUSIONENCHANTMENT",
         "~KAMI_AWAKENED_ICHORIUM_AXE",
         "~KAMI_AWAKENED_ICHORIUM_PICKAXE",
         "~KAMI_AWAKENED_ICHORIUM_SHOVEL",
@@ -23,8 +24,7 @@
       "stages": [
         {
           "text": "kami.research.eternal_infusion.stage.1",
-          "required_knowledge": [
-          ]
+          "required_knowledge": []
         },
         {
           "text": "kami.research.eternal_infusion.stage.2",
