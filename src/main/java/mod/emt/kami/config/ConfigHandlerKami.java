@@ -47,6 +47,11 @@ public class ConfigHandlerKami {
         public boolean tinkersConstruct = true;
 
         @Config.RequiresMcRestart
+        @Config.Name("Tinkers' Construct: God Complex Parts")
+        @Config.Comment("The amount of parts needed for God Complex to make the item unbreakable.")
+        public int godComplexParts = 2;
+
+        @Config.RequiresMcRestart
         @Config.Name("Construct's Armory")
         @Config.Comment("Enables Construct's Armory Ichorium armor parts. Requires Tinkers' Construct integration to be enabled.")
         public boolean constructsArmory = true;

@@ -1,5 +1,6 @@
 package mod.emt.kami.compat.tinkers.traits;
 
+import mod.emt.kami.config.ConfigHandlerKami;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import slimeknights.tconstruct.library.TinkerRegistry;
@@ -19,7 +20,7 @@ public class TraitGodComplex extends AbstractTrait {
         super.applyEffect(rootCompound, modifierTag);
 
         int partsFound = getParts(rootCompound);
-        if (partsFound >= 3) {
+        if (partsFound >= ConfigHandlerKami.integrations.godComplexParts) {
             rootCompound.setBoolean(TAG_UNBREAKABLE, true);
         }
     }
