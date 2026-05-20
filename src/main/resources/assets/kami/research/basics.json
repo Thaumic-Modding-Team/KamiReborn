@@ -13,7 +13,8 @@
       "location": [0, 0],
       "stages": [
         {
-          "text": "kami.research.zenith_base.stage.1"
+          "text": "kami.research.zenith_base.stage.1",
+          "warp": 5
         }
       ]
     }

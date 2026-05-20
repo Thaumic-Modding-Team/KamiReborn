@@ -24,7 +24,7 @@
       "stages": [
         {
           "text": "kami.research.eternal_infusion.stage.1",
-          "required_knowledge": []
+          "required_knowledge": ["THEORY;ELDRITCH;4", "THEORY;INFUSION;4"]
         },
         {
           "text": "kami.research.eternal_infusion.stage.2",
