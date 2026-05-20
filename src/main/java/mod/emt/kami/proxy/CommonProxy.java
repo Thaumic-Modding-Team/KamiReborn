@@ -51,14 +51,6 @@ public class CommonProxy {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/basics"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/zenith"));
 
-        if(ConfigHandlerKami.armor.awakenedArmor) {
-            ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/optional/awakened_armor"));
-        }
-
-        if(ConfigHandlerKami.tools.awakenedTools) {
-            ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/optional/awakened_tools"));
-        }
-
         if(ConfigHandlerKami.enchantments.eternal) {
             ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/optional/eternal_infusion"));
         }
