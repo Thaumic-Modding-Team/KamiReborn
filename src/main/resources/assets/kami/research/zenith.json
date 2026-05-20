@@ -264,7 +264,7 @@
       "stages": [
         {
           "text": "kami.research.ichor.stage.1",
-          "required_knowledge": ["OBSERVATION;ELDRITCH;1", "THEORY;INFUSION;1"]
+          "required_knowledge": ["OBSERVATION;ELDRITCH;2", "THEORY;INFUSION;2"]
         },
         {
           "text": "kami.research.ichor.stage.2",
@@ -391,7 +391,7 @@
       "stages": [
         {
           "text": "kami.research.ichorweave_fabric.stage.1",
-          "required_knowledge": ["OBSERVATION;ELDRITCH;1", "OBSERVATION;INFUSION;1"]
+          "required_knowledge": ["OBSERVATION;ELDRITCH;2", "OBSERVATION;INFUSION;2"]
         },
         {
           "text": "kami.research.ichorweave_fabric.stage.2",

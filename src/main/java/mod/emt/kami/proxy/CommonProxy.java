@@ -4,6 +4,7 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.compat.datafixers.BlockDataFixer;
 import mod.emt.kami.compat.datafixers.ItemDataFixer;
+import mod.emt.kami.compat.datafixers.ItemMetaDataFixer;
 import mod.emt.kami.handlers.GuiHandlerKami;
 import mod.emt.kami.network.PacketHandler;
 import mod.emt.kami.registry.ModRecipesKAMI;
@@ -31,6 +32,7 @@ public class CommonProxy {
         ModFixs modFixer = FMLCommonHandler.instance().getDataFixer().init(Kami.MOD_ID, 1);
         modFixer.registerFix(FixTypes.BLOCK_ENTITY, new BlockDataFixer());
         modFixer.registerFix(FixTypes.ITEM_INSTANCE, new ItemDataFixer());
+        modFixer.registerFix(FixTypes.ITEM_INSTANCE, new ItemMetaDataFixer());
     }
 
     public void postInit() {

@@ -23,7 +23,7 @@ import thaumcraft.common.items.consumables.ItemPhial;
 import thaumcraft.common.lib.crafting.InfusionEnchantmentRecipe;
 
 public class ModRecipesKAMI {
-    private static ResourceLocation defaultGroup = new ResourceLocation("");
+    private static final ResourceLocation defaultGroup = new ResourceLocation("");
 
     public static void initRecipes(RegistryEvent.Register<IRecipe> event) {
         initArcaneWorkbenchRecipes();
