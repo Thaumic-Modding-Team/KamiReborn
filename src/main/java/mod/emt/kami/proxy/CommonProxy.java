@@ -2,10 +2,15 @@ package mod.emt.kami.proxy;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.compat.KamiCompatHandler;
+import mod.emt.kami.compat.datafixers.BlockDataFixer;
+import mod.emt.kami.compat.datafixers.ItemDataFixer;
 import mod.emt.kami.handlers.GuiHandlerKami;
 import mod.emt.kami.network.PacketHandler;
 import mod.emt.kami.registry.ModRecipesKAMI;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.datafix.FixTypes;
+import net.minecraftforge.common.util.ModFixs;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import thaumcraft.Thaumcraft;
 import thaumcraft.api.ThaumcraftApi;
@@ -22,6 +27,10 @@ public class CommonProxy {
         ModRecipesKAMI.registerOreDicts();
         registerResearch();
         KamiCompatHandler.init();
+
+        ModFixs modFixer = FMLCommonHandler.instance().getDataFixer().init(Kami.MOD_ID, 1);
+        modFixer.registerFix(FixTypes.BLOCK_ENTITY, new BlockDataFixer());
+        modFixer.registerFix(FixTypes.ITEM_INSTANCE, new ItemDataFixer());
     }
 
     public void postInit() {
@@ -30,8 +39,6 @@ public class CommonProxy {
     }
 
     private void registerResearch() {
-        //TODO: Register research.
-        //RegistrarKAMI.getAdditions().forEach(IAddition::registerResearchLocation);
         ResearchCategories.registerCategory(
                 "ZENITH", "FIRSTSTEPS", new AspectList(),
                 new ResourceLocation(Kami.MOD_ID, "textures/research/r_zenith.png"),
