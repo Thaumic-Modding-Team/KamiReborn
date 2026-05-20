@@ -16,13 +16,11 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -132,16 +130,6 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
         }
 
         return slot == EntityEquipmentSlot.LEGS ? TEXTURE_PATH_2 : TEXTURE_PATH_1;
-    }
-
-    @Override
-    public boolean canApplyAtEnchantingTable(@NotNull ItemStack stack, @NotNull Enchantment enchantment) {
-        return enchantment != Enchantments.MENDING && enchantment != Enchantments.UNBREAKING && super.canApplyAtEnchantingTable(stack, enchantment);
-    }
-
-    @Override
-    public boolean isEnchantable(@NotNull ItemStack stack) {
-        return true;
     }
 
     @Override
