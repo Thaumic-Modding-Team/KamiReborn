@@ -257,7 +257,7 @@ public class ModRecipesKAMI {
                     new ItemStack(Items.NETHER_STAR)));
         }
 
-        if(ConfigHandlerKami.tool.awakenedTools) {
+        if(ConfigHandlerKami.tools.awakenedTools) {
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_axe"), new InfusionRecipe(
                     "KAMI_AWAKENED_ICHORIUM_AXE",
                     ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_AXE)),

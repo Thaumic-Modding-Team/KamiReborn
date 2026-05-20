@@ -1,11 +1,17 @@
 package mod.emt.kami.config;
 
+import mod.emt.kami.Kami;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+@Config(modid = Kami.MOD_ID)
 public class ConfigHandlerKami {
     public static ArmorCategory armor = new ArmorCategory();
     @Config.Ignore
-    public static ToolCategory tool = new ToolCategory();
+    public static ToolCategory tools = new ToolCategory();
     public static EnchantmentsCategory enchantments = new EnchantmentsCategory();
     public static IntegrationsCategory integrations = new IntegrationsCategory();
 
@@ -56,5 +62,15 @@ public class ConfigHandlerKami {
         @Config.Name("Awakened Ichorium Tools")
         @Config.Comment("Enables Awakened Ichorium Tools, extremely powerful upgrades to Ichorium Tools.")
         public boolean awakenedTools = true;
+    }
+
+    @Mod.EventBusSubscriber
+    public static class ConfigChangeListener {
+        @SubscribeEvent
+        public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+            if(event.getModID().equals(Kami.MOD_ID)) {
+                ConfigManager.sync(Kami.MOD_ID, Config.Type.INSTANCE);
+            }
+        }
     }
 }

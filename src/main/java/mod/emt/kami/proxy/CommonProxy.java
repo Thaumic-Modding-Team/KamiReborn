@@ -55,7 +55,7 @@ public class CommonProxy {
             ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/optional/awakened_armor"));
         }
 
-        if(ConfigHandlerKami.tool.awakenedTools) {
+        if(ConfigHandlerKami.tools.awakenedTools) {
             ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/optional/awakened_tools"));
         }
 
