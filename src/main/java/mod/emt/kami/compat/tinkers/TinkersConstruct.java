@@ -75,6 +75,5 @@ public class TinkersConstruct {
     {
         // Smeltery stuff goes here
         TinkerSmeltery.registerToolpartMeltingCasting(ICHORIUM);
-        // TODO: Check and see if ingots and blocks also need to be registered here or if it's already handled
     }
 }

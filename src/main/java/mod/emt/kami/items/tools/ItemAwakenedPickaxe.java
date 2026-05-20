@@ -81,8 +81,9 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
                 ImmutableList<BlockPos> harvestPositions = HarvestHelper.getHarvestArea(player.world, player, trace, diameter, depth, true, false);
                 if(worldIn.isRemote) {
                     for(BlockPos pos : harvestPositions) {
-                        //TODO: Change effect color?
-                        FXDispatcher.INSTANCE.drawBamf(pos, 0x7AA721, true, true, trace.sideHit);
+                        assert stack.getTagCompound() != null;
+                        int mode = stack.getTagCompound().getInteger("mode");
+                        FXDispatcher.INSTANCE.drawBamf(pos, mode == 3 ? 16719133 : mode == 2 ? 40960 : mode == 1 ? 37119 : 7500402, true, true, trace.sideHit);
                     }
                 }
                 worldIn.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_DIG.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.0f);
