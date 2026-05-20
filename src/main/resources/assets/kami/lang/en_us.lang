@@ -168,4 +168,4 @@ material.kami_ichorium.name=Ichorium
 
 modifier.kami_divine_mandate.name=Divine Mandate
 modifier.kami_god_complex.name=God Complex
-modifier.kami_god_complex.desc=§oLemme show you how to scratch it.§r\nWhen at least three or more parts have this trait, the tool or armor piece becomes unbreakable.
+modifier.kami_god_complex.desc=§oLemme show you how to scratch it.§r\nWhen at least two or more parts have this trait, the tool or armor piece becomes unbreakable.
