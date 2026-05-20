@@ -4,6 +4,7 @@ import com.google.common.collect.Multimap;
 import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler;
 import com.invadermonky.thaumicapi.handlers.PlayerMovementAbilityHandler.MovementType;
 import mod.emt.kami.Kami;
+import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.handlers.CommonEventHandler;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.registry.ModSoundsKAMI;
@@ -59,22 +60,21 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
     public static final int POTION_DURATION_MIN = 301;
 
     protected static final BiFunction<EntityPlayer, MovementType, Float> MOVEMENT_FUNC = (player, type) -> {
-        //TODO: Configs for all of these.
         float boost = 0;
         switch (type) {
             case DRY_GROUND:
-                boost = (float) 0.08;
+                boost = (float) ConfigHandlerKami.armor.bootsMovementBonus;
                 return player.isSneaking() ? boost / 4.0f : boost;
             case WATER_GROUND:
-                boost = (float) Math.max(0.08 / 4.0f, 0.04);
+                boost = (float) Math.max(ConfigHandlerKami.armor.bootsMovementBonus / 4.0f, ConfigHandlerKami.armor.bootsSwimBonus);
                 return player.isSneaking() ? boost / 4.0f : boost;
             case WATER_SWIM:
-                boost = (float) 0.04;
+                boost = (float) ConfigHandlerKami.armor.bootsSwimBonus;
                 return player.isSneaking() ? boost / 4.0f : boost;
             case JUMP_BEGIN:
-                return (float) 0.3;
+                return (float) ConfigHandlerKami.armor.bootsJumpBoost;
             case JUMP_FACTOR:
-                return (float) 0.03;
+                return (float) ConfigHandlerKami.armor.bootsJumpFactor;
             case STEP_HEIGHT:
                 return !player.isSneaking() ? (float) 0.75 : 0;
             default:

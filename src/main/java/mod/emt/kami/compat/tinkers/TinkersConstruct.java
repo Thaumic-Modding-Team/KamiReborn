@@ -3,7 +3,6 @@ package mod.emt.kami.compat.tinkers;
 import mod.emt.kami.Kami;
 import mod.emt.kami.compat.tinkers.modifiers.ModDivineMandate;
 import mod.emt.kami.compat.tinkers.traits.TraitGodComplex;
-import mod.emt.kami.registry.ModBlocksKAMI;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -20,6 +19,8 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.smeltery.block.BlockMolten;
+
+import java.util.Objects;
 
 public class TinkersConstruct {
     // These materials are used universally between tools and armor
@@ -38,13 +39,12 @@ public class TinkersConstruct {
     public static void registerFluid(Fluid fluid) {
         FluidRegistry.addBucketForFluid(fluid);
         BlockMolten blockMolten = (BlockMolten) new BlockMolten(fluid).setRegistryName(Kami.MOD_ID, "molten_" + fluid.getName());
-        ItemBlock itemBlockMolten = (ItemBlock) new ItemBlock(blockMolten).setRegistryName(blockMolten.getRegistryName());
+        ItemBlock itemBlockMolten = (ItemBlock) new ItemBlock(blockMolten).setRegistryName(Objects.requireNonNull(blockMolten.getRegistryName()));
         ForgeRegistries.BLOCKS.register(blockMolten);
         ForgeRegistries.ITEMS.register(itemBlockMolten);
     }
 
-    public static void preInit()
-    {
+    public static void preInit() {
         TinkerRegistry.addMaterialStats(ICHORIUM,
                 new HeadMaterialStats(1375, 9.0F, 7.0F, 5),
                 new HandleMaterialStats(1.3F, 10),
@@ -58,8 +58,7 @@ public class TinkersConstruct {
         modDivineMandate = new ModDivineMandate();
     }
 
-    public static void init()
-    {
+    public static void init() {
         // We'd need this if we're also adding into Tinkers' Construct's guidebook
         TinkerBook.INSTANCE.addRepository(new ModuleFileRepository(new ResourceLocation(Kami.MOD_ID, "book").toString()));
 
@@ -71,8 +70,7 @@ public class TinkersConstruct {
         modDivineMandate.addItem(new ItemStack(ModItemsKAMI.ICHORIUM_INGOT), 1, 1);
     }
 
-    public static void postInit()
-    {
+    public static void postInit() {
         // Smeltery stuff goes here
         TinkerSmeltery.registerToolpartMeltingCasting(ICHORIUM);
     }

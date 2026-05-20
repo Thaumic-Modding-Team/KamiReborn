@@ -3,24 +3,24 @@ package mod.emt.kami.compat;
 import mod.emt.kami.compat.tinkers.ConstructsArmory;
 import mod.emt.kami.compat.tinkers.TinkersConstruct;
 import mod.emt.kami.compat.tinkers.TinkersConstructClient;
+import mod.emt.kami.config.ConfigHandlerKami;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 
-// TODO: Add config options to checks
 public class KamiCompatHandler {
-    public static void preInit()
-    {
-        if (Loader.isModLoaded("tconstruct"))
-        {
+    public static final boolean isConstructsArmoryLoaded = Loader.isModLoaded("conarm");
+    public static final boolean isTinkersConstructLoaded = Loader.isModLoaded("tconstruct");
+
+    public static void preInit() {
+        if (isTinkersConstructLoaded && ConfigHandlerKami.integrations.tinkersConstruct) {
             TinkersConstruct.preInit();
             if (FMLLaunchHandler.side().isClient()) {
                 MinecraftForge.EVENT_BUS.register(new TinkersConstructClient());
             }
 
             // Only load Construct's Armory if Tinkers' Construct is also loaded
-            if (Loader.isModLoaded("conarm"))
-            {
+            if (isConstructsArmoryLoaded && ConfigHandlerKami.integrations.constructsArmory) {
                 ConstructsArmory.preInit();
             }
         }
@@ -28,13 +28,11 @@ public class KamiCompatHandler {
 
     public static void init()
     {
-        if (Loader.isModLoaded("tconstruct"))
-        {
+        if (isTinkersConstructLoaded && ConfigHandlerKami.integrations.tinkersConstruct) {
             TinkersConstruct.init();
 
             // Only load Construct's Armory if Tinkers' Construct is also loaded
-            if (Loader.isModLoaded("conarm"))
-            {
+            if (isConstructsArmoryLoaded && ConfigHandlerKami.integrations.constructsArmory) {
                 ConstructsArmory.init();
             }
         }
@@ -42,7 +40,7 @@ public class KamiCompatHandler {
 
     public static void postInit()
     {
-        if (Loader.isModLoaded("tconstruct"))
+        if (isTinkersConstructLoaded && ConfigHandlerKami.integrations.tinkersConstruct)
         {
             TinkersConstruct.postInit();
         }

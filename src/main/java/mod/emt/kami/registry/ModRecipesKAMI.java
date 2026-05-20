@@ -2,12 +2,12 @@ package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IOreDictProvider;
+import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.recipe.infusion.InfusionEnchantmentRecipeEternal;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.oredict.OreDictionary;
@@ -282,15 +282,17 @@ public class ModRecipesKAMI {
                         new ItemStack(ItemsTC.salisMundus),
                         ItemPhial.makeFilledPhial(Aspect.ORDER)));
 
-        InfusionEnchantmentRecipeEternal eternalInfusion = new InfusionEnchantmentRecipeEternal(
-                ModEnchantsKAMI.ETERNAL,
-                new AspectList().add(Aspect.AURA, 250).add(Aspect.ENERGY, 250).add(Aspect.MAGIC, 250).add(Aspect.METAL, 250).add(Aspect.PROTECT, 250),
-                new IngredientNBTTC(new ItemStack(Items.ENCHANTED_BOOK)),
-                new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
-                new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "eternal_infusion"), eternalInfusion);
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "eternal_infusion_fake"), new InfusionEnchantmentRecipe(eternalInfusion, new ItemStack(ModItemsKAMI.ICHORIUM_SWORD)));
+        if (ConfigHandlerKami.enchantments.eternal) {
+            InfusionEnchantmentRecipeEternal eternalInfusion = new InfusionEnchantmentRecipeEternal(
+                    ModEnchantsKAMI.ETERNAL,
+                    new AspectList().add(Aspect.AURA, 250).add(Aspect.ENERGY, 250).add(Aspect.MAGIC, 250).add(Aspect.METAL, 250).add(Aspect.PROTECT, 250),
+                    new IngredientNBTTC(new ItemStack(Items.ENCHANTED_BOOK)),
+                    new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
+                    new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
+                    new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
+                    new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "eternal_infusion"), eternalInfusion);
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "eternal_infusion_fake"), new InfusionEnchantmentRecipe(eternalInfusion, new ItemStack(ModItemsKAMI.ICHORIUM_SWORD)));
+        }
     }
 }

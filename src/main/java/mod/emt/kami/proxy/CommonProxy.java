@@ -5,6 +5,7 @@ import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.compat.datafixers.BlockDataFixer;
 import mod.emt.kami.compat.datafixers.ItemDataFixer;
 import mod.emt.kami.compat.datafixers.ItemMetaDataFixer;
+import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.handlers.GuiHandlerKami;
 import mod.emt.kami.network.PacketHandler;
 import mod.emt.kami.registry.ModRecipesKAMI;
@@ -50,7 +51,8 @@ public class CommonProxy {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/basics"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/zenith"));
 
-        // TODO: Add config setting for this
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/eternal_infusion"));
+        if(ConfigHandlerKami.enchantments.eternal) {
+            ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/eternal_infusion"));
+        }
     }
 }
