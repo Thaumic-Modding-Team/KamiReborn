@@ -22,6 +22,7 @@ import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.items.consumables.ItemPhial;
 import thaumcraft.common.lib.crafting.InfusionEnchantmentRecipe;
+import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 
 public class ModRecipesKAMI {
     private static final ResourceLocation defaultGroup = new ResourceLocation("");
@@ -109,12 +110,16 @@ public class ModRecipesKAMI {
                 "B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
                 'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
+        ItemStack pickaxe = new ItemStack(ModItemsKAMI.ICHORIUM_PICKAXE);
+        ItemHelper.setUnbreakable(pickaxe);
+        EnumInfusionEnchantment.addInfusionEnchantment(pickaxe, EnumInfusionEnchantment.SOUNDING, 2);
+        EnumInfusionEnchantment.addInfusionEnchantment(pickaxe, EnumInfusionEnchantment.REFINING, 3);
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_pickaxe"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORIUM_TOOLS",
                 250,
                 new AspectList().add(Aspect.FIRE, 8),
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.ICHORIUM_PICKAXE)),
+                pickaxe,
                 "III",
                 " B ",
                 " B ",
@@ -152,9 +157,14 @@ public class ModRecipesKAMI {
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR)));
+
+        ItemStack pickaxe = new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_PICKAXE);
+        ItemHelper.setUnbreakable(pickaxe);
+        EnumInfusionEnchantment.addInfusionEnchantment(pickaxe, EnumInfusionEnchantment.SOUNDING, 2);
+        EnumInfusionEnchantment.addInfusionEnchantment(pickaxe, EnumInfusionEnchantment.REFINING, 3);
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_pickaxe"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORIUM_PICKAXE",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_PICKAXE)),
+                pickaxe,
                 10,
                 new AspectList().add(Aspect.DESIRE, 500).add(Aspect.EARTH, 500).add(Aspect.ENTROPY, 500).add(Aspect.MOTION, 500).add(Aspect.TOOL, 500),
                 ModItemsKAMI.ICHORIUM_PICKAXE,

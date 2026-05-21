@@ -14,6 +14,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.IRarity;
 import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.items.IWarpingGear;
+import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 
 import java.util.Objects;
 
@@ -34,8 +35,8 @@ public class ItemIchoriumPickaxe extends ItemPickaxe implements IWarpingGear {
         if(this.isInCreativeTab(tab)) {
             ItemStack stack = new ItemStack(this);
             ItemHelper.setUnbreakable(stack);
-            //EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.SOUNDING, 2);
-            //EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.REFINING, 3);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.SOUNDING, 2);
+            EnumInfusionEnchantment.addInfusionEnchantment(stack, EnumInfusionEnchantment.REFINING, 3);
             items.add(stack);
         }
     }
