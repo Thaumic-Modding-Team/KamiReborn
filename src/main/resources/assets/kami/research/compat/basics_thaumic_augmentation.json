@@ -7,8 +7,8 @@
         "kami:textures/research/r_zenith.png"
       ],
       "category": "ZENITH",
-      "parents": ["~BASEELDRITCH", "~FLUXRIFT", "~PRIMALCRUSHER", "~PRIMPEARL", "~VOIDROBEARMOR", "~VOIDSEERPEARL", "~VOIDSIPHON", "~WARP"],
-      "siblings": ["~BASEELDRITCH"],
+      "parents": ["~IMPETUS", "~FLUXRIFT", "~PRIMPEARL", "~GAUNTLET_VOID", "~WARP"],
+      "siblings": ["~IMPETUS"],
       "meta": ["ROUND", "SPIKY"],
       "location": [0, 0],
       "stages": [

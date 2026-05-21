@@ -6,7 +6,7 @@
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_axe"],
       "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [5, -1],
       "stages": [
         {
@@ -33,7 +33,7 @@
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_pickaxe"],
       "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [5, -3],
       "stages": [
         {
@@ -60,7 +60,7 @@
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_shovel"],
       "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [5, -5],
       "stages": [
         {
@@ -87,7 +87,7 @@
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_sword"],
       "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [5, -7],
       "stages": [
         {
@@ -108,7 +108,7 @@
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorweave_boots"],
       "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [-5, -1],
       "stages": [
         {
@@ -141,7 +141,7 @@
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorweave_hood"],
       "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [-5, -7],
       "stages": [
         {
@@ -173,7 +173,7 @@
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorweave_leggings"],
       "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [-5, -3],
       "stages": [
         {
@@ -206,7 +206,7 @@
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorweave_robe"],
       "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [-5, -5],
       "stages": [
         {
@@ -239,7 +239,7 @@
       "category": "ZENITH",
       "icons": ["kami:focus_pouch"],
       "parents": ["KAMI_ICHORIUM", "KAMI_ICHORWEAVE_FABRIC", "~FOCUSPOUCH"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [0, -6],
       "stages": [
         {
@@ -281,7 +281,7 @@
       "category": "ZENITH",
       "icons": ["kami:ichorium_caster"],
       "parents": ["KAMI_BOTTOMLESS_POUCH"],
-      "meta": ["REVERSE"],
+      "meta": ["REVERSE", "HIDDEN"],
       "location": [0, -8],
       "stages": [
         {

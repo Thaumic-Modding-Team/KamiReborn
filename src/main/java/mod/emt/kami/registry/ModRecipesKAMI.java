@@ -1,5 +1,6 @@
 package mod.emt.kami.registry;
 
+import com.invadermonky.thaumicapi.utils.libs.ModIds;
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IOreDictProvider;
 import mod.emt.kami.config.ConfigHandlerKami;
@@ -23,6 +24,7 @@ import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.items.consumables.ItemPhial;
 import thaumcraft.common.lib.crafting.InfusionEnchantmentRecipe;
 import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
+import thecodex6824.thaumicaugmentation.api.TAItems;
 
 public class ModRecipesKAMI {
     private static final ResourceLocation defaultGroup = new ResourceLocation("");
@@ -294,12 +296,18 @@ public class ModRecipesKAMI {
                 new ItemStack(Items.ENDER_EYE),
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.GHAST_TEAR)));
+        ItemStack casterStack;
+        if(ModIds.thaumic_augmentation.isLoaded) {
+            casterStack = new ItemStack(TAItems.GAUNTLET, 1, 1);
+        } else {
+            casterStack = new ItemStack(ItemsTC.casterBasic);
+        }
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_caster"), new InfusionRecipe(
                 "KAMI_ICHORIUM_CASTER",
                 new ItemStack(ModItemsKAMI.ICHORIUM_CASTER),
                 10,
                 new AspectList().add(Aspect.AURA, 250).add(Aspect.ELDRITCH, 250).add(Aspect.ENERGY, 250).add(Aspect.MAGIC, 250).add(Aspect.VOID, 250),
-                ItemsTC.casterBasic,
+                casterStack,
                 new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
                 new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),

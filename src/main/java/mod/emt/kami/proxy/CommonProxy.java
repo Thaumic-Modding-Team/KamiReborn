@@ -1,5 +1,6 @@
 package mod.emt.kami.proxy;
 
+import com.invadermonky.thaumicapi.utils.libs.ModIds;
 import mod.emt.kami.Kami;
 import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.compat.datafixers.BlockDataFixer;
@@ -42,13 +43,25 @@ public class CommonProxy {
     }
 
     private void registerResearch() {
+        String key;
+        String research;
+
+        // If Thaumic Augmentation is loaded, have additional research requirements from that addon
+        if(ModIds.thaumic_augmentation.isLoaded) {
+            key = "IMPETUS";
+            research = "research/compat/basics_thaumic_augmentation";
+        } else {
+            key = "BASEELDRITCH";
+            research = "research/basics";
+        }
+
         ResearchCategories.registerCategory(
-                "ZENITH", "BASEELDRITCH", new AspectList(),
+                "ZENITH", key, new AspectList(),
                 new ResourceLocation(Kami.MOD_ID, "textures/research/r_zenith.png"),
                 new ResourceLocation(Kami.MOD_ID, "textures/gui/research_background.jpg"),
                 new ResourceLocation(Thaumcraft.MODID, "textures/gui/gui_research_back_over.png"));
 
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/basics"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, research));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/zenith"));
 
         if(ConfigHandlerKami.enchantments.eternal) {
