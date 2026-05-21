@@ -5,7 +5,7 @@
 
 KAMI: Reborn is a port of the KAMI content from Thaumic Tinkerer for Thaumcraft 6, and has been rewritten from the ground up. Its main focus is to introduce high-tier endgame content into the game.
 
-Unlike the original, Thaumic Tinkerer is no longer a required dependency for this mod.
+Unlike the original, Thaumic Tinkerer is no longer a required dependency for this mod. You can find the reborn counterpart here: [Thaumic Tinkerer: Reborn](https://www.curseforge.com/minecraft/mc-mods/thaumic-tinkerer-reborn).
 
 #### [The Zenith research category is accessible after the following is unlocked]:
 See "research/basics".
