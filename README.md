@@ -7,6 +7,25 @@ KAMI: Reborn is a port of the KAMI content from Thaumic Tinkerer for Thaumcraft 
 
 Unlike the original, Thaumic Tinkerer is no longer a required dependency for this mod.
 
+#### [The Zenith research category is accessible after the following is unlocked]:
+See "research/basics".
+- Flux Rifts
+- Primal Crusher
+- Primordial Pearls
+- Void Seeds
+- Voidseer's Pearl
+- Void Siphon
+- Void Thaumaturge Armor
+- Warp
+
+#### [With Thaumic Augmentation installed, the unlock requirements will be different]:
+See "research/compat/basics_thaumic_augmentation".
+- Expanded Impetus
+- Flux Rifts
+- Primordial Pearls
+- Voidseer Caster's Gauntlet
+- Warp
+
 ---
 
 ## Ichor
@@ -31,7 +50,8 @@ Awakened Ichor equipment is extremely powerful. Awakened tools have various "mod
 
 ## 🔁 Mod Integration
 - **[Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-augmentation)**
-  - The Ichorium Caster's Gauntlet can be modified with gauntlet augments (5 augment slots). 
+  - The Ichorium Caster's Gauntlet can be modified with gauntlet augments (5 augment slots).
+  - Zenith's requirements
 - **[ThaumicTweaker](https://www.curseforge.com/minecraft/mc-mods/thaumictweaker)**
   - Full subtitle support for all research entries, see [here](https://github.com/Thaumic-Modding-Team/ThaumicTweaker/wiki/Research-Subtitles) for more info!
 - **[Tinkers' Antique](https://www.curseforge.com/minecraft/mc-mods/tinkers-antique) / [Antique Armory](https://www.curseforge.com/minecraft/mc-mods/antique-armory)**
