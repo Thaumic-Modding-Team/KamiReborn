@@ -23,6 +23,7 @@ public class Kami {
     public static final String MOD_VERSION = Tags.VERSION;
     public static final String DEPENDENCIES = "required-after:thaumcraft" +
             ";required-after:thaumicapi" +
+            ";after:thaumicaugmentation" +
             ";after:tconstruct" +
             ";after:conarm";
 
