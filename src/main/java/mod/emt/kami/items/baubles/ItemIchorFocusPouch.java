@@ -3,16 +3,15 @@ package mod.emt.kami.items.baubles;
 import mod.emt.kami.Kami;
 import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.handlers.GuiHandlerKami;
+import mod.emt.kami.inventory.handlers.PouchStackHandler;
 import mod.emt.kami.registry.ModSoundsKAMI;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IRarity;
@@ -52,19 +51,14 @@ public class ItemIchorFocusPouch extends ItemFocusPouch {
 
     @Override
     public NonNullList<ItemStack> getInventory(ItemStack stack) {
-        NonNullList<ItemStack> inventory = NonNullList.withSize(117, ItemStack.EMPTY);
-        if(stack.getTagCompound() != null) {
-            ItemStackHelper.loadAllItems(stack.getTagCompound(), inventory);
-        }
-        return inventory;
+        PouchStackHandler handler = new PouchStackHandler(stack);
+        return handler.getInventory();
     }
 
     @Override
     public void setInventory(ItemStack stack, NonNullList<ItemStack> stackList) {
-        if(stack.getTagCompound() == null) {
-            stack.setTagCompound(new NBTTagCompound());
-        }
-        ItemStackHelper.saveAllItems(stack.getTagCompound(), stackList);
+        PouchStackHandler handler = new PouchStackHandler(stack);
+        handler.setInventory(stackList);
     }
 
     @Override
