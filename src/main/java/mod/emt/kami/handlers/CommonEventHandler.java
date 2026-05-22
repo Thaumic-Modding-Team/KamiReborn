@@ -10,6 +10,7 @@ import mod.emt.kami.items.tools.ItemIchoriumShovel;
 import mod.emt.kami.items.tools.ItemIchoriumSword;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.PlayerHelper;
+import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -28,7 +29,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
 import thaumcraft.common.items.baubles.ItemCloudRing;
 
 import java.util.HashSet;
@@ -57,6 +59,27 @@ public class CommonEventHandler {
                     world.spawnEntity(entityItem);
                 }
                 event.getDrops().clear();
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onBlockBreakSpeed(BreakSpeed event) {
+        EntityPlayer player = event.getEntityPlayer();
+        ItemStack helm = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+        if(!helm.isEmpty() && helm.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD) {
+            double newSpeed = event.getOriginalSpeed();
+            if(player.isInsideOfMaterial(Material.WATER)) {
+                //Underwater break speed is 20% of normal speed
+                newSpeed = event.getOriginalSpeed() / 0.2;
+            }
+            if(!player.onGround) {
+                //Airborne break speed is 20% of normal speed
+                newSpeed = event.getOriginalSpeed() / 0.2;
+            }
+
+            if(newSpeed > event.getNewSpeed()) {
+                event.setNewSpeed((float) newSpeed);
             }
         }
     }
@@ -150,7 +173,7 @@ public class CommonEventHandler {
      }
 
     @SubscribeEvent
-    public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
+    public static void onPlayerLoggedOut(PlayerLoggedOutEvent event) {
         UUID playerId = PlayerHelper.getUUIDFromPlayer(event.player);
         FLYING_PLAYERS.remove(playerId);
     }
