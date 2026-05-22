@@ -11,3 +11,5 @@ Before updating, be sure to remove all items from any existing Bottomless Pouche
 ### Fixed
 - Fixed missing keybinding translation keys
 - Fixed bottomless pouch focus desync
+- Fixed Eternal infusion enchant applying with no components
+- Fixed IllegalAccessError when using Awakened tools
