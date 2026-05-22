@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.RecipeMatcher;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.lib.crafting.InfusionEnchantmentRecipe;
 import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
@@ -27,7 +28,7 @@ public class InfusionEnchantmentRecipeEternal extends InfusionEnchantmentRecipe 
 
     @Override
     public boolean matches(List<ItemStack> input, ItemStack central, World world, EntityPlayer player) {
-        return central.isItemStackDamageable() && central.getItem().isRepairable();
+        return central.isItemStackDamageable() && central.getItem().isRepairable() && RecipeMatcher.findMatches(input, this.components) != null;
     }
 
     @Override
