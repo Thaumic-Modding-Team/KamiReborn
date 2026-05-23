@@ -29,6 +29,10 @@ item.kami:ichorweave_leggings.name=灵液编织护腿
 item.kami:ichorweave_robe.name=灵液编织法袍
 item.kami:ichor.name=灵液
 
+# Keys
+key.categories.kami=神灵：重生
+key.kami.open_focus_pouch=打开无底手袋
+
 # Tooltips
 enchantment.infusion.KAMI_ETERNAL=永恒
 
