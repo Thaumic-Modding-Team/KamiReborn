@@ -3,6 +3,7 @@ package mod.emt.kami.inventory.handlers;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -19,6 +20,18 @@ public class PouchStackHandler extends ItemStackHandler implements ICapabilitySe
         this.pouchStack = pouchStack;
         NBTTagCompound invTag = this.pouchStack.getTagCompound() != null ? this.pouchStack.getTagCompound().getCompoundTag("inventory") : new NBTTagCompound();
         this.deserializeNBT(invTag);
+    }
+
+    public NonNullList<ItemStack> getInventory() {
+        return this.stacks;
+    }
+
+    public void setInventory(NonNullList<ItemStack> stackList) {
+        int slots = Math.min(this.getSlots(), stackList.size());
+        for(int i = 0; i < slots; i++) {
+            this.stacks.set(i, stackList.get(i));
+        }
+        this.onContentsChanged(0);
     }
 
     @Override

@@ -114,8 +114,7 @@ public class ModRecipesKAMI {
                 'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
         ItemStack pickaxe = new ItemStack(ModItemsKAMI.ICHORIUM_PICKAXE);
         ItemHelper.setUnbreakable(pickaxe);
-        EnumInfusionEnchantment.addInfusionEnchantment(pickaxe, EnumInfusionEnchantment.SOUNDING, 2);
-        EnumInfusionEnchantment.addInfusionEnchantment(pickaxe, EnumInfusionEnchantment.REFINING, 3);
+        EnumInfusionEnchantment.addInfusionEnchantment(pickaxe, EnumInfusionEnchantment.REFINING, 4);
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_pickaxe"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORIUM_TOOLS",
@@ -192,9 +191,13 @@ public class ModRecipesKAMI {
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR)));
+
+        ItemStack sword = new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SWORD);
+        ItemHelper.setUnbreakable(sword);
+        EnumInfusionEnchantment.addInfusionEnchantment(sword, EnumInfusionEnchantment.ARCING, 4);
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_sword"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORIUM_SWORD",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SWORD)),
+                sword,
                 10,
                 new AspectList().add(Aspect.AVERSION, 500).add(Aspect.DEATH, 500).add(Aspect.ENTROPY, 500).add(Aspect.LIFE, 500).add(Aspect.MAGIC, 500),
                 ModItemsKAMI.ICHORIUM_SWORD,

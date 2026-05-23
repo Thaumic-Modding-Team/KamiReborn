@@ -29,6 +29,10 @@ item.kami:ichorweave_leggings.name=Ichorweave Leggings
 item.kami:ichorweave_robe.name=Ichorweave Robe
 item.kami:ichor.name=Ichor
 
+# Keys
+key.categories.kami=KAMI: Reborn
+key.kami.open_focus_pouch=Open Bottomless Pouch
+
 # Tooltips
 enchantment.infusion.KAMI_ETERNAL=Eternal
 
