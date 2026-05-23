@@ -1,0 +1,175 @@
+itemGroup.KamiTab=神灵：重生
+
+# Blocks
+tile.kami:ichor_block.name=灵液块
+tile.kami:ichorium_block.name=灵液素块
+
+# Items
+item.kami:awakened_ichorium_axe.name=灵液素斧・风暴破坏者
+item.kami:awakened_ichorium_pickaxe.name=灵液素镐・掘进者
+item.kami:awakened_ichorium_shovel.name=灵液素锹・掘墓者
+item.kami:awakened_ichorium_sword.name=灵液素剑・泰坦杀手
+item.kami:awakened_ichorweave_boots.name=灵液编织靴子・生物圈
+item.kami:awakened_ichorweave_hood.name=灵液编织兜帽・深渊带
+item.kami:awakened_ichorweave_leggings.name=灵液编织护腿・燃烧地幔
+item.kami:awakened_ichorweave_robe.name=灵液编织法袍・平流层
+item.kami:blessed_silverwood_rod.name=受祝银木杖柄
+item.kami:focus_pouch.name=无底手袋
+item.kami:ichorium_axe.name=灵液素斧
+item.kami:ichorium_caster.name=灵液素法师护手・飞升者
+item.kami:ichorium_ingot.name=灵液素锭
+item.kami:ichorium_nugget.name=灵液素粒
+item.kami:ichorium_pickaxe.name=灵液素镐
+item.kami:ichorium_shovel.name=灵液素锹
+item.kami:ichorium_sword.name=灵液素剑
+item.kami:ichorweave_fabric.name=灵液编织布匹
+item.kami:ichorweave_boots.name=灵液编织靴子
+item.kami:ichorweave_hood.name=灵液编织兜帽
+item.kami:ichorweave_leggings.name=灵液编织护腿
+item.kami:ichorweave_robe.name=灵液编织法袍
+item.kami:ichor.name=灵液
+
+# Keys
+key.categories.kami=神灵：重生
+key.kami.open_focus_pouch=打开无底手袋
+
+# Tooltips
+enchantment.infusion.KAMI_ETERNAL=永恒
+
+tooltip.kami.awakened=觉醒
+tooltip.kami.awakened_set.info=§b盔甲套装§r：觉醒灵液（%d/4）
+tooltip.kami.awakened_set.desc=受到的所有伤害减少80%%
+tooltip.kami.focus_pouch.keybind=装备时，按[%s]打开。
+tooltip.kami.revealing=揭示
+tooltip.kami.tool.aoe_mode=采集范围：%1$dx%1$d
+tooltip.kami.tool.bury_area=埋葬半径：%d
+tooltip.kami.tool.bury_mode.all=埋葬所有
+tooltip.kami.tool.bury_mode.animals=埋葬动物
+tooltip.kami.tool.bury_mode.hostiles=埋葬敌对
+tooltip.kami.tool.bury_mode.undead=埋葬亡灵
+tooltip.kami.tool.dig_depth=采集深度：%d
+tooltip.kami.tool.impact_mode.damage=冲击：伤害
+tooltip.kami.tool.impact_mode.lightning=冲击：雷霆
+tooltip.kami.tool.impact_mode.detonation=冲击：爆震
+tooltip.kami.tool.impact_mode.explosion=冲击：爆炸
+tooltip.kami.tool.slayer_mode.abomination=憎恶杀手
+tooltip.kami.tool.slayer_mode.dragon=屠龙者
+tooltip.kami.tool.slayer_mode.living=凡命灾兵
+tooltip.kami.tool.slayer_mode.normal=未调谐
+tooltip.kami.tool.slayer_mode.undead=亡灵杀手
+
+# Research
+tc.research_category.ZENITH=天顶
+kami.research.zenith_base.title=天顶
+kami.research.zenith_base.title.subtitle=至高点
+kami.research.zenith_base.stage.1=这可能是我毕生的杰作。我拥有超越一切想象的潜力，甚至可能……登神。
+
+# -- AWAKENED ICHOR
+kami.research.awakened_ichorium.addenda.1=有趣的是，我发现用觉醒灵液素工具挖掘任何方块都会使掉落物出现在我脚下。<BR>虽然挖掘单个方块时用处不大，但在大面积采集时，这种效果能大大降低材料掉入熔岩或虚空的可能。
+kami.research.awakened_ichorweave.addenda.1=觉醒灵液编织装备似乎只有在被活物穿戴时才会产生共鸣。<BR>装备全套觉醒灵液编织盔甲时，受到的所有伤害都会降低80%。它仍然可以像普通灵液编织盔甲一样自由染色。
+
+# -- AWAKENED ICHORIUM AXE
+kami.research.awakened_ichorium_axe.title=灵液素斧・风暴破坏者
+kami.research.awakened_ichorium_axe.title.subtitle=彩虹桥尚未实装
+kami.research.awakened_ichorium_axe.stage.1=灵液素对要素的接纳度如此之高，我认为一定有办法进一步强化这把斧头。<BR>或许注入大量自然要素能有所收获？
+kami.research.awakened_ichorium_axe.stage.2=我将这把新斧头命名为风暴破除者，它真是个迷人的工具。<BR>制作时注入的大量Herba要素暗示了它与植物的联系，事实证明的确如此。<BR>这把斧头能一击砍倒整棵树，甚至能在几秒内砍倒整棵宏伟之木。潜行能禁用此能力，以便我逐块采集。<BR>此外，这斧头与使用者之间存在一种奇特的联系。有一次我失手丢出了斧头，它刚碰到地面就弹回了我的手中。<BR>经过测试，我发现投掷斧头似乎能为其注入力量，它会飞行一小段距离后回到我手上。<BR>持有斧头时，我可以通过潜行并右键点击来切换不同的冲击效果。我将目前发现的能力记录在了后面几页中。<PAGE>冲击：伤害<DIV>击中敌人时造成武器伤害。<PAGE>冲击：雷霆<DIV>击中敌人或地面时召唤一道闪电。<PAGE>冲击：爆震<DIV>击中敌人或地面时产生不会破坏地形的小型爆炸。<BR>爆炸强度随投掷速度增加。<PAGE>冲击：爆炸<DIV>与敌人或地面碰撞时产生破坏地形的大型爆炸。<BR>爆炸强度随投掷速度增加。
+
+# -- AWAKENED ICHORIUM PICKAXE
+kami.research.awakened_ichorium_pickaxe.title=灵液素镐・掘进者
+kami.research.awakened_ichorium_pickaxe.title.subtitle=谁还需要采石场？
+kami.research.awakened_ichorium_pickaxe.stage.1=在深入探索了奥术这么久之后，答案难道真的像看起来那么简单？<BR>如果灵液素工具能在合适的条件下实现“觉醒”，也许最佳选择就是向工具注入它通常关联的要素。
+kami.research.awakened_ichorium_pickaxe.stage.2=我只能用掘进者的梦想来形容觉醒灵液素镐。<BR>它能同时开采大范围的石头，实在是个奇迹。<BR>手持工具时，潜行并右键点击可以切换采集范围。<BR>按住右键能为其充能，松开后便会朝我面向的方向挖出一条隧道。
+
+# -- AWAKENED ICHORIUM SHOVEL
+kami.research.awakened_ichorium_shovel.title=灵液素锹・掘墓者
+kami.research.awakened_ichorium_shovel.title.subtitle=我施放了塑土术！
+kami.research.awakened_ichorium_shovel.stage.1=我尝试了无数种方式向灵液素锹注魔，但我发现的所有要素都无法与工具结合。<BR>仿佛它有某种我不了解的用途……也许答案是某种更阴晦的东西。
+kami.research.awakened_ichorium_shovel.stage.2=我不确定这是否能算作成功……<BR>为锹充能使其能够挖掘更大的区域，但它似乎也对活埋生物有着某种令人不安的亲和性。<BR>按住右键会使锹积蓄能量，松开后，我周围的所有实体都会被瞬间埋入地下，慢慢窒息而死。<BR>虽然效用强大，但听到动物在地下窒息的声音还是太令人不安了。幸运的是，它可以被调谐为只埋葬特定实体。手持工具潜行并右键点击可以切换具体的目标。<PAGE>埋葬亡灵<DIV>埋葬玩家周围的所有亡灵生物。<BR>埋葬半径随蓄力时间增加。<PAGE>埋葬动物<DIV>埋葬玩家周围的所有动物。<BR>埋葬半径随蓄力时间增加。<PAGE>埋葬敌对<DIV>埋葬玩家周围的所有敌对实体。<BR>埋葬半径随蓄力时间增加。<PAGE>埋葬所有<DIV>埋葬玩家周围的所有生物。<BR>埋葬半径随蓄力时间增加。
+
+# -- AWAKENED ICHORIUM SWORD
+kami.research.awakened_ichorium_sword.title=灵液素剑・泰坦杀手
+kami.research.awakened_ichorium_sword.title.subtitle=针对性效果拔群
+kami.research.awakened_ichorium_sword.stage.1=考虑到它的造价，灵液素剑实在太过平凡。我本以为这等传奇武器至少会更锋利一些。<BR>或许我不该只关注武器，而是应该关注被击中的那个实体……
+kami.research.awakened_ichorium_sword.stage.2=我将这把觉醒灵液素剑命名为泰坦杀手，它具有一种独特能力，可以自我调谐至特定的敌人类型，并在攻击被调谐的敌人时获得加成。<PAGE>未调谐<DIV>未调谐时，觉醒之剑放弃任何实体调谐加成。<BR>取而代之的是，剑中的所有能量都会被引导至剑刃，使武器的基础伤害翻倍。<PAGE>凡命灾兵<DIV>一切活物的灾星。当调谐至凡俗生灵时，觉醒之剑无视所有护甲，每次命中造成目标最大生命值20%的伤害。<PAGE>亡灵杀手<DIV>或许有人会称之为圣剑，但我更清楚。<BR>当调谐至亡灵时，觉醒之剑无视所有护甲，每次命中造成亡灵目标最大生命值20%的伤害。<PAGE>屠龙者<DIV>传说中，世上最伟大的战士曾屠杀过强大的巨龙。虽然我可能无法达到他们那样的名望，但这把觉醒之剑能让我接近他们的伟业。<BR>当调谐至龙种时，觉醒之剑无视所有护甲，每次命中造成龙类目标最大生命值20%的伤害。<BR>有趣的是，此效果似乎也适用于穿着龙制盔甲的实体。<PAGE>憎恶杀手<DIV>在研究中，我遇到过一些不符合任何标准分类的实体。<BR>这些生物要么是异域的邪术存在，要么就是沉醉于高咒波环境中的腐化憎恶。<BR>当调谐至憎恶时，觉醒之剑无视腐化或邪术生物的护甲，并造成目标最大生命值20%的伤害。
+
+# -- AWAKENED ICHORWEAVE BOOTS
+kami.research.awakened_ichorweave_boots.title=灵液编织靴子・生物圈
+kami.research.awakened_ichorweave_boots.title.subtitle=“自然的守护者”？才怪！
+kami.research.awakened_ichorweave_boots.stage.1=进一步的检验表明，灵液与我以往见过的任何材料都不同，它仿佛正在沉睡……<BR>我很好奇如果设法唤醒或强化灵液编织护甲会发生什么？
+kami.research.awakened_ichorweave_boots.stage.2=虽然我原本期望更多，但结果确实没什么可抱怨的。<BR>觉醒后，灵液编织靴子能赋予穿戴者更高的移动速度和跳跃高度，类似于旅行者之靴的效果。<BR>此外，这双靴子还能免疫缓慢效果。<BR>虽然效果相对普通，但不用再担心给我的靴子持续充能，这确实很不错。
+
+# -- AWAKENED ICHORWEAVE HOOD
+kami.research.awakened_ichorweave_hood.title=灵液编织兜帽・深渊带
+kami.research.awakened_ichorweave_hood.title.subtitle=凝视黑暗
+kami.research.awakened_ichorweave_hood.stage.1=进一步的检验表明，灵液与我以往见过的任何材料都不同，它仿佛正在沉睡……<BR>我很好奇如果设法唤醒或强化灵液编织护甲会发生什么？
+kami.research.awakened_ichorweave_hood.stage.2=被Tenebrae要素唤醒后，灵液编织兜帽拥有了对世界深处的亲和性，这毫不意外。<BR>装备时，觉醒灵液编织兜帽会赋予穿戴者无限的水下呼吸和夜视能力。
+
+# -- AWAKENED ICHORWEAVE LEGGINGS
+kami.research.awakened_ichorweave_leggings.title=灵液编织护腿・燃烧地幔
+kami.research.awakened_ichorweave_leggings.title.subtitle=骗子骗子，裤子着火
+kami.research.awakened_ichorweave_leggings.stage.1=进一步的检验表明，灵液与我以往见过的任何材料都不同，它仿佛正在沉睡……<BR>我很好奇如果设法唤醒或强化灵液编织护甲会发生什么？
+kami.research.awakened_ichorweave_leggings.stage.2=尽管唤醒灵液编织护腿的过程中涉及的Ignis要素量有些让人担忧，但我无法质疑这个结果。<BR>装备时，觉醒灵液编织护腿能赋予穿戴者对环境危害的免疫能力，如火焰、熔岩、中毒和凋零。<BR>穿戴者还会获得二段跳能力。不过，这种二段跳能力与云霄指环的同类效果会互相干扰。
+
+# -- AWAKENED ICHORWEAVE ROBE
+kami.research.awakened_ichorweave_robe.title=灵液编织法袍・平流层
+kami.research.awakened_ichorweave_robe.title.subtitle=缺氧
+kami.research.awakened_ichorweave_robe.stage.1=进一步的检验表明，灵液与我以往见过的任何材料都不同，它仿佛正在沉睡……<BR>我很好奇如果设法唤醒或强化灵液编织护甲会发生什么？
+kami.research.awakened_ichorweave_robe.stage.2=灵液编织法袍对大气有着极强的亲和性，类似于我使用鞘翅时的体验。<BR>与鞘翅不同，这件法袍的飞行不受限制，并完全免疫摔落伤害。
+
+# -- BOTTOMLESS POUCH
+kami.research.bottomless_pouch.title=无底手袋
+kami.research.bottomless_pouch.title.subtitle=尽量别把它撕破
+kami.research.bottomless_pouch.stage.1=我注意到当两块灵液布匹叠放在一起时，会发生某种非常奇怪的现象。<BR>掀开上层布料的边缘时，我发现两块布料之间有一个空隙。<BR>虽然听起来可能不怎么样，但直到把整条手臂都伸了进去，我才真正意识到它有多大。<BR>
+kami.research.bottomless_pouch.stage.2=实验的成功有点让人担忧。虽然我最初以为也许能制造出类似次元袋的东西，但我没考虑到究竟会创造出多大的空间。<BR>这个无底手袋有117个格子，并且能作为施术核心手袋使用。
+
+# -- ICHOR
+kami.research.ichor.title=灵液
+kami.research.ichor.title.subtitle=神之血
+kami.research.ichor.stage.1=迄今为止，我所有的研究都只产生出相对凡俗的材料。<BR>一定存在更进一步的方法，能够创造出超越物理限制的材料。
+kami.research.ichor.stage.2=通过对神秘学各个领域的广泛研究，我发现了一种物质，或许可视作我研究工作的下一阶段。通过将一些最强大的材料与元始能量融合，我创造出了这种物质。<BR>我将这种极为强大的物质称为“灵液”，其中蕴含着难以估量的原初觉醒之力。<BR>我确信将来有不少设备能用得到它。
+
+# -- ICHORIUM
+kami.research.ichorium.title=灵液素
+kami.research.ichorium.title.subtitle=比钻石更硬的金属
+kami.research.ichorium.stage.1=实验表明，灵液能够与大多数金属结合，但其结果之无用，连我自己都为之惊讶。<BR>然而，那些“异界”材料（找不到更确切的词了），却仿佛会相互吸引。<BR>虽然它们像水和油一样难以相融，但注魔或许是将其转化为均质材料的关键。
+kami.research.ichorium.stage.2=我成功将灵液与虚空金属融合，创造出一种全新材料，其性质完全独一无二。<BR>它完全免疫腐蚀与损伤，却又几乎如黏土般柔韧可塑。<BR>我还没有找到它的用途，但我知道这用不了多久。
+
+# -- ICHORIUM CASTER
+kami.research.ichorium_caster.title=灵液素法师护手・飞升者
+kami.research.ichorium_caster.title.subtitle=“我只要打个响指，他们就灰飞烟灭了。”
+kami.research.ichorium_caster.stage.1=鉴于我其他灵液方面的实验都如此成功，我不禁想知道，如果将这种材料应用到法师护手上会发生什么。
+kami.research.ichorium_caster.stage.2=然而，我的期望再次落空。<BR>灵液已被证明是一种绝佳的核心材料。通过这只护手引导的法术，其魔力消耗将减少40%，这还不包括装备提供的加成，而且剩余的魔力消耗会分摊到以我为中心的5x5区块范围内。<BR>只要我想，还可以用任何染料组合来给这只护手染色。
+kami.research.ichorium_caster.addenda.1=灵液素护手不仅与附近灵气场有更强的共鸣，它似乎还比其他材料更具可塑性，最多可以接受五个增强组件，而神秘或虚空金属护手只能接受三个。
+
+# -- ICHORIUM TOOLS
+kami.research.ichorium_tools.title=灵液素工具
+kami.research.ichorium_tools.title.subtitle=设计之巅
+kami.research.ichorium_tools.stage.1=通常来说，我用其他大多数材料都能立刻制造出装备，然而，对于基于灵液的材料，则需要一些额外的试验和试错才能成功。
+kami.research.ichorium_tools.stage.2=现在，我能够制造灵液素工具了。这些工具威力强大，以至于绝无可能损坏。
+
+# -- ICHORWEAVE ARMOR
+kami.research.ichorweave_armor.title=灵液编织盔甲
+kami.research.ichorweave_armor.title.subtitle=无可匹敌，无可摧破，无可企及
+kami.research.ichorweave_armor.stage.1=通常来说，我用其他大多数材料都能立刻制造出装备，然而，对于基于灵液的材料，则需要一些额外的试验和试错才能成功。
+kami.research.ichorweave_armor.stage.2=现在，我能够制造灵液编织套装了。这套盔甲无比强大，以至于绝无可能损坏，而且我还能从中获得可观的魔力减免。<BR>只要我想，还可以用任何染料组合来给这套盔甲染色。
+
+# -- ICHORWEAVE FABRIC
+kami.research.ichorweave_fabric.title=灵液编织布匹
+kami.research.ichorweave_fabric.title.subtitle=希望你的针够结实
+kami.research.ichorweave_fabric.stage.1=灵液对布料表现出强烈的反应。如果操作得当，我应该能创造出完美的布匹。
+kami.research.ichorweave_fabric.stage.2=现在，我能够将基础的魔力布匹升级为特制的灵液编织布匹。它抗撕裂且异常柔韧，想象一下这无尽的可能性！
+
+# -- INFUSION ENCHANTMENT: ETERNAL
+kami.research.eternal_infusion.title=注魔魔咒：永恒
+kami.research.eternal_infusion.title.subtitle=神之工具
+kami.research.eternal_infusion.stage.1=灵液这种物质如此奇特。它足够柔韧，可以相对容易地加工成工具和盔甲，但一旦最终定型，就几乎无法改变。<BR>或许有办法将其特性赋予其他工具。即便只是一层薄薄的涂层，也能显著提高工具的耐久度。
+kami.research.eternal_infusion.stage.2=成果只能用“不可思议”来形容。<BR>我本只想提高工具的耐久度，但却找到了使其完全不受损伤的方法。<BR>利用对注魔魔咒的了解，我成功将灵液近乎完美地结合到了会损失耐久的物品上。被注魔的物品不仅会保留原有的属性，还能变得完全无法破坏。
+
+# -- MOD COMPAT: TINKERS' CONSTRUCT
+fluid.ichorium.name=熔融灵液素
+
+material.kami_ichorium.name=灵液素
+
+modifier.kami_divine_mandate.name=神授天命
+modifier.kami_god_complex.name=上帝情结
+modifier.kami_god_complex.desc=§o让我来教你怎么弄坏它。§r\n当至少两个部件拥有此属性时，工具或护甲将无法破坏。
