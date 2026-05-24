@@ -62,7 +62,7 @@ Awakened Ichor equipment is extremely powerful. Awakened tools have various "mod
 ---
 
 ## 🙏 Special Thanks
-- Original Thaumic Tinkerer developers ~ gaeakat, pixlepix, Vazkii
+- Original Thaumic Tinkerer developers ~ pixlepix, Vazkii, and others
 - Some textures used from Fake Thaummy Pack ~ Fakeginkgo
 
 ---
