@@ -2,14 +2,10 @@ package mod.emt.kami.proxy;
 
 import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.compat.KamiCompatHandler;
-import mod.emt.kami.compat.tinkers.TinkersConstructClient;
-import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.items.IDyeableGear;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 import thaumcraft.api.casters.ICaster;
 import thaumcraft.common.items.casters.ItemFocus;
 
@@ -17,12 +13,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit() {
         super.preInit();
-
-        if (KamiCompatHandler.isTinkersConstructLoaded && ConfigHandlerKami.integrations.tinkersConstruct) {
-            if (FMLLaunchHandler.side().isClient()) {
-                MinecraftForge.EVENT_BUS.register(new TinkersConstructClient());
-            }
-        }
+        KamiCompatHandler.preInitClient();
     }
 
     @Override
@@ -55,13 +46,14 @@ public class ClientProxy extends CommonProxy {
 
             return -1;
         };
-
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(gauntletColorHandler, ModItemsKAMI.ICHORIUM_CASTER);
-        //ItemIchoriumCaster.initClient(ModItemsKAMI.ICHORIUM_CASTER);
+
+        KamiCompatHandler.initClient();
     }
 
     @Override
     public void postInit() {
         super.postInit();
+        KamiCompatHandler.postInitClient();
     }
 }

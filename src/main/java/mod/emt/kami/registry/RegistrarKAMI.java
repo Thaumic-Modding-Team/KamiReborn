@@ -5,22 +5,16 @@ import mod.emt.kami.client.render.RenderThrownAxe;
 import mod.emt.kami.entities.EntityThrownAxe;
 import mod.emt.kami.recipe.crafting.DyeableItemRecipe;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -29,7 +23,6 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
@@ -43,15 +36,6 @@ public class RegistrarKAMI {
         IForgeRegistry<Block> registry = event.getRegistry();
         ModBlocksKAMI.initBlocks();
         ModBlocksKAMI.MOD_BLOCKS.forEach(registry::register);
-    }
-
-    public static void registerFluidRenderer(Fluid fluid) {
-        Block block = fluid.getBlock();
-        Item item = Item.getItemFromBlock(block);
-        FluidStateMapper mapper = new FluidStateMapper(fluid);
-        ModelBakery.registerItemVariants(item);
-        ModelLoader.setCustomMeshDefinition(item, mapper);
-        ModelLoader.setCustomStateMapper(block, mapper);
     }
 
     @SubscribeEvent
@@ -109,23 +93,5 @@ public class RegistrarKAMI {
     @SubscribeEvent
     public static void registerEntityRenderers(@Nonnull final ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(EntityThrownAxe.class, new RenderThrownAxe.Factory());
-    }
-
-    private static class FluidStateMapper extends StateMapperBase implements ItemMeshDefinition {
-        private final ModelResourceLocation location;
-
-        public FluidStateMapper(Fluid fluid) {
-            this.location = new ModelResourceLocation(new ResourceLocation(Kami.MOD_ID, "fluids"), fluid.getName());
-        }
-
-        @Override
-        protected @NotNull ModelResourceLocation getModelResourceLocation(@NotNull IBlockState state) {
-            return this.location;
-        }
-
-        @Override
-        public @NotNull ModelResourceLocation getModelLocation(@NotNull ItemStack stack) {
-            return this.location;
-        }
     }
 }

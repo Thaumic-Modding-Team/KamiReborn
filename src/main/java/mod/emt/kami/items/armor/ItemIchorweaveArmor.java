@@ -45,9 +45,6 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
     protected static final String TEXTURE_PATH_DYED_OVERLAY_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1_dyed_overlay.png").toString();
     protected static final String TEXTURE_PATH_DYED_OVERLAY_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_2_dyed_overlay.png").toString();
 
-    public static final ModelIchorArmor ARMOR_OUTER = new ModelIchorArmor(1.0F);
-    public static final ModelIchorArmor ARMOR_INNER = new ModelIchorArmor(0.5F);
-
     public ItemIchorweaveArmor(String unlocName, EntityEquipmentSlot equipmentSlot) {
         super(unlocName, ModItemsKAMI.MATERIAL_ICHORCLOTH, equipmentSlot, null);
         this.addPropertyOverride(new ResourceLocation("dyed"), new IItemPropertyGetter() {
@@ -65,7 +62,7 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
     @Override
     @SideOnly(Side.CLIENT)
     public ModelBiped getArmorModel(@NotNull EntityLivingBase entity, @NotNull ItemStack stack, @NotNull EntityEquipmentSlot slot, @NotNull ModelBiped bipedModel) {
-        ModelIchorArmor armorModel = (slot == EntityEquipmentSlot.LEGS) ? ARMOR_INNER : ARMOR_OUTER;
+        ModelIchorArmor armorModel = (slot == EntityEquipmentSlot.LEGS) ? ModelIchorArmor.ARMOR_INNER : ModelIchorArmor.ARMOR_OUTER;
 
         if (armorModel != null) {
             return armorModel;

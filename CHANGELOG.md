@@ -1,4 +1,10 @@
 # KAMI: Reborn Changelog
+## 1.0.3
+### Fixed
+- Fixed a ton of server crashes.
+
+---
+
 ## 1.0.2
 ### Fixed
 - Fixed a potential client crash with the Tinkers' Construct integration

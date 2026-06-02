@@ -6,14 +6,15 @@ import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
 import mod.emt.kami.Kami;
+import mod.emt.kami.api.IProxy;
 import net.minecraft.util.ResourceLocation;
 import slimeknights.mantle.client.book.repository.ModuleFileRepository;
 import slimeknights.tconstruct.library.TinkerRegistry;
 
-public class ConstructsArmory {
+public class ConstructsArmory implements IProxy {
     // Materials are already registered in the tools class, we are just registering support for armor sets here
-    public static void preInit()
-    {
+    @Override
+    public void preInit() {
         TinkerRegistry.addMaterialStats(TinkersConstruct.ICHORIUM,
                 new CoreMaterialStats(24.0F, 22.0F),
                 new PlatesMaterialStats(1.8F, 0.0F, 2.5F),
@@ -21,8 +22,8 @@ public class ConstructsArmory {
         ArmorMaterials.addArmorTrait(TinkersConstruct.ICHORIUM, TinkersConstruct.GOD_COMPLEX);
     }
 
-    public static void init()
-    {
+    @Override
+    public void initClient() {
         // We'd need this if we're also adding into Construct Armory's guidebook
         ArmoryBook.INSTANCE.addRepository(new ModuleFileRepository(new ResourceLocation(Kami.MOD_ID, "book").toString()));
     }

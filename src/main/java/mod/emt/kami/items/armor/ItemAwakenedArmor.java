@@ -36,6 +36,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import thaumcraft.client.fx.FXDispatcher;
@@ -143,6 +145,7 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World world, @NotNull List<String> tooltip, @NotNull ITooltipFlag tooltipFlag) {
         tooltip.add(TextFormatting.GREEN + I18n.format("tooltip.kami.awakened"));

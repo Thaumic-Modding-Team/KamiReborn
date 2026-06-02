@@ -3,14 +3,18 @@ package mod.emt.kami.client.model.armor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 
+@SideOnly(Side.CLIENT)
 public class ModelCustomArmor extends ModelBiped {
     public ModelCustomArmor(float modelSize, int textureWidth, int textureHeight) {
         super(modelSize, 0.0F, textureWidth, textureHeight);
     }
 
     @Override
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, @NotNull Entity entity) {
         super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 
         // Fixes custom armor sets from being glitched on armor stands

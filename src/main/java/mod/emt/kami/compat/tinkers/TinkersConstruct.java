@@ -1,15 +1,26 @@
 package mod.emt.kami.compat.tinkers;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.api.IProxy;
+import mod.emt.kami.client.model.fluid.FluidStateMapperKAMI;
 import mod.emt.kami.compat.tinkers.modifiers.ModDivineMandate;
 import mod.emt.kami.compat.tinkers.traits.TraitGodComplex;
 import mod.emt.kami.registry.ModItemsKAMI;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.client.book.repository.ModuleFileRepository;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.book.TinkerBook;
@@ -22,7 +33,7 @@ import slimeknights.tconstruct.smeltery.block.BlockMolten;
 
 import java.util.Objects;
 
-public class TinkersConstruct {
+public class TinkersConstruct implements IProxy {
     // These materials are used universally between tools and armor
     public static final Material ICHORIUM = new Material("kami_ichorium", 0xFF910C);
 
@@ -36,7 +47,7 @@ public class TinkersConstruct {
     public static Modifier modDivineMandate;
 
     // TODO: Return bucket when picked from JEI
-    public static void registerFluid(Fluid fluid) {
+    public void registerFluid(Fluid fluid) {
         FluidRegistry.addBucketForFluid(fluid);
         BlockMolten blockMolten = (BlockMolten) new BlockMolten(fluid).setRegistryName(Kami.MOD_ID, "molten_" + fluid.getName());
         ItemBlock itemBlockMolten = (ItemBlock) new ItemBlock(blockMolten).setRegistryName(Objects.requireNonNull(blockMolten.getRegistryName()));
@@ -44,24 +55,24 @@ public class TinkersConstruct {
         ForgeRegistries.ITEMS.register(itemBlockMolten);
     }
 
-    public static void preInit() {
+    @Override
+    public void preInit() {
+        MinecraftForge.EVENT_BUS.register(this);
         TinkerRegistry.addMaterialStats(ICHORIUM,
                 new HeadMaterialStats(1375, 9.0F, 7.0F, 5),
                 new HandleMaterialStats(1.3F, 10),
                 new ExtraMaterialStats(100),
                 new BowMaterialStats(1.2F, 1.0F, 8.0F));
         ICHORIUM.addTrait(GOD_COMPLEX);
-        registerFluid(ICHORIUM_FLUID);
+        this.registerFluid(ICHORIUM_FLUID);
         ICHORIUM_FLUID.setTemperature(1500);
         TinkerRegistry.integrate(ICHORIUM, ICHORIUM_FLUID, "Ichorium").preInit();
 
         modDivineMandate = new ModDivineMandate();
     }
 
-    public static void init() {
-        // We'd need this if we're also adding into Tinkers' Construct's guidebook
-        TinkerBook.INSTANCE.addRepository(new ModuleFileRepository(new ResourceLocation(Kami.MOD_ID, "book").toString()));
-
+    @Override
+    public void init() {
         ICHORIUM.addCommonItems("Ichorium");
         ICHORIUM.setRepresentativeItem(ModItemsKAMI.ICHORIUM_INGOT);
         ICHORIUM.setFluid(ICHORIUM_FLUID);
@@ -70,8 +81,34 @@ public class TinkersConstruct {
         modDivineMandate.addItem(new ItemStack(ModItemsKAMI.ICHORIUM_INGOT), 1, 1);
     }
 
-    public static void postInit() {
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void initClient() {
+        // We'd need this if we're also adding into Tinkers' Construct's guidebook
+        TinkerBook.INSTANCE.addRepository(new ModuleFileRepository(new ResourceLocation(Kami.MOD_ID, "book").toString()));
+
+    }
+
+    @Override
+    public void postInit() {
         // Smeltery stuff goes here
         TinkerSmeltery.registerToolpartMeltingCasting(ICHORIUM);
     }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void onModelRegistry(ModelRegistryEvent event) {
+        registerFluidRenderer(TinkersConstruct.ICHORIUM_FLUID);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void registerFluidRenderer(Fluid fluid) {
+        Block block = fluid.getBlock();
+        Item item = Item.getItemFromBlock(block);
+        FluidStateMapperKAMI mapper = new FluidStateMapperKAMI(fluid);
+        ModelBakery.registerItemVariants(item);
+        ModelLoader.setCustomMeshDefinition(item, mapper);
+        ModelLoader.setCustomStateMapper(block, mapper);
+    }
+
 }
