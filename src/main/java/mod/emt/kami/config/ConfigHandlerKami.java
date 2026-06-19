@@ -52,6 +52,16 @@ public class ConfigHandlerKami {
         public int godComplexParts = 2;
 
         @Config.RequiresMcRestart
+        @Config.Name("Tinkers' Construct: Overpowered Ichorium")
+        @Config.Comment("Makes the Ichorium material overpowered to be in the same tier as endgame PlusTiC materials.")
+        public boolean overpoweredIchorium = false;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Tinkers' Construct: Overpowered Ichorium Trait")
+        @Config.Comment("Makes the Ichorium tool material use Geocentric Disintegration instead of God Complex. This trait makes tools mine blocks instantly regardless of hardness.")
+        public boolean overpoweredIchoriumTrait = false;
+
+        @Config.RequiresMcRestart
         @Config.Name("Construct's Armory")
         @Config.Comment("Enables Construct's Armory Ichorium armor parts. Requires Tinkers' Construct integration to be enabled.")
         public boolean constructsArmory = true;

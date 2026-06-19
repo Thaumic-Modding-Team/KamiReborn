@@ -4,7 +4,9 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.api.IProxy;
 import mod.emt.kami.client.model.fluid.FluidStateMapperKAMI;
 import mod.emt.kami.compat.tinkers.modifiers.ModDivineMandate;
+import mod.emt.kami.compat.tinkers.traits.TraitGeocentricDisintegration;
 import mod.emt.kami.compat.tinkers.traits.TraitGodComplex;
+import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -40,6 +42,8 @@ public class TinkersConstruct implements IProxy {
     // Fluids
     public static final FluidMolten ICHORIUM_FLUID = new FluidMolten("ichorium", 0xD67B09);
 
+    // Tool Traits
+    public static final AbstractTrait GEOCENTRIC_DISINTEGRATION = new TraitGeocentricDisintegration();
     // Normally you'd need both tool and armor traits, but this one works with both just fine
     public static final AbstractTrait GOD_COMPLEX = new TraitGodComplex();
 
@@ -58,12 +62,24 @@ public class TinkersConstruct implements IProxy {
     @Override
     public void preInit() {
         MinecraftForge.EVENT_BUS.register(this);
-        TinkerRegistry.addMaterialStats(ICHORIUM,
-                new HeadMaterialStats(1375, 9.0F, 7.0F, 5),
-                new HandleMaterialStats(1.3F, 10),
-                new ExtraMaterialStats(100),
-                new BowMaterialStats(1.2F, 1.0F, 8.0F));
-        ICHORIUM.addTrait(GOD_COMPLEX);
+        if (ConfigHandlerKami.integrations.overpoweredIchorium) {
+            TinkerRegistry.addMaterialStats(ICHORIUM,
+                    new HeadMaterialStats(6375, 32.0F, 7.0F, 5),
+                    new HandleMaterialStats(2.0F, 650),
+                    new ExtraMaterialStats(550),
+                    new BowMaterialStats(3.5F, 6.5F, 7.0F));
+        } else {
+            TinkerRegistry.addMaterialStats(ICHORIUM,
+                    new HeadMaterialStats(1375, 9.0F, 7.0F, 5),
+                    new HandleMaterialStats(1.3F, 10),
+                    new ExtraMaterialStats(100),
+                    new BowMaterialStats(1.2F, 1.0F, 8.0F));
+        }
+        if (ConfigHandlerKami.integrations.overpoweredIchoriumTrait) {
+            ICHORIUM.addTrait(GEOCENTRIC_DISINTEGRATION);
+        } else {
+            ICHORIUM.addTrait(GOD_COMPLEX);
+        }
         this.registerFluid(ICHORIUM_FLUID);
         ICHORIUM_FLUID.setTemperature(1500);
         TinkerRegistry.integrate(ICHORIUM, ICHORIUM_FLUID, "Ichorium").preInit();
