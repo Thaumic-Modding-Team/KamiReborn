@@ -28,7 +28,7 @@ public class TraitGeocentricDisintegration extends AbstractTrait {
     public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
         ItemStack stack = event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND);
         if (ToolHelper.hasCategory(stack, Category.HARVEST)) {
-            event.setNewSpeed(event.getOriginalSpeed() * 1000);
+            event.setNewSpeed(event.getOriginalSpeed() * 1000.0F);
         }
     }
 }
