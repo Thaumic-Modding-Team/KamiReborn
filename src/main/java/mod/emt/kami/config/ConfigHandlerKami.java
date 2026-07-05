@@ -68,7 +68,13 @@ public class ConfigHandlerKami {
     }
 
     public static class ToolCategory {
-
+        @Config.RangeDouble(min = 0.0, max = 1.0)
+        @Config.Name("Awakened Sword: Titanslayer Damage")
+        @Config.Comment({
+                "The amount of damage, based on the percentage of max health of the target, a fully charged Titanslayer",
+                "strike will deal. A value of 0.2 equates to 20% of the target's maximum health."
+        })
+        public double titanSlayerDamage = 0.2;
     }
 
     @Mod.EventBusSubscriber

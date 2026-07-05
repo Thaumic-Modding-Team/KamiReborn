@@ -1,4 +1,12 @@
 # KAMI: Reborn Changelog
+## 1.0.5
+### Changed
+- Awakened Ichorium Sword titanslayer strike damage can now be configured
+### Fixed
+- Awakened Ichorium Sword now requires a full swing to perform a titanslayer strike
+
+---
+
 ## 1.0.4
 ### Added
 - Added a config option to make the Ichorium material overpowered (Tinkers' Construct / Construct's Armory).

@@ -2,10 +2,12 @@ package mod.emt.kami.items.tools;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.registry.ModSoundsKAMI;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -13,6 +15,7 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
@@ -67,6 +70,17 @@ public class ItemAwakenedSword extends ItemIchoriumSword {
     }
 
     @Override
+    public void onUpdate(@NotNull ItemStack stack, @NotNull World worldIn, @NotNull Entity entityIn, int itemSlot, boolean isSelected) {
+        //Update is done to account for weapon swing cooldown which is set to 0 prior to damage events.
+        if(isSelected && entityIn instanceof EntityPlayer) {
+            boolean isRecharged = ((EntityPlayer) entityIn).getCooledAttackStrength(0.5f) >= 1.0f;
+            if(isRecharged != this.isRecharged(stack)) {
+                this.setRecharged(stack, isRecharged);
+            }
+        }
+    }
+
+    @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, @NotNull EntityPlayer player, @NotNull EnumHand hand) {
         ItemStack heldStack = player.getHeldItem(hand);
         if (player.isSneaking()) {
@@ -99,15 +113,19 @@ public class ItemAwakenedSword extends ItemIchoriumSword {
     @SubscribeEvent
     public void onEntityHurt(LivingHurtEvent event) {
         if(event.getSource().getTrueSource() instanceof EntityLivingBase) {
-            EntityLivingBase player = (EntityLivingBase) event.getSource().getTrueSource();
-            ItemStack heldStack = player.getHeldItemMainhand();
+            EntityLivingBase attacker = (EntityLivingBase) event.getSource().getTrueSource();
+            ItemStack heldStack = attacker.getHeldItemMainhand();
             if(!heldStack.isEmpty() && heldStack.getItem() == ModItemsKAMI.AWAKENED_ICHORIUM_SWORD) {
                 EnumSlayerMode mode = EnumSlayerMode.getMode(heldStack);
                 EntityLivingBase target = event.getEntityLiving();
                 if(mode.isEntityValid(target)) {
-                    float damage = event.getAmount();
-                    float percentDamage = target.getMaxHealth() * 0.2f;
                     event.getSource().setDamageBypassesArmor();
+                    if(!isRecharged(heldStack)) {
+                        return;
+                    }
+
+                    float damage = event.getAmount();
+                    float percentDamage = target.getMaxHealth() * (float) ConfigHandlerKami.tools.titanSlayerDamage;
                     if(percentDamage > damage) {
                         event.setAmount(percentDamage);
                     }
@@ -115,6 +133,14 @@ public class ItemAwakenedSword extends ItemIchoriumSword {
             }
         }
 
+    }
+
+    public boolean isRecharged(ItemStack stack) {
+        return stack.getTagCompound() != null && stack.getTagCompound().getBoolean("isRecharged");
+    }
+
+    public void setRecharged(ItemStack stack, boolean isRecharged) {
+        stack.setTagInfo("isRecharged", new NBTTagByte((byte) (isRecharged ? 1 : 0)));
     }
 
     public enum EnumSlayerMode {
