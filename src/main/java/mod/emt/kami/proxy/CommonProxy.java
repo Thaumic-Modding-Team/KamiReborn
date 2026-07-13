@@ -58,7 +58,7 @@ public class CommonProxy {
         ResearchCategories.registerCategory(
                 "ZENITH", key, new AspectList(),
                 new ResourceLocation(Kami.MOD_ID, "textures/research/r_zenith.png"),
-                new ResourceLocation(Kami.MOD_ID, "textures/gui/research_background.jpg"),
+                new ResourceLocation(Kami.MOD_ID, ConfigHandlerKami.misc.alternateResearchBackground ? "textures/gui/research_background_alt.jpg" : "textures/gui/research_background.jpg"),
                 new ResourceLocation(Thaumcraft.MODID, "textures/gui/gui_research_back_over.png"));
 
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, research));

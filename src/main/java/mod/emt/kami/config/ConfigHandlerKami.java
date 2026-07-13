@@ -14,6 +14,7 @@ public class ConfigHandlerKami {
     public static ToolCategory tools = new ToolCategory();
     public static EnchantmentsCategory enchantments = new EnchantmentsCategory();
     public static IntegrationsCategory integrations = new IntegrationsCategory();
+    public static MiscCategory misc = new MiscCategory();
 
     public static class ArmorCategory {
         @Config.Name("Awakened Boots: Movement Bonus")
@@ -65,6 +66,13 @@ public class ConfigHandlerKami {
         @Config.Name("Construct's Armory")
         @Config.Comment("Enables Construct's Armory Ichorium armor parts. Requires Tinkers' Construct integration to be enabled.")
         public boolean constructsArmory = true;
+    }
+
+    public static class MiscCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Alternate Research Background")
+        @Config.Comment("Enables an alternate much less colorful research background, highly recommended if the default background is too bright and hard to look at.")
+        public boolean alternateResearchBackground = false;
     }
 
     public static class ToolCategory {
