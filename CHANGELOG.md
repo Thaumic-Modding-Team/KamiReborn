@@ -1,4 +1,9 @@
 # KAMI: Reborn Changelog
+## 1.0.7
+### Added
+- Added `ru_ru.lang` courtesy of leskovetz
+---
+
 ## 1.0.6
 ### Added
 - Added a config option to enable an alternate research background that is less colorful and saturated (highly recommended if the original is hard to look at).
