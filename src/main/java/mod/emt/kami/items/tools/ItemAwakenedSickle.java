@@ -7,6 +7,7 @@ import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.HarvestHelper;
 import mod.emt.kami.utils.helpers.PlayerHelper;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -85,6 +86,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     public @NotNull EnumActionResult onItemUse(@NotNull EntityPlayer player, @NotNull World worldIn, @NotNull BlockPos pos, @NotNull EnumHand hand, @NotNull EnumFacing facing, float hitX, float hitY, float hitZ) {
         EnumActionResult actionResult = super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
         ItemStack heldStack = player.getHeldItem(hand);
+        //TODO: Change onUse to instantly harvest plants or leaves with silk touch.
         if(actionResult == EnumActionResult.SUCCESS) {
             for(BlockPos aoePos : this.getBreakAreaPositions(player, heldStack, pos, false)) {
                 super.onItemUse(player, worldIn, aoePos, hand, facing, hitX, hitY, hitZ);
@@ -109,17 +111,17 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
             //  Harvest: Harvests crops in an area and places drops at player's feet
             //  Behead: Swings the sickle, dealing damage in an area. Killing blows guarantee a head drop
             switch (mode) {
-                case REAP:
+                case GRASSLANDS:
                     this.attemptPlantReap(worldIn, player, area);
-                    break;
-                case SOW:
-                    this.attemptTillAndPlant(worldIn, player, area, player.getHeldItemOffhand());
-                    break;
-                case HARVEST:
-                    this.attemptHarvest(worldIn, player, area);
                     break;
                 case CANOPY:
                     this.attemptDestroyCanopy(worldIn, player, radius);
+                case SOW:
+                    this.attemptTillAndPlant(worldIn, player, area, player.getHeldItemOffhand());
+                    break;
+                case REAP:
+                    this.attemptHarvest(worldIn, player, area);
+                    break;
                 case BEHEAD:
                     this.attemptBeheading(worldIn, player, area);
                     break;
@@ -129,17 +131,18 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
 
     public void attemptPlantReap(World world, EntityPlayer player, AxisAlignedBB area) {
         if(!world.isRemote) {
-            for (BlockPos checkPos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX, area.maxY, area.maxZ))) {
-                IBlockState state = world.getBlockState(checkPos);
-                if (state.getMaterial() == Material.PLANTS && state.getBlockHardness(world, checkPos) == 0) {
-                    HarvestHelper.attemptHarvestBlock(world, player, checkPos);
+            for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX - 1, area.maxY, area.maxZ - 1))) {
+                IBlockState state = world.getBlockState(pos);
+                if (state.getMaterial() == Material.PLANTS && state.getBlockHardness(world, pos) == 0) {
+                    //TODO: Break effects
+                    HarvestHelper.attemptHarvestBlock(world, player, pos);
                 }
             }
         }
     }
 
     public void attemptTillAndPlant(World world, EntityPlayer player, AxisAlignedBB area, ItemStack offhandStack) {
-        for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX, area.maxY, area.maxZ))) {
+        for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX - 1, area.maxY, area.maxZ - 1))) {
             boolean planted = this.attemptPlant(world, pos, player, offhandStack);
             if(!planted) {
                 super.onItemUse(player, world, pos, EnumHand.MAIN_HAND, EnumFacing.UP, pos.getX(), pos.getY(), pos.getZ());
@@ -149,9 +152,13 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     }
 
     public boolean attemptPlant(World world, BlockPos pos, EntityPlayer player, ItemStack stack) {
-        return !stack.isEmpty()
-                && stack.getItem() instanceof IPlantable
-                && stack.onItemUse(player, world, pos, EnumHand.OFF_HAND, EnumFacing.UP, pos.getX(), pos.getY(), pos.getZ()) == EnumActionResult.SUCCESS;
+        if(!stack.isEmpty() && (stack.getItem() instanceof IPlantable || Block.getBlockFromItem(stack.getItem()) instanceof IPlantable)) {
+            if(stack.onItemUse(player, world, pos, EnumHand.OFF_HAND, EnumFacing.UP, pos.getX(), pos.getY(), pos.getZ()) == EnumActionResult.SUCCESS) {
+                //TODO: Particle effects
+                return true;
+            }
+        }
+        return false;
     }
 
     public void attemptHarvest(World world, EntityPlayer player, AxisAlignedBB area) {
@@ -164,6 +171,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
         for(BlockPos pos : BlockPos.getAllInBox(start, end)) {
             IBlockState state = world.getBlockState(pos);
             if(state.getBlock().isLeaves(state, world, pos)) {
+                //TODO: Break effect
                 HarvestHelper.attemptHarvestBlock(world, player, pos);
             }
         }
@@ -227,7 +235,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
         EnumHarvestMode mode = EnumHarvestMode.getMode(stack);
-        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.kami.tool.aoe_mode"));
+        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.kami.tool.aoe_mode", 3));
         tooltip.add(mode.getTextColor() + I18n.format("tooltip.kami.tool.harvest_mode." + mode));
     }
 
@@ -235,9 +243,9 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     public ImmutableList<BlockPos> getBreakAreaPositions(EntityPlayer player, ItemStack stack, BlockPos origin, boolean includeOrigin) {
         if(!player.isSneaking() && !player.world.isAirBlock(origin)) {
             RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
-            if(trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK && trace.sideHit == EnumFacing.UP) {
-                //TODO: Check if this is okay and displaying hoe-able dirt correctly.
-                return HarvestHelper.getHarvestArea(player.world, player, trace, 3, 1, includeOrigin, true);
+            if(trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK) {
+                //TODO: This probably needs a custom handler for the valid blocks.
+                return HarvestHelper.getHarvestArea(player.world, player, trace, 3, 1, includeOrigin, false);
             }
         }
         return ImmutableList.of();
@@ -249,10 +257,10 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     }
 
     public enum EnumHarvestMode {
-        REAP(TextFormatting.GRAY),
-        SOW(TextFormatting.DARK_GREEN),
-        HARVEST(TextFormatting.BLUE),
+        GRASSLANDS(TextFormatting.GRAY),
         CANOPY(TextFormatting.DARK_PURPLE),
+        SOW(TextFormatting.DARK_GREEN),
+        REAP(TextFormatting.BLUE),
         BEHEAD(TextFormatting.DARK_RED);
 
         private final TextFormatting textColor;

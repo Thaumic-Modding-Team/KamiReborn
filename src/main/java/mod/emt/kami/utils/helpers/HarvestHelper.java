@@ -77,7 +77,7 @@ public class HarvestHelper {
             ItemStack heldStack = player.getHeldItemMainhand();
             toolCheck = heldStack.getItem().getToolClasses(heldStack).contains(state.getBlock().getHarvestTool(state)) || heldStack.getItem().canHarvestBlock(state, player.getHeldItemMainhand());
         }
-        return toolCheck && hardness > 0 && ForgeHooks.canHarvestBlock(state.getBlock(), player, world, pos);
+        return toolCheck && hardness >= 0 && ForgeHooks.canHarvestBlock(state.getBlock(), player, world, pos);
     }
 
     public static void harvestExtraBlocks(EntityPlayer player, ItemStack stack, ImmutableList<BlockPos> harvestPositions) {
