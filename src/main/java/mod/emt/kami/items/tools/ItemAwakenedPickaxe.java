@@ -55,10 +55,11 @@ public class ItemAwakenedPickaxe extends ItemIchoriumPickaxe implements IAreaBre
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World worldIn, @NotNull EntityPlayer playerIn, @NotNull EnumHand handIn) {
         ItemStack heldStack = playerIn.getHeldItem(handIn);
-        if(playerIn.isSneaking()) {
-            worldIn.playSound(null, playerIn.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
-
-            if(!worldIn.isRemote) {
+        RayTraceResult trace = PlayerHelper.rayTrace(playerIn, 0);
+        if(playerIn.isSneaking() && (trace == null || trace.typeOfHit == RayTraceResult.Type.MISS)) {
+            if(worldIn.isRemote) {
+                worldIn.playSound(playerIn, playerIn.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
+            } else {
                 EnumAoeMode mode = EnumAoeMode.getMode(heldStack).nextMode();
                 EnumAoeMode.setMode(heldStack, mode);
                 playerIn.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.aoe_mode", mode.getBreakAreaSize()).setStyle(new Style().setColor(mode.getTextColor())), true);

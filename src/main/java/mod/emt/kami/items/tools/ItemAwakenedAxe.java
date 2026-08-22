@@ -67,11 +67,15 @@ public class ItemAwakenedAxe extends ItemIchoriumAxe implements IAreaBreakTool {
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, @NotNull EntityPlayer player, @NotNull EnumHand hand) {
         ItemStack heldStack = player.getHeldItem(hand);
-        if(player.isSneaking()) {
-            EnumImpactMode mode = EnumImpactMode.getMode(heldStack).nextMode();
-            EnumImpactMode.setMode(heldStack, mode);
-            world.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
-            player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.impact_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
+        RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
+        if(player.isSneaking() && (trace == null || trace.typeOfHit == RayTraceResult.Type.MISS)) {
+            if(world.isRemote) {
+                world.playSound(player, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
+            } else {
+                EnumImpactMode mode = EnumImpactMode.getMode(heldStack).nextMode();
+                EnumImpactMode.setMode(heldStack, mode);
+                player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.impact_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
+            }
         } else if(hand == EnumHand.MAIN_HAND) {
             player.setActiveHand(hand);
         }

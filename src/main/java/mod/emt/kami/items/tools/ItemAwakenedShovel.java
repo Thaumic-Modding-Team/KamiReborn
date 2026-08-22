@@ -62,10 +62,11 @@ public class ItemAwakenedShovel extends ItemIchoriumShovel implements IAreaBreak
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World worldIn, @NotNull EntityPlayer playerIn, @NotNull EnumHand handIn) {
         ItemStack heldStack = playerIn.getHeldItem(handIn);
-        if(playerIn.isSneaking()) {
-            worldIn.playSound(null, playerIn.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0F, 1.5F);
-
-            if(!worldIn.isRemote) {
+        RayTraceResult trace = PlayerHelper.rayTrace(playerIn, 0);
+        if(playerIn.isSneaking() && (trace == null || trace.typeOfHit == RayTraceResult.Type.MISS)) {
+            if(worldIn.isRemote) {
+                worldIn.playSound(playerIn, playerIn.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0F, 1.5F);
+            } else {
                 EnumBuryMode mode = EnumBuryMode.getMode(heldStack).nextMode();
                 EnumBuryMode.setMode(heldStack, mode);
                 playerIn.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.bury_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);

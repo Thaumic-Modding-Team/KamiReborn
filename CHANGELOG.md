@@ -1,4 +1,17 @@
 # KAMI: Reborn Changelog
+## 1.1.0
+### Added
+- Added Ichorium Hoe
+- Added Ichorium Sickle of the Harvester, an awakened version of the Ichorium Hoe
+### Changed
+- Awakened tool mode toggle now requires the player to sneak right-click empty air. This fixes incompatibilities with effects like the sounding infusion enchant.
+### Fixed
+- Fixed Awakened Tools playing mode swap sounds for all nearby players
+- Fixed Awakened Tools sending double messages when switching modes
+- Fixed bug preventing Awakened Tools from breaking blocks with hardness of 0
+
+---
+
 ## 1.0.7
 ### Added
 - Added `ru_ru.lang` courtesy of leskovetz

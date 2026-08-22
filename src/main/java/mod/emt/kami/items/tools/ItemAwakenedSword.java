@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.registry.ModSoundsKAMI;
+import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -83,11 +85,15 @@ public class ItemAwakenedSword extends ItemIchoriumSword {
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, @NotNull EntityPlayer player, @NotNull EnumHand hand) {
         ItemStack heldStack = player.getHeldItem(hand);
-        if (player.isSneaking()) {
-            EnumSlayerMode mode = EnumSlayerMode.getMode(heldStack).nextMode();
-            EnumSlayerMode.setMode(heldStack, mode);
-            world.playSound(null, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
-            player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.slayer_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
+        RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
+        if(player.isSneaking() && (trace == null || trace.typeOfHit == RayTraceResult.Type.MISS)) {
+            if(world.isRemote) {
+                world.playSound(player, player.getPosition(), ModSoundsKAMI.ITEM_ICHOR_TOGGLE.getSoundEvent(), SoundCategory.PLAYERS, 1.0f, 1.5f);
+            } else {
+                EnumSlayerMode mode = EnumSlayerMode.getMode(heldStack).nextMode();
+                EnumSlayerMode.setMode(heldStack, mode);
+                player.sendStatusMessage(new TextComponentTranslation("tooltip.kami.tool.slayer_mode." + mode).setStyle(new Style().setColor(mode.getTextColor())), true);
+            }
         }
         return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
     }

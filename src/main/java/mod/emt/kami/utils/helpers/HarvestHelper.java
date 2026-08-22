@@ -100,7 +100,7 @@ public class HarvestHelper {
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
         float hardness = state.getPlayerRelativeBlockHardness(player, world, pos);
-        if (hardness > 0 && ForgeHooks.canHarvestBlock(block, player, world, pos)) {
+        if (hardness >= 0 && ForgeHooks.canHarvestBlock(block, player, world, pos)) {
             int xpToDrop = 0;
             if (playerMP != null) {
                 xpToDrop = ForgeHooks.onBlockBreakEvent(world, playerMP.interactionManager.getGameType(), playerMP, pos);
