@@ -6,8 +6,8 @@ repositories {
     exclusiveContent {
         forRepository {
             maven {
-                name 'CurseMaven'
-                url 'https://cursemaven.com'
+                name 'CleanroomMC CurseMaven'
+                url 'https://curse.cleanroommc.com'
             }
         }
         filter {
@@ -48,17 +48,17 @@ dependencies {
 
     implementation rfg.deobf("curse.maven:thaumcraft-223628:2629023")
     implementation rfg.deobf('curse.maven:baubles-227083:2518667')
-    implementation rfg.deobf("curse.maven:expanded-events-1396395:8035783")
-    implementation rfg.deobf("curse.maven:thaumicapi-1533287:8066628")
+    implementation rfg.deobf("curse.maven:expanded-events-1396395:8204032")
+    implementation rfg.deobf("curse.maven:thaumicapi-1533287:8517115")
 
     def modMap = [:]
     def loadMap = [:]
 
-    modMap.put(["curse.maven:antique-armory-1394222:7339320"], project.use_constructsarmory)
-    modMap.put(["curse.maven:thaumcraftfix-1069346:7288369"], project.use_thaumcraftfix)
+    modMap.put(["curse.maven:antique-armory-1394222:8363247"], project.use_constructsarmory)
+    modMap.put(["curse.maven:thaumcraftfix-1069346:8150308"], project.use_thaumcraftfix)
     modMap.put(["curse.maven:thaumic-augmentation-319441:6047659"], project.use_thaumicaugmentation)
-    modMap.put(["curse.maven:thaumictweaker-1341797:7523519", "curse.maven:configanytime-870276:5212709"], project.use_thaumictweaker)
-    modMap.put(["curse.maven:tinkers-antique-1242239:7999105", "curse.maven:mantle-74924:2713386"], project.use_tinkersconstruct)
+    modMap.put(["curse.maven:thaumictweaker-1341797:8456304", "curse.maven:configanytime-870276:5212709"], project.use_thaumictweaker)
+    modMap.put(["curse.maven:tinkers-antique-1242239:8666425", "curse.maven:mantle-74924:2713386"], project.use_tinkersconstruct)
 
     loadMap.clear()
     modMap.each{mods, load -> {
