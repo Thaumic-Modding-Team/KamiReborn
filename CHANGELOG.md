@@ -6,6 +6,7 @@
 - Added `ru_ru.lang` courtesy of leskovetz
 ### Changed
 - Awakened tool mode toggle now requires the player to sneak right-click empty air. This fixes incompatibilities with effects like the sounding infusion enchant.
+- Awakened Ichorium Sword dragonslayer will now affect Ice and Fire Dragonsteel Armor
 ### Fixed
 - Fixed Awakened Tools playing mode swap sounds for all nearby players
 - Fixed Awakened Tools sending double messages when switching modes
