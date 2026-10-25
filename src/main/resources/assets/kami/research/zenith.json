@@ -310,7 +310,8 @@
         "kami:ichorium_sword",
         "kami:ichorium_shovel",
         "kami:ichorium_pickaxe",
-        "kami:ichorium_axe"
+        "kami:ichorium_axe",
+        "kami:ichorium_hoe"
       ],
       "parents": ["KAMI_ICHORIUM"],
       "location": [3, -4],
@@ -326,6 +327,7 @@
             "kami:ichorium_shovel",
             "kami:ichorium_pickaxe",
             "kami:ichorium_axe",
+            "kami:ichorium_hoe",
             "kami:blessed_silverwood_rod"
           ]
         }
