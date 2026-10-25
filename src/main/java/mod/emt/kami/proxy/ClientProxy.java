@@ -1,8 +1,8 @@
 package mod.emt.kami.proxy;
 
+import com.invadermonky.thaumicapi.api.item.IDyeableItem;
 import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.compat.KamiCompatHandler;
-import mod.emt.kami.items.IDyeableGear;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -21,8 +21,8 @@ public class ClientProxy extends CommonProxy {
         super.init();
         KeyBindingsKami.init();
         IItemColor itemColorHandler = (stack, tintIndex) -> {
-            if (tintIndex == 1 && stack.getItem() instanceof IDyeableGear) {
-                return ((IDyeableGear) stack.getItem()).getDyedColor(stack);
+            if (tintIndex == 1 && stack.getItem() instanceof IDyeableItem) {
+                return ((IDyeableItem) stack.getItem()).getDyedColor(stack);
             } else {
                 return -1;
             }
@@ -40,8 +40,8 @@ public class ClientProxy extends CommonProxy {
         IItemColor gauntletColorHandler = (stack, tintIndex) -> {
             if (tintIndex == 1 && stack.getItem() instanceof ICaster && ((ICaster) stack.getItem()).getFocus(stack) != null)
                 return ((ItemFocus) ((ICaster) stack.getItem()).getFocus(stack)).getFocusColor(((ICaster) stack.getItem()).getFocusStack(stack));
-            else if (tintIndex == 2 && stack.getItem() instanceof IDyeableGear) {
-                return ((IDyeableGear) stack.getItem()).getDyedColor(stack);
+            else if (tintIndex == 2 && stack.getItem() instanceof IDyeableItem) {
+                return ((IDyeableItem) stack.getItem()).getDyedColor(stack);
             }
 
             return -1;

@@ -1,8 +1,8 @@
 package mod.emt.kami.items.armor;
 
+import com.invadermonky.thaumicapi.api.item.IDyeableItem;
 import mod.emt.kami.Kami;
 import mod.emt.kami.client.model.armor.ModelIchorArmor;
-import mod.emt.kami.items.IDyeableGear;
 import mod.emt.kami.items.base.ItemBaseArmor;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.block.BlockCauldron;
@@ -37,7 +37,7 @@ import thaumcraft.api.items.IWarpingGear;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, IWarpingGear, IVisDiscountGear, IGoggles {
+public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableItem, IWarpingGear, IVisDiscountGear, IGoggles {
     protected static final String TEXTURE_PATH_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1.png").toString();
     protected static final String TEXTURE_PATH_2 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_2.png").toString();
     protected static final String TEXTURE_PATH_DYED_1 = new ResourceLocation(Kami.MOD_ID, "textures/models/armor/ichorweave_layer_1_dyed.png").toString();
@@ -50,7 +50,7 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
         this.addPropertyOverride(new ResourceLocation("dyed"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(@NotNull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
-                if (getDyedColor(stack) != getDefaultDyedColorForMeta(stack.getMetadata())) {
+                if (getDyedColor(stack) != getDefaultDyedColor(stack)) {
                     return 1.0F;
                 }
 
@@ -79,7 +79,7 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
 
         assert stack.getTagCompound() != null;
         if (!stack.getTagCompound().hasKey("color", Constants.NBT.TAG_INT)) {
-            stack.getTagCompound().setInteger("color", getDefaultDyedColorForMeta(stack.getMetadata()));
+            stack.getTagCompound().setInteger("color", getDefaultDyedColor(stack));
         }
 
         return stack.getTagCompound().getInteger("color");
@@ -96,13 +96,13 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
     }
 
     @Override
-    public int getDefaultDyedColorForMeta(int meta) {
+    public int getDefaultDyedColor(ItemStack stack) {
         return 12607488;
     }
 
     @Override
     public boolean hasColor(@NotNull ItemStack stack) {
-        return this.getDyedColor(stack) != getDefaultDyedColorForMeta(stack.getMetadata()) ? true : false;
+        return this.getDyedColor(stack) != getDefaultDyedColor(stack);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
 
     @Override
     public void removeColor(@NotNull ItemStack stack) {
-        setDyedColor(stack, getDefaultDyedColorForMeta(stack.getMetadata()));
+        setDyedColor(stack, getDefaultDyedColor(stack));
     }
 
     @Override
@@ -126,8 +126,8 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
         IBlockState state = world.getBlockState(pos);
 
         // Right-clicking a filled cauldron with the dyed item will wash it out
-        if (state.getBlock() == Blocks.CAULDRON && state.getValue(BlockCauldron.LEVEL) > 0 && getDyedColor(stack) != getDefaultDyedColorForMeta(stack.getMetadata())) {
-            setDyedColor(stack, getDefaultDyedColorForMeta(stack.getMetadata()));
+        if (state.getBlock() == Blocks.CAULDRON && state.getValue(BlockCauldron.LEVEL) > 0 && getDyedColor(stack) != getDefaultDyedColor(stack)) {
+            setDyedColor(stack, getDefaultDyedColor(stack));
             world.setBlockState(pos, state.withProperty(BlockCauldron.LEVEL, state.getValue(BlockCauldron.LEVEL) - 1));
             world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 0.5F, 1.0F);
             return EnumActionResult.SUCCESS;
@@ -139,7 +139,7 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
     @Override
     public String getArmorTexture(@NotNull ItemStack stack, @NotNull Entity entity, @NotNull EntityEquipmentSlot slot, @NotNull String type) {
         // If dye is never used on it, it'll use a dyeless texture instead
-        if (this.getDyedColor(stack) != getDefaultDyedColorForMeta(stack.getMetadata())) {
+        if (this.getDyedColor(stack) != getDefaultDyedColor(stack)) {
             if (slot == EntityEquipmentSlot.LEGS) {
                 return type == null ? TEXTURE_PATH_DYED_2 : TEXTURE_PATH_DYED_OVERLAY_2;
             } else {
@@ -176,7 +176,7 @@ public class ItemIchorweaveArmor extends ItemBaseArmor implements IDyeableGear, 
         int color = getDyedColor(stack);
 
         // If it's dyed, show it on the tooltip
-        if (color != getDefaultDyedColorForMeta(stack.getMetadata())) {
+        if (color != getDefaultDyedColor(stack)) {
             if (tooltip.isAdvanced())
                 list.add(new TextComponentTranslation("item.color", TextFormatting.GRAY + String.format("#%06X", color)).getFormattedText());
             else {
