@@ -3,6 +3,7 @@
 ### Added
 - Added Ichorium Hoe
 - Added Ichorium Sickle of the Harvester, an awakened version of the Ichorium Hoe
+- Added `ru_ru.lang` courtesy of leskovetz
 ### Changed
 - Awakened tool mode toggle now requires the player to sneak right-click empty air. This fixes incompatibilities with effects like the sounding infusion enchant.
 ### Fixed
@@ -11,11 +12,6 @@
 - Fixed bug preventing Awakened Tools from breaking blocks with hardness of 0
 - Fixed unused sound event error
 
----
-
-## 1.0.7
-### Added
-- Added `ru_ru.lang` courtesy of leskovetz
 ---
 
 ## 1.0.6
