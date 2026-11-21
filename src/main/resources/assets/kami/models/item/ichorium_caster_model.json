@@ -1,5 +1,5 @@
 {
-  "parent": "kami:item/caster_gauntlet",
+  "parent": "thaumicapi:item/dyeable_caster_gauntlet",
   "textures": {
     "overlay": "kami:models/caster_ichorium"
   }

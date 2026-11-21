@@ -137,6 +137,17 @@ public class ModRecipesKAMI {
                 " B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
                 'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_hoe"), new ShapedArcaneRecipe(
+                defaultGroup,
+                "KAMI_ICHORIUM_TOOLS",
+                250,
+                new AspectList().add(Aspect.ORDER, 4).add(Aspect.ENTROPY, 4),
+                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.ICHORIUM_HOE)),
+                "II",
+                " B",
+                " B",
+                'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
     }
 
     private static void initCrucibleRecipes() {

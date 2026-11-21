@@ -125,7 +125,7 @@ public class ItemAwakenedArmor extends ItemIchorweaveArmor implements ISpecialAr
     @Override
     public String getArmorTexture(@NotNull ItemStack stack, @NotNull Entity entity, @NotNull EntityEquipmentSlot slot, @NotNull String type) {
         // If dye is never used on it, it'll use a dyeless texture instead
-        if (this.getDyedColor(stack) != getDefaultDyedColorForMeta(stack.getMetadata())) {
+        if (this.getDyedColor(stack) != getDefaultDyedColor(stack)) {
             if (slot == EntityEquipmentSlot.LEGS) {
                 return type == null ? TEXTURE_PATH_DYED_2 : TEXTURE_PATH_DYED_OVERLAY_2;
             } else {

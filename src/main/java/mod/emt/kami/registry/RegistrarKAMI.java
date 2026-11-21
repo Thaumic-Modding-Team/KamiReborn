@@ -3,7 +3,6 @@ package mod.emt.kami.registry;
 import mod.emt.kami.Kami;
 import mod.emt.kami.client.render.RenderThrownAxe;
 import mod.emt.kami.entities.EntityThrownAxe;
-import mod.emt.kami.recipe.crafting.DyeableItemRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -66,7 +65,6 @@ public class RegistrarKAMI {
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         ModRecipesKAMI.initRecipes(event);
-        event.getRegistry().register(new DyeableItemRecipe().setRegistryName(new ResourceLocation(Kami.MOD_ID, "dyeable_item")));
     }
 
     @SubscribeEvent

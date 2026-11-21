@@ -55,7 +55,9 @@ public class ItemAwakenedSword extends ItemIchoriumSword {
         for(EntityEquipmentSlot slot : EntityEquipmentSlot.values()) {
             if(slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR) {
                 ItemStack armorStack = entity.getItemStackFromSlot(slot);
-                if(!armorStack.isEmpty() && armorStack.getItem().getRegistryName() != null && armorStack.getItem().getRegistryName().toString().contains("draconic")) {
+                if(!armorStack.isEmpty() && armorStack.getItem().getRegistryName() != null && (armorStack.getItem().getRegistryName().toString().contains("draconic") ||
+                        armorStack.getItem().getRegistryName().toString().contains("wyvern") ||
+                        armorStack.getItem().getRegistryName().toString().contains("dragonsteel"))) {
                     return true;
                 }
             }
