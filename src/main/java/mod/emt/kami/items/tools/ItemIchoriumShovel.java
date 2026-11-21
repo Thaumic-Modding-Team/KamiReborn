@@ -18,15 +18,19 @@ import thaumcraft.api.items.IWarpingGear;
 import java.util.Objects;
 
 public class ItemIchoriumShovel extends ItemSpade implements IWarpingGear {
-    public ItemIchoriumShovel() {
-        this("ichorium_shovel");
+    public ItemIchoriumShovel(String modId, String unlocName, ToolMaterial material) {
+        super(material);
+        this.setRegistryName(modId, unlocName);
+        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
     }
 
     protected ItemIchoriumShovel(String unlocName) {
-        super(ModItemsKAMI.MATERIAL_ICHORIUM);
-        this.setRegistryName(Kami.MOD_ID, unlocName);
-        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
+        this(Kami.MOD_ID, unlocName, ModItemsKAMI.MATERIAL_ICHORIUM);
         this.setCreativeTab(Kami.tabKAMI);
+    }
+
+    public ItemIchoriumShovel() {
+        this("ichorium_shovel");
     }
 
     @Override

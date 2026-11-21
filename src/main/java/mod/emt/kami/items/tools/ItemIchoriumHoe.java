@@ -18,15 +18,19 @@ import thaumcraft.api.items.IWarpingGear;
 import java.util.Objects;
 
 public class ItemIchoriumHoe extends ItemHoe implements IWarpingGear {
-    public ItemIchoriumHoe() {
-        this("ichorium_hoe");
+    public ItemIchoriumHoe(String modId, String unlocName, ToolMaterial material) {
+        super(material);
+        this.setRegistryName(modId, unlocName);
+        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
     }
 
     protected ItemIchoriumHoe(String unlocName) {
-        super(ModItemsKAMI.MATERIAL_ICHORIUM);
-        this.setRegistryName(Kami.MOD_ID, unlocName);
-        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
+        this(Kami.MOD_ID, unlocName, ModItemsKAMI.MATERIAL_ICHORIUM);
         this.setCreativeTab(Kami.tabKAMI);
+    }
+
+    public ItemIchoriumHoe() {
+        this("ichorium_hoe");
     }
 
     @Override

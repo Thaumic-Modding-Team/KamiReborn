@@ -18,15 +18,19 @@ import thaumcraft.api.items.IWarpingGear;
 import java.util.Objects;
 
 public class ItemIchoriumAxe extends ItemAxe implements IWarpingGear {
-    public ItemIchoriumAxe() {
-        this("ichorium_axe");
+    public ItemIchoriumAxe(String modId, String unlocName, ToolMaterial material, float damage, float speed) {
+        super(material, damage, speed);
+        this.setRegistryName(modId, unlocName);
+        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
     }
 
     protected ItemIchoriumAxe(String unlocName) {
-        super(ModItemsKAMI.MATERIAL_ICHORIUM, 10.0f, -3.0f);
-        this.setRegistryName(Kami.MOD_ID, unlocName);
-        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
+        this(Kami.MOD_ID, unlocName, ModItemsKAMI.MATERIAL_ICHORIUM, 10.0f, -3.0f);
         this.setCreativeTab(Kami.tabKAMI);
+    }
+
+    public ItemIchoriumAxe() {
+        this("ichorium_axe");
     }
 
     @Override

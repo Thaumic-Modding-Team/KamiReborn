@@ -19,15 +19,19 @@ import thaumcraft.common.lib.enchantment.EnumInfusionEnchantment;
 import java.util.Objects;
 
 public class ItemIchoriumSword extends ItemSword implements IWarpingGear {
-    public ItemIchoriumSword() {
-        this("ichorium_sword");
+    public ItemIchoriumSword(String modId, String unlocName, ToolMaterial material) {
+        super(material);
+        this.setRegistryName(modId, unlocName);
+        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
     }
 
     protected ItemIchoriumSword(String unlocName) {
-        super(ModItemsKAMI.MATERIAL_ICHORIUM);
-        this.setRegistryName(Kami.MOD_ID, unlocName);
-        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
+        this(Kami.MOD_ID, unlocName, ModItemsKAMI.MATERIAL_ICHORIUM);
         this.setCreativeTab(Kami.tabKAMI);
+    }
+
+    public ItemIchoriumSword() {
+        this("ichorium_sword");
     }
 
     @Override
