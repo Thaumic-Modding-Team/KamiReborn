@@ -192,11 +192,6 @@ public class ItemAwakenedShield extends ItemIchoriumShield implements ICaster, I
     }
 
     @Override
-    public @NotNull String getItemStackDisplayName(@NotNull ItemStack stack) {
-        return net.minecraft.util.text.translation.I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name").trim();
-    }
-
-    @Override
     public void onUpdate(@NotNull ItemStack stack, World worldIn, @NotNull Entity entityIn, int itemSlot, boolean isSelected) {
         if(!worldIn.isRemote && entityIn.ticksExisted % 10 == 0 && entityIn instanceof EntityPlayerMP) {
             for(ItemStack heldStack : entityIn.getHeldEquipment()) {

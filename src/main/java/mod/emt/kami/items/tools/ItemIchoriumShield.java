@@ -11,6 +11,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemShield;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.IRarity;
 import net.minecraftforge.oredict.OreDictionary;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +42,12 @@ public class ItemIchoriumShield extends ItemShield implements IWarpingGear {
             ItemHelper.setUnbreakable(stack);
             items.add(stack);
         }
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public @NotNull String getItemStackDisplayName(@NotNull ItemStack stack) {
+        return I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name").trim();
     }
 
     @Override
