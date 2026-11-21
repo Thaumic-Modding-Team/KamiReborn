@@ -5,7 +5,9 @@ import com.google.common.collect.ImmutableList;
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.client.KeyBindingsKami;
+import mod.emt.kami.items.tools.ItemAwakenedShield;
 import mod.emt.kami.network.PacketHandler;
+import mod.emt.kami.network.packets.PacketCastAwakenedShield;
 import mod.emt.kami.network.packets.PacketOpenPouchGui;
 import mod.emt.kami.registry.ModItemsKAMI;
 import mod.emt.kami.utils.helpers.PlayerHelper;
@@ -84,6 +86,12 @@ public class ClientEventHandler {
     public static void onKeyInput(InputEvent.KeyInputEvent event) {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (player != null) {
+            if(KeyBindingsKami.castShieldFocus.isPressed()) {
+                if(ItemAwakenedShield.isShieldEquipped(player, true)) {
+                    PacketHandler.INSTANCE.sendToServer(new PacketCastAwakenedShield());
+                }
+            }
+
             if(KeyBindingsKami.openFocusPouch.isPressed()) {
                 int pouchSlot = BaublesApi.isBaubleEquipped(player, ModItemsKAMI.FOCUS_POUCH);
                 if (pouchSlot > -1) {

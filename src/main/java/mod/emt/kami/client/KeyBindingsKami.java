@@ -2,6 +2,7 @@ package mod.emt.kami.client;
 
 import baubles.api.BaublesApi;
 import mod.emt.kami.Kami;
+import mod.emt.kami.items.tools.ItemAwakenedShield;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -16,12 +17,27 @@ import org.lwjgl.input.Keyboard;
 public class KeyBindingsKami {
     private static final String KEY_CATEGORY = "key.categories." + Kami.MOD_ID;
     public static KeyBinding openFocusPouch;
+    public static KeyBinding castShieldFocus;
 
     public static void init() {
+        ClientRegistry.registerKeyBinding(castShieldFocus);
         ClientRegistry.registerKeyBinding(openFocusPouch);
     }
 
     static {
+        castShieldFocus = new KeyBinding("key.kami.cast_shield_focus", new IKeyConflictContext() {
+            @Override
+            public boolean isActive() {
+                EntityPlayer player = Minecraft.getMinecraft().player;
+                return player != null && ItemAwakenedShield.isShieldEquipped(player, true);
+            }
+
+            @Override
+            public boolean conflicts(IKeyConflictContext other) {
+                return this.isActive() && other.isActive();
+            }
+        }, Keyboard.KEY_R, KEY_CATEGORY);
+
         openFocusPouch = new KeyBinding("key.kami.open_focus_pouch", new IKeyConflictContext() {
             @Override
             public boolean isActive() {

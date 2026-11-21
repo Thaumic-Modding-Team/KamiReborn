@@ -23,6 +23,7 @@ public class ModItemsKAMI {
     public static Item AWAKENED_ICHORIUM_AXE;
     public static Item AWAKENED_ICHORIUM_SICKLE;
     public static Item AWAKENED_ICHORIUM_PICKAXE;
+    public static Item AWAKENED_ICHORIUM_SHIELD;
     public static Item AWAKENED_ICHORIUM_SHOVEL;
     public static Item AWAKENED_ICHORIUM_SWORD;
     public static ItemArmor AWAKENED_ICHORWEAVE_BOOTS;
@@ -38,6 +39,7 @@ public class ModItemsKAMI {
     public static Item ICHORIUM_INGOT;
     public static Item ICHORIUM_NUGGET;
     public static Item ICHORIUM_PICKAXE;
+    public static Item ICHORIUM_SHIELD;
     public static Item ICHORIUM_SHOVEL;
     public static Item ICHORIUM_SWORD;
     public static Item ICHORWEAVE_FABRIC;
@@ -68,11 +70,13 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(ICHORIUM_PICKAXE = new ItemIchoriumPickaxe());
         MOD_ITEMS.add(ICHORIUM_AXE = new ItemIchoriumAxe());
         MOD_ITEMS.add(ICHORIUM_HOE = new ItemIchoriumHoe());
+        MOD_ITEMS.add(ICHORIUM_SHIELD = new ItemIchoriumShield());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_SWORD = new ItemAwakenedSword());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_SHOVEL = new ItemAwakenedShovel());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_PICKAXE = new ItemAwakenedPickaxe());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_AXE = new ItemAwakenedAxe());
         MOD_ITEMS.add(AWAKENED_ICHORIUM_SICKLE = new ItemAwakenedSickle());
+        MOD_ITEMS.add(AWAKENED_ICHORIUM_SHIELD = new ItemAwakenedShield());
         MOD_ITEMS.add(ICHORIUM_CASTER = new ItemIchoriumCaster());
     }
 }
