@@ -7,11 +7,14 @@ import mod.emt.kami.compat.datafixers.BlockDataFixer;
 import mod.emt.kami.compat.datafixers.ItemDataFixer;
 import mod.emt.kami.compat.datafixers.ItemMetaDataFixer;
 import mod.emt.kami.config.ConfigHandlerKami;
+import mod.emt.kami.dimension.ambience.WaysBetweenSoundEventHandler;
 import mod.emt.kami.handlers.GuiHandlerKami;
 import mod.emt.kami.network.PacketHandler;
+import mod.emt.kami.registry.ModDimensionsKAMI;
 import mod.emt.kami.registry.ModRecipesKAMI;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.datafix.FixTypes;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ModFixs;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -22,6 +25,10 @@ import thaumcraft.api.research.ResearchCategories;
 
 public class CommonProxy {
     public void preInit() {
+        // TODO: Configurable dimension?
+        if (ModIds.thaumic_augmentation.isLoaded) {
+            ModDimensionsKAMI.init();
+        }
         PacketHandler.init();
         KamiCompatHandler.preInit();
     }
@@ -30,7 +37,11 @@ public class CommonProxy {
         ModRecipesKAMI.registerOreDicts();
         registerResearch();
         KamiCompatHandler.init();
-
+        // TODO: Configurable dimension?
+        if (ModIds.thaumic_augmentation.isLoaded) {
+            MinecraftForge.EVENT_BUS.register(new WaysBetweenSoundEventHandler());
+            WaysBetweenSoundEventHandler.init();
+        }
         ModFixs modFixer = FMLCommonHandler.instance().getDataFixer().init(Kami.MOD_ID, 1);
         modFixer.registerFix(FixTypes.BLOCK_ENTITY, new BlockDataFixer());
         modFixer.registerFix(FixTypes.ITEM_INSTANCE, new ItemDataFixer());
