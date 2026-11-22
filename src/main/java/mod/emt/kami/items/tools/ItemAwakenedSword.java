@@ -111,6 +111,11 @@ public class ItemAwakenedSword extends ItemIchoriumSword {
         return multimap;
     }
 
+    @Override
+    public boolean shouldCauseReequipAnimation(@NotNull ItemStack oldStack, @NotNull ItemStack newStack, boolean slotChanged) {
+        return slotChanged || oldStack.getItem() != newStack.getItem() || EnumSlayerMode.getMode(oldStack) != EnumSlayerMode.getMode(newStack);
+    }
+
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
