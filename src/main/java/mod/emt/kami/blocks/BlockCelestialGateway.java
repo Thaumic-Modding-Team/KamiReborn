@@ -16,7 +16,7 @@ import net.minecraft.world.IBlockAccess;
 import org.jetbrains.annotations.NotNull;
 
 public class BlockCelestialGateway extends BlockTileEntityKami {
-    public static final AxisAlignedBB GATEWAY_AABB = new AxisAlignedBB(0, 0, 0, 1.0, 0.1875, 1.0);
+    public static final AxisAlignedBB GATEWAY_AABB = new AxisAlignedBB(0, 0, 0, 1.0, 0.125, 1.0);
 
     public BlockCelestialGateway() {
         super("celestial_gateway", Material.ROCK, MapColor.STONE, TileCelestialGateway.class);

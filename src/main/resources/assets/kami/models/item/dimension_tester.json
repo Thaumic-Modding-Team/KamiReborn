@@ -1,0 +1,6 @@
+{
+  "parent": "Item/generated",
+  "textures": {
+    "layer0": "kami:items/dimension_tester"
+  }
+}

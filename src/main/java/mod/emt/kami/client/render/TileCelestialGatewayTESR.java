@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.tileentity.TileEntityEndPortal;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -28,7 +27,7 @@ public class TileCelestialGatewayTESR extends TileEntitySpecialRenderer<TileCele
     private final FloatBuffer buffer = GLAllocation.createDirectFloatBuffer(16);
 
     @Override
-    public void render(TileCelestialGateway tile, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
+    public void render(@NotNull TileCelestialGateway tile, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
     {
         GlStateManager.disableLighting();
         RANDOM.setSeed(31100L);
@@ -36,7 +35,7 @@ public class TileCelestialGatewayTESR extends TileEntitySpecialRenderer<TileCele
         GlStateManager.getFloat(2983, PROJECTION);
         double d0 = x * x + y * y + z * z;
         int i = this.getPasses(d0);
-        float f = this.getOffset();
+        float offset = this.getOffset();
         boolean flag = false;
 
         for (int j = 0; j < i; ++j)
@@ -89,56 +88,56 @@ public class TileCelestialGatewayTESR extends TileEntitySpecialRenderer<TileCele
             Tessellator tessellator = Tessellator.getInstance();
             BufferBuilder bufferbuilder = tessellator.getBuffer();
             bufferbuilder.begin(7, DefaultVertexFormats.POSITION_COLOR);
-            float f3 = (RANDOM.nextFloat() * 0.5F + 0.1F) * f1;
-            float f4 = (RANDOM.nextFloat() * 0.5F + 0.4F) * f1;
-            float f5 = (RANDOM.nextFloat() * 0.5F + 0.5F) * f1;
+            float red = (RANDOM.nextFloat() * 0.5F + 0.1F) * f1;
+            float green = (RANDOM.nextFloat() * 0.5F + 0.4F) * f1;
+            float blue = (RANDOM.nextFloat() * 0.5F + 0.5F) * f1;
 
             if (tile.shouldRenderFace(EnumFacing.SOUTH))
             {
-                bufferbuilder.pos(x, y, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y + 1.0D, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x, y + 1.0D, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 0.0625, z + 1.0D).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 0.0625, z + 1.0D).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 0.9375, z + 1.0D).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 0.9375, z + 1.0D).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.NORTH))
             {
-                bufferbuilder.pos(x, y + 1.0D, z).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y + 1.0D, z).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y, z).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x, y, z).color(f3, f4, f5, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 0.9375, z).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 0.9375, z).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 0.0625, z).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 0.0625, z).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.EAST))
             {
-                bufferbuilder.pos(x + 1.0D, y + 1.0D, z).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y + 1.0D, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y, z).color(f3, f4, f5, 1.0F).endVertex();
+                bufferbuilder.pos(x + 1.0D, y + 0.9375, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 1.0D, y + 0.9375, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 1.0D, y + 0.0625, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 1.0D, y + 0.0625, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.WEST))
             {
-                bufferbuilder.pos(x, y, z).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x, y, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x, y + 1.0D, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x, y + 1.0D, z).color(f3, f4, f5, 1.0F).endVertex();
+                bufferbuilder.pos(x, y + 0.0625, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x, y + 0.0625, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x, y + 0.9375, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x, y + 0.9375, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.DOWN))
             {
-                bufferbuilder.pos(x, y, z).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y, z).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x, y, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 1.0 - offset, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 1.0 - offset, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 1.0 - offset, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 1.0 - offset, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.UP))
             {
-                bufferbuilder.pos(x, y + (double)f, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y + (double)f, z + 1.0D).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y + (double)f, z).color(f3, f4, f5, 1.0F).endVertex();
-                bufferbuilder.pos(x, y + (double)f, z).color(f3, f4, f5, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + offset, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + offset, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + offset, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + offset, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
             }
 
             tessellator.draw();
@@ -205,7 +204,7 @@ public class TileCelestialGatewayTESR extends TileEntitySpecialRenderer<TileCele
 
     protected float getOffset()
     {
-        return 0.75F;
+        return 0.0626f;
     }
 
     private FloatBuffer getBuffer(float p_147525_1_, float p_147525_2_, float p_147525_3_, float p_147525_4_)
