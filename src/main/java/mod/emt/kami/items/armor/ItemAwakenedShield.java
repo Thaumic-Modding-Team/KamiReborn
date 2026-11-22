@@ -1,4 +1,4 @@
-package mod.emt.kami.items.tools;
+package mod.emt.kami.items.armor;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -58,7 +58,9 @@ import thecodex6824.thaumicaugmentation.common.util.ItemHelper;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class ItemAwakenedShield extends ItemIchoriumShield implements ICaster, IArchitect {
     public static final String TAG_FOCUS = "storedFocus";
@@ -68,7 +70,7 @@ public class ItemAwakenedShield extends ItemIchoriumShield implements ICaster, I
     private static final UUID UUID_SHIELD_HEALTH = UUID.fromString("89be1774-fa98-4bfe-a98a-01ffd59e6bab");
 
     public ItemAwakenedShield() {
-        super("awakened_ichorium_shield");
+        super("awakened_ichorweave_shield");
     }
 
     public static boolean isShieldEquipped(@NotNull EntityPlayer player, boolean checkFocus) {

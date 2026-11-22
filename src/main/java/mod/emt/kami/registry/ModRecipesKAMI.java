@@ -50,7 +50,8 @@ public class ModRecipesKAMI {
                 " F ",
                 "FIF",
                 'F', new ItemStack(ItemsTC.fabric),
-                'I', new ItemStack(ModItemsKAMI.ICHOR)));
+                'I', new ItemStack(ModItemsKAMI.ICHOR)
+        ));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_hood"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORWEAVE_ARMOR",
@@ -60,7 +61,8 @@ public class ModRecipesKAMI {
                 "FFF",
                 "FGF",
                 'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
-                'G', new ItemStack(ItemsTC.goggles, 1, OreDictionary.WILDCARD_VALUE)));
+                'G', new ItemStack(ItemsTC.goggles, 1, OreDictionary.WILDCARD_VALUE)
+        ));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_robe"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORWEAVE_ARMOR",
@@ -70,7 +72,8 @@ public class ModRecipesKAMI {
                 "F F",
                 "FFF",
                 "FFF",
-                'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)));
+                'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)
+        ));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_leggings"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORWEAVE_ARMOR",
@@ -80,7 +83,8 @@ public class ModRecipesKAMI {
                 "FFF",
                 "F F",
                 "F F",
-                'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)));
+                'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)
+        ));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_boots"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORWEAVE_ARMOR",
@@ -89,7 +93,8 @@ public class ModRecipesKAMI {
                 ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.ICHORWEAVE_BOOTS)),
                 "F F",
                 "F F",
-                'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)));
+                'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC)
+        ));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_sword"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORIUM_TOOLS",
@@ -100,7 +105,8 @@ public class ModRecipesKAMI {
                 "I",
                 "B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)
+        ));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_shovel"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORIUM_TOOLS",
@@ -111,7 +117,8 @@ public class ModRecipesKAMI {
                 "B",
                 "B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)
+        ));
         ItemStack pickaxe = new ItemStack(ModItemsKAMI.ICHORIUM_PICKAXE);
         ItemHelper.setUnbreakable(pickaxe);
         EnumInfusionEnchantment.addInfusionEnchantment(pickaxe, EnumInfusionEnchantment.REFINING, 4);
@@ -125,7 +132,8 @@ public class ModRecipesKAMI {
                 " B ",
                 " B ",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)
+        ));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_axe"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORIUM_TOOLS",
@@ -136,7 +144,8 @@ public class ModRecipesKAMI {
                 "IB",
                 " B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)
+        ));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_hoe"), new ShapedArcaneRecipe(
                 defaultGroup,
                 "KAMI_ICHORIUM_TOOLS",
@@ -147,7 +156,20 @@ public class ModRecipesKAMI {
                 " B",
                 " B",
                 'I', new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
-                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)));
+                'B', new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD)
+        ));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorweave_shield"), new ShapedArcaneRecipe(
+                defaultGroup,
+                "KAMI_ICHORWEAVE_ARMOR",
+                250,
+                new AspectList().add(Aspect.ORDER, 8),
+                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.ICHORWEAVE_SHIELD)),
+                "FFF",
+                "FSF",
+                " F ",
+                'F', new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
+                'S', new ItemStack(Items.SHIELD)
+        ));
     }
 
     private static void initCrucibleRecipes() {
@@ -168,7 +190,8 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
+                new ItemStack(Items.NETHER_STAR)
+        ));
 
         ItemStack pickaxe = new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_PICKAXE);
         ItemHelper.setUnbreakable(pickaxe);
@@ -187,7 +210,25 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
+                new ItemStack(Items.NETHER_STAR)
+        ));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_shield"), new InfusionRecipe(
+                "KAMI_AWAKENED_ICHORWEAVE_SHIELD",
+                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_SHIELD)),
+                10,
+                new AspectList().add(Aspect.MAGIC, 500).add(Aspect.LIFE, 500).add(Aspect.AURA, 250).add(Aspect.ENERGY, 250),
+                ModItemsKAMI.ICHORWEAVE_SHIELD,
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.thaumometer,
+                ItemsTC.visResonator
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_shovel"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORIUM_SHOVEL",
                 ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SHOVEL)),
@@ -201,7 +242,8 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
+                new ItemStack(Items.NETHER_STAR)
+        ));
 
         ItemStack sword = new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SWORD);
         ItemHelper.setUnbreakable(sword);
@@ -219,7 +261,8 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
+                new ItemStack(Items.NETHER_STAR)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_boots"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORWEAVE_BOOTS",
                 ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS)),
@@ -233,7 +276,8 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
+                new ItemStack(Items.NETHER_STAR)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_hood"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORWEAVE_HOOD",
                 ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD)),
@@ -247,7 +291,8 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
+                new ItemStack(Items.NETHER_STAR)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_leggings"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORWEAVE_LEGGINGS",
                 ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS)),
@@ -261,7 +306,8 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
+                new ItemStack(Items.NETHER_STAR)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_robe"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORWEAVE_ROBE",
                 ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE)),
@@ -275,7 +321,8 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR)));
+                new ItemStack(Items.NETHER_STAR)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "blessed_silverwood_rod"), new InfusionRecipe(
                 "KAMI_ICHORIUM_TOOLS",
                 new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD),
@@ -285,7 +332,8 @@ public class ModRecipesKAMI {
                 new ItemStack(ItemsTC.nuggets, 1, 10),
                 new ItemStack(BlocksTC.logSilverwood),
                 "quicksilver",
-                new ItemStack(BlocksTC.shimmerleaf)));
+                new ItemStack(BlocksTC.shimmerleaf)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "bottomless_pouch"), new InfusionRecipe(
                 "KAMI_BOTTOMLESS_POUCH",
                 new ItemStack(ModItemsKAMI.FOCUS_POUCH),
@@ -299,7 +347,8 @@ public class ModRecipesKAMI {
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
                 new ItemStack(BlocksTC.hungryChest),
-                new ItemStack(Blocks.ENDER_CHEST)));
+                new ItemStack(Blocks.ENDER_CHEST)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor"), new InfusionRecipe(
                 "KAMI_ICHOR",
                 new ItemStack(ModItemsKAMI.ICHOR),
@@ -309,7 +358,8 @@ public class ModRecipesKAMI {
                 "gemDiamond",
                 new ItemStack(Items.ENDER_EYE),
                 ItemsTC.primordialPearl,
-                new ItemStack(Items.GHAST_TEAR)));
+                new ItemStack(Items.GHAST_TEAR)
+        ));
         ItemStack casterStack;
         if(ModIds.thaumic_augmentation.isLoaded) {
             casterStack = new ItemStack(TAItems.GAUNTLET, 1, 1);
@@ -329,7 +379,8 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
-                new ItemStack(ModItemsKAMI.ICHORIUM_INGOT)));
+                new ItemStack(ModItemsKAMI.ICHORIUM_INGOT)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichorium_ingot"), new InfusionRecipe(
                 "KAMI_ICHORIUM",
                 new ItemStack(ModItemsKAMI.ICHORIUM_INGOT),
@@ -339,7 +390,8 @@ public class ModRecipesKAMI {
                 new ItemStack(ModItemsKAMI.ICHOR),
                 ItemPhial.makeFilledPhial(Aspect.ENTROPY),
                 new ItemStack(ItemsTC.salisMundus),
-                ItemPhial.makeFilledPhial(Aspect.ORDER)));
+                ItemPhial.makeFilledPhial(Aspect.ORDER)
+        ));
 
         // Optional Research
         if (ConfigHandlerKami.enchantments.eternal) {

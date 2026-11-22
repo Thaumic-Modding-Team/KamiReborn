@@ -1,4 +1,4 @@
-package mod.emt.kami.items.tools;
+package mod.emt.kami.items.armor;
 
 import mod.emt.kami.Kami;
 import mod.emt.kami.registry.ModItemsKAMI;
@@ -32,7 +32,7 @@ public class ItemIchoriumShield extends ItemShield implements IWarpingGear {
     }
 
     public ItemIchoriumShield() {
-        this("ichorium_shield");
+        this("ichorweave_shield");
     }
 
     @Override

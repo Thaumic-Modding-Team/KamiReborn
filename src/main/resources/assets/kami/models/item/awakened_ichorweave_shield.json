@@ -5,7 +5,7 @@
       "predicate": {
         "blocking": 1
       },
-      "model": "kami:item/ichorium_shield_blocking"
+      "model": "kami:item/awakened_ichorweave_shield_blocking"
     }
   ]
 }

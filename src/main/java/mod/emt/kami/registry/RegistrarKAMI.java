@@ -63,8 +63,8 @@ public class RegistrarKAMI {
         });
 
         RenderingRegistry.registerEntityRenderingHandler(EntityThrownAxe.class, new RenderThrownAxe.Factory());
-        ModItemsKAMI.AWAKENED_ICHORIUM_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
-        ModItemsKAMI.ICHORIUM_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
+        ModItemsKAMI.AWAKENED_ICHORWEAVE_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
+        ModItemsKAMI.ICHORWEAVE_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
     }
 
     @SubscribeEvent

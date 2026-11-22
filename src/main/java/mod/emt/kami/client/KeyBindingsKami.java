@@ -2,7 +2,7 @@ package mod.emt.kami.client;
 
 import baubles.api.BaublesApi;
 import mod.emt.kami.Kami;
-import mod.emt.kami.items.tools.ItemAwakenedShield;
+import mod.emt.kami.items.armor.ItemAwakenedShield;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;

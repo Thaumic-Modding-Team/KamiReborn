@@ -1,7 +1,7 @@
 package mod.emt.kami.network.packets;
 
 import io.netty.buffer.ByteBuf;
-import mod.emt.kami.items.tools.ItemAwakenedShield;
+import mod.emt.kami.items.armor.ItemAwakenedShield;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

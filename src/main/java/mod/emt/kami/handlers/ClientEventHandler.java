@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableList;
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IAreaBreakTool;
 import mod.emt.kami.client.KeyBindingsKami;
-import mod.emt.kami.items.tools.ItemAwakenedShield;
+import mod.emt.kami.items.armor.ItemAwakenedShield;
 import mod.emt.kami.network.PacketHandler;
 import mod.emt.kami.network.packets.PacketCastAwakenedShield;
 import mod.emt.kami.network.packets.PacketOpenPouchGui;

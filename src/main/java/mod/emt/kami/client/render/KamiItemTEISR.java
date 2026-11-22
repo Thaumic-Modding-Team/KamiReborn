@@ -11,17 +11,17 @@ import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 public class KamiItemTEISR extends TileEntityItemStackRenderer {
-    public static final ResourceLocation AWAKENED_SHIELD_TEXTURE = new ResourceLocation(Kami.MOD_ID, "textures/models/awakened_ichorium_shield.png");
-    public static final ResourceLocation ICHORIUM_SHIELD_TEXTURE = new ResourceLocation(Kami.MOD_ID, "textures/models/ichorium_shield.png");
+    public static final ResourceLocation AWAKENED_ICHORWEAVE_SHIELD_TEXTURE = new ResourceLocation(Kami.MOD_ID, "textures/models/awakened_ichorweave_shield.png");
+    public static final ResourceLocation ICHORWEAVE_SHIELD_TEXTURE = new ResourceLocation(Kami.MOD_ID, "textures/models/ichorweave_shield.png");
 
     private final ModelShieldKami modelShield = new ModelShieldKami();
 
     @Override
     public void renderByItem(@NotNull ItemStack stack, float partialTicks) {
-        if(stack.getItem() == ModItemsKAMI.AWAKENED_ICHORIUM_SHIELD) {
-            this.renderShield(stack, AWAKENED_SHIELD_TEXTURE);
-        } else if(stack.getItem() == ModItemsKAMI.ICHORIUM_SHIELD) {
-            this.renderShield(stack, ICHORIUM_SHIELD_TEXTURE);
+        if(stack.getItem() == ModItemsKAMI.AWAKENED_ICHORWEAVE_SHIELD) {
+            this.renderShield(stack, AWAKENED_ICHORWEAVE_SHIELD_TEXTURE);
+        } else if(stack.getItem() == ModItemsKAMI.ICHORWEAVE_SHIELD) {
+            this.renderShield(stack, ICHORWEAVE_SHIELD_TEXTURE);
         }
     }
 
