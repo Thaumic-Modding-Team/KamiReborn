@@ -3,7 +3,9 @@ package mod.emt.kami.registry;
 import mod.emt.kami.Kami;
 import mod.emt.kami.client.render.KamiItemTEISR;
 import mod.emt.kami.client.render.RenderThrownAxe;
+import mod.emt.kami.client.render.TileCelestialGatewayTESR;
 import mod.emt.kami.entities.EntityThrownAxe;
+import mod.emt.kami.tiles.TileCelestialGateway;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -12,14 +14,17 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.client.ForgeClientHandler;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -36,6 +41,7 @@ public class RegistrarKAMI {
         IForgeRegistry<Block> registry = event.getRegistry();
         ModBlocksKAMI.initBlocks();
         ModBlocksKAMI.MOD_BLOCKS.forEach(registry::register);
+        ModBlocksKAMI.registerTileEntities();
     }
 
     @SubscribeEvent
@@ -62,9 +68,13 @@ public class RegistrarKAMI {
             ModelLoader.setCustomModelResourceLocation(item, 0, loc);
         });
 
+        //Entities
         RenderingRegistry.registerEntityRenderingHandler(EntityThrownAxe.class, new RenderThrownAxe.Factory());
+        //Items
         ModItemsKAMI.AWAKENED_ICHORWEAVE_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
         ModItemsKAMI.ICHORWEAVE_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
+        //Tiles
+        ClientRegistry.bindTileEntitySpecialRenderer(TileCelestialGateway.class, new TileCelestialGatewayTESR());
     }
 
     @SubscribeEvent
