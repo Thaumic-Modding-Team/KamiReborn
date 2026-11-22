@@ -1,5 +1,6 @@
 package mod.emt.kami.registry;
 
+import com.invadermonky.thaumicapi.utils.libs.ModIds;
 import mod.emt.kami.Kami;
 import mod.emt.kami.client.render.KamiItemTEISR;
 import mod.emt.kami.client.render.RenderThrownAxe;
@@ -12,14 +13,17 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -30,6 +34,14 @@ import java.util.Objects;
 @Mod.EventBusSubscriber(modid = Kami.MOD_ID)
 public class RegistrarKAMI {
     private static int entityID = 0;
+
+    @SubscribeEvent
+    public static void registerBiomes(RegistryEvent.Register<Biome> event) {
+        // TODO: Configurable dimension?
+        if (ModIds.thaumic_augmentation.isLoaded) {
+            registerBiome(ModBiomesKAMI.WAYS_BETWEEN, "ways_between", BiomeDictionary.Type.COLD, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.VOID);
+        }
+    }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -43,9 +55,9 @@ public class RegistrarKAMI {
         IForgeRegistry<Item> registry = event.getRegistry();
         ModItemsKAMI.initItems();
         ModBlocksKAMI.MOD_BLOCKS.forEach(block -> registry.register(new ItemBlock(block)
-                        .setRegistryName(Objects.requireNonNull(block.getRegistryName()))
-                        .setTranslationKey(block.getTranslationKey())
-                        .setCreativeTab(block.getCreativeTab())
+                .setRegistryName(Objects.requireNonNull(block.getRegistryName()))
+                .setTranslationKey(block.getTranslationKey())
+                .setCreativeTab(block.getCreativeTab())
         ));
         ModItemsKAMI.MOD_ITEMS.forEach(registry::register);
     }
@@ -77,6 +89,12 @@ public class RegistrarKAMI {
         for (ModSoundsKAMI soundEvents : ModSoundsKAMI.values()) {
             event.getRegistry().register(soundEvents.getSoundEvent());
         }
+    }
+
+    private static void registerBiome(Biome biome, String name, BiomeDictionary.Type... types) {
+        biome.setRegistryName(name);
+        ForgeRegistries.BIOMES.register(biome);
+        BiomeDictionary.addTypes(biome, types);
     }
 
     public static void registerEntity(String name, Class<? extends Entity> clazz, int eggColor1, int eggColor2) {

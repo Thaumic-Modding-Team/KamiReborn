@@ -1,7 +1,9 @@
 package mod.emt.kami.registry;
 
 
+import com.invadermonky.thaumicapi.utils.libs.ModIds;
 import mod.emt.kami.Kami;
+import mod.emt.kami.items.ItemDimensionTester;
 import mod.emt.kami.items.armor.ItemAwakenedArmor;
 import mod.emt.kami.items.armor.ItemAwakenedShield;
 import mod.emt.kami.items.armor.ItemIchoriumShield;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModItemsKAMI {
-    public static ItemArmor.ArmorMaterial MATERIAL_ICHORCLOTH = EnumHelper.addArmorMaterial("ICHORCLOTH", Kami.MOD_ID + ":ichorcloth",-1, new int[] {3, 6, 8, 3}, 20, ModSoundsKAMI.EQUIP_ROBE.getSoundEvent(), 3.0F);
+    public static ItemArmor.ArmorMaterial MATERIAL_ICHORCLOTH = EnumHelper.addArmorMaterial("ICHORCLOTH", Kami.MOD_ID + ":ichorcloth", -1, new int[]{3, 6, 8, 3}, 20, ModSoundsKAMI.EQUIP_ROBE.getSoundEvent(), 3.0F);
     public static Item.ToolMaterial MATERIAL_ICHORIUM = EnumHelper.addToolMaterial("ICHORIUM", 5, -1, 10, 4f, 25);
 
     public static Item AWAKENED_ICHORIUM_AXE;
@@ -49,6 +51,8 @@ public class ModItemsKAMI {
     public static ItemArmor ICHORWEAVE_LEGGINGS;
     public static ItemArmor ICHORWEAVE_ROBE;
     public static Item ICHORWEAVE_SHIELD;
+
+    public static ItemDimensionTester DIMENSION_TESTER;
 
     public static final List<Item> MOD_ITEMS = new ArrayList<>();
 
@@ -80,5 +84,10 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(AWAKENED_ICHORIUM_SICKLE = new ItemAwakenedSickle());
         MOD_ITEMS.add(AWAKENED_ICHORWEAVE_SHIELD = new ItemAwakenedShield());
         MOD_ITEMS.add(ICHORIUM_CASTER = new ItemIchoriumCaster());
+
+        // TODO: Configurable dimension?
+        if (ModIds.thaumic_augmentation.isLoaded) {
+            MOD_ITEMS.add(DIMENSION_TESTER = new ItemDimensionTester());
+        }
     }
 }
