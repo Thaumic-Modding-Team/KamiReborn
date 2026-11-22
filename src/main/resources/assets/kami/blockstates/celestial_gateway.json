@@ -4,7 +4,12 @@
     "model": "kami:celestial_gateway"
   },
   "variants": {
-    "normal": [{}],
+    "facing=up":    { "model": "kami:celestial_gateway" },
+    "facing=down":  { "model": "kami:celestial_gateway", "x": 180 },
+    "facing=north": { "model": "kami:celestial_gateway", "x": 90 },
+    "facing=south": { "model": "kami:celestial_gateway", "x": 90, "y": 180 },
+    "facing=west":  { "model": "kami:celestial_gateway", "x": 90, "y": 270 },
+    "facing=east":  { "model": "kami:celestial_gateway", "x": 90, "y": 90 },
     "inventory": [{}]
   }
 }

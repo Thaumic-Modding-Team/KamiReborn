@@ -1,5 +1,6 @@
 package mod.emt.kami.tiles;
 
+import mod.emt.kami.blocks.BlockCelestialGateway;
 import mod.emt.kami.utils.misc.SerializablePosition;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -60,11 +61,12 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
         return true;
     }
 
-    public void teleportToGateway(EntityPlayer player) {
+    public void teleportToSavedPosition(EntityPlayer player) {
         if(!this.world.isRemote) {
             UUID playerId = player.getGameProfile().getId();
             SerializablePosition position = new SerializablePosition(player);
 
+            //TODO: Adjust teleport position for rotated block.
             if (this.world.provider.getDimension() != player.world.provider.getDimension()) {
                 player.changeDimension(this.world.provider.getDimension(), (world1, entity, yaw) -> {});
             }
@@ -80,7 +82,6 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
     }
 
     public boolean shouldRenderFace(EnumFacing facing) {
-        //TODO
-        return facing == EnumFacing.UP;
+        return this.world.getBlockState(this.pos).getValue(BlockCelestialGateway.FACING) == facing;
     }
 }

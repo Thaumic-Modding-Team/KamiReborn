@@ -94,34 +94,34 @@ public class TileCelestialGatewayTESR extends TileEntitySpecialRenderer<TileCele
 
             if (tile.shouldRenderFace(EnumFacing.SOUTH))
             {
-                bufferbuilder.pos(x + 0.0625, y + 0.0625, z + 1.0D).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 0.9375, y + 0.0625, z + 1.0D).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 0.9375, y + 0.9375, z + 1.0D).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 0.0625, y + 0.9375, z + 1.0D).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 0.0625, z + offset).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 0.0625, z + offset).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 0.9375, z + offset).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 0.9375, z + offset).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.NORTH))
             {
-                bufferbuilder.pos(x + 0.0625, y + 0.9375, z).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 0.9375, y + 0.9375, z).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 0.9375, y + 0.0625, z).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 0.0625, y + 0.0625, z).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 0.9375, z + 1.0 - offset).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 0.9375, z + 1.0 - offset).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.9375, y + 0.0625, z + 1.0 - offset).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 0.0625, y + 0.0625, z + 1.0 - offset).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.EAST))
             {
-                bufferbuilder.pos(x + 1.0D, y + 0.9375, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y + 0.9375, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y + 0.0625, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x + 1.0D, y + 0.0625, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + offset, y + 0.9375, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + offset, y + 0.9375, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + offset, y + 0.0625, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + offset, y + 0.0625, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.WEST))
             {
-                bufferbuilder.pos(x, y + 0.0625, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x, y + 0.0625, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x, y + 0.9375, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
-                bufferbuilder.pos(x, y + 0.9375, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 1.0 - offset, y + 0.0625, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 1.0 - offset, y + 0.0625, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 1.0 - offset, y + 0.9375, z + 0.9375).color(red, green, blue, 1.0F).endVertex();
+                bufferbuilder.pos(x + 1.0 - offset, y + 0.9375, z + 0.0625).color(red, green, blue, 1.0F).endVertex();
             }
 
             if (tile.shouldRenderFace(EnumFacing.DOWN))
