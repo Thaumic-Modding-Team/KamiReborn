@@ -1,6 +1,7 @@
 package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.client.render.KamiItemTEISR;
 import mod.emt.kami.client.render.RenderThrownAxe;
 import mod.emt.kami.entities.EntityThrownAxe;
 import net.minecraft.block.Block;
@@ -60,6 +61,10 @@ public class RegistrarKAMI {
             ModelResourceLocation loc = new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()), "inventory");
             ModelLoader.setCustomModelResourceLocation(item, 0, loc);
         });
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityThrownAxe.class, new RenderThrownAxe.Factory());
+        ModItemsKAMI.AWAKENED_ICHORIUM_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
+        ModItemsKAMI.ICHORIUM_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
     }
 
     @SubscribeEvent
@@ -85,11 +90,5 @@ public class RegistrarKAMI {
     @SubscribeEvent
     public static void registerEntities(@Nonnull final RegistryEvent.Register<EntityEntry> event) {
         registerEntity("thrown_awakened_ichorium_axe", EntityThrownAxe.class, 64, true);
-    }
-
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public static void registerEntityRenderers(@Nonnull final ModelRegistryEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(EntityThrownAxe.class, new RenderThrownAxe.Factory());
     }
 }

@@ -135,27 +135,6 @@ public class CommonEventHandler {
                     event.getEntityLiving().removePotionEffect(MobEffects.FIRE_RESISTANCE);
                 }
             }
-        } else if(event.getSlot() == EntityEquipmentSlot.OFFHAND) {
-            boolean toShield = to.getItem() == ModItemsKAMI.AWAKENED_ICHORIUM_SHIELD;
-            boolean fromShield = from.getItem() == ModItemsKAMI.AWAKENED_ICHORIUM_SHIELD;
-
-            //Maintaining current health percentage when swapping to shield and from awakened shield
-            if((toShield || fromShield) && !(toShield && fromShield)) {
-                EntityLivingBase entity = event.getEntityLiving();
-                float currHealth = entity.getHealth();
-                float maxHealth = entity.getMaxHealth();
-
-                if(currHealth > 0) {
-                    float healthPercentage = currHealth / maxHealth;
-                    float newMaxHealth = maxHealth + (toShield ? 20.0f : -20.0f);
-
-                    if (newMaxHealth <= 0 && healthPercentage <= 0) {
-                        entity.setHealth(1.0f);
-                    } else if (currHealth < maxHealth && healthPercentage > 0) {
-                        entity.setHealth((maxHealth + 20.0f) * healthPercentage);
-                    }
-                }
-            }
         }
     }
 

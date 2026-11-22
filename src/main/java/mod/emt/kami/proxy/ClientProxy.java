@@ -6,6 +6,7 @@ import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import thaumcraft.api.casters.ICaster;
 import thaumcraft.common.items.casters.ItemFocus;
 
@@ -20,33 +21,36 @@ public class ClientProxy extends CommonProxy {
     public void init() {
         super.init();
         KeyBindingsKami.init();
-        IItemColor itemColorHandler = (stack, tintIndex) -> {
+
+        ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
+        IItemColor dyeableColorHandler = (stack, tintIndex) -> {
             if (tintIndex == 1 && stack.getItem() instanceof IDyeableItem) {
                 return ((IDyeableItem) stack.getItem()).getDyedColor(stack);
             } else {
                 return -1;
             }
         };
-
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_BOOTS);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_HOOD);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_LEGGINGS);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(itemColorHandler, ModItemsKAMI.ICHORWEAVE_ROBE);
-
         IItemColor gauntletColorHandler = (stack, tintIndex) -> {
             if (tintIndex == 1 && stack.getItem() instanceof ICaster && ((ICaster) stack.getItem()).getFocus(stack) != null)
                 return ((ItemFocus) ((ICaster) stack.getItem()).getFocus(stack)).getFocusColor(((ICaster) stack.getItem()).getFocusStack(stack));
             else if (tintIndex == 2 && stack.getItem() instanceof IDyeableItem) {
                 return ((IDyeableItem) stack.getItem()).getDyedColor(stack);
+            } else {
+                return -1;
             }
-
-            return -1;
         };
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(gauntletColorHandler, ModItemsKAMI.ICHORIUM_CASTER);
+
+        //Dyeables
+        itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS);
+        itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_HOOD);
+        itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_LEGGINGS);
+        itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_ROBE);
+        itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.ICHORWEAVE_BOOTS);
+        itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.ICHORWEAVE_HOOD);
+        itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.ICHORWEAVE_LEGGINGS);
+        itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.ICHORWEAVE_ROBE);
+        //Casters
+        itemColors.registerItemColorHandler(gauntletColorHandler, ModItemsKAMI.ICHORIUM_CASTER);
 
         KamiCompatHandler.initClient();
     }

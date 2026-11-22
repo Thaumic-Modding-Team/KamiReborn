@@ -1,0 +1,11 @@
+{
+  "parent": "item/shield",
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "kami:item/awakened_ichorium_shield_blocking"
+    }
+  ]
+}
