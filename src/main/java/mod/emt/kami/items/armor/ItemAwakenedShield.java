@@ -113,7 +113,7 @@ public class ItemAwakenedShield extends ItemIchoriumShield implements ICaster, I
             ActionResult<ItemStack> result = this.castShieldFocusSpell(world, player, hand, shield, focusStack, focusPackage);
             ItemStack resultStack = result.getResult();
 
-            if ((copy != resultStack || count != resultStack.getCount() || meta != resultStack.getMetadata()) && result.getType() != EnumActionResult.FAIL) {
+            if ((!ItemStack.areItemStacksEqual(copy, resultStack) || count != resultStack.getCount() || meta != resultStack.getMetadata()) && result.getType() != EnumActionResult.FAIL) {
                 player.setHeldItem(hand, resultStack);
                 if(player.isCreative()) {
                     resultStack.setCount(copy.getCount());
