@@ -41,6 +41,10 @@ public class SerializablePosition implements INBTSerializable<NBTTagCompound> {
         this.deserializeNBT(tag);
     }
 
+    public int getDimensionId() {
+        return dimId;
+    }
+
     @Nullable
     public World getWorld(boolean forceLoad) {
         if(this.world == null) {

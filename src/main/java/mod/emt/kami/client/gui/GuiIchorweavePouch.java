@@ -4,7 +4,6 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.inventory.containers.ContainerIchorweavePouch;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -13,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiIchorweavePouch extends GuiContainer {
     public static final ResourceLocation TEXTURE = new ResourceLocation(Kami.MOD_ID, "textures/gui/ichorweave_pouch.png");
 
-    public GuiIchorweavePouch(Container inventorySlotsIn) {
+    public GuiIchorweavePouch(ContainerIchorweavePouch inventorySlotsIn) {
         super(inventorySlotsIn);
         this.xSize = 256;
         this.ySize = 256;

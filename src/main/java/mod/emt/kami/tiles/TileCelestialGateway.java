@@ -2,6 +2,8 @@ package mod.emt.kami.tiles;
 
 import mod.emt.kami.blocks.BlockCelestialGateway;
 import mod.emt.kami.utils.misc.SerializablePosition;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -65,12 +67,29 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
         if(!this.world.isRemote) {
             UUID playerId = player.getGameProfile().getId();
             SerializablePosition position = new SerializablePosition(player);
+            IBlockState tileState = this.world.getBlockState(this.pos);
+            EnumFacing tileFacing = tileState.getValue(BlockCelestialGateway.FACING);
 
-            //TODO: Adjust teleport position for rotated block.
+            double posX = this.pos.getX() + 0.5;
+            double posY = this.pos.getY();
+            double posZ = this.pos.getX() + 0.5;
+
+            if (tileFacing == EnumFacing.DOWN) {
+                posY -= 1.0;
+            } else if (tileFacing == EnumFacing.UP) {
+                posY += 0.125;
+            } else {
+                BlockPos downPos = this.pos.down();
+                IBlockState state = this.world.getBlockState(downPos);
+                if(state.getMaterial() == Material.AIR || state.getBlock().isReplaceable(this.world, downPos)) {
+                    posY -= 1.0;
+                }
+            }
+
             if (this.world.provider.getDimension() != player.world.provider.getDimension()) {
                 player.changeDimension(this.world.provider.getDimension(), (world1, entity, yaw) -> {});
             }
-            player.setPositionAndUpdate(this.pos.getX() + 0.5, this.pos.getY(), this.pos.getZ() + 0.5);
+            player.setPositionAndUpdate(posX, posY, posZ);
             this.world.playEvent(player, Constants.WorldEvents.PORTAL_TRAVEL_SOUND, this.pos, 0);
             this.savedPositions.put(playerId, position);
             this.markDirty();
