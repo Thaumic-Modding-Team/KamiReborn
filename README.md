@@ -68,10 +68,6 @@ Awakened Ichor equipment is extremely powerful. Awakened tools have various "mod
 ---
 
 ## Licensing
-**[OpenSimplex 2 Noise Generator:](https://github.com/KdotJPG/OpenSimplex2) CC0-1.0 Universal**
-
 **Thaumic Tinkerer Assets: CC BY-NC-SA 3.0 Unported** (see LICENSE_ASSETS_TT)
-
-**Worley Noise Generator: MIT**
 
 Code and new assets (textures, sounds, models, etc) for this mod are **All Rights Reserved** (see LICENSE and LICENSE_ASSETS).
