@@ -7,7 +7,18 @@
     }
   },
   "variants": {
-    "normal": [{}],
+    "enabled=true": {
+      "model": "cube_all",
+      "textures": {
+        "all": "kami:blocks/voidore/void_ore_redstone"
+      }
+    },
+    "enabled=false": {
+      "model": "cube_all",
+      "textures": {
+        "all": "kami:blocks/voidore/void_ore_redstone"
+      }
+    },
     "inventory": [{}]
   }
 }

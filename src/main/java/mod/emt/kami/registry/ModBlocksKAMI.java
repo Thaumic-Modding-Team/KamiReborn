@@ -4,6 +4,7 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.blocks.BlockCelestialGateway;
 import mod.emt.kami.blocks.BlockMaterial;
 import mod.emt.kami.blocks.BlockMaterialCopy;
+import mod.emt.kami.blocks.BlockVoidRedstone;
 import mod.emt.kami.tiles.TileCelestialGateway;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -28,20 +29,23 @@ public class ModBlocksKAMI {
         MOD_BLOCKS.add(ICHOR_BLOCK = new BlockMaterial("ichor_block", Material.IRON, MapColor.GOLD, 5.0F, SoundType.METAL, "blockIchor"));
         MOD_BLOCKS.add(ICHORIUM_BLOCK = new BlockMaterial("ichorium_block", Material.IRON, MapColor.GOLD, 5.0F, SoundType.METAL, "blockIchorium"));
         MOD_BLOCKS.add(CELESTIAL_GATEWAY = new BlockCelestialGateway());
-        addMaterialCopyBlock("coal", Blocks.COAL_ORE, 0);
-        addMaterialCopyBlock("iron", Blocks.IRON_ORE, 0);
-        addMaterialCopyBlock("gold", Blocks.GOLD_ORE, 0);
-        addMaterialCopyBlock("lapis_lazuli", Blocks.LAPIS_ORE, 0);
-        addMaterialCopyBlock("redstone", Blocks.REDSTONE_ORE, 0);
-        addMaterialCopyBlock("quartz", Blocks.QUARTZ_ORE, 0);
-        addMaterialCopyBlock("diamond", Blocks.DIAMOND_ORE, 0);
+        addVoidOre("coal", Blocks.COAL_ORE, 0);
+        addVoidOre("iron", Blocks.IRON_ORE, 0);
+        addVoidOre("gold", Blocks.GOLD_ORE, 0);
+        addVoidOre("lapis_lazuli", Blocks.LAPIS_ORE, 0);
+        addVoidOre(new BlockVoidRedstone());
+        addVoidOre("quartz", Blocks.QUARTZ_ORE, 0);
+        addVoidOre("diamond", Blocks.DIAMOND_ORE, 0);
     }
 
-    public static void addMaterialCopyBlock(String type, Block toCopy, int metaToCopy) {
-        BlockMaterialCopy block = new BlockMaterialCopy("void_ore_" + type, toCopy, metaToCopy);
+    public static void addVoidOre(BlockMaterialCopy block) {
         MOD_BLOCKS.add(block);
         //TODO: Need to figure out what information is needed for the ore blocks so it can be stored here.
         ORE_BLOCKS.add(block);
+    }
+
+    public static void addVoidOre(String type, Block toCopy, int metaToCopy) {
+        addVoidOre(new BlockMaterialCopy("void_ore_" + type, toCopy, metaToCopy));
     }
 
     public static void registerTileEntities() {

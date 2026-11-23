@@ -24,6 +24,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class BlockMaterialCopy extends Block implements IOreDictProvider {
+    private IBlockState cachedState;
     private final Block toCopyBlock;
     private final int toCopyMeta;
     private String[] oreDicts;
@@ -48,7 +49,10 @@ public class BlockMaterialCopy extends Block implements IOreDictProvider {
 
     @SuppressWarnings("deprecation")
     public IBlockState getCopiedState() {
-        return this.toCopyBlock.getStateFromMeta(this.toCopyMeta);
+        if(this.cachedState == null) {
+            this.cachedState = this.toCopyBlock.getStateFromMeta(this.toCopyMeta);
+        }
+        return this.cachedState;
     }
 
     @SuppressWarnings("deprecation")
@@ -82,6 +86,16 @@ public class BlockMaterialCopy extends Block implements IOreDictProvider {
             return this.getCopiedState().getBlock().getSoundType(state, world, pos, entity);
         } catch (Exception ignored) {
             return super.getSoundType(state, world, pos, entity);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public int getLightValue(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos) {
+        try {
+            return this.getCopiedState().getLightValue(world, pos);
+        } catch (Exception ignored) {
+            return this.getCopiedState().getLightValue();
         }
     }
 
@@ -137,7 +151,11 @@ public class BlockMaterialCopy extends Block implements IOreDictProvider {
 
     @Override
     public @Nullable String getHarvestTool(@NotNull IBlockState state) {
-        return this.getCopiedState().getBlock().getHarvestTool(state);
+        try {
+            return this.getCopiedState().getBlock().getHarvestTool(state);
+        } catch (Exception ignored) {
+            return super.getHarvestTool(state);
+        }
     }
 
     @Override
