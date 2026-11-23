@@ -11,7 +11,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
@@ -52,11 +51,11 @@ public class BlockCelestialGateway extends BlockTileEntityKami {
 
     @Override
     public boolean onBlockActivated(@NotNull World worldIn, @NotNull BlockPos pos, @NotNull IBlockState state, @NotNull EntityPlayer playerIn, @NotNull EnumHand hand, @NotNull EnumFacing facing, float hitX, float hitY, float hitZ) {
-        TileEntity tile = worldIn.getTileEntity(pos);
-        if(tile instanceof TileCelestialGateway && ((TileCelestialGateway) tile).hasSavedPosition(playerIn)) {
-            ((TileCelestialGateway) tile).teleportToSavedPosition(playerIn);
-            return true;
-        }
+//        TileEntity tile = worldIn.getTileEntity(pos);
+//        if(tile instanceof TileCelestialGateway && ((TileCelestialGateway) tile).hasSavedPosition(playerIn)) {
+//            ((TileCelestialGateway) tile).teleportToSavedPosition(playerIn);
+//            return true;
+//        }
         return false;
     }
 

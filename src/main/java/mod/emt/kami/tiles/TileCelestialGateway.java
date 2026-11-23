@@ -1,5 +1,6 @@
 package mod.emt.kami.tiles;
 
+import mod.emt.kami.api.tile.INameableTile;
 import mod.emt.kami.blocks.BlockCelestialGateway;
 import mod.emt.kami.utils.misc.SerializablePosition;
 import net.minecraft.block.material.Material;
@@ -10,6 +11,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import org.jetbrains.annotations.NotNull;
@@ -20,20 +23,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class TileCelestialGateway extends TileEntityKami implements IInteractWithCaster {
+public class TileCelestialGateway extends TileEntityKami implements IInteractWithCaster, INameableTile {
     public Map<UUID, SerializablePosition> savedPositions = new HashMap<>();
+    protected String customName = null;
 
     @Override
     public void readFromNBT(@NotNull NBTTagCompound compound) {
         super.readFromNBT(compound);
         NBTTagCompound posTags = compound.getCompoundTag("savedPositions");
         posTags.getKeySet().forEach(key -> this.savedPositions.put(UUID.fromString(key), new SerializablePosition(posTags.getCompoundTag(key))));
+        if(compound.hasKey("customName")) {
+            this.customName = compound.getString("customName");
+        }
     }
 
     @Override
     public @NotNull NBTTagCompound writeToNBT(@NotNull NBTTagCompound compound) {
         super.writeToNBT(compound);
         this.savedPositions.forEach((playerId, position) -> compound.setTag(playerId.toString(), position.serializeNBT()));
+        if(this.hasCustomName()) {
+            compound.setString("customName", this.customName);
+        }
         return compound;
     }
 
@@ -102,5 +112,26 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
 
     public boolean shouldRenderFace(EnumFacing facing) {
         return this.world.getBlockState(this.pos).getValue(BlockCelestialGateway.FACING) == facing;
+    }
+
+    @Override
+    public @NotNull ITextComponent getDisplayName() {
+        return  new TextComponentString(this.hasCustomName() ? this.customName : "");
+    }
+
+    @Override
+    public void setCustomName(String displayName) {
+        this.customName = displayName;
+        this.markDirty();
+    }
+
+    @Override
+    public @NotNull String getName() {
+        return this.hasCustomName() ? this.customName : "";
+    }
+
+    @Override
+    public boolean hasCustomName() {
+        return this.customName != null;
     }
 }

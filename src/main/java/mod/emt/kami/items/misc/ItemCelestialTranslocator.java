@@ -3,8 +3,11 @@ package mod.emt.kami.items.misc;
 import mod.emt.kami.Kami;
 import mod.emt.kami.handlers.GuiHandlerKami;
 import mod.emt.kami.inventory.handlers.CelestialTranslocatorHandler;
+import mod.emt.kami.items.base.ItemBase;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
@@ -12,22 +15,27 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
+import java.util.List;
 
-public class ItemCelestialTranslocator extends Item {
+public class ItemCelestialTranslocator extends ItemBase {
     public ItemCelestialTranslocator() {
-        this.setRegistryName(Kami.MOD_ID, "celestial_translocator");
-        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
-        this.setCreativeTab(Kami.tabKAMI);
+        super("celestial_translocator");
+        this.setRarity(EnumRarity.EPIC);
         this.setMaxStackSize(1);
+    }
+
+    public static CelestialTranslocatorHandler getPearlHandler(ItemStack stack) {
+        return new CelestialTranslocatorHandler(stack);
     }
 
     @Override
     public @Nullable ICapabilityProvider initCapabilities(@NotNull ItemStack stack, @Nullable NBTTagCompound nbt) {
-        return super.initCapabilities(stack, nbt);
+        return getPearlHandler(stack);
     }
 
     @Override
@@ -45,7 +53,10 @@ public class ItemCelestialTranslocator extends Item {
         return new ActionResult<>(EnumActionResult.PASS, heldStack);
     }
 
-    public static CelestialTranslocatorHandler getPearlHandler(ItemStack stack) {
-        return new CelestialTranslocatorHandler(stack);
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, List<String> tooltip, @NotNull ITooltipFlag flagIn) {
+        tooltip.add(I18n.format("tooltip.kami.celestial_translocator.info1"));
+        tooltip.add(I18n.format("tooltip.kami.celestial_translocator.info2"));
     }
 }

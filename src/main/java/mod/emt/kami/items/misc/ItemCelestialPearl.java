@@ -1,6 +1,6 @@
 package mod.emt.kami.items.misc;
 
-import mod.emt.kami.Kami;
+import mod.emt.kami.items.base.ItemBase;
 import mod.emt.kami.tiles.TileCelestialGateway;
 import mod.emt.kami.utils.helpers.WorldHelper;
 import mod.emt.kami.utils.misc.SerializablePosition;
@@ -8,9 +8,10 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -23,13 +24,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Objects;
 
-public class ItemCelestialPearl extends Item {
+public class ItemCelestialPearl extends ItemBase {
     public ItemCelestialPearl() {
-        this.setRegistryName(Kami.MOD_ID, "celestial_pearl");
-        this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
-        this.setCreativeTab(Kami.tabKAMI);
+        super("celestial_pearl");
+        this.setRarity(EnumRarity.EPIC);
         this.setMaxStackSize(1);
     }
 
@@ -42,6 +41,11 @@ public class ItemCelestialPearl extends Item {
                 if(world.isRemote) {
                     player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.6f, 1.0f);
                 } else {
+                    if(((TileCelestialGateway) tile).hasCustomName()) {
+                        this.setGatewayName(heldStack, ((TileCelestialGateway) tile).getName());
+                    } else {
+                        this.setGatewayName(heldStack, null);
+                    }
                     SerializablePosition position = new SerializablePosition(world, pos);
                     this.setSerializedPosition(heldStack, position);
                 }
@@ -54,6 +58,12 @@ public class ItemCelestialPearl extends Item {
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
+        String gatewayName = this.getGatewayName(stack);
+        if(gatewayName != null) {
+            tooltip.add(I18n.format("tooltip.kami.celestial_pearl.gateway", gatewayName));
+            tooltip.add("");
+        }
+
         SerializablePosition position = this.getSerializedPosition(stack);
         if(position != null) {
             int dimId = position.getDimensionId();
@@ -79,5 +89,21 @@ public class ItemCelestialPearl extends Item {
 
     public void setSerializedPosition(ItemStack stack, SerializablePosition position) {
         stack.setTagInfo("gatewayPos", position.serializeNBT());
+    }
+
+    @Nullable
+    public String getGatewayName(ItemStack stack) {
+        NBTTagCompound tag = stack.getTagCompound();
+        return tag != null && tag.hasKey("gatewayName") ? tag.getString("gatewayName") : null;
+    }
+
+    public void setGatewayName(ItemStack stack, @Nullable String gatewayName) {
+        if(gatewayName == null) {
+            if(stack.getTagCompound() != null) {
+                stack.getTagCompound().removeTag("gatewayName");
+            }
+        } else {
+            stack.setTagInfo("gatewayName", new NBTTagString(gatewayName));
+        }
     }
 }

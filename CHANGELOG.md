@@ -10,6 +10,7 @@
 - Awakened tool mode toggle now requires the player to sneak right-click empty air. This fixes incompatibilities with effects like the sounding infusion enchant.
 - Awakened Ichorium Sword dragonslayer will now affect Ice and Fire Dragonsteel Armor
 - (For Developers) Ichorium tool constructors are now public instead of package private
+- Block of Ichor and Block of Ichorium are now Epic rarity
 ### Fixed
 - Fixed Awakened Tools playing mode swap sounds for all nearby players
 - Fixed Awakened Tools sending double messages when switching modes

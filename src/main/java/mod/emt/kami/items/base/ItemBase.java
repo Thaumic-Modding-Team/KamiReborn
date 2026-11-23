@@ -23,6 +23,10 @@ public class ItemBase extends Item implements IOreDictProvider {
         this.oreDict = oreDict;
     }
 
+    public ItemBase(String unlocName) {
+        this(unlocName, null);
+    }
+
     public Item setRarity(@NotNull IRarity rarity) {
         this.rarity = rarity;
         return this;
