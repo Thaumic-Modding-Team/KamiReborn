@@ -10,13 +10,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -84,8 +87,9 @@ public class BlockMaterialCopy extends Block implements IOreDictProvider {
 
     @Override
     public @NotNull Item getItemDropped(@NotNull IBlockState state, @NotNull Random rand, int fortune) {
-        Item item = this.getCopiedState().getBlock().getItemDropped(this.getCopiedState(), rand, fortune);
-        Item blockItem = Item.getItemFromBlock(this.getCopiedState().getBlock());
+        IBlockState copied = this.getCopiedState();
+        Item item = copied.getBlock().getItemDropped(copied, rand, fortune);
+        Item blockItem = Item.getItemFromBlock(copied.getBlock());
         return item != blockItem ? item : Item.getItemFromBlock(this);
     }
 
@@ -94,12 +98,28 @@ public class BlockMaterialCopy extends Block implements IOreDictProvider {
         return this.getCopiedState().getBlock().quantityDropped(this.getCopiedState(), fortune, random);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public void dropBlockAsItemWithChance(@NotNull World worldIn, @NotNull BlockPos pos, @NotNull IBlockState state, float chance, int fortune) {
+    public @NotNull List<ItemStack> getDrops(@NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull IBlockState state, int fortune) {
+        NonNullList<ItemStack> list = NonNullList.create();
+        this.getDrops(list, world, pos, state, fortune);
+        return list;
+    }
+
+    @Override
+    public void getDrops(@NotNull NonNullList<ItemStack> drops, @NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull IBlockState state, int fortune) {
         try {
-            this.getCopiedState().getBlock().dropBlockAsItemWithChance(worldIn, pos, this.getCopiedState(), chance, fortune);
+            Random rand = world instanceof World ? ((World) world).rand : new Random();
+            IBlockState copied = this.getCopiedState();
+            Item dropItem = copied.getBlock().getItemDropped(copied, rand, fortune);
+            Item blockItem = Item.getItemFromBlock(copied.getBlock());
+            if(dropItem != blockItem) {
+                copied.getBlock().getDrops(drops, world, pos, copied, fortune);
+            } else {
+                drops.add(new ItemStack(this));
+            }
         } catch (Exception ignored) {
-            super.dropBlockAsItemWithChance(worldIn, pos, state, chance, fortune);
+            drops.add(new ItemStack(this));
         }
     }
 
