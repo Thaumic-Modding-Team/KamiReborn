@@ -32,6 +32,21 @@ public class ItemCelestialPearl extends ItemBase {
         this.setMaxStackSize(1);
     }
 
+    public static boolean isPearlAndLinked(ItemStack stack) {
+        NBTTagCompound tag = stack.getTagCompound();
+        return !stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl && tag != null && tag.hasKey("gatewayPos");
+    }
+
+    @Nullable
+    public static SerializablePosition getSerializedPosition(ItemStack stack) {
+        NBTTagCompound tag = stack.getTagCompound();
+        if (!stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl && tag != null && tag.hasKey("gatewayPos")) {
+            return new SerializablePosition(tag.getCompoundTag("gatewayPos"));
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public @NotNull EnumActionResult onItemUseFirst(EntityPlayer player, @NotNull World world, @NotNull BlockPos pos, @NotNull EnumFacing side, float hitX, float hitY, float hitZ, @NotNull EnumHand hand) {
         if(player.isSneaking()) {
@@ -58,13 +73,18 @@ public class ItemCelestialPearl extends ItemBase {
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
+        this.appendTooltipInfo(stack, tooltip);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void appendTooltipInfo(ItemStack stack, List<String> tooltip) {
         String gatewayName = this.getGatewayName(stack);
         if(gatewayName != null) {
             tooltip.add(I18n.format("tooltip.kami.celestial_pearl.gateway", gatewayName));
             tooltip.add("");
         }
 
-        SerializablePosition position = this.getSerializedPosition(stack);
+        SerializablePosition position = getSerializedPosition(stack);
         if(position != null) {
             int dimId = position.getDimensionId();
             BlockPos pos = position.getPosition();
@@ -74,17 +94,6 @@ public class ItemCelestialPearl extends ItemBase {
             tooltip.add(" " + I18n.format("tooltip.kami.celestial_pearl.posy", pos.getY()));
             tooltip.add(" " + I18n.format("tooltip.kami.celestial_pearl.posz", pos.getZ()));
         }
-    }
-
-    public static boolean isPearlAndLinked(ItemStack stack) {
-        NBTTagCompound tag = stack.getTagCompound();
-        return !stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl && tag != null && tag.hasKey("gatewayPos");
-    }
-
-    @Nullable
-    public SerializablePosition getSerializedPosition(ItemStack stack) {
-        NBTTagCompound tag = stack.getTagCompound();
-        return tag != null && tag.hasKey("gatewayPos") ? new SerializablePosition(tag.getCompoundTag("gatewayPos")) : null;
     }
 
     public void setSerializedPosition(ItemStack stack, SerializablePosition position) {

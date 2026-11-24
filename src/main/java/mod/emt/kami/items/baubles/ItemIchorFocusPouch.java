@@ -43,8 +43,8 @@ public class ItemIchorFocusPouch extends ItemFocusPouch {
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         ItemStack heldStack = playerIn.getHeldItem(hand);
-        if(!worldIn.isRemote && hand == EnumHand.MAIN_HAND) {
-            playerIn.openGui(Kami.instance, GuiHandlerKami.ID_ICHORWEAVE_POUCH, worldIn, 0, 0, 0);
+        if(!worldIn.isRemote) {
+            playerIn.openGui(Kami.instance, hand == EnumHand.MAIN_HAND ? GuiHandlerKami.ID_ICHORWEAVE_POUCH_MH : GuiHandlerKami.ID_ICHORWEAVE_POUCH_OH, worldIn, 0, 0, 0);
         }
         return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
     }

@@ -29,28 +29,24 @@ public class ItemCelestialTranslocator extends ItemBase {
         this.setMaxStackSize(1);
     }
 
-    public static CelestialTranslocatorHandler getPearlHandler(ItemStack stack) {
+    public static CelestialTranslocatorHandler getTranslocatorHandler(ItemStack stack) {
         return new CelestialTranslocatorHandler(stack);
     }
 
     @Override
     public @Nullable ICapabilityProvider initCapabilities(@NotNull ItemStack stack, @Nullable NBTTagCompound nbt) {
-        return getPearlHandler(stack);
+        return getTranslocatorHandler(stack);
     }
 
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
         ItemStack heldStack = playerIn.getHeldItem(handIn);
-        if(handIn == EnumHand.MAIN_HAND) {
-            if (playerIn.isSneaking()) {
-                playerIn.openGui(Kami.instance, GuiHandlerKami.ID_CELESTIAL_TRANSLOCATOR, worldIn, 0, 0, 0);
-                return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
-            } else {
-                playerIn.openGui(Kami.instance, GuiHandlerKami.ID_CELESTIAL_TELEPORT, worldIn, 0, 0, 0);
-                return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
-            }
+        if (playerIn.isSneaking()) {
+            playerIn.openGui(Kami.instance, handIn == EnumHand.MAIN_HAND ? GuiHandlerKami.ID_CELESTIAL_TRANSLOCATOR_MH : GuiHandlerKami.ID_CELESTIAL_TRANSLOCATOR_OH, worldIn, 0, 0, 0);
+        } else {
+            playerIn.openGui(Kami.instance, handIn == EnumHand.MAIN_HAND ? GuiHandlerKami.ID_CELESTIAL_TELEPORT_MH : GuiHandlerKami.ID_CELESTIAL_TELEPORT_OH, worldIn, 0, 0, 0);
         }
-        return new ActionResult<>(EnumActionResult.PASS, heldStack);
+        return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
     }
 
     @SideOnly(Side.CLIENT)

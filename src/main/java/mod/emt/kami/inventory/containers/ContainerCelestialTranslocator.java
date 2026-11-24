@@ -18,7 +18,7 @@ public class ContainerCelestialTranslocator extends Container {
 
     public ContainerCelestialTranslocator(EntityPlayer player, ItemStack translocator) {
         this.player = player;
-        this.handler = ItemCelestialTranslocator.getPearlHandler(translocator);
+        this.handler = ItemCelestialTranslocator.getTranslocatorHandler(translocator);
         this.bindTranslocatorInventory();
         this.bindPlayerInventory();
     }

@@ -29,6 +29,14 @@ public class TileCelestialGatewayTESR extends TileEntitySpecialRenderer<TileCele
     @Override
     public void render(@NotNull TileCelestialGateway tile, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
     {
+        if(tile.hasCustomName()) {
+            super.render(tile, x, y, z, partialTicks, destroyStage, alpha);
+        }
+
+        if(!tile.hasSavedPosition(Minecraft.getMinecraft().player)) {
+            return;
+        }
+
         GlStateManager.disableLighting();
         RANDOM.setSeed(31100L);
         GlStateManager.getFloat(2982, MODELVIEW);

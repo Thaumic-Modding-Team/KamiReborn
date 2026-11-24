@@ -3,6 +3,7 @@ package mod.emt.kami.inventory.handlers;
 import mod.emt.kami.items.misc.ItemCelestialPearl;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Tuple;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -10,19 +11,22 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CelestialTranslocatorHandler extends ItemStackHandler implements ICapabilityProvider {
-    public final ItemStack stack;
+    public final ItemStack translocator;
 
     public CelestialTranslocatorHandler(ItemStack translocator) {
         super(10);
-        this.stack = translocator;
+        this.translocator = translocator;
         if(translocator.getTagCompound() != null && translocator.getTagCompound().hasKey("inventory")) {
             this.deserializeNBT(translocator.getTagCompound().getCompoundTag("inventory"));
         }
     }
 
     public ItemStack getTranslocator() {
-        return this.stack;
+        return this.translocator;
     }
 
     @Override
@@ -37,7 +41,18 @@ public class CelestialTranslocatorHandler extends ItemStackHandler implements IC
 
     @Override
     protected void onContentsChanged(int slot) {
-        this.stack.setTagInfo("inventory", this.serializeNBT());
+        this.translocator.setTagInfo("inventory", this.serializeNBT());
+    }
+
+    public List<Tuple<ItemStack, Integer>> getPearlSlots() {
+        List<Tuple<ItemStack, Integer>> pearlSlots = new ArrayList<>();
+        for(int i = 0; i < this.getSlots(); i++) {
+            ItemStack stack = this.getStackInSlot(i);
+            if(ItemCelestialPearl.isPearlAndLinked(stack)) {
+                pearlSlots.add(new Tuple<>(stack, i));
+            }
+        }
+        return pearlSlots;
     }
 
     @Override
