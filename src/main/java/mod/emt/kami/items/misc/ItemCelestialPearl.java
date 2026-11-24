@@ -15,6 +15,9 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -75,13 +78,18 @@ public class ItemCelestialPearl extends ItemBase {
                         if (!playerIn.isCreative()) {
                             heldStack.shrink(1);
                         }
-                        if(!worldIn.isRemote && !playerIn.isCreative() && worldIn.rand.nextInt(10) == 0) {
+                        if(!worldIn.isRemote && !playerIn.isCreative() && worldIn.rand.nextInt(4) == 0) {
                             ThaumcraftApi.internalMethods.addWarpToPlayer(playerIn, 1 + worldIn.rand.nextInt(3), IPlayerWarp.EnumWarpType.TEMPORARY);
                         }
                         ((TileCelestialGateway) tile).teleportToGateway(playerIn);
                         worldIn.playSound(null, playerIn.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
-                        return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
+                    } else {
+                        if(worldIn.isRemote) {
+                            playerIn.sendStatusMessage(new TextComponentTranslation("chat.kami.celestial_pearl.missing_gateway").setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)), false);
+                        }
+                        this.removeSerializedPosition(heldStack);
                     }
+                    return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
                 }
             }
         }

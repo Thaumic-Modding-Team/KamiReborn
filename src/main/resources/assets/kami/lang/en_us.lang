@@ -36,6 +36,9 @@ item.kami:ichorweave_robe.name=Ichorweave Robe
 item.kami:ichorweave_shield.name=Ichorweave Reinforced Shield
 item.kami:ichor.name=Ichor
 
+# Chat
+chat.kami.celestial_pearl.missing_gateway=Linked Celestial Gateway not found.
+
 # Keys
 key.categories.kami=KAMI: Reborn
 key.kami.open_focus_pouch=Open Bottomless Pouch
