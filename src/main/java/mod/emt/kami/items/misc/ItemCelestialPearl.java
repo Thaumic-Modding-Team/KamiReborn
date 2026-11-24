@@ -75,7 +75,7 @@ public class ItemCelestialPearl extends ItemBase {
                         if (!playerIn.isCreative()) {
                             heldStack.shrink(1);
                         }
-                        if(!worldIn.isRemote && worldIn.rand.nextInt(10) == 0) {
+                        if(!worldIn.isRemote && !playerIn.isCreative() && worldIn.rand.nextInt(10) == 0) {
                             ThaumcraftApi.internalMethods.addWarpToPlayer(playerIn, 1 + worldIn.rand.nextInt(3), IPlayerWarp.EnumWarpType.TEMPORARY);
                         }
                         ((TileCelestialGateway) tile).teleportToGateway(playerIn);
