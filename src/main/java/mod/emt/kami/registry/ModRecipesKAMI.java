@@ -213,6 +213,21 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR)
         ));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_sickle"), new InfusionRecipe(
+                "KAMI_AWAKENED_ICHORIUM_SICKLE",
+                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SICKLE)),
+                10,
+                new AspectList().add(Aspect.PLANT, 500).add(Aspect.EARTH, 500).add(Aspect.MOTION, 500).add(Aspect.TOOL, 500).add(Aspect.LIFE, 500),
+                ModItemsKAMI.ICHORIUM_HOE,
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR)
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_shovel"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORIUM_SHOVEL",
                 ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SHOVEL)),
@@ -229,8 +244,7 @@ public class ModRecipesKAMI {
                 new ItemStack(Items.NETHER_STAR)
         ));
 
-        ItemStack sword = new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SWORD);
-        ItemHelper.setUnbreakable(sword);
+        ItemStack sword = ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SWORD));
         EnumInfusionEnchantment.addInfusionEnchantment(sword, EnumInfusionEnchantment.ARCING, 4);
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_sword"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORIUM_SWORD",
