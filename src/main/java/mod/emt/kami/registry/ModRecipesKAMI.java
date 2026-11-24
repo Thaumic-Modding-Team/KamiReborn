@@ -14,6 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
@@ -212,23 +213,6 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR)
         ));
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_shield"), new InfusionRecipe(
-                "KAMI_AWAKENED_ICHORWEAVE_SHIELD",
-                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_SHIELD)),
-                10,
-                new AspectList().add(Aspect.MAGIC, 500).add(Aspect.LIFE, 500).add(Aspect.AURA, 250).add(Aspect.ENERGY, 250),
-                ModItemsKAMI.ICHORWEAVE_SHIELD,
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.primordialPearl,
-                new ItemStack(Items.NETHER_STAR),
-                ItemsTC.thaumometer,
-                ItemsTC.visResonator
-        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorium_shovel"), new InfusionRecipe(
                 "KAMI_AWAKENED_ICHORIUM_SHOVEL",
                 ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORIUM_SHOVEL)),
@@ -323,6 +307,23 @@ public class ModRecipesKAMI {
                 ItemsTC.primordialPearl,
                 new ItemStack(Items.NETHER_STAR)
         ));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "awakened_ichorweave_shield"), new InfusionRecipe(
+                "KAMI_AWAKENED_ICHORWEAVE_SHIELD",
+                ItemHelper.setUnbreakable(new ItemStack(ModItemsKAMI.AWAKENED_ICHORWEAVE_SHIELD)),
+                10,
+                new AspectList().add(Aspect.MAGIC, 500).add(Aspect.LIFE, 500).add(Aspect.AURA, 250).add(Aspect.ENERGY, 250),
+                ModItemsKAMI.ICHORWEAVE_SHIELD,
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.primordialPearl,
+                new ItemStack(Items.NETHER_STAR),
+                ItemsTC.thaumometer,
+                ItemsTC.visResonator
+        ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "blessed_silverwood_rod"), new InfusionRecipe(
                 "KAMI_ICHORIUM_TOOLS",
                 new ItemStack(ModItemsKAMI.BLESSED_SILVERWOOD_ROD),
@@ -348,6 +349,44 @@ public class ModRecipesKAMI {
                 new ItemStack(ModItemsKAMI.ICHORWEAVE_FABRIC),
                 new ItemStack(BlocksTC.hungryChest),
                 new ItemStack(Blocks.ENDER_CHEST)
+        ));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "celestial_gateway"), new InfusionRecipe(
+                "KAMI_CELESTIAL_GATEWAY",
+                new ItemStack(ModBlocksKAMI.CELESTIAL_GATEWAY),
+                10,
+                new AspectList().add(Aspect.VOID, 75).add(Aspect.ELDRITCH, 75).add(Aspect.MOTION, 75).add(Aspect.ORDER, 50).add(Aspect.EXCHANGE, 50),
+                BlocksTC.mirror,
+                ModItemsKAMI.CELESTIAL_PEARL,
+                ItemsTC.primordialPearl,
+                ModItemsKAMI.CELESTIAL_PEARL,
+                Items.ENDER_EYE,
+                ModItemsKAMI.CELESTIAL_PEARL,
+                Items.NETHER_STAR
+        ));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "celestial_pearl"), new InfusionRecipe(
+                "KAMI_CELESTIAL_GATEWAY",
+                new ItemStack(ModItemsKAMI.CELESTIAL_PEARL),
+                2,
+                new AspectList().add(Aspect.MOTION, 30).add(Aspect.ELDRITCH, 20).add(Aspect.VOID, 20),
+                Items.ENDER_PEARL,
+                ItemsTC.salisMundus,
+                new IngredientNBTTC(ThaumcraftApiHelper.makeCrystal(Aspect.ELDRITCH)),
+                ItemsTC.salisMundus,
+                new IngredientNBTTC(ThaumcraftApiHelper.makeCrystal(Aspect.ELDRITCH))
+        ));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "celestial_translocator"), new InfusionRecipe(
+                "KAMI_CELESTIAL_TRANSLOCATOR",
+                new ItemStack(ModItemsKAMI.CELESTIAL_TRANSLOCATOR),
+                10,
+                new AspectList().add(Aspect.ORDER, 250).add(Aspect.ENERGY, 250).add(Aspect.ELDRITCH, 250),
+                ItemsTC.handMirror,
+                ItemsTC.primordialPearl,
+                Items.NETHER_STAR,
+                ItemsTC.primordialPearl,
+                Items.NETHER_STAR,
+                ItemsTC.primordialPearl,
+                Items.NETHER_STAR,
+                Blocks.ENDER_CHEST
         ));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "ichor"), new InfusionRecipe(
                 "KAMI_ICHOR",
