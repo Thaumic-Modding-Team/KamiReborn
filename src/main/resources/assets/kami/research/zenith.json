@@ -7,7 +7,7 @@
       "icons": ["kami:awakened_ichorium_axe"],
       "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
       "meta": ["REVERSE", "HIDDEN"],
-      "location": [5, -1],
+      "location": [5, -2],
       "stages": [
         {
           "text": "kami.research.awakened_ichorium_axe.stage.1",
@@ -34,7 +34,7 @@
       "icons": ["kami:awakened_ichorium_pickaxe"],
       "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
       "meta": ["REVERSE", "HIDDEN"],
-      "location": [5, -3],
+      "location": [5, -4],
       "stages": [
         {
           "text": "kami.research.awakened_ichorium_pickaxe.stage.1",
@@ -55,13 +55,38 @@
       ]
     },
     {
+      "key": "KAMI_AWAKENED_ICHORIUM_SICKLE",
+      "name": "kami.research.awakened_ichorium_sickle.title",
+      "category": "ZENITH",
+      "icons": ["kami:awakened_ichorium_sickle"],
+      "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
+      "meta": ["REVERSE", "HIDDEN"],
+      "location": [5, 0],
+      "stages": [
+        {
+          "text": "kami.research.awakened_ichorium_sickle.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;2", "THEORY;INFUSION;2", "THEORY;ARTIFICE;2"]
+        },
+        {
+          "text": "kami.research.awakened_ichorium_sickle.stage.2",
+          "recipes": ["kami:awakened_ichorium_sickle"]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorium.addenda.1",
+          "required_research": ["KAMI_AWAKENED_ICHORIUM_SICKLE@2"]
+        }
+      ]
+    },
+    {
       "key": "KAMI_AWAKENED_ICHORIUM_SHOVEL",
       "name": "kami.research.awakened_ichorium_shovel.title",
       "category": "ZENITH",
       "icons": ["kami:awakened_ichorium_shovel"],
       "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
       "meta": ["REVERSE", "HIDDEN"],
-      "location": [5, -5],
+      "location": [5, -6],
       "stages": [
         {
           "text": "kami.research.awakened_ichorium_shovel.stage.1",
@@ -88,7 +113,7 @@
       "icons": ["kami:awakened_ichorium_sword"],
       "parents": ["KAMI_ICHORIUM_TOOLS", "~ELEMENTALTOOLS"],
       "meta": ["REVERSE", "HIDDEN"],
-      "location": [5, -7],
+      "location": [5, -8],
       "stages": [
         {
           "text": "kami.research.awakened_ichorium_sword.stage.1",
@@ -109,7 +134,7 @@
       "icons": ["kami:awakened_ichorweave_boots"],
       "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
       "meta": ["REVERSE", "HIDDEN"],
-      "location": [-5, -1],
+      "location": [-5, -2],
       "stages": [
         {
           "text": "kami.research.awakened_ichorweave_boots.stage.1",
@@ -142,7 +167,7 @@
       "icons": ["kami:awakened_ichorweave_hood"],
       "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
       "meta": ["REVERSE", "HIDDEN"],
-      "location": [-5, -7],
+      "location": [-5, -8],
       "stages": [
         {
           "text": "kami.research.awakened_ichorweave_hood.stage.1",
@@ -174,7 +199,7 @@
       "icons": ["kami:awakened_ichorweave_leggings"],
       "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
       "meta": ["REVERSE", "HIDDEN"],
-      "location": [-5, -3],
+      "location": [-5, -4],
       "stages": [
         {
           "text": "kami.research.awakened_ichorweave_leggings.stage.1",
@@ -207,7 +232,7 @@
       "icons": ["kami:awakened_ichorweave_robe"],
       "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
       "meta": ["REVERSE", "HIDDEN"],
-      "location": [-5, -5],
+      "location": [-5, -6],
       "stages": [
         {
           "text": "kami.research.awakened_ichorweave_robe.stage.1",
@@ -234,6 +259,34 @@
       ]
     },
     {
+      "key": "KAMI_AWAKENED_ICHORWEAVE_SHIELD",
+      "name": "kami.research.awakened_ichorweave_shield.title",
+      "category": "ZENITH",
+      "icons": ["kami:awakened_ichorweave_shield"],
+      "parents": ["KAMI_ICHORWEAVE_ARMOR", "~KAMI_ICHORIUM"],
+      "meta": ["REVERSE", "HIDDEN"],
+      "location": [-5, 0],
+      "stages": [
+        {
+          "text": "kami.research.awakened_ichorweave_shield.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;2", "THEORY;INFUSION;2", "THEORY;AUROMANCY;2"]
+        },
+        {
+          "text": "kami.research.awakened_ichorweave_shield.stage.2",
+          "recipes": [
+            "kami:awakened_ichorweave_shield"
+
+          ]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.awakened_ichorweave_shield.addenda.1",
+          "required_research": ["GAUNTLET_AUGMENTATION"]
+        }
+      ]
+    },
+    {
       "key": "KAMI_BOTTOMLESS_POUCH",
       "name": "kami.research.bottomless_pouch.title",
       "category": "ZENITH",
@@ -251,6 +304,44 @@
           "recipes": [
             "kami:bottomless_pouch"
           ]
+        }
+      ]
+    },
+    {
+      "key": "KAMI_CELESTIAL_GATEWAY",
+      "name": "kami.research.celestial_gateway.title",
+      "category": "ZENITH",
+      "icons": ["kami:celestial_pearl"],
+      "parents": ["ZENITH_BASE", "~MIRROR"],
+      "meta": ["HIDDEN"],
+      "location": [-2, 1],
+      "stages": [
+        {
+          "text": "kami.research.celestial_gateway.stage.1",
+          "required_knowledge": ["OBSERVATION;ELDRITCH;1", "THEORY;ELDRITCH;1", "THEORY;ARTIFICE;3"]
+        },
+        {
+          "text": "kami.research.celestial_gateway.stage.2",
+          "recipes": ["kami:celestial_pearl", "kami:celestial_gateway"]
+        }
+      ]
+    },
+    {
+      "key": "KAMI_CELESTIAL_TRANSLOCATOR",
+      "name": "kami.research.celestial_translocator.title",
+      "category": "ZENITH",
+      "icons": ["kami:celestial_translocator"],
+      "parents": ["KAMI_CELESTIAL_GATEWAY", "~MIRRORHAND"],
+      "meta": ["HIDDEN"],
+      "location": [-2, 3],
+      "stages": [
+        {
+          "text": "kami.research.celestial_translocator.stage.1",
+          "required_knowledge": ["THEORY;ELDRITCH;2", "THEORY;ARTIFICE;2"]
+        },
+        {
+          "text": "kami.research.celestial_translocator.stage.2",
+          "recipes": ["kami:celestial_translocator"]
         }
       ]
     },

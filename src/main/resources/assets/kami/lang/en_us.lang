@@ -104,6 +104,12 @@ kami.research.awakened_ichorium_pickaxe.title.subtitle=Who needs a quarry?
 kami.research.awakened_ichorium_pickaxe.stage.1=After journeying so far into the depths of the arcane, surely the answer isn't as simple as it seems?<BR>If ichorium tools are capable of achieving an "awakening" under the right circumstances, perhaps the best choice is to infuse the tool with the aspect it is normally associated with.
 kami.research.awakened_ichorium_pickaxe.stage.2=The awakened ichorium pickaxe can only be described as the tunneler's dream.<BR>Capable of harvesting massive areas of stone simultaneously, it is truly a marvel.<BR>Sneaking and right-clicking while holding the tool allows me to cycle through the harvest area levels.<BR>Holding right-click empowers the pickaxe, which, upon release, will dig a tunnel in the direction I am facing.
 
+# -- AWAKENED ICHORIUM SICKLE
+kami.research.awakened_ichorium_sickle.title=Ichorium Sickle of the Harvester
+kami.research.awakened_ichorium_sickle.title.subtitle=The reaping whirlwind
+# kami.research.awakened_ichorium_sickle.stage.1=
+# kami.research.awakened_ichorium_sickle.stage.2=
+
 # -- AWAKENED ICHORIUM SHOVEL
 kami.research.awakened_ichorium_shovel.title=Ichorium Shovel of the Gravedigger
 kami.research.awakened_ichorium_shovel.title.subtitle=I cast mold earth!
@@ -140,11 +146,30 @@ kami.research.awakened_ichorweave_robe.title.subtitle=Oxygen not included
 kami.research.awakened_ichorweave_robe.stage.1=Closer examination reveals that Ichor is unlike any material I have encountered, almost as though it is asleep...<BR>I wonder what would occur if I managed to awaken or empower ichorweave armor?
 kami.research.awakened_ichorweave_robe.stage.2=The Ichorweave Robes have a a strong affinity for the air, similar to what I have experienced with an elytra.<BR>Unlike an elytra, these robes grant unrestricted flight as well as totally negating fall damage.
 
+# -- AWAKENED ICHORWEAVE SHIELD
+kami.research.awakened_ichorweave_shield.title=Ichorweave Reinforced Shield of the Caster
+kami.research.awakened_ichorweave_shield.title.subtitle=For when you need three hands
+# kami.research.awakened_ichorweave_shield.stage.1=
+# kami.research.awakened_ichorweave_shield.stage.2=
+# kami.research.awakened_ichorweave_shield.addenda.1=
+
 # -- BOTTOMLESS POUCH
 kami.research.bottomless_pouch.title=Bottomless Pouch
 kami.research.bottomless_pouch.title.subtitle=Try not to tear it
 kami.research.bottomless_pouch.stage.1=I have noticed a very strange phenomenon that occurs when two pieces of ichorcloth are stacked on top of one another.<BR>Upon lifing the edge of the top cloth, I discovered an empty pocket of air between the two pieces of fabric.<BR>While that might not sound impressive, it wasn't until I was able to insert my entire arm into the space that I truly discovered how large it was.<BR>
 kami.research.bottomless_pouch.stage.2=The success of my experiment is slightly concerning. While I had originally thought that there might be a way to create something resembling a bag of holding, I did not consider just how much space would be created.<BR>The Bottomless Pouch is a 117 slot bag that can function as a focus pouch.
+
+# -- CELESTIAL GATEWAY
+kami.research.celestial_gateway.title=Celestial Gateway
+kami.research.celestial_gateway.subtitle=Step into the void
+# kami.research.celestial_gateway.stage.1=
+# kami.research.celestial_gateway.stage.2=
+
+# -- CELESTIAL TRANSLOCATOR
+kami.research.celestial_translocator.title=Celestial Translocator
+kami.research.celestial_translocator.subtitle=Stare into the void
+# kami.research.celestial_translocator.stage.1=
+# kami.research.celestial_translocator.stage.2=
 
 # -- ICHOR
 kami.research.ichor.title=Ichor
