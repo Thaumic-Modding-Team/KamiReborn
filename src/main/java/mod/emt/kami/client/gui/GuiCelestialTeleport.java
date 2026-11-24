@@ -32,11 +32,10 @@ public class GuiCelestialTeleport extends GuiContainer {
     public void initGui() {
         super.initGui();
 
-        CelestialTranslocatorHandler handler = this.getContainer().getStackHandler();
-
         //Populating the buttons
-        int buttonId = 0;
+        CelestialTranslocatorHandler handler = this.getContainer().getStackHandler();
         List<Tuple<ItemStack, Integer>> slots = handler.getPearlSlots();
+        int buttonId = 0;
         int size = slots.size();
         int radius = 48;
 

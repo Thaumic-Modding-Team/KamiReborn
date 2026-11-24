@@ -10,11 +10,7 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -47,16 +43,6 @@ public class BlockCelestialGateway extends BlockTileEntityKami {
     @Override
     public @NotNull AxisAlignedBB getBoundingBox(@NotNull IBlockState state, @NotNull IBlockAccess source, @NotNull BlockPos pos) {
         return GATEWAY_AABBS.get(state.getValue(FACING));
-    }
-
-    @Override
-    public boolean onBlockActivated(@NotNull World worldIn, @NotNull BlockPos pos, @NotNull IBlockState state, @NotNull EntityPlayer playerIn, @NotNull EnumHand hand, @NotNull EnumFacing facing, float hitX, float hitY, float hitZ) {
-//        TileEntity tile = worldIn.getTileEntity(pos);
-//        if(tile instanceof TileCelestialGateway && ((TileCelestialGateway) tile).hasSavedPosition(playerIn)) {
-//            ((TileCelestialGateway) tile).teleportToSavedPosition(playerIn);
-//            return true;
-//        }
-        return false;
     }
 
     @SuppressWarnings("deprecation")

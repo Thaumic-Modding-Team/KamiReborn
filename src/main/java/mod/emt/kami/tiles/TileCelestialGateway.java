@@ -7,15 +7,16 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
 import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.casters.IInteractWithCaster;
 import thaumcraft.common.lib.SoundsTC;
@@ -79,6 +80,8 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
             double posX = this.pos.getX() + 0.5;
             double posY = this.pos.getY();
             double posZ = this.pos.getZ() + 0.5;
+            float yaw = tileFacing.getHorizontalIndex() >= 0 ? tileFacing.getHorizontalAngle() : player.rotationYaw;
+            float pitch = player.rotationPitch;
 
             if (tileFacing == EnumFacing.DOWN) {
                 posY -= 1.0;
@@ -92,7 +95,7 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
                 }
             }
 
-            SerializablePosition tilePos = new SerializablePosition(this.world, posX, posY, posZ, player.cameraYaw, player.rotationPitch);
+            SerializablePosition tilePos = new SerializablePosition(this.world, posX, posY, posZ, yaw, pitch);
             this.teleportPlayer(player, tilePos);
             this.savedPositions.put(playerId, playerPos);
             this.markDirty();
@@ -107,7 +110,7 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
                 player.changeDimension(targetWorld.provider.getDimension(), (world1, entity, yaw) -> {});
             }
             playerMP.connection.setPlayerLocation(targetPos.getPosX(), targetPos.getPosY(), targetPos.getPosZ(), targetPos.getYaw(), targetPos.getPitch());
-            targetWorld.playEvent(player, Constants.WorldEvents.PORTAL_TRAVEL_SOUND, targetPos.getPosition(), 0);
+            targetWorld.playSound(null, targetPos.getPosition(), SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.PLAYERS, 0.6f, 1.0f);
             return true;
         }
         return false;
