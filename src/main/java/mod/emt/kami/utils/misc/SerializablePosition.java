@@ -30,7 +30,7 @@ public class SerializablePosition implements INBTSerializable<NBTTagCompound> {
     }
 
     public SerializablePosition(World world, BlockPos pos) {
-        this(world, pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+        this(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0, 0);
     }
 
     public SerializablePosition(Entity entity) {

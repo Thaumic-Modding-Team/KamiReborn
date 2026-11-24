@@ -33,13 +33,13 @@ public class ContainerCelestialTeleport extends Container {
     public boolean enchantItem(@NotNull EntityPlayer playerIn, int id) {
         if(id >= 0 && id < this.stackHandler.getSlots()) {
             ItemStack stack = this.stackHandler.getStackInSlot(id);
-            SerializablePosition position = ItemCelestialPearl.getSerializedPosition(stack);
-            if(position != null) {
-                World world = position.getWorld(true);
-                if(world != null) {
-                    TileEntity tile = world.getTileEntity(position.getPosition());
+            SerializablePosition targetPos = ItemCelestialPearl.getSerializedPosition(stack);
+            if(targetPos != null) {
+                World targetWorld = targetPos.getWorld(true);
+                if(targetWorld != null) {
+                    TileEntity tile = targetWorld.getTileEntity(targetPos.getPosition());
                     if(tile instanceof TileCelestialGateway) {
-                        ((TileCelestialGateway) tile).teleportToSavedPosition(playerIn);
+                        ((TileCelestialGateway) tile).teleportToGateway(playerIn);
                     }
                 }
             }

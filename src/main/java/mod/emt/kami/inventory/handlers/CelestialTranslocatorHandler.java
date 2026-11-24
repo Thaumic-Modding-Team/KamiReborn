@@ -40,6 +40,16 @@ public class CelestialTranslocatorHandler extends ItemStackHandler implements IC
     }
 
     @Override
+    public int getSlotLimit(int slot) {
+        return 1;
+    }
+
+    @Override
+    protected int getStackLimit(int slot, @NotNull ItemStack stack) {
+        return 1;
+    }
+
+    @Override
     protected void onContentsChanged(int slot) {
         this.translocator.setTagInfo("inventory", this.serializeNBT());
     }

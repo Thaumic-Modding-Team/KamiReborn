@@ -70,7 +70,7 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
         return true;
     }
 
-    public void teleportToSavedPosition(EntityPlayer player) {
+    public void teleportToGateway(EntityPlayer player) {
         if(!this.world.isRemote) {
             UUID playerId = player.getGameProfile().getId();
             SerializablePosition playerPos = new SerializablePosition(player);
