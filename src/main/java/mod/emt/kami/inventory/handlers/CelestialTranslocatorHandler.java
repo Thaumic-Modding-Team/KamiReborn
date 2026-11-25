@@ -36,7 +36,7 @@ public class CelestialTranslocatorHandler extends ItemStackHandler implements IC
 
     @Override
     public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-        return ItemCelestialPearl.isPearlAndLinked(stack);
+        return ItemCelestialPearl.isPearlAndLinked(stack, true);
     }
 
     @Override
@@ -54,11 +54,11 @@ public class CelestialTranslocatorHandler extends ItemStackHandler implements IC
         this.translocator.setTagInfo("inventory", this.serializeNBT());
     }
 
-    public List<Tuple<ItemStack, Integer>> getPearlSlots() {
+    public List<Tuple<ItemStack, Integer>> getActivePearlSlots() {
         List<Tuple<ItemStack, Integer>> pearlSlots = new ArrayList<>();
         for(int i = 0; i < this.getSlots(); i++) {
             ItemStack stack = this.getStackInSlot(i);
-            if(ItemCelestialPearl.isPearlAndLinked(stack)) {
+            if(ItemCelestialPearl.isPearlAndLinked(stack, true)) {
                 pearlSlots.add(new Tuple<>(stack, i));
             }
         }

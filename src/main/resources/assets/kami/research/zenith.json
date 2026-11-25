@@ -324,6 +324,12 @@
           "text": "kami.research.celestial_gateway.stage.2",
           "recipes": ["kami:celestial_pearl", "kami:celestial_gateway"]
         }
+      ],
+      "addenda": [
+        {
+          "text": "kami.research.celestial_gateway.addenda.1",
+          "required_research": ["KAMI_CELESTIAL_GATEWAY@2"]
+        }
       ]
     },
     {

@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.tileentity.TileEntity;
@@ -28,30 +29,41 @@ import thaumcraft.api.capabilities.IPlayerWarp;
 import java.util.List;
 
 public class ItemCelestialPearl extends ItemBase {
+    public static final String TAG_GATEWAY_NAME = "gatewayName";
+    public static final String TAG_GATEWAY_POS = "gatewayPos";
+    public static final String TAG_IS_GATEWAY_LINK = "isGateway";
+
     public ItemCelestialPearl() {
         super("celestial_pearl");
         this.setRarity(EnumRarity.EPIC);
         this.setMaxStackSize(16);
     }
 
-    public static boolean isPearlAndLinked(ItemStack stack) {
+    public static boolean isPearlAndLinked(ItemStack stack, boolean requireGatewayLink) {
         NBTTagCompound tag = stack.getTagCompound();
-        return !stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl && tag != null && tag.hasKey("gatewayPos");
+        return !stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl
+                && tag != null && tag.hasKey(TAG_GATEWAY_POS)
+                && (!requireGatewayLink || tag.getBoolean(TAG_IS_GATEWAY_LINK));
     }
 
     public static SerializablePosition getSerializedPosition(ItemStack stack) {
         NBTTagCompound tag = stack.getTagCompound();
-        if (!stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl && tag != null && tag.hasKey("gatewayPos")) {
-            return new SerializablePosition(tag.getCompoundTag("gatewayPos"));
+        if (!stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl && tag != null && tag.hasKey(TAG_GATEWAY_POS)) {
+            return new SerializablePosition(tag.getCompoundTag(TAG_GATEWAY_POS));
         } else {
             return SerializablePosition.EMPTY;
         }
     }
 
+    public static void setSerializedPosition(ItemStack stack, SerializablePosition position) {
+        stack.setTagInfo(TAG_GATEWAY_POS, position.serializeNBT());
+    }
+
     public static void clearSerializedPosition(ItemStack stack) {
         if(stack.getTagCompound() != null) {
-            stack.getTagCompound().removeTag("gatewayName");
-            stack.getTagCompound().removeTag("gatewayPos");
+            stack.getTagCompound().removeTag(TAG_GATEWAY_NAME);
+            stack.getTagCompound().removeTag(TAG_GATEWAY_POS);
+            stack.getTagCompound().removeTag(TAG_IS_GATEWAY_LINK);
             if(stack.getTagCompound().isEmpty()) {
                 stack.setTagCompound(null);
             }
@@ -61,14 +73,14 @@ public class ItemCelestialPearl extends ItemBase {
     @SuppressWarnings("deprecation")
     @Override
     public int getItemStackLimit(@NotNull ItemStack stack) {
-        return isPearlAndLinked(stack) ? 1 : this.getItemStackLimit();
+        return isPearlAndLinked(stack, false) ? 1 : this.getItemStackLimit();
     }
 
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World worldIn, @NotNull EntityPlayer playerIn, @NotNull EnumHand handIn) {
         ItemStack heldStack = playerIn.getHeldItem(handIn);
         if(playerIn.isSneaking()) {
-            if(isPearlAndLinked(heldStack)) {
+            if(isPearlAndLinked(heldStack, false)) {
                 clearSerializedPosition(heldStack);
                 if(worldIn.isRemote) {
                     playerIn.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.6f ,0.5f);
@@ -119,7 +131,20 @@ public class ItemCelestialPearl extends ItemBase {
                         this.setGatewayName(pearlStack, null);
                     }
                     SerializablePosition position = new SerializablePosition(world, pos);
-                    this.setSerializedPosition(pearlStack, position);
+                    this.setIsGatewayLink(pearlStack, true);
+                    setSerializedPosition(pearlStack, position);
+                    ItemHandlerHelper.giveItemToPlayer(player, pearlStack, player.inventory.currentItem);
+                }
+                return EnumActionResult.SUCCESS;
+            } else {
+                pearlStack = pearlStack.splitStack(1);
+                if(world.isRemote) {
+                    player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.6f, 1.0f);
+                } else {
+                    SerializablePosition position = new SerializablePosition(world, pos.offset(side));
+                    setSerializedPosition(pearlStack, position);
+                    this.setIsGatewayLink(pearlStack, false);
+                    this.setGatewayName(pearlStack, null);
                     ItemHandlerHelper.giveItemToPlayer(player, pearlStack, player.inventory.currentItem);
                 }
                 return EnumActionResult.SUCCESS;
@@ -154,23 +179,27 @@ public class ItemCelestialPearl extends ItemBase {
         }
     }
 
-    public void setSerializedPosition(ItemStack stack, SerializablePosition position) {
-        stack.setTagInfo("gatewayPos", position.serializeNBT());
+    public boolean getIsGatewayLink(ItemStack stack) {
+        return stack.getTagCompound() != null && stack.getTagCompound().getBoolean(TAG_IS_GATEWAY_LINK);
+    }
+
+    public void setIsGatewayLink(ItemStack stack, boolean isGatewayLink) {
+        stack.setTagInfo(TAG_IS_GATEWAY_LINK, new NBTTagByte((byte) (isGatewayLink ? 1 : 0)));
     }
 
     @Nullable
     public String getGatewayName(ItemStack stack) {
         NBTTagCompound tag = stack.getTagCompound();
-        return tag != null && tag.hasKey("gatewayName") ? tag.getString("gatewayName") : null;
+        return tag != null && tag.hasKey(TAG_GATEWAY_NAME) ? tag.getString(TAG_GATEWAY_NAME) : null;
     }
 
     public void setGatewayName(ItemStack stack, @Nullable String gatewayName) {
         if(gatewayName == null) {
             if(stack.getTagCompound() != null) {
-                stack.getTagCompound().removeTag("gatewayName");
+                stack.getTagCompound().removeTag(TAG_GATEWAY_NAME);
             }
         } else {
-            stack.setTagInfo("gatewayName", new NBTTagString(gatewayName));
+            stack.setTagInfo(TAG_GATEWAY_NAME, new NBTTagString(gatewayName));
         }
     }
 }

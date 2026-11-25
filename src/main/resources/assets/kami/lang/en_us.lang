@@ -170,8 +170,9 @@ kami.research.bottomless_pouch.stage.2=The success of my experiment is slightly 
 # -- CELESTIAL GATEWAY
 kami.research.celestial_gateway.title=Celestial Gateway
 kami.research.celestial_gateway.subtitle=Step into the void
-# kami.research.celestial_gateway.stage.1=
-# kami.research.celestial_gateway.stage.2=
+kami.research.celestial_gateway.stage.1=My adventuring into other planes has revealed that Endermen appear have the unique ability to freely move between dimensions.<BR>I believe this ability can be traced back to the ender pearls many of them carry on their persons.<BR>While they have limited effectiveness when I use them, there must a way to boost the pearl efficacy to allow me to mimic the abilities of these creatures.
+kami.research.celestial_gateway.stage.2=These new pearls, dubbed Celestial Pearls, are able to store and retrieve dimensional coordinates, allowing me to teleport across vast distances and even across dimensional boundaries!<BR>However, much like their mundane counterparts, each use will destroy the pearl.<BR>My initial experiments assumed that I would need some type of anchor in order to bind coordinates into the pearl, but later testing revealed that this was completely unneeded, though my experiments did yield a rather useful device.<BR>This device, called the Celestial Gateway, interacts with teleportation in a very unique manner.<BR>When a pearl is used to teleport to the postion of a gateway, a wormhole is created, linking the two points.<BR>While the wormhole is active, interacting with the gateway with a caster gauntlet allows me to return to the exact position prior to the use of the pearl.
+kami.research.celestial_gateway.addenda.1=It appears that the celestial gateway link is bound only to me.<BR>Other players cannot see, nor use the wormhole, and I cannot see or use their wormholes.<BR>Additionally, after using the celestial gateway to teleport, the wormhole will close.<BR>Though it will re-open to a new position should I teleport to it again.
 
 # -- CELESTIAL TRANSLOCATOR
 kami.research.celestial_translocator.title=Celestial Translocator

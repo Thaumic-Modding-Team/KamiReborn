@@ -63,7 +63,7 @@ public class ContainerCelestialTranslocator extends Container {
                 }
             } else {
                 //Move from player to attractor
-                if(ItemCelestialPearl.isPearlAndLinked(slotStack)) {
+                if(ItemCelestialPearl.isPearlAndLinked(slotStack, true)) {
                     if (!this.mergeItemStack(slotStack, 0, translocatorSize, false)) {
                         return ItemStack.EMPTY;
                     }
