@@ -11,6 +11,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 public class SerializablePosition implements INBTSerializable<NBTTagCompound> {
+    public static final SerializablePosition EMPTY = new SerializablePosition(null, 0, 0, 0, 0, 0);
+
     private World world;
     private int dimId;
     private double posX;
@@ -19,9 +21,9 @@ public class SerializablePosition implements INBTSerializable<NBTTagCompound> {
     private float pitch;
     private float yaw;
 
-    public SerializablePosition(World world, double posX, double posY, double posZ, float yaw, float pitch) {
+    public SerializablePosition(@Nullable World world, double posX, double posY, double posZ, float yaw, float pitch) {
         this.world = world;
-        this.dimId = world.provider.getDimension();
+        this.dimId = world != null ? world.provider.getDimension() : 0;
         this.posX = posX;
         this.posY = posY;
         this.posZ = posZ;
@@ -29,7 +31,7 @@ public class SerializablePosition implements INBTSerializable<NBTTagCompound> {
         this.pitch = pitch;
     }
 
-    public SerializablePosition(World world, BlockPos pos) {
+    public SerializablePosition(@Nullable World world, BlockPos pos) {
         this(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0, 0);
     }
 
@@ -41,12 +43,20 @@ public class SerializablePosition implements INBTSerializable<NBTTagCompound> {
         this.deserializeNBT(tag);
     }
 
+    public boolean isEmpty() {
+        return this == EMPTY || this.world == null && this.posX == 0 && this.posY == 0 && this.posZ == 0;
+    }
+
     public int getDimensionId() {
         return dimId;
     }
 
     @Nullable
     public World getWorld(boolean forceLoad) {
+        if(this.isEmpty()) {
+            return null;
+        }
+
         if(this.world == null) {
             this.world = WorldHelper.getWorldObject(this.dimId, forceLoad);
         }

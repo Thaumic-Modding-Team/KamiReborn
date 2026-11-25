@@ -41,13 +41,12 @@ public class ItemCelestialPearl extends ItemBase {
         return !stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl && tag != null && tag.hasKey("gatewayPos");
     }
 
-    @Nullable
     public static SerializablePosition getSerializedPosition(ItemStack stack) {
         NBTTagCompound tag = stack.getTagCompound();
         if (!stack.isEmpty() && stack.getItem() instanceof ItemCelestialPearl && tag != null && tag.hasKey("gatewayPos")) {
             return new SerializablePosition(tag.getCompoundTag("gatewayPos"));
         } else {
-            return null;
+            return SerializablePosition.EMPTY;
         }
     }
 
@@ -80,27 +79,25 @@ public class ItemCelestialPearl extends ItemBase {
             }
         } else {
             SerializablePosition targetPos = getSerializedPosition(heldStack);
-            if(targetPos != null) {
-                World targetWorld = targetPos.getWorld(true);
-                if(targetWorld != null) {
-                    TileEntity tile = targetWorld.getTileEntity(targetPos.getPosition());
-                    if(tile instanceof TileCelestialGateway) {
-                        if (!playerIn.isCreative()) {
-                            heldStack.shrink(1);
-                        }
-                        if(!worldIn.isRemote && !playerIn.isCreative() && worldIn.rand.nextInt(4) == 0) {
-                            ThaumcraftApi.internalMethods.addWarpToPlayer(playerIn, 1 + worldIn.rand.nextInt(3), IPlayerWarp.EnumWarpType.TEMPORARY);
-                        }
-                        ((TileCelestialGateway) tile).teleportToGateway(playerIn);
-                        worldIn.playSound(null, playerIn.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
-                    } else {
-                        if(worldIn.isRemote) {
-                            playerIn.sendStatusMessage(new TextComponentTranslation("chat.kami.celestial_pearl.missing_gateway").setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)), false);
-                        }
-                        clearSerializedPosition(heldStack);
+            World targetWorld = targetPos.getWorld(true);
+            if(!targetPos.isEmpty() && targetWorld != null) {
+                TileEntity tile = targetWorld.getTileEntity(targetPos.getPosition());
+                if(tile instanceof TileCelestialGateway) {
+                    if (!playerIn.isCreative()) {
+                        heldStack.shrink(1);
                     }
-                    return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
+                    if(!worldIn.isRemote && !playerIn.isCreative() && worldIn.rand.nextInt(4) == 0) {
+                        ThaumcraftApi.internalMethods.addWarpToPlayer(playerIn, 1 + worldIn.rand.nextInt(3), IPlayerWarp.EnumWarpType.TEMPORARY);
+                    }
+                    ((TileCelestialGateway) tile).teleportToGateway(playerIn);
+                    worldIn.playSound(null, playerIn.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                } else {
+                    if(worldIn.isRemote) {
+                        playerIn.sendStatusMessage(new TextComponentTranslation("chat.kami.celestial_pearl.missing_gateway").setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)), false);
+                    }
+                    clearSerializedPosition(heldStack);
                 }
+                return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
             }
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -146,7 +143,7 @@ public class ItemCelestialPearl extends ItemBase {
         }
 
         SerializablePosition position = getSerializedPosition(stack);
-        if(position != null) {
+        if(!position.isEmpty()) {
             int dimId = position.getDimensionId();
             BlockPos pos = position.getPosition();
 

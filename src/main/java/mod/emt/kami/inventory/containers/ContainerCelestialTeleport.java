@@ -46,18 +46,17 @@ public class ContainerCelestialTeleport extends Container {
         if(id >= 0 && id < this.stackHandler.getSlots()) {
             ItemStack stack = this.stackHandler.getStackInSlot(id);
             SerializablePosition targetPos = ItemCelestialPearl.getSerializedPosition(stack);
-            if(targetPos != null) {
-                World targetWorld = targetPos.getWorld(true);
-                if(targetWorld != null) {
-                    TileEntity tile = targetWorld.getTileEntity(targetPos.getPosition());
-                    if(tile instanceof TileCelestialGateway) {
-                        ((TileCelestialGateway) tile).teleportToGateway(playerIn);
-                    } else {
-                        playerIn.world.playSound(null, playerIn.getPosition(), SoundsTC.craftfail, SoundCategory.PLAYERS, 1.0f, 0.6f);
-                        playerIn.sendStatusMessage(new TextComponentTranslation("chat.kami.celestial_pearl.missing_gateway").setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)), false);
-                    }
+            World targetWorld = targetPos.getWorld(true);
+            if(!targetPos.isEmpty() && targetWorld != null) {
+                TileEntity tile = targetWorld.getTileEntity(targetPos.getPosition());
+                if(tile instanceof TileCelestialGateway) {
+                    ((TileCelestialGateway) tile).teleportToGateway(playerIn);
+                } else {
+                    playerIn.world.playSound(null, playerIn.getPosition(), SoundsTC.craftfail, SoundCategory.PLAYERS, 1.0f, 0.6f);
+                    playerIn.sendStatusMessage(new TextComponentTranslation("chat.kami.celestial_pearl.missing_gateway").setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)), false);
                 }
             }
+
         }
 
         return false;

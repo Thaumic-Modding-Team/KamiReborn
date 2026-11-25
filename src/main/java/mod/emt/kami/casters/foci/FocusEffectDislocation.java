@@ -1,29 +1,26 @@
 package mod.emt.kami.casters.foci;
 
 import mod.emt.kami.Kami;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.ITileEntityProvider;
+import mod.emt.kami.utils.misc.SerializableBlock;
+import mod.emt.kami.utils.misc.SerializableEntity;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
@@ -41,9 +38,6 @@ import thaumcraft.common.lib.network.fx.PacketFXFocusPartImpact;
 @SuppressWarnings("deprecation")
 public class FocusEffectDislocation extends FocusEffect {
     private static final String TAG_STORAGE = "FociDislocation";
-    private static final String TAG_BLOCK = "Block";
-    private static final String TAG_META = "Meta";
-    private static final String TAG_TILE = "Tile";
 
     @Override
     public Aspect getAspect() {
@@ -104,7 +98,7 @@ public class FocusEffectDislocation extends FocusEffect {
 
     private boolean storeBlock(World world, EntityPlayerMP player, BlockPos pos, ItemStack focus) {
         IBlockState state = world.getBlockState(pos);
-        Block block = state.getBlock();
+        TileEntity tile = world.getTileEntity(pos);
 
         //Checking for DESTROY push reaction is a decent way to check for beds and doors, though snow, plants and liquids get caught in the crossfire
         //Checking for PORTAL material prevents the effect from collecting portals
@@ -112,89 +106,77 @@ public class FocusEffectDislocation extends FocusEffect {
             return false;
         }
 
-        BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos, state, player);
-        MinecraftForge.EVENT_BUS.post(event);
-        ResourceLocation registryName = block.getRegistryName();
+        SerializableBlock serializableBlock = new SerializableBlock(state, tile);
 
-        if (event.isCanceled() || registryName == null) {
-            return false;
+        if(!serializableBlock.isEmpty()) {
+            if(tile != null) {
+                world.removeTileEntity(pos);
+            }
+            world.setBlockToAir(pos);
+            world.notifyNeighborsOfStateChange(pos, Blocks.AIR, true);
+
+            focus.setTagInfo(TAG_STORAGE, serializableBlock.serializeNBT());
         }
-
-        NBTTagCompound stored = new NBTTagCompound();
-        stored.setString(TAG_BLOCK, registryName.toString());
-        stored.setInteger(TAG_META, block.getMetaFromState(state));
-
-        TileEntity tile = world.getTileEntity(pos);
-        if (tile != null) {
-            NBTTagCompound tileNBT = new NBTTagCompound();
-            tile.writeToNBT(tileNBT);
-            stored.setTag(TAG_TILE, tileNBT);
-        }
-
-        if (!world.setBlockToAir(pos)) {
-            return false;
-        }
-
-        NBTTagCompound focusTag = focus.getTagCompound();
-        if (focusTag == null) {
-            focusTag = new NBTTagCompound();
-            focus.setTagCompound(focusTag);
-        }
-
-        focusTag.setTag(TAG_STORAGE, stored);
-        return true;
+        return false;
     }
 
     private boolean placeBlock(World world, EntityPlayerMP player, BlockPos hitPos, EnumFacing side, ItemStack focus) {
         NBTTagCompound focusTag = focus.getTagCompound();
 
-        if (side == null || focusTag == null || !focusTag.hasKey(TAG_STORAGE, 10)) {
+        if (side == null || focusTag == null || !focusTag.hasKey(TAG_STORAGE, Constants.NBT.TAG_COMPOUND)) {
             return false;
         }
 
         NBTTagCompound stored = focusTag.getCompoundTag(TAG_STORAGE);
-        ResourceLocation registryName = new ResourceLocation(stored.getString(TAG_BLOCK));
-        Block block = ForgeRegistries.BLOCKS.getValue(registryName);
 
-        if (block == null) {
-            return false;
-        }
+        SerializableBlock serializableBlock = new SerializableBlock(stored);
+        if(!serializableBlock.isEmpty()) {
+            BlockPos placePos = hitPos;
+            IBlockState currState = world.getBlockState(placePos);
 
-        IBlockState state;
-        try {
-            state = block.getStateFromMeta(stored.getInteger(TAG_META));
-        } catch (Exception e) {
-            return false;
-        }
+            if(!currState.getBlock().isReplaceable(world, placePos)) {
+                placePos = placePos.offset(side);
+            }
 
-        BlockPos placePos = hitPos;
-        IBlockState placeState = world.getBlockState(placePos);
-        if(!placeState.getBlock().isReplaceable(world, placePos)) {
-            placePos = placePos.offset(side);
-        }
-
-        if(!this.isValidPlacementPosition(player, world, placePos, side, focus, state)) {
-            return false;
-        }
-
-        if (stored.hasKey(TAG_TILE, Constants.NBT.TAG_COMPOUND)) {
-            NBTTagCompound tileNBT = stored.getCompoundTag(TAG_TILE).copy();
-            tileNBT.setInteger("x", placePos.getX());
-            tileNBT.setInteger("y", placePos.getY());
-            tileNBT.setInteger("z", placePos.getZ());
-
-            TileEntity tile = TileEntity.create(world, tileNBT);
-            if (tile != null) {
-                tile.setWorld(world);
-                tile.setPos(placePos);
-                world.setTileEntity(placePos, tile);
-                tile.validate();
-                tile.markDirty();
+            if(this.isValidPlacementPosition(player, world, placePos, side, focus, serializableBlock.getState())) {
+                if(serializableBlock.placeBlockInWorld(world, placePos)) {
+                    focusTag.removeTag(TAG_STORAGE);
+                    return true;
+                }
             }
         }
+        return false;
+    }
 
-        focusTag.removeTag(TAG_STORAGE);
-        return true;
+    private boolean storeEntity(EntityLivingBase entityHit, ItemStack focus) {
+        //TODO: Configurable blacklist for these entities
+        if(!entityHit.isEntityAlive() || entityHit instanceof EntityPlayer || !entityHit.isNonBoss()) {
+            return false;
+        }
+
+        SerializableEntity serializableEntity = new SerializableEntity(entityHit);
+        if(!serializableEntity.isEmpty()) {
+            focus.setTagInfo(TAG_STORAGE, serializableEntity.serializeNBT());
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean placeEntity(World world, BlockPos pos, ItemStack focus) {
+        NBTTagCompound focusTag = focus.getTagCompound();
+
+        if (focusTag == null || !focusTag.hasKey(TAG_STORAGE, Constants.NBT.TAG_COMPOUND)) {
+            return false;
+        }
+
+        NBTTagCompound stored = focusTag.getCompoundTag(TAG_STORAGE);
+        SerializableEntity serializableEntity = new SerializableEntity(stored);
+        if(!serializableEntity.isEmpty() && serializableEntity.spawnEntity(world, pos)) {
+            focusTag.removeTag(TAG_STORAGE);
+            return true;
+        }
+        return false;
     }
 
     private boolean isValidPlacementPosition(EntityPlayer player, World world, BlockPos pos, EnumFacing side, ItemStack toPlace, IBlockState toPlaceState) {
