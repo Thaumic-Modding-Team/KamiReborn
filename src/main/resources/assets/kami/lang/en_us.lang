@@ -89,8 +89,12 @@ kami.research.zenith_base.title.subtitle=The highest point
 kami.research.zenith_base.stage.1=This might be my magnum opus. I have the potential to reach beyond anything I could ever imagine, and perhaps... become a god myself.
 
 # Foci
+focus.common.store_objects=Object Stored
+focus.common.store_objects_blocks=Blocks
+focus.common.store_objects_both=Both
+focus.common.store_objects_entities=Entities
 focus.kami.dislocation.name=Dislocation
-focus.kami.dislocation.text=Stores a block within the focus. When not empty, places the stored block on the impact point.
+focus.kami.dislocation.text=Stores an object within the focus. When not empty, places the stored object on the impact point.
 
 # -- AWAKENED ICHOR
 kami.research.awakened_ichorium.addenda.1=Interestingly, I have discovered that harvesting any block with an awakened ichorium tool will cause any drops to appear at my feet.<BR>While not very useful when harvesting single blocks, this effect will ensure that there is a much smaller chance of harvested materials being destroyed by falling into lava or the void when harvesting large areas.

@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.casters.FocusEffect;
 import thaumcraft.api.casters.ICaster;
+import thaumcraft.api.casters.NodeSetting;
 import thaumcraft.api.casters.Trajectory;
 import thaumcraft.client.fx.ParticleEngine;
 import thaumcraft.client.fx.particles.FXGeneric;
@@ -33,11 +34,10 @@ import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.fx.PacketFXFocusPartImpact;
 
-// TODO: Seems to interact weirdly with double blocks like doors and tall plants
 // TODO: Placing and storing blocks should emit smoke puff particles
-@SuppressWarnings("deprecation")
 public class FocusEffectDislocation extends FocusEffect {
     private static final String TAG_STORAGE = "FociDislocation";
+    private static final String TAG_TYPE = "FociDislocationType";
 
     @Override
     public Aspect getAspect() {
@@ -47,6 +47,13 @@ public class FocusEffectDislocation extends FocusEffect {
     @Override
     public String getKey() {
         return "focus." + Kami.MOD_ID + ".dislocation";
+    }
+
+    @Override
+    public NodeSetting[] createSettings() {
+        int[] storeObjects = {0, 1, 2};
+        String[] storeObjectsDesc = {"focus.common.store_objects_blocks", "focus.common.store_objects_entities", "focus.common.store_objects_both"};
+        return new NodeSetting[]{new NodeSetting("store_objects", "focus.common.store_objects", new NodeSetting.NodeSettingIntList(storeObjects, storeObjectsDesc))};
     }
 
     @Override
@@ -64,7 +71,7 @@ public class FocusEffectDislocation extends FocusEffect {
     public boolean execute(RayTraceResult target, Trajectory trajectory, float finalPower, int num) {
         World world = getPackage().world;
 
-        if (world.isRemote || target == null || target.typeOfHit != RayTraceResult.Type.BLOCK || !(getPackage().getCaster() instanceof EntityPlayerMP)) {
+        if (world.isRemote || target == null || !(getPackage().getCaster() instanceof EntityPlayerMP)) {
             return false;
         }
 
@@ -75,9 +82,27 @@ public class FocusEffectDislocation extends FocusEffect {
             return false;
         }
 
+        int mode = getSettingValue("store_objects");
         NBTTagCompound focusTag = focus.getTagCompound();
-        BlockPos pos = target.getBlockPos();
-        boolean success = focusTag != null && focusTag.hasKey(TAG_STORAGE, 10) ? placeBlock(world, player, pos, target.sideHit, focus) : storeBlock(world, player, pos, focus);
+        boolean success = false;
+
+        if (focusTag != null && focusTag.hasKey(TAG_STORAGE, Constants.NBT.TAG_COMPOUND)) {
+            NBTTagCompound stored = focusTag.getCompoundTag(TAG_STORAGE);
+            String type = stored.getString(TAG_TYPE);
+
+            if (type.equals("block") && target.typeOfHit == RayTraceResult.Type.BLOCK) {
+                success = placeBlock(world, player, target.getBlockPos(), target.sideHit, focus);
+            } else if (type.equals("entity")) {
+                BlockPos pos = target.typeOfHit == RayTraceResult.Type.BLOCK ? target.getBlockPos().offset(target.sideHit) : new BlockPos(target.hitVec);
+                success = placeEntity(world, pos, focus);
+            }
+        } else {
+            if (target.typeOfHit == RayTraceResult.Type.BLOCK && mode != 1) {
+                success = storeBlock(world, player, target.getBlockPos(), focus);
+            } else if (target.typeOfHit == RayTraceResult.Type.ENTITY && mode != 0 && target.entityHit instanceof EntityLivingBase) {
+                success = storeEntity((EntityLivingBase) target.entityHit, focus);
+            }
+        }
 
         if (success) {
             playEffects(world, target);
@@ -108,14 +133,20 @@ public class FocusEffectDislocation extends FocusEffect {
 
         SerializableBlock serializableBlock = new SerializableBlock(state, tile);
 
-        if(!serializableBlock.isEmpty()) {
-            if(tile != null) {
+        if (!serializableBlock.isEmpty()) {
+            if (tile != null) {
                 world.removeTileEntity(pos);
             }
-            world.setBlockToAir(pos);
-            world.notifyNeighborsOfStateChange(pos, Blocks.AIR, true);
 
-            focus.setTagInfo(TAG_STORAGE, serializableBlock.serializeNBT());
+            if (!world.setBlockToAir(pos)) {
+                return false;
+            }
+
+            world.notifyNeighborsOfStateChange(pos, Blocks.AIR, true);
+            NBTTagCompound stored = serializableBlock.serializeNBT();
+            stored.setString(TAG_TYPE, "block");
+            focus.setTagInfo(TAG_STORAGE, stored);
+            return true;
         }
         return false;
     }
@@ -156,7 +187,10 @@ public class FocusEffectDislocation extends FocusEffect {
 
         SerializableEntity serializableEntity = new SerializableEntity(entityHit);
         if(!serializableEntity.isEmpty()) {
-            focus.setTagInfo(TAG_STORAGE, serializableEntity.serializeNBT());
+            NBTTagCompound stored = serializableEntity.serializeNBT();
+            stored.setString(TAG_TYPE, "entity");
+            focus.setTagInfo(TAG_STORAGE, stored);
+            entityHit.setDead();
             return true;
         }
 
@@ -185,8 +219,7 @@ public class FocusEffectDislocation extends FocusEffect {
             return world.isBlockModifiable(player, pos)
                     && player.canPlayerEdit(pos, side, toPlace)
                     && placementState.getBlock().isReplaceable(world, pos)
-                    && world.mayPlace(placementState.getBlock(), pos, false, side, player)
-                    && world.setBlockState(pos, toPlaceState, 3);
+                    && world.mayPlace(toPlaceState.getBlock(), pos, false, side, player);
             }
         return false;
     }
