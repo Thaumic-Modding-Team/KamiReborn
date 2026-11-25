@@ -2,6 +2,7 @@ package mod.emt.kami.items.misc;
 
 import mod.emt.kami.items.base.ItemBase;
 import mod.emt.kami.tiles.TileCelestialGateway;
+import mod.emt.kami.utils.helpers.PlayerHelper;
 import mod.emt.kami.utils.helpers.WorldHelper;
 import mod.emt.kami.utils.misc.SerializablePosition;
 import net.minecraft.client.resources.I18n;
@@ -15,9 +16,6 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -82,21 +80,23 @@ public class ItemCelestialPearl extends ItemBase {
             World targetWorld = targetPos.getWorld(true);
             if(!targetPos.isEmpty() && targetWorld != null) {
                 TileEntity tile = targetWorld.getTileEntity(targetPos.getPosition());
+
+                int warpChance;
                 if(tile instanceof TileCelestialGateway) {
-                    if (!playerIn.isCreative()) {
-                        heldStack.shrink(1);
-                    }
-                    if(!worldIn.isRemote && !playerIn.isCreative() && worldIn.rand.nextInt(4) == 0) {
-                        ThaumcraftApi.internalMethods.addWarpToPlayer(playerIn, 1 + worldIn.rand.nextInt(3), IPlayerWarp.EnumWarpType.TEMPORARY);
-                    }
+                    warpChance = 5;
                     ((TileCelestialGateway) tile).teleportToGateway(playerIn);
-                    worldIn.playSound(null, playerIn.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 } else {
-                    if(worldIn.isRemote) {
-                        playerIn.sendStatusMessage(new TextComponentTranslation("chat.kami.celestial_pearl.missing_gateway").setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)), false);
-                    }
-                    clearSerializedPosition(heldStack);
+                    warpChance = 2;
+                    PlayerHelper.teleportPlayer(playerIn, targetPos);
                 }
+
+                if (!playerIn.isCreative()) {
+                    heldStack.shrink(1);
+                }
+                if(!worldIn.isRemote && !playerIn.isCreative() && worldIn.rand.nextInt(warpChance) == 0) {
+                    ThaumcraftApi.internalMethods.addWarpToPlayer(playerIn, 1 + worldIn.rand.nextInt(3), IPlayerWarp.EnumWarpType.TEMPORARY);
+                }
+                worldIn.playSound(null, playerIn.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
             }
         }

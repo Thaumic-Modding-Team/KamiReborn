@@ -1,11 +1,16 @@
 package mod.emt.kami.utils.helpers;
 
+import mod.emt.kami.utils.misc.SerializablePosition;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
@@ -63,5 +68,19 @@ public class PlayerHelper {
         } else {
             return absZ < 0 ? EnumFacing.NORTH : EnumFacing.SOUTH;
         }
+    }
+
+    public static boolean teleportPlayer(EntityPlayer player, SerializablePosition targetPos) {
+        World targetWorld = targetPos.getWorld(true);
+        if(targetWorld != null && player instanceof EntityPlayerMP) {
+            EntityPlayerMP playerMP = (EntityPlayerMP) player;
+            if (player.world.provider.getDimension() != targetWorld.provider.getDimension()) {
+                player.changeDimension(targetWorld.provider.getDimension(), (world1, entity, yaw) -> {});
+            }
+            playerMP.connection.setPlayerLocation(targetPos.getPosX(), targetPos.getPosY(), targetPos.getPosZ(), targetPos.getYaw(), targetPos.getPitch());
+            targetWorld.playSound(null, targetPos.getPosition(), SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.PLAYERS, 0.6f, 1.0f);
+            return true;
+        }
+        return false;
     }
 }

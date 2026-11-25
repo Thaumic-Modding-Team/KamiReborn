@@ -2,17 +2,15 @@ package mod.emt.kami.tiles;
 
 import mod.emt.kami.api.tile.INameableTile;
 import mod.emt.kami.blocks.BlockCelestialGateway;
+import mod.emt.kami.utils.helpers.PlayerHelper;
 import mod.emt.kami.utils.misc.SerializablePosition;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -63,7 +61,7 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
             }
         } else {
             SerializablePosition position = this.savedPositions.get(playerId);
-            this.teleportPlayer(player, position);
+            PlayerHelper.teleportPlayer(player, position);
             this.savedPositions.remove(playerId);
             this.markDirty();
         }
@@ -96,24 +94,10 @@ public class TileCelestialGateway extends TileEntityKami implements IInteractWit
             }
 
             SerializablePosition tilePos = new SerializablePosition(this.world, posX, posY, posZ, yaw, pitch);
-            this.teleportPlayer(player, tilePos);
+            PlayerHelper.teleportPlayer(player, tilePos);
             this.savedPositions.put(playerId, playerPos);
             this.markDirty();
         }
-    }
-
-    public boolean teleportPlayer(EntityPlayer player, SerializablePosition targetPos) {
-        World targetWorld = targetPos.getWorld(true);
-        if(targetWorld != null && player instanceof EntityPlayerMP) {
-            EntityPlayerMP playerMP = (EntityPlayerMP) player;
-            if (player.world.provider.getDimension() != targetWorld.provider.getDimension()) {
-                player.changeDimension(targetWorld.provider.getDimension(), (world1, entity, yaw) -> {});
-            }
-            playerMP.connection.setPlayerLocation(targetPos.getPosX(), targetPos.getPosY(), targetPos.getPosZ(), targetPos.getYaw(), targetPos.getPitch());
-            targetWorld.playSound(null, targetPos.getPosition(), SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.PLAYERS, 0.6f, 1.0f);
-            return true;
-        }
-        return false;
     }
 
     public boolean hasSavedPosition(EntityPlayer player) {
