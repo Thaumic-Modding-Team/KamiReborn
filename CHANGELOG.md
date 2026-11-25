@@ -1,6 +1,7 @@
 # KAMI: Reborn Changelog
 ## 1.1.0
 ### Added
+- Added Celestial Gateway, Celestial Pearls, and Celestial Translocator, an all new teleportation system
 - Added Ichorium Hoe
 - Added Ichorium Shield
 - Added Ichorium Sickle of the Harvester, an awakened version of the Ichorium Hoe
