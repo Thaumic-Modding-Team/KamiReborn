@@ -51,6 +51,16 @@ public class ItemCelestialPearl extends ItemBase {
         }
     }
 
+    public static void clearSerializedPosition(ItemStack stack) {
+        if(stack.getTagCompound() != null) {
+            stack.getTagCompound().removeTag("gatewayName");
+            stack.getTagCompound().removeTag("gatewayPos");
+            if(stack.getTagCompound().isEmpty()) {
+                stack.setTagCompound(null);
+            }
+        }
+    }
+
     @SuppressWarnings("deprecation")
     @Override
     public int getItemStackLimit(@NotNull ItemStack stack) {
@@ -62,7 +72,7 @@ public class ItemCelestialPearl extends ItemBase {
         ItemStack heldStack = playerIn.getHeldItem(handIn);
         if(playerIn.isSneaking()) {
             if(isPearlAndLinked(heldStack)) {
-                this.removeSerializedPosition(heldStack);
+                clearSerializedPosition(heldStack);
                 if(worldIn.isRemote) {
                     playerIn.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.6f ,0.5f);
                 }
@@ -87,7 +97,7 @@ public class ItemCelestialPearl extends ItemBase {
                         if(worldIn.isRemote) {
                             playerIn.sendStatusMessage(new TextComponentTranslation("chat.kami.celestial_pearl.missing_gateway").setStyle(new Style().setColor(TextFormatting.DARK_PURPLE)), false);
                         }
-                        this.removeSerializedPosition(heldStack);
+                        clearSerializedPosition(heldStack);
                     }
                     return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
                 }
@@ -149,16 +159,6 @@ public class ItemCelestialPearl extends ItemBase {
 
     public void setSerializedPosition(ItemStack stack, SerializablePosition position) {
         stack.setTagInfo("gatewayPos", position.serializeNBT());
-    }
-
-    public void removeSerializedPosition(ItemStack stack) {
-        if(stack.getTagCompound() != null) {
-            stack.getTagCompound().removeTag("gatewayName");
-            stack.getTagCompound().removeTag("gatewayPos");
-            if(stack.getTagCompound().isEmpty()) {
-                stack.setTagCompound(null);
-            }
-        }
     }
 
     @Nullable

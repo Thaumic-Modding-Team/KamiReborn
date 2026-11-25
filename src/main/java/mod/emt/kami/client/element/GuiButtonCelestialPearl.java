@@ -62,15 +62,6 @@ public class GuiButtonCelestialPearl extends GuiButton {
 
             mc.getRenderItem().renderItemAndEffectIntoGUI(this.pearl, this.x, this.y);
 
-//            if(this.hovered) {
-//                GlStateManager.pushMatrix();
-//                GlStateManager.scale(1.125, 1.125, 1.125);
-//                mc.getRenderItem().renderItemAndEffectIntoGUI(this.pearl, this.x - 1, this.y - 1);
-//                GlStateManager.popMatrix();
-//            } else {
-//                mc.getRenderItem().renderItemAndEffectIntoGUI(this.pearl, this.x, this.y);
-//            }
-
             this.mouseDragged(mc, mouseX, mouseY);
         }
     }

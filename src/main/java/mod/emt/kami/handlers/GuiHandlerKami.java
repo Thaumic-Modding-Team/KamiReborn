@@ -7,6 +7,7 @@ import mod.emt.kami.inventory.containers.ContainerCelestialTeleport;
 import mod.emt.kami.inventory.containers.ContainerCelestialTranslocator;
 import mod.emt.kami.inventory.containers.ContainerIchorweavePouch;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import org.jetbrains.annotations.Nullable;
@@ -31,9 +32,9 @@ public class GuiHandlerKami implements IGuiHandler {
             case ID_ICHORWEAVE_POUCH_BAUBLE:
                 return new ContainerIchorweavePouch(player);
             case ID_CELESTIAL_TELEPORT_MH:
-                return new ContainerCelestialTeleport(player.getHeldItemMainhand());
+                return new ContainerCelestialTeleport(player.getHeldItemMainhand(), EntityEquipmentSlot.MAINHAND);
             case ID_CELESTIAL_TELEPORT_OH:
-                return new ContainerCelestialTeleport(player.getHeldItemOffhand());
+                return new ContainerCelestialTeleport(player.getHeldItemOffhand(), EntityEquipmentSlot.OFFHAND);
             case ID_CELESTIAL_TRANSLOCATOR_MH:
                 return new ContainerCelestialTranslocator(player, player.getHeldItemMainhand());
             case ID_CELESTIAL_TRANSLOCATOR_OH:
@@ -52,9 +53,9 @@ public class GuiHandlerKami implements IGuiHandler {
             case ID_ICHORWEAVE_POUCH_BAUBLE:
                 return new GuiIchorweavePouch(new ContainerIchorweavePouch(player));
             case ID_CELESTIAL_TELEPORT_MH:
-                return new GuiCelestialTeleport(new ContainerCelestialTeleport(player.getHeldItemMainhand()));
+                return new GuiCelestialTeleport(new ContainerCelestialTeleport(player.getHeldItemMainhand(), EntityEquipmentSlot.MAINHAND));
             case ID_CELESTIAL_TELEPORT_OH:
-                return new GuiCelestialTeleport(new ContainerCelestialTeleport(player.getHeldItemOffhand()));
+                return new GuiCelestialTeleport(new ContainerCelestialTeleport(player.getHeldItemOffhand(), EntityEquipmentSlot.OFFHAND));
             case ID_CELESTIAL_TRANSLOCATOR_MH:
                 return new GuiCelestialTranslocator(new ContainerCelestialTranslocator(player, player.getHeldItemMainhand()));
             case ID_CELESTIAL_TRANSLOCATOR_OH:

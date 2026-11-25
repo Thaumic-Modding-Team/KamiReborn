@@ -127,6 +127,7 @@ public class GuiCelestialTeleport extends GuiContainer {
         if(button instanceof GuiButtonCelestialPearl) {
             int slot = ((GuiButtonCelestialPearl) button).getHandlerSlot();
             this.mc.playerController.sendEnchantPacket(this.inventorySlots.windowId, slot);
+            this.mc.addScheduledTask(() -> mc.displayGuiScreen(null));
         }
     }
 
