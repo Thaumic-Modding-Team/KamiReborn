@@ -2,6 +2,7 @@ package mod.emt.kami.proxy;
 
 import com.invadermonky.thaumicapi.utils.libs.ModIds;
 import mod.emt.kami.Kami;
+import mod.emt.kami.casters.foci.FocusEffectDislocation;
 import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.compat.datafixers.BlockDataFixer;
 import mod.emt.kami.compat.datafixers.ItemDataFixer;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import thaumcraft.Thaumcraft;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.casters.FocusEngine;
 import thaumcraft.api.research.ResearchCategories;
 
 public class CommonProxy {
@@ -28,6 +30,7 @@ public class CommonProxy {
 
     public void init() {
         ModRecipesKAMI.registerOreDicts();
+        registerFoci();
         registerResearch();
         KamiCompatHandler.init();
         ModFixs modFixer = FMLCommonHandler.instance().getDataFixer().init(Kami.MOD_ID, 1);
@@ -39,6 +42,10 @@ public class CommonProxy {
     public void postInit() {
         NetworkRegistry.INSTANCE.registerGuiHandler(Kami.instance, new GuiHandlerKami());
         KamiCompatHandler.postInit();
+    }
+
+    private void registerFoci() {
+        FocusEngine.registerElement(FocusEffectDislocation.class, new ResourceLocation(Kami.MOD_ID, "textures/foci/dislocation.png"), 15121988);
     }
 
     private void registerResearch() {
