@@ -153,9 +153,9 @@ kami.research.awakened_ichorweave_robe.stage.2=The Ichorweave Robes have a a str
 # -- AWAKENED ICHORWEAVE SHIELD
 kami.research.awakened_ichorweave_shield.title=Ichorweave Reinforced Shield of the Caster
 kami.research.awakened_ichorweave_shield.title.subtitle=For when you need three hands
-# kami.research.awakened_ichorweave_shield.stage.1=
-# kami.research.awakened_ichorweave_shield.stage.2=
-# kami.research.awakened_ichorweave_shield.addenda.1=
+kami.research.awakened_ichorweave_shield.stage.1=Why must I always have to choose between defense and casting?<BR>When I use a gauntlet, I find it nearly impossible to use a shield, and when I use a shield, I fumble when casting my spells.<BR>I wonder if I can make a reasonable facsimile of a casting gauntlet utilizing using the ichorweave reinforced shield.
+kami.research.awakened_ichorweave_shield.stage.2=My experiments were a success!<BR>Not only is this new shield capable of socketing spell foci, it also invigorates me when I hold it in my left hand.<BR>While it does not reduce the amount of vis consumed by spells, it more than fills the purpose of allowing me to cast freely while coweri-*ahem*... blocking incoming damage.
+kami.research.awakened_ichorweave_shield.addenda.1=The malleability of ichorweave once again shows its true ability.<BR>While not as versatile as the Thaumium or Void gauntlets, this shield is able to accept up to two gauntlet augments.
 
 # -- BOTTOMLESS POUCH
 kami.research.bottomless_pouch.title=Bottomless Pouch
@@ -172,8 +172,9 @@ kami.research.celestial_gateway.subtitle=Step into the void
 # -- CELESTIAL TRANSLOCATOR
 kami.research.celestial_translocator.title=Celestial Translocator
 kami.research.celestial_translocator.subtitle=Stare into the void
-# kami.research.celestial_translocator.stage.1=
-# kami.research.celestial_translocator.stage.2=
+kami.research.celestial_translocator.stage.1=While the celestial gateway is certainly a marvel, the pearls themselves being an expendable resource is less than ideal, and that's not even considering the occasional whispers I hear when using one to travel...
+kami.research.celestial_translocator.stage.2=I have been calling this new device the Celestial Translocator.<BR>Not only does it prevent the consumption of celestial pearls when used, it also completely shields me from psychological harm when travelling through the void.<BR>Sneaking and interacting with the tool opens its inventory, allowing it to store up to 10 different linked celestial pearls.<BR>Interacting with the translocator while not sneaking will open the celestial gateway menu, allowing me to select my teleportation destination.
+kami.research.celestial_translocator.addenda.1=It appears that the only celestial pearls that can be used by the translocator are those bound to celestial gateways.<BR>
 
 # -- ICHOR
 kami.research.ichor.title=Ichor
