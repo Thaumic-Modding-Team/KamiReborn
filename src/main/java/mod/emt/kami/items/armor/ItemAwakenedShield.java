@@ -167,7 +167,7 @@ public class ItemAwakenedShield extends ItemIchoriumShield implements ICaster, I
     @Override
     public @Nullable ICapabilityProvider initCapabilities(@NotNull ItemStack stack, @Nullable NBTTagCompound nbt) {
         if(ModIds.thaumic_augmentation.isLoaded) {
-            SimpleCapabilityProvider<IAugmentableItem> provider = new SimpleCapabilityProvider<>(new AugmentableItem(1), CapabilityAugmentableItem.AUGMENTABLE_ITEM);
+            SimpleCapabilityProvider<IAugmentableItem> provider = new SimpleCapabilityProvider<>(new AugmentableItem(2), CapabilityAugmentableItem.AUGMENTABLE_ITEM);
             if (nbt != null && nbt.hasKey("Parent", Constants.NBT.TAG_COMPOUND)) {
                 provider.deserializeNBT(nbt.getCompoundTag("Parent"));
             }
