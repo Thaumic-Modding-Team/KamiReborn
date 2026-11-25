@@ -178,7 +178,7 @@ kami.research.celestial_translocator.title=Celestial Translocator
 kami.research.celestial_translocator.subtitle=Stare into the void
 kami.research.celestial_translocator.stage.1=While the celestial gateway is certainly a marvel, the pearls themselves being an expendable resource is less than ideal, and that's not even considering the occasional whispers I hear when using one to travel...
 kami.research.celestial_translocator.stage.2=I have been calling this new device the Celestial Translocator.<BR>Not only does it prevent the consumption of celestial pearls when used, it also completely shields me from psychological harm when travelling through the void.<BR>Sneaking and interacting with the tool opens its inventory, allowing it to store up to 10 different linked celestial pearls.<BR>Interacting with the translocator while not sneaking will open the celestial gateway menu, allowing me to select my teleportation destination.
-kami.research.celestial_translocator.addenda.1=It appears that the only celestial pearls that can be used by the translocator are those bound to celestial gateways.<BR>
+kami.research.celestial_translocator.addenda.1=It appears that the only celestial pearls that can be used by the translocator are those bound to celestial gateways.<BR>I suppose I should just be happy that I didn't end up like my first live test subject...
 
 # -- ICHOR
 kami.research.ichor.title=Ichor
