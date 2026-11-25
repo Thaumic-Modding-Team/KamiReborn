@@ -1,6 +1,7 @@
 package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.client.gui.GuiCelestialTeleport;
 import mod.emt.kami.client.render.KamiItemTEISR;
 import mod.emt.kami.client.render.RenderThrownAxe;
 import mod.emt.kami.client.render.TileCelestialGatewayTESR;
@@ -15,6 +16,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -69,6 +71,14 @@ public class RegistrarKAMI {
         ModItemsKAMI.ICHORWEAVE_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
         //Tiles
         ClientRegistry.bindTileEntitySpecialRenderer(TileCelestialGateway.class, new TileCelestialGatewayTESR());
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void onTextureStitchPre(TextureStitchEvent.Pre event) {
+        //Registering Celestial Teleport Gui because I'm lazy and don't want to deal with the animation manually
+        //The texture atlas can suck it and deal with this big ol' texture
+        event.getMap().registerSprite(GuiCelestialTeleport.TEXTURE);
     }
 
     @SubscribeEvent

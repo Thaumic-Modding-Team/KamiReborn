@@ -1,14 +1,21 @@
 package mod.emt.kami.client.gui;
 
+import mod.emt.kami.Kami;
 import mod.emt.kami.client.element.GuiButtonCelestialPearl;
 import mod.emt.kami.inventory.containers.ContainerCelestialTeleport;
 import mod.emt.kami.inventory.handlers.CelestialTranslocatorHandler;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -20,8 +27,12 @@ import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class GuiCelestialTeleport extends GuiContainer {
+    public static final ResourceLocation TEXTURE = new ResourceLocation(Kami.MOD_ID, "gui/celestial_teleport");
+
     public GuiCelestialTeleport(ContainerCelestialTeleport inventorySlotsIn) {
         super(inventorySlotsIn);
+        this.xSize = 128;
+        this.ySize = 128;
     }
 
     public ContainerCelestialTeleport getContainer() {
@@ -37,7 +48,7 @@ public class GuiCelestialTeleport extends GuiContainer {
         List<Tuple<ItemStack, Integer>> slots = handler.getPearlSlots();
         int buttonId = 0;
         int size = slots.size();
-        int radius = 48;
+        int radius = 46;
 
         for(int i = 0; i < size; i++) {
             double angle = Math.toRadians((360.0 / size) * i - 90);
@@ -50,7 +61,52 @@ public class GuiCelestialTeleport extends GuiContainer {
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        this.mc.getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+        TextureAtlasSprite sprite = this.mc.getTextureMapBlocks().getAtlasSprite(TEXTURE.toString());
+        int xStart = (this.width - this.xSize) / 2;
+        int yStart = (this.height - this.ySize) / 2;
 
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.enableBlend();
+        this.drawAnimatedBackground(xStart, yStart, this.xSize, this.ySize, sprite.getIconWidth(), sprite.getIconHeight(), sprite.getMinU(), sprite.getMaxU(), sprite.getMinV(), sprite.getMaxV());
+    }
+
+    protected void drawAnimatedBackground(float x, float y, float width, float height, int iconWidth, int iconHeight, float uMin, float uMax, float vMin, float vMax) {
+        int iterMaxW = (int) (width / (float) iconWidth);
+        int iterMaxH = (int) (height / (float) iconHeight);
+        float leftoverW = width % (float) iconWidth;
+        float leftoverH = height % (float) iconHeight;
+        float leftoverWf = leftoverW / (float) iconWidth;
+        float leftoverHf = leftoverH / (float) iconHeight;
+        float iconUDif = uMax - uMin;
+        float iconVDif = vMax - vMin;
+
+        for (int ww = 0; ww < iterMaxW; ++ww) {
+            for (int hh = 0; hh < iterMaxH; ++hh) {
+                drawTexturedRect(x + (float) (ww * iconWidth), y + (float) (hh * iconHeight), (float) iconWidth, (float) iconHeight, uMin, uMax, vMin, vMax);
+            }
+
+            drawTexturedRect(x + (float) (ww * iconWidth), y + (float) (iterMaxH * iconHeight), (float) iconWidth, leftoverH, uMin, uMax, vMin, vMin + iconVDif * leftoverHf);
+        }
+
+        if (leftoverW > 0.0F) {
+            for (int hh = 0; hh < iterMaxH; ++hh) {
+                drawTexturedRect(x + (float) (iterMaxW * iconWidth), y + (float) (hh * iconHeight), leftoverW, (float) iconHeight, uMin, uMin + iconUDif * leftoverWf, vMin, vMax);
+            }
+
+            drawTexturedRect(x + (float) (iterMaxW * iconWidth), y + (float) (iterMaxH * iconHeight), leftoverW, leftoverH, uMin, uMin + iconUDif * leftoverWf, vMin, vMin + iconVDif * leftoverHf);
+        }
+    }
+
+    public void drawTexturedRect(float x, float y, float w, float h, double... uv) {
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder buff = tessellator.getBuffer();
+        buff.begin(7, DefaultVertexFormats.POSITION_TEX);
+        buff.pos(x, (y + h), 0.0F).tex(uv[0], uv[3]).endVertex();
+        buff.pos((x + w), (y + h), 0.0F).tex(uv[1], uv[3]).endVertex();
+        buff.pos((x + w), y, 0.0F).tex(uv[1], uv[2]).endVertex();
+        buff.pos(x, y, 0.0F).tex(uv[0], uv[2]).endVertex();
+        tessellator.draw();
     }
 
     @Override

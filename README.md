@@ -64,6 +64,7 @@ Awakened Ichor equipment is extremely powerful. Awakened tools have various "mod
 ## 🙏 Special Thanks
 - Original Thaumic Tinkerer developers ~ pixlepix, Vazkii, and others
 - Some textures used from Fake Thaummy Pack ~ Fakeginkgo
+- Celestial Teleporter GUI ~ [Free Pixel Magic Circles by Mira Forge](https://miraforge.itch.io/free-pixel-magic-circles)
 
 ---
 
