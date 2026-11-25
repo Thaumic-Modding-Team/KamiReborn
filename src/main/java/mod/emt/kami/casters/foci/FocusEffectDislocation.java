@@ -2,6 +2,10 @@ package mod.emt.kami.casters.foci;
 
 import mod.emt.kami.Kami;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.material.EnumPushReaction;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,6 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -101,7 +106,9 @@ public class FocusEffectDislocation extends FocusEffect {
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
 
-        if (world.isAirBlock(pos) || state.getBlockHardness(world, pos) < 0 || !world.isBlockModifiable(player, pos)) {
+        //Checking for DESTROY push reaction is a decent way to check for beds and doors, though snow, plants and liquids get caught in the crossfire
+        //Checking for PORTAL material prevents the effect from collecting portals
+        if (world.isAirBlock(pos) || state.getBlockHardness(world, pos) < 0 || state.getPushReaction() == EnumPushReaction.DESTROY || state.getMaterial() == Material.PORTAL || !world.isBlockModifiable(player, pos)) {
             return false;
         }
 
@@ -160,14 +167,17 @@ public class FocusEffectDislocation extends FocusEffect {
             return false;
         }
 
-        BlockPos placePos = hitPos.offset(side);
-        if (placePos.getY() < 0 || placePos.getY() >= 256 || !world.isBlockModifiable(player, placePos) || !player.canPlayerEdit(placePos, side, focus) ||
-                !world.getBlockState(placePos).getBlock().isReplaceable(world, placePos) || !world.mayPlace(block, placePos, false, side, player) ||
-                !world.setBlockState(placePos, state, 3)) {
+        BlockPos placePos = hitPos;
+        IBlockState placeState = world.getBlockState(placePos);
+        if(!placeState.getBlock().isReplaceable(world, placePos)) {
+            placePos = placePos.offset(side);
+        }
+
+        if(!this.isValidPlacementPosition(player, world, placePos, side, focus, state)) {
             return false;
         }
 
-        if (stored.hasKey(TAG_TILE, 10)) {
+        if (stored.hasKey(TAG_TILE, Constants.NBT.TAG_COMPOUND)) {
             NBTTagCompound tileNBT = stored.getCompoundTag(TAG_TILE).copy();
             tileNBT.setInteger("x", placePos.getX());
             tileNBT.setInteger("y", placePos.getY());
@@ -185,6 +195,18 @@ public class FocusEffectDislocation extends FocusEffect {
 
         focusTag.removeTag(TAG_STORAGE);
         return true;
+    }
+
+    private boolean isValidPlacementPosition(EntityPlayer player, World world, BlockPos pos, EnumFacing side, ItemStack toPlace, IBlockState toPlaceState) {
+        if(pos.getY() >= 0 && pos.getY() < world.getHeight()) {
+            IBlockState placementState = world.getBlockState(pos);
+            return world.isBlockModifiable(player, pos)
+                    && player.canPlayerEdit(pos, side, toPlace)
+                    && placementState.getBlock().isReplaceable(world, pos)
+                    && world.mayPlace(placementState.getBlock(), pos, false, side, player)
+                    && world.setBlockState(pos, toPlaceState, 3);
+            }
+        return false;
     }
 
     private void playEffects(World world, RayTraceResult target) {
