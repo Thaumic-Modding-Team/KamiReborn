@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/fire_side",
+    "textures": {
+        "particle": "kami:blocks/fire_ignis_layer_1",
+        "fire": "kami:blocks/fire_ignis_layer_1"
+    }
+}

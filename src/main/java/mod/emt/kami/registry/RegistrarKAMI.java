@@ -1,6 +1,7 @@
 package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.blocks.fire.BlockElementalFire;
 import mod.emt.kami.client.gui.GuiCelestialTeleport;
 import mod.emt.kami.client.render.KamiItemTEISR;
 import mod.emt.kami.client.render.RenderThrownAxe;
@@ -48,17 +49,21 @@ public class RegistrarKAMI {
     public static void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
         ModItemsKAMI.initItems();
-        ModBlocksKAMI.MOD_BLOCKS.forEach(block -> registry.register(new ItemBlockKami(block)));
+        ModBlocksKAMI.MOD_BLOCKS.stream()
+                .filter(block -> !(block instanceof BlockElementalFire))
+                .forEach(block -> registry.register(new ItemBlockKami(block)));
         ModItemsKAMI.MOD_ITEMS.forEach(registry::register);
     }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-        ModBlocksKAMI.MOD_BLOCKS.forEach(block -> {
-            ModelResourceLocation loc = new ModelResourceLocation(Objects.requireNonNull(block.getRegistryName()), "inventory");
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, loc);
-        });
+        ModBlocksKAMI.MOD_BLOCKS.stream()
+                .filter(block -> !(block instanceof BlockElementalFire))
+                .forEach(block -> {
+                    ModelResourceLocation loc = new ModelResourceLocation(Objects.requireNonNull(block.getRegistryName()), "inventory");
+                    ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, loc);
+                });
         ModItemsKAMI.MOD_ITEMS.forEach(item -> {
             ModelResourceLocation loc = new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()), "inventory");
             ModelLoader.setCustomModelResourceLocation(item, 0, loc);
