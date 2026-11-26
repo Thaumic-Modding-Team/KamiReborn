@@ -42,9 +42,11 @@ public class ClientProxy extends CommonProxy {
             }
         };
         IItemColor itemEssentiaColourHandler = (stack, tintIndex) -> {
-            Aspect aspect = ItemElementalFireBottle.getAspectFromBottle(stack);
-            if(aspect != null) {
-                return aspect.getColor();
+            if(tintIndex == 0) {
+                Aspect aspect = ItemElementalFireBottle.getAspectFromBottle(stack);
+                if(aspect != null) {
+                    return aspect.getColor();
+                }
             }
             return 0xffffff;
         };

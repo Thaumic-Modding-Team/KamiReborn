@@ -1,6 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "kami:items/elemental_fire_bottle"
+    "layer0": "kami:items/elemental_fire_bottle",
+    "layer1": "kami:items/elemental_fire_bottle_overlay"
   }
 }
