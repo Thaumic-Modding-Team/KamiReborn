@@ -42,8 +42,9 @@ public class ClientProxy extends CommonProxy {
             }
         };
         IItemColor itemEssentiaColourHandler = (stack, tintIndex) -> {
-            for(Aspect fireType : ItemElementalFireBottle.getElementalFireBottleTypes()) {
-                return fireType.getColor();
+            Aspect aspect = ItemElementalFireBottle.getAspectFromBottle(stack);
+            if(aspect != null) {
+                return aspect.getColor();
             }
             return 0xffffff;
         };
