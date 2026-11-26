@@ -2,7 +2,6 @@ package mod.emt.kami.registry;
 
 
 import mod.emt.kami.Kami;
-import mod.emt.kami.items.ItemFireTest;
 import mod.emt.kami.items.armor.ItemAwakenedArmor;
 import mod.emt.kami.items.armor.ItemAwakenedShield;
 import mod.emt.kami.items.armor.ItemIchoriumShield;
@@ -57,8 +56,6 @@ public class ModItemsKAMI {
     public static ItemArmor ICHORWEAVE_ROBE;
     public static Item ICHORWEAVE_SHIELD;
 
-    public static ItemFireTest FIRE_TESTER;
-
     public static final List<Item> MOD_ITEMS = new ArrayList<>();
 
     public static void initItems() {
@@ -92,6 +89,5 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(AWAKENED_ICHORWEAVE_SHIELD = new ItemAwakenedShield());
         MOD_ITEMS.add(ICHORIUM_CASTER = new ItemIchoriumCaster());
         MOD_ITEMS.add(ELEMENTAL_FIRE_BOTTLE = new ItemElementalFireBottle());
-        MOD_ITEMS.add(FIRE_TESTER = new ItemFireTest());
     }
 }

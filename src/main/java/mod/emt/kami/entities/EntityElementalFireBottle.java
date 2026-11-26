@@ -73,7 +73,8 @@ public class EntityElementalFireBottle extends EntityThrowable {
                 BlockPos impact = result.getBlockPos().offset(result.sideHit);
                 this.createFire(impact, fireState);
                 if(!this.world.isRemote) {
-                    this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_SPLASH_POTION_BREAK, SoundCategory.AMBIENT, 1.0f, 1.0f);
+                    this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_SPLASH_POTION_BREAK, SoundCategory.AMBIENT, 1.0f, 0.5f);
+                    this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_PLAYER_HURT_ON_FIRE, SoundCategory.AMBIENT, 1.0f, 0.1f + (float) (world.rand.nextGaussian() * 0.05f));
                     this.setDead();
                 }
             }

@@ -30,8 +30,10 @@ import org.jetbrains.annotations.Nullable;
 import thaumcraft.api.aspects.Aspect;
 
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
+@SuppressWarnings("deprecation")
 public class ItemElementalFireBottle extends ItemBase {
     public ItemElementalFireBottle() {
         super("elemental_fire_bottle");
@@ -87,7 +89,7 @@ public class ItemElementalFireBottle extends ItemBase {
             worldIn.spawnEntity(bottle);
         }
 
-        playerIn.addStat(StatList.getObjectUseStats(this));
+        playerIn.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));
         return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
     }
 
@@ -104,7 +106,8 @@ public class ItemElementalFireBottle extends ItemBase {
             if(!player.isCreative()) {
                 heldStack.shrink(1);
             }
-            worldIn.playSound(player, pos, SoundEvents.ENTITY_SPLASH_POTION_BREAK, SoundCategory.AMBIENT, 1.0f, 1.0f);
+            worldIn.playSound(player, pos, SoundEvents.ENTITY_SPLASH_POTION_BREAK, SoundCategory.AMBIENT, 1.0f, 0.5f);
+            worldIn.playSound(player, pos, SoundEvents.ENTITY_PLAYER_HURT_ON_FIRE, SoundCategory.AMBIENT, 1.0f, 0.1f + (float) (worldIn.rand.nextGaussian() * 0.05f));
             return EnumActionResult.SUCCESS;
         }
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
