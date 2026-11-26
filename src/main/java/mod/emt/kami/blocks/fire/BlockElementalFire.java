@@ -46,6 +46,10 @@ public abstract class BlockElementalFire extends BlockFire {
         FIRE_STATES.put(aspect, placementState);
     }
 
+    public Aspect getFireAspect() {
+        return fireAspect;
+    }
+
     public void addTransformation(IBlockState input, IBlockState output) {
         transformations.put(input, output);
     }

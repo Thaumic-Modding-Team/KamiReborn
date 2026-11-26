@@ -1,11 +1,15 @@
 package mod.emt.kami.proxy;
 
 import com.invadermonky.thaumicapi.api.item.IDyeableItem;
+import mod.emt.kami.blocks.fire.BlockElementalFire;
 import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.items.misc.ItemElementalFireBottle;
+import mod.emt.kami.registry.ModBlocksKAMI;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
 import thaumcraft.api.aspects.Aspect;
@@ -24,6 +28,7 @@ public class ClientProxy extends CommonProxy {
         super.init();
         KeyBindingsKami.init();
 
+        BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
         ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
         IItemColor dyeableColorHandler = (stack, tintIndex) -> {
             if (tintIndex == 1 && stack.getItem() instanceof IDyeableItem) {
@@ -50,6 +55,16 @@ public class ClientProxy extends CommonProxy {
             }
             return 0xffffff;
         };
+        IBlockColor elementalFireColorHandler = (state, world, pos, tintIndex) -> {
+            if (state.getBlock() instanceof BlockElementalFire) {
+                Aspect aspect = ((BlockElementalFire) state.getBlock()).getFireAspect();
+                if(aspect != null) {
+                    return aspect.getColor();
+                }
+            }
+
+            return 0xffffff;
+        };
 
         //Dyeables
         itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS);
@@ -65,6 +80,8 @@ public class ClientProxy extends CommonProxy {
         //Colored Items
         itemColors.registerItemColorHandler(itemEssentiaColourHandler, ModItemsKAMI.ELEMENTAL_FIRE_BOTTLE);
         KamiCompatHandler.initClient();
+        // Fire Blocks
+        blockColors.registerBlockColorHandler(elementalFireColorHandler, ModBlocksKAMI.IGNIS_FIRE);
     }
 
     @Override
