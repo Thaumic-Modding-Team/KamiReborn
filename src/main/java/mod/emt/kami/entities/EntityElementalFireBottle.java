@@ -1,6 +1,6 @@
 package mod.emt.kami.entities;
 
-import mod.emt.kami.blocks.fire.BlockElementalFire;
+import mod.emt.kami.registry.ElementalFireRegistry;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -67,7 +67,7 @@ public class EntityElementalFireBottle extends EntityThrowable {
     @Override
     protected void onImpact(@NotNull RayTraceResult result) {
         Aspect aspect = this.getAspect();
-        IBlockState fireState = BlockElementalFire.getElementalFirePlacementState(aspect);
+        IBlockState fireState = ElementalFireRegistry.getElementalFireBlock(aspect);
         if(fireState.getBlock() != Blocks.AIR) {
             if(result.typeOfHit == RayTraceResult.Type.BLOCK) {
                 BlockPos impact = result.getBlockPos().offset(result.sideHit);

@@ -1,7 +1,7 @@
 package mod.emt.kami.registry;
 
 import mod.emt.kami.Kami;
-import mod.emt.kami.blocks.fire.BlockElementalFire;
+import mod.emt.kami.blocks.BlockElementalFire;
 import mod.emt.kami.client.gui.GuiCelestialTeleport;
 import mod.emt.kami.client.render.KamiItemTEISR;
 import mod.emt.kami.client.render.RenderElementalFireBottle;

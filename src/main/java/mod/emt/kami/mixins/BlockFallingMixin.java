@@ -1,6 +1,6 @@
 package mod.emt.kami.mixins;
 
-import mod.emt.kami.blocks.fire.BlockElementalFire;
+import mod.emt.kami.blocks.BlockElementalFire;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.state.IBlockState;
 import org.spongepowered.asm.mixin.Mixin;

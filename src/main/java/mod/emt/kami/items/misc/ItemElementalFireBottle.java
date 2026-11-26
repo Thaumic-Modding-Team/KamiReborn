@@ -1,12 +1,13 @@
 package mod.emt.kami.items.misc;
 
-import mod.emt.kami.blocks.fire.BlockElementalFire;
+import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.entities.EntityElementalFireBottle;
 import mod.emt.kami.items.base.ItemBase;
 import mod.emt.kami.registry.ElementalFireRegistry;
-import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.dispenser.BehaviorProjectileDispense;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -18,20 +19,19 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagString;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import thaumcraft.api.aspects.Aspect;
 
-import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @SuppressWarnings("deprecation")
 public class ItemElementalFireBottle extends ItemBase {
@@ -39,13 +39,6 @@ public class ItemElementalFireBottle extends ItemBase {
         super("elemental_fire_bottle");
         this.setRarity(EnumRarity.COMMON);
         this.setHasSubtypes(true);
-        //TODO: Bind this to the fire block aspect type registry
-        ElementalFireRegistry.addElementalFireType(Aspect.AIR);
-        ElementalFireRegistry.addElementalFireType(Aspect.EARTH);
-        ElementalFireRegistry.addElementalFireType(Aspect.FIRE);
-        ElementalFireRegistry.addElementalFireType(Aspect.WATER);
-        ElementalFireRegistry.addElementalFireType(Aspect.ORDER);
-        ElementalFireRegistry.addElementalFireType(Aspect.ENTROPY);
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, new BottleDispenserLogic());
     }
 
@@ -63,9 +56,9 @@ public class ItemElementalFireBottle extends ItemBase {
     public @NotNull String getItemStackDisplayName(@NotNull ItemStack stack) {
         Aspect aspect = ElementalFireRegistry.getAspectFromBottle(stack);
         if(aspect != null) {
-            return I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + "_" + aspect.getTag() + ".name").trim();
+            return net.minecraft.util.text.translation.I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + "_" + aspect.getTag() + ".name").trim();
         } else {
-            return I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name").trim();
+            return net.minecraft.util.text.translation.I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name").trim();
         }
 
     }
@@ -98,7 +91,7 @@ public class ItemElementalFireBottle extends ItemBase {
         ItemStack heldStack = player.getHeldItem(hand);
         Aspect aspect = ElementalFireRegistry.getAspectFromBottle(heldStack);
         if(aspect != null && player.isSneaking()) {
-            IBlockState fireState = BlockElementalFire.getElementalFirePlacementState(aspect);
+            IBlockState fireState = ElementalFireRegistry.getElementalFireBlock(aspect);
             if(fireState.getBlock() != Blocks.AIR) {
                 worldIn.setBlockState(pos.offset(facing), fireState);
             }
@@ -111,6 +104,17 @@ public class ItemElementalFireBottle extends ItemBase {
             return EnumActionResult.SUCCESS;
         }
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
+        //TODO: Warning tooltip
+        if(!ConfigHandlerKami.elemental_fire._disableTooltip) {
+            tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.0"));
+            tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.1"));
+            tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.2"));
+        }
     }
 
     public static class BottleDispenserLogic implements IBehaviorDispenseItem {

@@ -1,6 +1,10 @@
-package mod.emt.kami.blocks.fire;
+package mod.emt.kami.blocks;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.api.recipe.IElementalFireRecipe;
+import mod.emt.kami.config.ConfigHandlerKami;
+import mod.emt.kami.recipe.elementalfire.ElementalFireRecipeHandler;
+import mod.emt.kami.registry.ElementalFireRegistry;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.BlockTNT;
 import net.minecraft.block.material.EnumPushReaction;
@@ -18,68 +22,50 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.Aspect;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
-// TODO: It's better to use ore dictionary and config list
-public abstract class BlockElementalFire extends BlockFire {
-    private final static Map<Aspect, IBlockState> FIRE_STATES = new HashMap<>();
-
-    private final Map<IBlockState, IBlockState> transformations = new HashMap<>();
+public class BlockElementalFire extends BlockFire {
     private final Aspect fireAspect;
 
-    public BlockElementalFire(String name, Aspect fireAspect) {
-        this.setRegistryName(Kami.MOD_ID, name);
+    public BlockElementalFire(Aspect fireAspect) {
+        this.setRegistryName(Kami.MOD_ID, "elemental_fire_" + fireAspect.getTag());
         this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
         this.setLightLevel(1.0F);
         this.fireAspect = fireAspect;
-        setElementalFirePlacementState(fireAspect, this.getDefaultState());
-    }
-
-    public static IBlockState getElementalFirePlacementState(Aspect aspect) {
-        return FIRE_STATES.getOrDefault(aspect, Blocks.AIR.getDefaultState());
-    }
-
-    public static void setElementalFirePlacementState(Aspect aspect, IBlockState placementState) {
-        FIRE_STATES.put(aspect, placementState);
+        ElementalFireRegistry.addElementalFireBlock(fireAspect, this.getDefaultState());
     }
 
     public Aspect getFireAspect() {
         return fireAspect;
     }
 
-    public void addTransformation(IBlockState input, IBlockState output) {
-        transformations.put(input, output);
-    }
-
-    public boolean isTransmutationTarget(IBlockState state) {
-        return transformations.containsKey(state);
-    }
-
-    public boolean isTransmutationResult(IBlockState state) {
-        return transformations.containsValue(state);
+    public boolean isTransmutationTarget(World world, BlockPos pos, IBlockState state) {
+        return ElementalFireRecipeHandler.getTransformationRecipe(this.getFireAspect(), world, pos, state) != null;
     }
 
     public boolean isNeighborTarget(World world, BlockPos pos) {
-        for (EnumFacing facing : EnumFacing.values()) {
-            if (isTransmutationTarget(world.getBlockState(pos.offset(facing)))) {
+        if(ConfigHandlerKami.elemental_fire._disableFireSpread)
+            return false;
+
+        for (EnumFacing facing : EnumFacing.VALUES) {
+            BlockPos offset = pos.offset(facing);
+            IBlockState state = world.getBlockState(offset);
+            if (isTransmutationTarget(world, offset, state)) {
                 return true;
             }
         }
-
         return false;
     }
 
     @Override
-    public boolean canCatchFire(IBlockAccess world, @NotNull BlockPos pos, @NotNull EnumFacing face) {
-        //TODO: Add a config option to disable fire spread
-        return isTransmutationTarget(world.getBlockState(pos));
+    public boolean canCatchFire(@NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EnumFacing face) {
+        return world instanceof World && isTransmutationTarget((World) world, pos, world.getBlockState(pos));
     }
 
     @Override
     public void updateTick(World world, @NotNull BlockPos pos, @NotNull IBlockState state, @NotNull Random rand) {
+        //TODO: Add a config option to disable fire spread
         if (world.isRemote || !world.getGameRules().getBoolean("doFireTick")) {
             return;
         }
@@ -114,9 +100,9 @@ public abstract class BlockElementalFire extends BlockFire {
         world.scheduleUpdate(pos, this, tickRate(world) + rand.nextInt(10));
 
         if (rand.nextInt(20) == 0) {
-            for (EnumFacing facing : EnumFacing.values()) {
+            for (EnumFacing facing : EnumFacing.VALUES) {
                 BlockPos targetPos = pos.offset(facing);
-                transmuteOrDestroy(world, targetPos, rand);
+                transmuteOrDestroy(world, targetPos);
             }
         }
 
@@ -171,48 +157,37 @@ public abstract class BlockElementalFire extends BlockFire {
 
                     if (chance > 0 && rand.nextInt(difficulty) <= chance && (!world.isRaining() || !this.canDie(world, targetPos))) {
                         int newAge = Math.min(15, age + rand.nextInt(5) / 4);
-                        setBlockWithTransmutationTarget(world, targetPos, newAge, rand);
+                        setBlockWithTransmutationTarget(world, targetPos, newAge);
                     }
                 }
             }
         }
     }
 
-    public int getDecayChance() {
-        return 1;
-    }
-
-    private void transmuteOrDestroy(World world, BlockPos pos, Random rand) {
-        IBlockState result = transformations.get(world.getBlockState(pos));
-
-        if (result == null) {
-            return;
-        }
-
-        int decayChance = Math.max(1, getDecayChance());
-        if (rand.nextInt(decayChance) == 0) {
-            world.setBlockState(pos, result, 3);
-        } else {
-            world.setBlockToAir(pos);
+    private void transmuteOrDestroy(World world, BlockPos pos) {
+        IBlockState state = world.getBlockState(pos);
+        IElementalFireRecipe recipe = ElementalFireRecipeHandler.getTransformationRecipe(this.getFireAspect(), world, pos, world.getBlockState(pos));
+        if(recipe != null) {
+            recipe.transformTarget(world, pos, state);
         }
     }
 
-    private void setBlockWithTransmutationTarget(World world, BlockPos pos, int age, Random rand) {
+    private void setBlockWithTransmutationTarget(World world, BlockPos pos, int age) {
         IBlockState state = world.getBlockState(pos);
 
-        if (isTransmutationTarget(state)) {
-            transmuteOrDestroy(world, pos, rand);
+        if (isTransmutationTarget(world, pos, state)) {
+            transmuteOrDestroy(world, pos);
         } else if (world.isAirBlock(pos) && isNeighborTarget(world, pos)) {
             world.setBlockState(pos, this.getDefaultState().withProperty(AGE, age), 3);
         }
     }
 
     private int getBlockFlammability(IBlockAccess world, BlockPos pos) {
-        return isTransmutationTarget(world.getBlockState(pos)) ? 100 : 0;
+        return world instanceof World && isTransmutationTarget((World) world, pos, world.getBlockState(pos)) ? 100 : 0;
     }
 
     private int getBlockFireSpreadSpeed(IBlockAccess world, BlockPos pos) {
-        return isTransmutationTarget(world.getBlockState(pos)) ? 100 : 0;
+        return world instanceof World && isTransmutationTarget((World) world, pos, world.getBlockState(pos)) ? 100 : 0;
     }
 
     private void tryCatchFire(World world, BlockPos pos, int chance, Random rand, int age, EnumFacing face) {
@@ -225,11 +200,11 @@ public abstract class BlockElementalFire extends BlockFire {
         IBlockState original = world.getBlockState(pos);
         boolean tnt = original.getBlock() == Blocks.TNT;
 
-        if (isTransmutationTarget(original)) {
-            transmuteOrDestroy(world, pos, rand);
+        if (isTransmutationTarget(world, pos, original)) {
+            transmuteOrDestroy(world, pos);
         } else if (rand.nextInt(age + 10) < 5 && !world.isRainingAt(pos)) {
             int newAge = Math.min(15, age + rand.nextInt(5) / 4);
-            setBlockWithTransmutationTarget(world, pos, newAge, rand);
+            setBlockWithTransmutationTarget(world, pos, newAge);
         } else {
             world.setBlockToAir(pos);
         }

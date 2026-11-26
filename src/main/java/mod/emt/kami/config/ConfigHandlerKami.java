@@ -1,6 +1,8 @@
 package mod.emt.kami.config;
 
 import mod.emt.kami.Kami;
+import mod.emt.kami.recipe.elementalfire.ElementalFireRecipeHandler;
+import mod.emt.kami.registry.ModRecipesKAMI;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -12,6 +14,7 @@ public class ConfigHandlerKami {
     public static ArmorCategory armor = new ArmorCategory();
     @Config.Ignore
     public static ToolCategory tools = new ToolCategory();
+    public static ElementalFireCategory elemental_fire = new ElementalFireCategory();
     public static EnchantmentsCategory enchantments = new EnchantmentsCategory();
     public static IntegrationsCategory integrations = new IntegrationsCategory();
     public static MiscCategory misc = new MiscCategory();
@@ -32,6 +35,140 @@ public class ConfigHandlerKami {
         @Config.Name("Awakened Boots: Jump Factor")
         @Config.Comment("The forward momentum speed bonus granted when jumping while wearing the Ichorweave Boots of the Biosphere.")
         public double bootsJumpFactor = 0.03;
+    }
+
+    public static class ElementalFireCategory {
+        @Config.Name("!!Disable Tooltip!!")
+        @Config.Comment("Disables the warning tooltip on bottles of elemental fire.")
+        public boolean _disableTooltip = false;
+
+        @Config.Name("!!Disable Fire Spread!!")
+        @Config.Comment("Disables elemental fire spread logic.")
+        public boolean _disableFireSpread = false;
+
+        @Config.Name("!!Reset Recipes on Reload")
+        @Config.Comment({
+                "Enables elemental fire recipe reloading whenever the configuration is changed. This will result in",
+                "non-configuration transformation recipes disappearing whenever the config is changed."
+        })
+        public boolean _reloadReset = false;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Aer Transformations")
+        @Config.Comment({
+                "Aer Elemental Fire transformation recipes.",
+                "Format:",
+                "targetId:targetMeta;transformedId:transformedMeta;destroyChance",
+                "  targetId - The target block registry id",
+                "  targetMeta - [Optional] The target block metadata",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed",
+                "targetOreDict;transformedId:transformedMeta;destroyChance",
+                "  targetOreDict - The target block ore dictionary",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
+        })
+        public String[] aerTransformations = new String[] {};
+
+        @Config.RequiresMcRestart
+        @Config.Name("Aqua Transformations")
+        @Config.Comment({
+                "Aqua Elemental Fire transformation recipes.",
+                "Format:",
+                "targetId:targetMeta;transformedId:transformedMeta;destroyChance",
+                "  targetId - The target block registry id",
+                "  targetMeta - [Optional] The target block metadata",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed",
+                "targetOreDict;transformedId:transformedMeta;destroyChance",
+                "  targetOreDict - The target block ore dictionary",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
+        })
+        public String[] aquaTransformations = new String[] {};
+
+        @Config.RequiresMcRestart
+        @Config.Name("Ignis Transformations")
+        @Config.Comment({
+                "Ignis Elemental Fire transformation recipes.",
+                "Format:",
+                "targetId:targetMeta;transformedId:transformedMeta;destroyChance",
+                "  targetId - The target block registry id",
+                "  targetMeta - [Optional] The target block metadata",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed",
+                "targetOreDict;transformedId:transformedMeta;destroyChance",
+                "  targetOreDict - The target block ore dictionary",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
+        })
+        public String[] ignisTransformations = new String[] {
+                "grass;minecraft:netherrack;0",
+                "minecraft:stone;minecraft:netherrack;0"
+        };
+
+        @Config.RequiresMcRestart
+        @Config.Name("Ordo Transformations")
+        @Config.Comment({
+                "Ordo Elemental Fire transformation recipes.",
+                "Format:",
+                "targetId:targetMeta;transformedId:transformedMeta;destroyChance",
+                "  targetId - The target block registry id",
+                "  targetMeta - [Optional] The target block metadata",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed",
+                "targetOreDict;transformedId:transformedMeta;destroyChance",
+                "  targetOreDict - The target block ore dictionary",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
+        })
+        public String[] ordoTransformations = new String[] {};
+
+        @Config.RequiresMcRestart
+        @Config.Name("Perditio Transformations")
+        @Config.Comment({
+                "Perditio Elemental Fire transformation recipes.",
+                "Format:",
+                "targetId:targetMeta;transformedId:transformedMeta;destroyChance",
+                "  targetId - The target block registry id",
+                "  targetMeta - [Optional] The target block metadata",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed",
+                "targetOreDict;transformedId:transformedMeta;destroyChance",
+                "  targetOreDict - The target block ore dictionary",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
+        })
+        public String[] perditioTransformations = new String[] {};
+
+        @Config.RequiresMcRestart
+        @Config.Name("Terra Transformations")
+        @Config.Comment({
+                "Terra Elemental Fire transformation recipes.",
+                "Format:",
+                "targetId:targetMeta;transformedId:transformedMeta;destroyChance",
+                "  targetId - The target block registry id",
+                "  targetMeta - [Optional] The target block metadata",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed",
+                "targetOreDict;transformedId:transformedMeta;destroyChance",
+                "  targetOreDict - The target block ore dictionary",
+                "  transformedId - The transformed block registry id",
+                "  transformedMeta - [Optional] The transformed block metadata",
+                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
+        })
+        public String[] terraTransformations = new String[] {};
     }
 
     public static class EnchantmentsCategory {
@@ -91,6 +228,10 @@ public class ConfigHandlerKami {
         public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
             if(event.getModID().equals(Kami.MOD_ID)) {
                 ConfigManager.sync(Kami.MOD_ID, Config.Type.INSTANCE);
+                if(elemental_fire._reloadReset) {
+                    ElementalFireRecipeHandler.clearAllRecipes();
+                    ModRecipesKAMI.initElementalFireRecipes();
+                }
             }
         }
     }

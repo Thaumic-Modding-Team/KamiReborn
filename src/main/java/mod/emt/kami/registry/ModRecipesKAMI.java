@@ -4,6 +4,7 @@ import com.invadermonky.thaumicapi.utils.libs.ModIds;
 import mod.emt.kami.Kami;
 import mod.emt.kami.api.item.IOreDictProvider;
 import mod.emt.kami.config.ConfigHandlerKami;
+import mod.emt.kami.recipe.elementalfire.ElementalFireRecipeHandler;
 import mod.emt.kami.recipe.infusion.InfusionEnchantmentRecipeEternal;
 import mod.emt.kami.utils.helpers.ItemHelper;
 import net.minecraft.init.Blocks;
@@ -34,6 +35,7 @@ public class ModRecipesKAMI {
         initArcaneWorkbenchRecipes();
         initCrucibleRecipes();
         initInfusionRecipes();
+        initElementalFireRecipes();
     }
 
     public static void registerOreDicts() {
@@ -459,5 +461,40 @@ public class ModRecipesKAMI {
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "eternal_infusion"), eternalInfusion);
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Kami.MOD_ID, "eternal_infusion_fake"), new InfusionEnchantmentRecipe(eternalInfusion, new ItemStack(ModItemsKAMI.ICHORIUM_SWORD)));
         }
+    }
+
+    public static void initElementalFireRecipes() {
+        //Aer
+        ElementalFireRecipeHandler.addFireTransformations(Aspect.AIR, ElementalFireRecipeHandler.getRecipesFromConfig(ConfigHandlerKami.elemental_fire.aerTransformations));
+        //Aqua
+        ElementalFireRecipeHandler.addFireTransformations(Aspect.WATER, ElementalFireRecipeHandler.getRecipesFromConfig(ConfigHandlerKami.elemental_fire.aquaTransformations));
+        //Ignis
+        ElementalFireRecipeHandler.addFireTransformations(Aspect.FIRE, ElementalFireRecipeHandler.getRecipesFromConfig(ConfigHandlerKami.elemental_fire.ignisTransformations));
+        //TODO: These probably need to be config-based.
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.GRASS, Blocks.NETHERRACK.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.DIRT, Blocks.NETHERRACK.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.SAND.getDefaultState(), Blocks.SOUL_SAND.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.GRAVEL.getDefaultState(), Blocks.SOUL_SAND.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.CLAY.getDefaultState(), Blocks.GLOWSTONE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.COAL_ORE.getDefaultState(), Blocks.QUARTZ_ORE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.IRON_ORE.getDefaultState(), Blocks.QUARTZ_ORE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.DIAMOND_ORE.getDefaultState(), Blocks.QUARTZ_ORE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.EMERALD_ORE.getDefaultState(), Blocks.QUARTZ_ORE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.GOLD_BLOCK.getDefaultState(), Blocks.QUARTZ_ORE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.LAPIS_ORE.getDefaultState(), Blocks.QUARTZ_ORE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.REDSTONE_ORE.getDefaultState(), Blocks.QUARTZ_ORE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.LIT_REDSTONE_ORE.getDefaultState(), Blocks.QUARTZ_ORE.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.WATER.getDefaultState(), Blocks.LAVA.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.WHEAT.getDefaultState(), Blocks.NETHER_WART.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.POTATOES.getDefaultState(), Blocks.NETHER_WART.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.CARROTS.getDefaultState(), Blocks.NETHER_WART.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.RED_FLOWER.getDefaultState(), Blocks.BROWN_MUSHROOM.getDefaultState()));
+//        ElementalFireRecipeHandler.addFireTransformation(Aspect.FIRE, new ElementalFireBlockTransformRecipe(Blocks.YELLOW_FLOWER.getDefaultState(), Blocks.YELLOW_FLOWER.getDefaultState()));
+        //Ordo
+        ElementalFireRecipeHandler.addFireTransformations(Aspect.ORDER, ElementalFireRecipeHandler.getRecipesFromConfig(ConfigHandlerKami.elemental_fire.ordoTransformations));
+        //Perditio
+        ElementalFireRecipeHandler.addFireTransformations(Aspect.ENTROPY, ElementalFireRecipeHandler.getRecipesFromConfig(ConfigHandlerKami.elemental_fire.perditioTransformations));
+        //Terra
+        ElementalFireRecipeHandler.addFireTransformations(Aspect.EARTH, ElementalFireRecipeHandler.getRecipesFromConfig(ConfigHandlerKami.elemental_fire.terraTransformations));
     }
 }

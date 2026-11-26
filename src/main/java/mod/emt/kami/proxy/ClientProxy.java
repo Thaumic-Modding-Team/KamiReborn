@@ -1,13 +1,13 @@
 package mod.emt.kami.proxy;
 
 import com.invadermonky.thaumicapi.api.item.IDyeableItem;
-import mod.emt.kami.blocks.fire.BlockElementalFire;
+import mod.emt.kami.blocks.BlockElementalFire;
 import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.compat.KamiCompatHandler;
-import mod.emt.kami.items.misc.ItemElementalFireBottle;
 import mod.emt.kami.registry.ElementalFireRegistry;
 import mod.emt.kami.registry.ModBlocksKAMI;
 import mod.emt.kami.registry.ModItemsKAMI;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -82,7 +82,7 @@ public class ClientProxy extends CommonProxy {
         itemColors.registerItemColorHandler(itemEssentiaColourHandler, ModItemsKAMI.ELEMENTAL_FIRE_BOTTLE);
         KamiCompatHandler.initClient();
         // Fire Blocks
-        blockColors.registerBlockColorHandler(elementalFireColorHandler, ModBlocksKAMI.IGNIS_FIRE);
+        blockColors.registerBlockColorHandler(elementalFireColorHandler, ModBlocksKAMI.ELEMENTAL_FIRES.toArray(new Block[0]));
     }
 
     @Override
