@@ -1,0 +1,17 @@
+{
+  "package": "mod.emt.kami.mixins" ,
+  "required": true ,
+  "refmap": "mixins.expandedevents.refmap.json" ,
+  "target": "@env(DEFAULT)" ,
+  "minVersion": "0.8.5" ,
+  "mixinextras": {
+    "minVersion": "0.5.0-beta.5"
+  } ,
+  "compatibilityLevel": "JAVA_8" ,
+  "mixins": [
+    "BlockFallingMixin" ,
+    "WorldMixin"
+  ] ,
+  "server": [] ,
+  "client": []
+}

@@ -2,15 +2,15 @@ package mod.emt.kami.blocks.fire;
 
 import mod.emt.kami.Kami;
 import net.minecraft.block.BlockFire;
+import net.minecraft.block.BlockTNT;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -28,7 +28,7 @@ public abstract class BlockElementalFire extends BlockFire {
     public BlockElementalFire(String name) {
         this.setRegistryName(Kami.MOD_ID, name);
         this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
-        this.setTickRandomly(true);
+        this.setLightLevel(1.0F);
     }
 
     public void addTransformation(IBlockState input, IBlockState output) {
@@ -54,30 +54,193 @@ public abstract class BlockElementalFire extends BlockFire {
     }
 
     @Override
+    public boolean canCatchFire(IBlockAccess world, @NotNull BlockPos pos, @NotNull EnumFacing face) {
+        return isTransmutationTarget(world.getBlockState(pos));
+    }
+
+    @Override
     public void updateTick(World world, @NotNull BlockPos pos, @NotNull IBlockState state, @NotNull Random rand) {
         if (world.isRemote || !world.getGameRules().getBoolean("doFireTick")) {
             return;
         }
 
-        if (!world.isAreaLoaded(pos, 2)) return; // Forge: prevent loading unloaded chunks when spreading fire
+        if (!world.isAreaLoaded(pos, 2)) {
+            return;
+        }
+
         if (!isNeighborTarget(world, pos)) {
             world.setBlockToAir(pos);
             return;
         }
 
+        if (!this.canPlaceBlockAt(world, pos)) {
+            world.setBlockToAir(pos);
+            return;
+        }
+
+        boolean fireSource = world.getBlockState(pos.down()).getBlock().isFireSource(world, pos.down(), EnumFacing.UP);
+        int age = state.getValue(AGE);
+
+        if (!fireSource && world.isRaining() && this.canDie(world, pos) && rand.nextFloat() < 0.2F + age * 0.03F) {
+            world.setBlockToAir(pos);
+            return;
+        }
+
+        if (age < 15) {
+            state = state.withProperty(AGE, age + rand.nextInt(3) / 2);
+            world.setBlockState(pos, state, 4);
+        }
+
+        world.scheduleUpdate(pos, this, tickRate(world) + rand.nextInt(10));
+
         if (rand.nextInt(20) == 0) {
             for (EnumFacing facing : EnumFacing.values()) {
                 BlockPos targetPos = pos.offset(facing);
-                IBlockState targetState = world.getBlockState(targetPos);
-                IBlockState result = transformations.get(targetState);
-
-                if (result != null && world.isBlockLoaded(targetPos)) {
-                    world.setBlockState(targetPos, result, 3);
-                }
+                transmuteOrDestroy(world, targetPos, rand);
             }
         }
 
-        world.scheduleUpdate(pos, this, tickRate(world) + rand.nextInt(3));
+        if (!fireSource) {
+            if (!canNeighborCatchFire(world, pos)) {
+                if (!world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP) || age > 3) {
+                    world.setBlockToAir(pos);
+                }
+
+                return;
+            }
+
+            if (!canCatchFire(world, pos.down(), EnumFacing.UP) && age == 15 && rand.nextInt(4) == 0) {
+                world.setBlockToAir(pos);
+                return;
+            }
+        }
+
+        boolean highHumidity = world.isBlockinHighHumidity(pos);
+        int humidityModifier = highHumidity ? -50 : 0;
+
+        for (EnumFacing facing : EnumFacing.values()) {
+            int strength = facing.getAxis() == EnumFacing.Axis.Y ? 250 : 300;
+            tryCatchFire(world, pos.offset(facing), strength + humidityModifier, rand, age, facing.getOpposite());
+        }
+
+        for (int x = -1; x <= 1; x++) {
+            for (int z = -1; z <= 1; z++) {
+                for (int y = -1; y <= 4; y++) {
+                    if (x == 0 && y == 0 && z == 0) {
+                        continue;
+                    }
+
+                    int difficulty = 100;
+                    if (y > 1) {
+                        difficulty += (y - 1) * 100;
+                    }
+
+                    BlockPos targetPos = pos.add(x, y, z);
+                    int encouragement = getNeighborEncouragement(world, targetPos);
+
+                    if (encouragement <= 0) {
+                        continue;
+                    }
+
+                    int chance = (encouragement + 70) / (age + 30);
+                    chance += 70;
+
+                    if (highHumidity) {
+                        chance /= 2;
+                    }
+
+                    if (chance > 0 && rand.nextInt(difficulty) <= chance && (!world.isRaining() || !this.canDie(world, targetPos))) {
+                        int newAge = Math.min(15, age + rand.nextInt(5) / 4);
+                        setBlockWithTransmutationTarget(world, targetPos, newAge, rand);
+                    }
+                }
+            }
+        }
+    }
+
+    public int getDecayChance() {
+        return 1;
+    }
+
+    private void transmuteOrDestroy(World world, BlockPos pos, Random rand) {
+        IBlockState result = transformations.get(world.getBlockState(pos));
+
+        if (result == null) {
+            return;
+        }
+
+        int decayChance = Math.max(1, getDecayChance());
+        if (rand.nextInt(decayChance) == 0) {
+            world.setBlockState(pos, result, 3);
+        } else {
+            world.setBlockToAir(pos);
+        }
+    }
+
+    private void setBlockWithTransmutationTarget(World world, BlockPos pos, int age, Random rand) {
+        IBlockState state = world.getBlockState(pos);
+
+        if (isTransmutationTarget(state)) {
+            transmuteOrDestroy(world, pos, rand);
+        } else if (world.isAirBlock(pos) && isNeighborTarget(world, pos)) {
+            world.setBlockState(pos, this.getDefaultState().withProperty(AGE, age), 3);
+        }
+    }
+
+    private int getBlockFlammability(IBlockAccess world, BlockPos pos) {
+        return isTransmutationTarget(world.getBlockState(pos)) ? 100 : 0;
+    }
+
+    private int getBlockFireSpreadSpeed(IBlockAccess world, BlockPos pos) {
+        return isTransmutationTarget(world.getBlockState(pos)) ? 100 : 0;
+    }
+
+    private void tryCatchFire(World world, BlockPos pos, int chance, Random rand, int age, EnumFacing face) {
+        int flammability = getBlockFlammability(world, pos);
+
+        if (rand.nextInt(chance) >= flammability) {
+            return;
+        }
+
+        IBlockState original = world.getBlockState(pos);
+        boolean tnt = original.getBlock() == Blocks.TNT;
+
+        if (isTransmutationTarget(original)) {
+            transmuteOrDestroy(world, pos, rand);
+        } else if (rand.nextInt(age + 10) < 5 && !world.isRainingAt(pos)) {
+            int newAge = Math.min(15, age + rand.nextInt(5) / 4);
+            setBlockWithTransmutationTarget(world, pos, newAge, rand);
+        } else {
+            world.setBlockToAir(pos);
+        }
+
+        if (tnt) {
+            Blocks.TNT.onPlayerDestroy(world, pos, original.withProperty(BlockTNT.EXPLODE, true));
+        }
+    }
+
+    private boolean canNeighborCatchFire(World world, BlockPos pos) {
+        for (EnumFacing facing : EnumFacing.values()) {
+            if (canCatchFire(world, pos.offset(facing), facing.getOpposite())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private int getNeighborEncouragement(World world, BlockPos pos) {
+        if (!world.isAirBlock(pos)) {
+            return 0;
+        }
+
+        int encouragement = 0;
+        for (EnumFacing facing : EnumFacing.values()) {
+            BlockPos neighborPos = pos.offset(facing);
+            encouragement = Math.max(encouragement, getBlockFireSpreadSpeed(world, neighborPos));
+        }
+
+        return encouragement;
     }
 
     @Override
@@ -88,20 +251,12 @@ public abstract class BlockElementalFire extends BlockFire {
     @Override
     public void onBlockAdded(World world, @NotNull BlockPos pos, @NotNull IBlockState state) {
         if (!world.isRemote) {
-            world.scheduleUpdate(pos, this, tickRate(world));
+            if (!canPlaceBlockAt(world, pos)) {
+                world.setBlockToAir(pos);
+                return;
+            }
+            world.scheduleUpdate(pos, this, tickRate(world) + world.rand.nextInt(10));
         }
-    }
-
-    @Override
-    public void onEntityCollision(@NotNull World world, @NotNull BlockPos pos, @NotNull IBlockState state, Entity entityIn) {
-        if (entityIn.isImmuneToFire()) return;
-        if (entityIn instanceof EntityPlayer) {
-            if (((EntityPlayer) entityIn).capabilities.isCreativeMode) return;
-        }
-
-        entityIn.attackEntityFrom(DamageSource.IN_FIRE, 1.0F);
-        if (!world.isRemote) entityIn.setFire(8);
-        super.onEntityCollision(world, pos, state, entityIn);
     }
 
     @Override
