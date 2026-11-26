@@ -12,6 +12,7 @@ import mod.emt.kami.items.base.ItemBaseEnchanted;
 import mod.emt.kami.items.baubles.ItemIchorFocusPouch;
 import mod.emt.kami.items.misc.ItemCelestialPearl;
 import mod.emt.kami.items.misc.ItemCelestialTranslocator;
+import mod.emt.kami.items.misc.ItemElementalFireBottle;
 import mod.emt.kami.items.tools.*;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -38,6 +39,7 @@ public class ModItemsKAMI {
     public static Item BLESSED_SILVERWOOD_ROD;
     public static Item CELESTIAL_PEARL;
     public static Item CELESTIAL_TRANSLOCATOR;
+    public static Item ELEMENTAL_FIRE_BOTTLE;
     public static Item FOCUS_POUCH;
     public static Item ICHOR;
     public static Item ICHORIUM_AXE;
@@ -89,6 +91,7 @@ public class ModItemsKAMI {
         MOD_ITEMS.add(AWAKENED_ICHORIUM_SICKLE = new ItemAwakenedSickle());
         MOD_ITEMS.add(AWAKENED_ICHORWEAVE_SHIELD = new ItemAwakenedShield());
         MOD_ITEMS.add(ICHORIUM_CASTER = new ItemIchoriumCaster());
+        MOD_ITEMS.add(ELEMENTAL_FIRE_BOTTLE = new ItemElementalFireBottle());
         MOD_ITEMS.add(FIRE_TESTER = new ItemFireTest());
     }
 }

@@ -3,10 +3,12 @@ package mod.emt.kami.proxy;
 import com.invadermonky.thaumicapi.api.item.IDyeableItem;
 import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.compat.KamiCompatHandler;
+import mod.emt.kami.items.misc.ItemElementalFireBottle;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.casters.ICaster;
 import thaumcraft.common.items.casters.ItemFocus;
 
@@ -39,6 +41,12 @@ public class ClientProxy extends CommonProxy {
                 return -1;
             }
         };
+        IItemColor itemEssentiaColourHandler = (stack, tintIndex) -> {
+            for(Aspect fireType : ItemElementalFireBottle.getElementalFireBottleTypes()) {
+                return fireType.getColor();
+            }
+            return 0xffffff;
+        };
 
         //Dyeables
         itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.AWAKENED_ICHORWEAVE_BOOTS);
@@ -51,7 +59,8 @@ public class ClientProxy extends CommonProxy {
         itemColors.registerItemColorHandler(dyeableColorHandler, ModItemsKAMI.ICHORWEAVE_ROBE);
         //Casters
         itemColors.registerItemColorHandler(gauntletColorHandler, ModItemsKAMI.ICHORIUM_CASTER);
-
+        //Colored Items
+        itemColors.registerItemColorHandler(itemEssentiaColourHandler, ModItemsKAMI.ELEMENTAL_FIRE_BOTTLE);
         KamiCompatHandler.initClient();
     }
 

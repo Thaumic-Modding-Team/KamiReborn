@@ -1,10 +1,11 @@
 package mod.emt.kami.blocks.fire;
 
 import net.minecraft.init.Blocks;
+import thaumcraft.api.aspects.Aspect;
 
 public class BlockIgnisFire extends BlockElementalFire {
     public BlockIgnisFire() {
-        super("ignis_fire");
+        super("ignis_fire", Aspect.FIRE);
         addTransformation(Blocks.GRASS.getDefaultState(), Blocks.NETHERRACK.getDefaultState());
         addTransformation(Blocks.DIRT.getDefaultState(), Blocks.NETHERRACK.getDefaultState());
         addTransformation(Blocks.SAND.getDefaultState(), Blocks.SOUL_SAND.getDefaultState());

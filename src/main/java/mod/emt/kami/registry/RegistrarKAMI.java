@@ -4,8 +4,10 @@ import mod.emt.kami.Kami;
 import mod.emt.kami.blocks.fire.BlockElementalFire;
 import mod.emt.kami.client.gui.GuiCelestialTeleport;
 import mod.emt.kami.client.render.KamiItemTEISR;
+import mod.emt.kami.client.render.RenderElementalFireBottle;
 import mod.emt.kami.client.render.RenderThrownAxe;
 import mod.emt.kami.client.render.TileCelestialGatewayTESR;
+import mod.emt.kami.entities.EntityElementalFireBottle;
 import mod.emt.kami.entities.EntityThrownAxe;
 import mod.emt.kami.items.base.ItemBlockKami;
 import mod.emt.kami.tiles.TileCelestialGateway;
@@ -70,6 +72,7 @@ public class RegistrarKAMI {
         });
 
         //Entities
+        RenderingRegistry.registerEntityRenderingHandler(EntityElementalFireBottle.class, RenderElementalFireBottle::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityThrownAxe.class, new RenderThrownAxe.Factory());
         //Items
         ModItemsKAMI.AWAKENED_ICHORWEAVE_SHIELD.setTileEntityItemStackRenderer(new KamiItemTEISR());
@@ -109,5 +112,6 @@ public class RegistrarKAMI {
     @SubscribeEvent
     public static void registerEntities(@Nonnull final RegistryEvent.Register<EntityEntry> event) {
         registerEntity("thrown_awakened_ichorium_axe", EntityThrownAxe.class, 64, true);
+        registerEntity("thrown_elemental_fire_bottle", EntityElementalFireBottle.class, 64, true);
     }
 }

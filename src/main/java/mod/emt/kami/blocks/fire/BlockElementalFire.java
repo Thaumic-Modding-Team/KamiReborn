@@ -3,6 +3,7 @@ package mod.emt.kami.blocks.fire;
 import mod.emt.kami.Kami;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.BlockTNT;
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -15,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.api.aspects.Aspect;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,12 +25,25 @@ import java.util.Random;
 
 // TODO: It's better to use ore dictionary and config list
 public abstract class BlockElementalFire extends BlockFire {
-    private final Map<IBlockState, IBlockState> transformations = new HashMap<>();
+    private final static Map<Aspect, IBlockState> FIRE_STATES = new HashMap<>();
 
-    public BlockElementalFire(String name) {
+    private final Map<IBlockState, IBlockState> transformations = new HashMap<>();
+    private final Aspect fireAspect;
+
+    public BlockElementalFire(String name, Aspect fireAspect) {
         this.setRegistryName(Kami.MOD_ID, name);
         this.setTranslationKey(Objects.requireNonNull(this.getRegistryName()).toString());
         this.setLightLevel(1.0F);
+        this.fireAspect = fireAspect;
+        setElementalFirePlacementState(fireAspect, this.getDefaultState());
+    }
+
+    public static IBlockState getElementalFirePlacementState(Aspect aspect) {
+        return FIRE_STATES.getOrDefault(aspect, Blocks.AIR.getDefaultState());
+    }
+
+    public static void setElementalFirePlacementState(Aspect aspect, IBlockState placementState) {
+        FIRE_STATES.put(aspect, placementState);
     }
 
     public void addTransformation(IBlockState input, IBlockState output) {
@@ -55,6 +70,7 @@ public abstract class BlockElementalFire extends BlockFire {
 
     @Override
     public boolean canCatchFire(IBlockAccess world, @NotNull BlockPos pos, @NotNull EnumFacing face) {
+        //TODO: Add a config option to disable fire spread
         return isTransmutationTarget(world.getBlockState(pos));
     }
 
@@ -257,6 +273,12 @@ public abstract class BlockElementalFire extends BlockFire {
             }
             world.scheduleUpdate(pos, this, tickRate(world) + world.rand.nextInt(10));
         }
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public @NotNull EnumPushReaction getPushReaction(@NotNull IBlockState state) {
+        return EnumPushReaction.DESTROY;
     }
 
     @Override
