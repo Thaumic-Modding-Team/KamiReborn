@@ -4,6 +4,7 @@ import com.invadermonky.thaumicapi.api.item.IDyeableItem;
 import mod.emt.kami.client.KeyBindingsKami;
 import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.items.misc.ItemElementalFireBottle;
+import mod.emt.kami.registry.ElementalFireRegistry;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -43,7 +44,7 @@ public class ClientProxy extends CommonProxy {
         };
         IItemColor itemEssentiaColourHandler = (stack, tintIndex) -> {
             if(tintIndex == 0) {
-                Aspect aspect = ItemElementalFireBottle.getAspectFromBottle(stack);
+                Aspect aspect = ElementalFireRegistry.getAspectFromBottle(stack);
                 if(aspect != null) {
                     return aspect.getColor();
                 }

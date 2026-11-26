@@ -3,6 +3,7 @@ package mod.emt.kami.items.misc;
 import mod.emt.kami.blocks.fire.BlockElementalFire;
 import mod.emt.kami.entities.EntityElementalFireBottle;
 import mod.emt.kami.items.base.ItemBase;
+import mod.emt.kami.registry.ElementalFireRegistry;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.state.IBlockState;
@@ -32,53 +33,33 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ItemElementalFireBottle extends ItemBase {
-    public static final String TAG_ASPECT = "fire_aspect";
-    private static final Set<Aspect> FIRE_TYPES = new LinkedHashSet<>();
-
     public ItemElementalFireBottle() {
         super("elemental_fire_bottle");
         this.setRarity(EnumRarity.COMMON);
         this.setHasSubtypes(true);
-        addElementalFireBottleType(Aspect.AIR);
-        addElementalFireBottleType(Aspect.EARTH);
-        addElementalFireBottleType(Aspect.FIRE);
-        addElementalFireBottleType(Aspect.WATER);
-        addElementalFireBottleType(Aspect.ORDER);
-        addElementalFireBottleType(Aspect.ENTROPY);
+        //TODO: Bind this to the fire block aspect type registry
+        ElementalFireRegistry.addElementalFireType(Aspect.AIR);
+        ElementalFireRegistry.addElementalFireType(Aspect.EARTH);
+        ElementalFireRegistry.addElementalFireType(Aspect.FIRE);
+        ElementalFireRegistry.addElementalFireType(Aspect.WATER);
+        ElementalFireRegistry.addElementalFireType(Aspect.ORDER);
+        ElementalFireRegistry.addElementalFireType(Aspect.ENTROPY);
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, new BottleDispenserLogic());
-    }
-
-    public static void addElementalFireBottleType(Aspect aspect) {
-        FIRE_TYPES.add(aspect);
-    }
-
-    public static Set<Aspect> getElementalFireBottleTypes() {
-        return FIRE_TYPES;
-    }
-
-    public static ItemStack getElementalFireBottle(Aspect aspect) {
-        ItemStack bottle = new ItemStack(ModItemsKAMI.ELEMENTAL_FIRE_BOTTLE);
-        bottle.setTagInfo(TAG_ASPECT, new NBTTagString(aspect.getTag()));
-        return bottle;
-    }
-
-    @Nullable
-    public static Aspect getAspectFromBottle(ItemStack stack) {
-        return !stack.isEmpty() && stack.getTagCompound() != null ? Aspect.getAspect(stack.getTagCompound().getString(TAG_ASPECT)) : null;
     }
 
     @Override
     public void getSubItems(@NotNull CreativeTabs tab, @NotNull NonNullList<ItemStack> items) {
         if(this.isInCreativeTab(tab)) {
-            for(Aspect aspect : FIRE_TYPES) {
-                items.add(getElementalFireBottle(aspect));
+            for(Aspect aspect : ElementalFireRegistry.getElementalFireTypes()) {
+                items.add(ElementalFireRegistry.getElementalFireBottle(aspect));
             }
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public @NotNull String getItemStackDisplayName(@NotNull ItemStack stack) {
-        Aspect aspect = getAspectFromBottle(stack);
+        Aspect aspect = ElementalFireRegistry.getAspectFromBottle(stack);
         if(aspect != null) {
             return I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + "_" + aspect.getTag() + ".name").trim();
         } else {
@@ -90,7 +71,7 @@ public class ItemElementalFireBottle extends ItemBase {
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
         ItemStack heldStack = playerIn.getHeldItem(handIn);
-        Aspect aspect = getAspectFromBottle(heldStack);
+        Aspect aspect = ElementalFireRegistry.getAspectFromBottle(heldStack);
 
         if(aspect == null) {
             return new ActionResult<>(EnumActionResult.FAIL, heldStack);
@@ -113,7 +94,7 @@ public class ItemElementalFireBottle extends ItemBase {
     @Override
     public @NotNull EnumActionResult onItemUse(@NotNull EntityPlayer player, @NotNull World worldIn, @NotNull BlockPos pos, @NotNull EnumHand hand, @NotNull EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack heldStack = player.getHeldItem(hand);
-        Aspect aspect = getAspectFromBottle(heldStack);
+        Aspect aspect = ElementalFireRegistry.getAspectFromBottle(heldStack);
         if(aspect != null && player.isSneaking()) {
             IBlockState fireState = BlockElementalFire.getElementalFirePlacementState(aspect);
             if(fireState.getBlock() != Blocks.AIR) {
@@ -136,7 +117,7 @@ public class ItemElementalFireBottle extends ItemBase {
                 @Override
                 protected @NotNull IProjectile getProjectileEntity(@NotNull World worldIn, @NotNull IPosition position, @NotNull ItemStack stackIn) {
                     ItemStack thrown = ItemHandlerHelper.copyStackWithSize(stackIn, 1);
-                    Aspect aspect = getAspectFromBottle(thrown);
+                    Aspect aspect = ElementalFireRegistry.getAspectFromBottle(thrown);
                     return new EntityElementalFireBottle(worldIn, position.getX(), position.getY(), position.getZ(), thrown, aspect != null ? aspect : Aspect.AIR);
                 }
 

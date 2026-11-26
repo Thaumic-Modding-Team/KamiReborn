@@ -100,6 +100,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
         int duration = stack.getMaxItemUseDuration() - timeLeft;
         if(entityLiving instanceof EntityPlayer && duration > 10) {
             EntityPlayer player = (EntityPlayer) entityLiving;
+            EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
             int radius = Math.min(MAX_AREA, duration / 10);
             EnumHarvestMode mode = EnumHarvestMode.getMode(stack);
             AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 3, radius);
@@ -117,7 +118,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
                 case CANOPY:
                     this.attemptDestroyCanopy(worldIn, player, radius);
                 case SOW:
-                    this.attemptTillAndPlant(worldIn, player, area, player.getHeldItemOffhand());
+                    this.attemptTillAndPlant(worldIn, player, area, hand == EnumHand.MAIN_HAND ? player.getHeldItemOffhand() : player.getHeldItemMainhand());
                     break;
                 case REAP:
                     this.attemptHarvest(worldIn, player, area);
@@ -142,6 +143,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     }
 
     public void attemptTillAndPlant(World world, EntityPlayer player, AxisAlignedBB area, ItemStack offhandStack) {
+        //TODO: Till all plants in area and plant offhand seeds into the tilled soil
         for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX - 1, area.maxY, area.maxZ - 1))) {
             boolean planted = this.attemptPlant(world, pos, player, offhandStack);
             if(!planted) {
