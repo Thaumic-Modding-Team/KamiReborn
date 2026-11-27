@@ -50,7 +50,6 @@ public class ElementalFireRegistry {
         addElementalFireType(Aspect.FIRE);
         addElementalFireType(Aspect.WATER);
         addElementalFireType(Aspect.ORDER);
-        addElementalFireType(Aspect.ORDER);
         addElementalFireType(Aspect.ENTROPY);
     }
 }
