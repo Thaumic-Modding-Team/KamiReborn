@@ -28,13 +28,13 @@ import thaumcraft.api.casters.FocusEffect;
 import thaumcraft.api.casters.ICaster;
 import thaumcraft.api.casters.NodeSetting;
 import thaumcraft.api.casters.Trajectory;
+import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.client.fx.ParticleEngine;
 import thaumcraft.client.fx.particles.FXGeneric;
 import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.fx.PacketFXFocusPartImpact;
 
-// TODO: Placing and storing blocks should emit smoke puff particles
 public class FocusEffectDislocation extends FocusEffect {
     private static final String TAG_STORAGE = "FociDislocation";
     private static final String TAG_TYPE = "FociDislocationType";
@@ -228,6 +228,7 @@ public class FocusEffectDislocation extends FocusEffect {
                 new NetworkRegistry.TargetPoint(world.provider.getDimension(), target.hitVec.x, target.hitVec.y, target.hitVec.z, 64.0D));
         world.playSound(null, target.hitVec.x, target.hitVec.y, target.hitVec.z, SoundsTC.zap, SoundCategory.PLAYERS, 1.0F,
                 0.7F + (float) (world.rand.nextGaussian() * 0.05F));
+        FXDispatcher.INSTANCE.drawBamf(target.hitVec.x, target.hitVec.y, target.hitVec.z, 15121988, true, true, null);
     }
 
     @Override
