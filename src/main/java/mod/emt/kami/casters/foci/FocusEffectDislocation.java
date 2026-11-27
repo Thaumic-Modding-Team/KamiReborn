@@ -61,10 +61,9 @@ public class FocusEffectDislocation extends FocusEffect {
         return 20;
     }
 
-    // TODO: Research
     @Override
     public String getResearch() {
-        return "FOCUSHEAL";
+        return "KAMI_FOCUS_DISLOCATION";
     }
 
     @Override

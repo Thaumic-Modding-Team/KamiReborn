@@ -191,6 +191,12 @@ kami.research.celestial_translocator.stage.1=While the celestial gateway is cert
 kami.research.celestial_translocator.stage.2=I have been calling this new device the Celestial Translocator.<BR>Not only does it prevent the consumption of celestial pearls when used, it also completely shields me from psychological harm when travelling through the void.<BR>Sneaking and interacting with the tool opens its inventory, allowing it to store up to 10 different linked celestial pearls.<BR>Interacting with the translocator while not sneaking will open the celestial gateway menu, allowing me to select my teleportation destination.
 kami.research.celestial_translocator.addenda.1=It appears that the only celestial pearls that can be used by the translocator are those bound to celestial gateways.<BR>I suppose I should just be happy that I didn't end up like my first live test subject...
 
+# -- Focus Effect: Dislocation
+kami.research.focus_dislocation.title=Focus Effect: Dislocation
+kami.research.focus_dislocation.title.subtitle=From there to here
+kami.research.focus_dislocation.stage.1=Even with Silk Touch active on one of my tools, it is still impossible to obtain a certain amount of blocks such as monster spawners. There must be a way to transfer such a block without completely destroying them...
+kami.research.focus_dislocation.stage.2=Behold, Dislocation! This focus effect will cause the affected block or entity (depending on the setting) to store itself into the foci, I can then cast again towards any location to get it out of the foci. This will allow me to transfer blocks and entities that are otherwise impossible to move normally.<BR>While Dislocation is very powerful, it is unable to affect bosses, other fellow colleagues of mine, or myself.
+
 # -- ICHOR
 kami.research.ichor.title=Ichor
 kami.research.ichor.title.subtitle=Blood of the Gods

@@ -352,6 +352,24 @@
       ]
     },
     {
+      "key": "KAMI_FOCUS_DISLOCATION",
+      "name": "kami.research.focus_dislocation.title",
+      "category": "ZENITH",
+      "icons": ["focus:focus.kami.dislocation" ],
+      "parents": ["ZENITH_BASE", "~FOCUSRIFT"],
+      "meta": ["HIDDEN"],
+      "location": [2, 1],
+      "stages": [
+        {
+          "text": "kami.research.focus_dislocation.stage.1",
+          "required_knowledge": ["OBSERVATION;AUROMANCY;2", "THEORY;AUROMANCY;2"]
+        },
+        {
+          "text": "kami.research.focus_dislocation.stage.2"
+        }
+      ]
+    },
+    {
       "key": "KAMI_ICHOR",
       "name": "kami.research.ichor.title",
       "category": "ZENITH",
