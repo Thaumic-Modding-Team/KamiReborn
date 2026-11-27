@@ -70,7 +70,14 @@ public class ConfigHandlerKami {
                 "  transformedMeta - [Optional] The transformed block metadata",
                 "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
         })
-        public String[] aerTransformations = new String[] {};
+        public String[] aerTransformations = new String[] {
+                "dirt;minecraft:sand;0",
+                "grass;minecraft:sand;0",
+                "logWood;minecraft:sand;0",
+                "treeLeaves;minecraft:sandstone;0",
+                "minecraft:ice;minecraft:glass;0",
+                "minecraft:packed_ice;minecraft:glass;0"
+        };
 
         @Config.RequiresMcRestart
         @Config.Name("Aqua Transformations")
@@ -89,7 +96,12 @@ public class ConfigHandlerKami {
                 "  transformedMeta - [Optional] The transformed block metadata",
                 "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
         })
-        public String[] aquaTransformations = new String[] {};
+        public String[] aquaTransformations = new String[] {
+                "netherrack;minecraft:snow;0",
+                "sand;minecraft:packed_ice;0",
+                "minecraft:lava;minecraft:obsidian;0",
+                "minecraft:soul_sand;minecraft:packed_ice;0"
+        };
 
         @Config.RequiresMcRestart
         @Config.Name("Ignis Transformations")
@@ -109,8 +121,13 @@ public class ConfigHandlerKami {
                 "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
         })
         public String[] ignisTransformations = new String[] {
+                "cobblestone;minecraft:netherrack;0",
+                "dirt;minecraft:netherrack;0",
                 "grass;minecraft:netherrack;0",
-                "minecraft:stone;minecraft:netherrack;0"
+                "sand;minecraft:soul_sand;0",
+                "stone;minecraft:netherrack;0",
+                "minecraft:clay;minecraft:glowstone;0",
+                "minecraft:water;minecraft:lava;0"
         };
 
         @Config.RequiresMcRestart
@@ -130,7 +147,14 @@ public class ConfigHandlerKami {
                 "  transformedMeta - [Optional] The transformed block metadata",
                 "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
         })
-        public String[] ordoTransformations = new String[] {};
+        public String[] ordoTransformations = new String[] {
+                "blockGlass;minecraft:glass;100",
+                "cobblestone;minecraft:cobblestone;100",
+                "gravel;minecraft:gravel;100",
+                "paneGlass;minecraft:glass_pane;100",
+                "sand;minecraft:sand;100",
+                "stone;minecraft:stone;100"
+        };
 
         @Config.RequiresMcRestart
         @Config.Name("Perditio Transformations")
@@ -149,7 +173,13 @@ public class ConfigHandlerKami {
                 "  transformedMeta - [Optional] The transformed block metadata",
                 "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
         })
-        public String[] perditioTransformations = new String[] {};
+        public String[] perditioTransformations = new String[] {
+                "kami:elemental_fire_aer;minecraft:fire;100",
+                "kami:elemental_fire_aer;minecraft:fire;100",
+                "kami:elemental_fire_ignis;minecraft:fire;100",
+                "kami:elemental_fire_ordo;minecraft:fire;100",
+                "kami:elemental_fire_terra;minecraft:fire;100"
+        };
 
         @Config.RequiresMcRestart
         @Config.Name("Terra Transformations")
@@ -168,7 +198,14 @@ public class ConfigHandlerKami {
                 "  transformedMeta - [Optional] The transformed block metadata",
                 "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
         })
-        public String[] terraTransformations = new String[] {};
+        public String[] terraTransformations = new String[] {
+                "cobblestone;minecraft:dirt;0",
+                "gravel;minecraft:clay;0",
+                "sand;minecraft:dirt;0",
+                "stone;minecraft:dirt;0",
+                "minecraft:cactus;minecraft:log;0",
+                "minecraft:snow_layer;minecraft:tallgrass;0"
+        };
     }
 
     public static class EnchantmentsCategory {
