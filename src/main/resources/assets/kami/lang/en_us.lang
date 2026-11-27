@@ -191,7 +191,7 @@ kami.research.celestial_translocator.stage.1=While the celestial gateway is cert
 kami.research.celestial_translocator.stage.2=I have been calling this new device the Celestial Translocator.<BR>Not only does it prevent the consumption of celestial pearls when used, it also completely shields me from psychological harm when travelling through the void.<BR>Sneaking and interacting with the tool opens its inventory, allowing it to store up to 10 different linked celestial pearls.<BR>Interacting with the translocator while not sneaking will open the celestial gateway menu, allowing me to select my teleportation destination.
 kami.research.celestial_translocator.addenda.1=It appears that the only celestial pearls that can be used by the translocator are those bound to celestial gateways.<BR>I suppose I should just be happy that I didn't end up like my first live test subject...
 
-# -- Focus Effect: Dislocation
+# -- FOCUS EFFECT: DISLOCATION
 kami.research.focus_dislocation.title=Focus Effect: Dislocation
 kami.research.focus_dislocation.title.subtitle=From there to here
 kami.research.focus_dislocation.stage.1=Even with Silk Touch active on one of my tools, it is still impossible to obtain a certain amount of blocks such as monster spawners. There must be a way to transfer such a block without completely destroying them...
@@ -233,6 +233,12 @@ kami.research.ichorweave_fabric.title=Ichorweave Fabric
 kami.research.ichorweave_fabric.title.subtitle=Hope you brought a strong needle
 kami.research.ichorweave_fabric.stage.1=Ichor shows a strong reaction towards cloth. If done correctly, I should be able to create the perfect fabric.
 kami.research.ichorweave_fabric.stage.2=I now am able to upgrade basic magical fabric into a special ichorweave fabric. It is immune to tearing and it is oddly flexible, imagine the possibilities!
+
+# -- INFUSED ELEMENTAL FIRE
+kami.research.infused_elemental_fire.title=Infused Elemental Fire
+kami.research.infused_elemental_fire.title.subtitle="This is fine."
+kami.research.infused_elemental_fire.stage.1=The power of absolute boredom has given me an insane idea. Why not use what I learned from previous research like Dislocation and ichor to make something... destructive...
+kami.research.infused_elemental_fire.stage.2=What the hell did I just created? I'm not even sure how I was able to get this unstable fiery substance stored perfectly into a glass bottle.<BR>Just by holding it, the bottle shakes quite violently like it's waiting for me to break it and unleash what I created within.<BR>I MUST NOTE TO MYSELF RIGHT NOW! THESE ELEMENTAL FIRES CAN SPREAD RAPIDLY AND EVEN DESTROY MY WORLD, I MUST THEREFORE BE CAUTIOUS!<PAGE>§lAer§r<DIV>Fire infused by aer will transform most Overworld terrain blocks into desert-based blocks.<PAGE>§lAqua§r<DIV>When unleashing this in the Nether, the fire will transform most of the blocks there into ice-based blocks. I can create a winter wonderland this way!<PAGE>§lIgnis§r<DIV>The total opposite of aqua, fire infused with ignis will transform most Overworld terrain blocks into Nether blocks.<PAGE>§lOrdo§r<DIV>Does it put blocks in order? Definitely not, fire infused with ordo will actually completely destroy most Overworld terrain blocks. I really have to be careful with this one...<PAGE>§lPerditio§r<DIV>Despite what perditio implies, fire infused by it will rapidly put out other elemental fire. I can use this if the fire has gotten too out of control and I need a quick way to dispatch them.<PAGE>§lTerra§r<DIV>As terra implies, fire infused with it will transform many of the Overworld's terrain blocks into dirt and other earthy blocks.
 
 # -- INFUSION ENCHANTMENT: ETERNAL
 kami.research.eternal_infusion.title=Infusion Enchantment: Eternal

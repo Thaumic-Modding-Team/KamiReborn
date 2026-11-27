@@ -1,0 +1,25 @@
+{
+  "entries": [
+    {
+      "key": "KAMI_INFUSED_ELEMENTAL_FIRE",
+      "name": "kami.research.infused_elemental_fire.title",
+      "category": "ZENITH",
+      "icons": [
+        "kami:elemental_fire_bottle"
+      ],
+      "parents": ["KAMI_FOCUS_DISLOCATION", "~KAMI_ICHOR", "~ALUMENTUM","~LIQUIDDEATH", "~BOTTLETAINT"],
+      "meta": ["HIDDEN"],
+      "location": [2, 3],
+      "stages": [
+        {
+          "text": "kami.research.infused_elemental_fire.stage.1",
+          "required_knowledge": ["THEORY;ALCHEMY;3", "THEORY;ELDRITCH;2"]
+        },
+        {
+          "text": "kami.research.infused_elemental_fire.stage.2",
+          "warp": 3
+        }
+      ]
+    }
+  ]
+}

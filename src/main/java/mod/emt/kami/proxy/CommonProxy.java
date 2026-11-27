@@ -73,5 +73,7 @@ public class CommonProxy {
         if(ConfigHandlerKami.enchantments.eternal) {
             ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/optional/eternal_infusion"));
         }
+        // TODO: Add config
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(Kami.MOD_ID, "research/optional/infused_elemental_fire"));
     }
 }
