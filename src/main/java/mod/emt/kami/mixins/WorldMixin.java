@@ -14,6 +14,14 @@ import javax.annotation.Nullable;
 
 @Mixin(World.class)
 public abstract class WorldMixin {
+    @Inject(method = "destroyBlock", at = @At("HEAD"), cancellable = true)
+    private void destroyBlock(BlockPos pos, boolean dropBlock, CallbackInfoReturnable<Boolean> ci) {
+        World world = (World) (Object) this;
+        if (world.getBlockState(pos).getBlock() instanceof BlockElementalFire) {
+            ci.setReturnValue(world.setBlockToAir(pos));
+        }
+    }
+
     @Inject(method = "extinguishFire", at = @At("HEAD"), cancellable = true)
     public void extinguishFire(@Nullable EntityPlayer player, BlockPos pos, EnumFacing side, CallbackInfoReturnable<Boolean> ci) {
         World fire = (World) (Object) this;
