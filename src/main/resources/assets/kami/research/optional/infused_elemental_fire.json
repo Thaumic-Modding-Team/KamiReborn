@@ -17,6 +17,14 @@
         },
         {
           "text": "kami.research.infused_elemental_fire.stage.2",
+          "recipes": [
+            "kami:elemental_fire_bottle_aer",
+            "kami:elemental_fire_bottle_aqua",
+            "kami:elemental_fire_bottle_ignis",
+            "kami:elemental_fire_bottle_ordo",
+            "kami:elemental_fire_bottle_perditio",
+            "kami:elemental_fire_bottle_terra"
+          ],
           "warp": 3
         }
       ]
