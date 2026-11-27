@@ -2,10 +2,12 @@
 ## 1.1.0
 ### Added
 - Added Celestial Gateway, Celestial Pearls, and Celestial Translocator, an all new teleportation system
-- Added Ichorium Hoe
-- Added Ichorium Shield
+- Added Ichorium Hoe, an unbreakable hoe
+- Added Ichorium Shield, an unbreakable shield
 - Added Ichorium Sickle of the Harvester, an awakened version of the Ichorium Hoe
-- Added Ichorium Shield of the Caster, an awakened version of the Ichorium Shield
+- Added Ichorium Shield of the Caster, an awakened version of the Ichorium Shield that can utilize foci like gauntlets
+- Added Focus Effect: Dislocation, used to transfer blocks and entities from one location to another
+- Added Infused Elemental Fire (all primal aspects), extremely dangerous fire that can terraform and destroy entire worlds if you're not careful
 - Added `ru_ru.lang` courtesy of leskovetz
 ### Changed
 - Awakened tool mode toggle now requires the player to sneak right-click empty air. This fixes incompatibilities with effects like the sounding infusion enchant.

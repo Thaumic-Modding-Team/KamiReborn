@@ -42,11 +42,19 @@ Awakened Ichor equipment is extremely powerful. Awakened tools have various "mod
 - **Ichorium Axe of the Stormbreaker:** Capable of chopping entire trees and be thrown around like a boomerang. Impact modes change the effect when the thrown axe collides with a surface or entity.
 - **Ichorium Pickaxe of the Tunneler:** Fully focused on mining and making tunnels. Hold right-click to dig massive tunnels instantly!
 - **Ichorium Shovel of the Gravedigger:** Digging is not just its speciality, one can bury any nearby mobs with it! Hold right-click to inter all mobs near the player.
+- **Ichorium Sickle of the Harvester:**
 - **Ichorium Sword of the Titanslayer:** Has the ability to attune itself to different creature types. While attuned, the sword bypasses armor and deals significantly more damage.
 - **Ichorweave Hood of the Abyssal Depths:** Grants infinite Water Breathing and Night Vision for swimming underwater.
 - **Ichorweave Robe of the Stratosphere:** Allows infinite flight and provides full immunity to fall damage.
 - **Ichorweave Leggings of the Burning Mantle:** Gives the ability to double jump, provides immunity to fire and lava, and prevents the wearer from being afflicted with poison or wither effects.
 - **Ichorweave Boots of the Biosphere:** Grants increased movement speed, jump height, swim speed and prevents the wearer from being afflicted with Slowness.
+
+## Misc
+While not ichor related, these are still very powerful (or even dangerous)!
+
+- **Celestial Teleporation Network:**
+- **Focus Effect: Dislocation:** Used to transfer blocks and entities from one location to another.
+- **Infused Elemental Fire:** Extremely dangerous fire that can terraform and destroy entire worlds if you're not careful. Comes in all primal aspects!
 
 ## 🔁 Mod Integration
 - **[Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-augmentation)**
