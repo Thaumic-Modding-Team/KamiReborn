@@ -157,31 +157,6 @@ public class ConfigHandlerKami {
         };
 
         @Config.RequiresMcRestart
-        @Config.Name("Perditio Transformations")
-        @Config.Comment({
-                "Perditio Elemental Fire transformation recipes.",
-                "Format:",
-                "targetId:targetMeta;transformedId:transformedMeta;destroyChance",
-                "  targetId - The target block registry id",
-                "  targetMeta - [Optional] The target block metadata",
-                "  transformedId - The transformed block registry id",
-                "  transformedMeta - [Optional] The transformed block metadata",
-                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed",
-                "targetOreDict;transformedId:transformedMeta;destroyChance",
-                "  targetOreDict - The target block ore dictionary",
-                "  transformedId - The transformed block registry id",
-                "  transformedMeta - [Optional] The transformed block metadata",
-                "  destroyChance - The chance (0-100) the block will be destroyed instead of transformed"
-        })
-        public String[] perditioTransformations = new String[] {
-                "kami:elemental_fire_aer;minecraft:fire;100",
-                "kami:elemental_fire_aer;minecraft:fire;100",
-                "kami:elemental_fire_ignis;minecraft:fire;100",
-                "kami:elemental_fire_ordo;minecraft:fire;100",
-                "kami:elemental_fire_terra;minecraft:fire;100"
-        };
-
-        @Config.RequiresMcRestart
         @Config.Name("Terra Transformations")
         @Config.Comment({
                 "Terra Elemental Fire transformation recipes.",
