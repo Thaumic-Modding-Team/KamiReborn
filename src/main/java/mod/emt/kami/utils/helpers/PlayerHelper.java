@@ -13,12 +13,15 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.reflect.Field;
 import java.util.UUID;
 
 public class PlayerHelper {
+    private static Field ticksSinceLastSwingField = null;
 
     public static double getReachDistance(EntityPlayer player) {
         IAttributeInstance instance = player.getEntityAttribute(EntityPlayer.REACH_DISTANCE);
@@ -82,5 +85,14 @@ public class PlayerHelper {
             return true;
         }
         return false;
+    }
+
+    public static void resetLastSwing(EntityPlayer player) {
+        try {
+            if(ticksSinceLastSwingField == null) {
+                ticksSinceLastSwingField = ObfuscationReflectionHelper.findField(EntityLivingBase.class, "field_184617_aD");
+            }
+            ticksSinceLastSwingField.set(player, 100);
+        } catch (Exception ignored) {}
     }
 }

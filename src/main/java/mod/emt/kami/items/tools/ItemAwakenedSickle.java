@@ -278,7 +278,9 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
             int targets = 0;
             AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 3, radius);
             for (EntityLivingBase entity : world.getEntitiesWithinAABB(EntityLivingBase.class, area, entity -> isReapableTarget(player, entity))) {
+                PlayerHelper.resetLastSwing(player);
                 player.attackTargetEntityWithCurrentItem(entity);
+                player.spawnSweepParticles();
                 targets++;
                 PacketHandler.INSTANCE.sendToAllAround(
                         new PacketFXDrawBamf(entity.posX, entity.posY, entity.posZ, 0xFF5555, true, true, player.getHorizontalFacing().getOpposite()),
