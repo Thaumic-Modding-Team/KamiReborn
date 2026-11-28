@@ -38,6 +38,10 @@ public class ConfigHandlerKami {
     }
 
     public static class ElementalFireCategory {
+        @Config.Name("!!Disable Research!!")
+        @Config.Comment("Disables elemental fire research.")
+        public boolean _disableFireResearch = false;
+
         @Config.Name("!!Disable Tooltip!!")
         @Config.Comment("Disables the warning tooltip on bottles of elemental fire.")
         public boolean _disableTooltip = false;
@@ -207,7 +211,7 @@ public class ConfigHandlerKami {
         public boolean overpoweredIchorium = false;
 
         @Config.RequiresMcRestart
-        @Config.Name("Tinkers' Construct: Overpowered Ichorium Trait")
+        @Config.Name("Tinkers' Construct: Geocentric Disintegration Trait")
         @Config.Comment("Makes the Ichorium tool material use Geocentric Disintegration instead of God Complex. This trait makes tools mine blocks instantly regardless of hardness.")
         public boolean overpoweredIchoriumTrait = false;
 
