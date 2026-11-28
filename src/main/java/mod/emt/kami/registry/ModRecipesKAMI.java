@@ -205,7 +205,7 @@ public class ModRecipesKAMI {
                 "KAMI_INFUSED_ELEMENTAL_FIRE",
                 ElementalFireRegistry.getElementalFireBottle(Aspect.ENTROPY),
                 Items.GLASS_BOTTLE,
-                new AspectList().add(Aspect.ALCHEMY, 50).add(Aspect.ENTROPY, 50).add(Aspect.FIRE, 50).add(Aspect.VOID, 50)
+                new AspectList().add(Aspect.ENTROPY, 10).add(Aspect.FIRE, 10).add(Aspect.VOID, 10)
         ));
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Kami.MOD_ID, "elemental_fire_bottle_terra"), new CrucibleRecipe(
                 "KAMI_INFUSED_ELEMENTAL_FIRE",
