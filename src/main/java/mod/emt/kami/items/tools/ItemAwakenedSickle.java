@@ -125,6 +125,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
                     break;
                 case CANOPY:
                     this.attemptDestroyCanopy(worldIn, player, radius);
+                    break;
                 case SOW:
                     EnumHand seedHand = player.getHeldItemMainhand() != stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
                     this.attemptTillAndPlant(worldIn, player, radius, seedHand);
