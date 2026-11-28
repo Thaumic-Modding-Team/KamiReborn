@@ -4,11 +4,14 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
 import mod.emt.kami.api.item.IAreaBreakTool;
+import mod.emt.kami.network.PacketHandler;
+import mod.emt.kami.network.packets.PacketFXDrawBamf;
 import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.HarvestHelper;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.BlockCrops;
+import net.minecraft.block.material.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -20,10 +23,14 @@ import net.minecraft.entity.IEntityOwnable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemSeedFood;
+import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagInt;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -34,8 +41,10 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -86,7 +95,6 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     public @NotNull EnumActionResult onItemUse(@NotNull EntityPlayer player, @NotNull World worldIn, @NotNull BlockPos pos, @NotNull EnumHand hand, @NotNull EnumFacing facing, float hitX, float hitY, float hitZ) {
         EnumActionResult actionResult = super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
         ItemStack heldStack = player.getHeldItem(hand);
-        //TODO: Change onUse to instantly harvest plants or leaves with silk touch.
         if(actionResult == EnumActionResult.SUCCESS) {
             for(BlockPos aoePos : this.getBreakAreaPositions(player, heldStack, pos, false)) {
                 super.onItemUse(player, worldIn, aoePos, hand, facing, hitX, hitY, hitZ);
@@ -100,55 +108,82 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
         int duration = stack.getMaxItemUseDuration() - timeLeft;
         if(entityLiving instanceof EntityPlayer && duration > 10) {
             EntityPlayer player = (EntityPlayer) entityLiving;
-            EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
             int radius = Math.min(MAX_AREA, duration / 10);
             EnumHarvestMode mode = EnumHarvestMode.getMode(stack);
-            AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 3, radius);
 
-            //TODO:
-            //  Reap: Destroys plant blocks in an area
-            //  ???: (Purple) Destroys leaf blocks in an area
-            //  Plant: Tills soil in an area and attempts to plant seeds held in offhand in tilled soil
-            //  Harvest: Harvests crops in an area and places drops at player's feet
-            //  Behead: Swings the sickle, dealing damage in an area. Killing blows guarantee a head drop
             switch (mode) {
                 case GRASSLANDS:
-                    this.attemptPlantReap(worldIn, player, area);
+                    this.attemptDestroyPlants(worldIn, player, radius);
                     break;
                 case CANOPY:
                     this.attemptDestroyCanopy(worldIn, player, radius);
                 case SOW:
-                    this.attemptTillAndPlant(worldIn, player, area, hand == EnumHand.MAIN_HAND ? player.getHeldItemOffhand() : player.getHeldItemMainhand());
+                    EnumHand seedHand = player.getHeldItemMainhand() != stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+                    this.attemptTillAndPlant(worldIn, player, radius, seedHand);
                     break;
-                case REAP:
-                    this.attemptHarvest(worldIn, player, area);
+                case HARVEST:
+                    this.attemptHarvest(worldIn, player, radius);
                     break;
-                case BEHEAD:
-                    this.attemptBeheading(worldIn, player, area);
+                case MOB_REAP:
+                    this.attemptMobReaping(worldIn, player, radius);
                     break;
             }
         }
     }
 
-    public void attemptPlantReap(World world, EntityPlayer player, AxisAlignedBB area) {
+    public void attemptDestroyPlants(World world, EntityPlayer player, int radius) {
         if(!world.isRemote) {
+            AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 3, radius);
             for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX - 1, area.maxY, area.maxZ - 1))) {
                 IBlockState state = world.getBlockState(pos);
-                if (state.getMaterial() == Material.PLANTS && state.getBlockHardness(world, pos) == 0) {
-                    //TODO: Break effects
+                if (state.getMaterial() == Material.PLANTS || state.getMaterial() == Material.VINE) {
                     HarvestHelper.attemptHarvestBlock(world, player, pos);
+                    PacketHandler.INSTANCE.sendToAllAround(
+                            new PacketFXDrawBamf(pos, state.getMapColor(world, pos).colorValue, true, true, player.getHorizontalFacing().getOpposite()),
+                            new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32)
+                    );
                 }
             }
         }
     }
 
-    public void attemptTillAndPlant(World world, EntityPlayer player, AxisAlignedBB area, ItemStack offhandStack) {
-        //TODO: Till all plants in area and plant offhand seeds into the tilled soil
+    public void attemptDestroyCanopy(World world, EntityPlayer player, int radius) {
+        if(!world.isRemote) {
+            AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 0, radius);
+            for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY - 2, area.minZ), new BlockPos(area.maxX - 1, area.maxY + radius, area.maxZ - 1))) {
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock().isLeaves(state, world, pos)) {
+                    HarvestHelper.attemptHarvestBlock(world, player, pos);
+                    PacketHandler.INSTANCE.sendToAllAround(
+                            new PacketFXDrawBamf(pos, state.getMapColor(world, pos).colorValue, true, true, player.getHorizontalFacing().getOpposite()),
+                            new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32)
+                    );
+                }
+            }
+        }
+    }
+
+    public void attemptTillAndPlant(World world, EntityPlayer player, int radius, EnumHand seedHand) {
+        AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 2, radius);
+        ItemStack seedStack = player.getHeldItem(seedHand);
+        ItemStack seedCopy = seedStack.copy();
+        if(!(seedStack.getItem() instanceof ItemSeeds || seedStack.getItem() instanceof ItemSeedFood)) {
+            seedStack = ItemStack.EMPTY;
+            seedCopy = ItemStack.EMPTY;
+        }
+
         for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX - 1, area.maxY, area.maxZ - 1))) {
-            boolean planted = this.attemptPlant(world, pos, player, offhandStack);
-            if(!planted) {
+            if(seedStack.isEmpty() && !seedCopy.isEmpty()) {
+                seedStack = this.getAdditionalSeeds(player, seedCopy, seedHand);
+            }
+            if(!seedStack.isEmpty()) {
+                boolean planted = this.attemptPlant(world, pos, player, seedStack);
+                if (!planted) {
+                    super.onItemUse(player, world, pos, EnumHand.MAIN_HAND, EnumFacing.UP, pos.getX(), pos.getY(), pos.getZ());
+                    this.attemptPlant(world, pos, player, seedStack);
+                }
+            } else {
                 super.onItemUse(player, world, pos, EnumHand.MAIN_HAND, EnumFacing.UP, pos.getX(), pos.getY(), pos.getZ());
-                this.attemptPlant(world, pos, player, offhandStack);
             }
         }
     }
@@ -156,38 +191,76 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     public boolean attemptPlant(World world, BlockPos pos, EntityPlayer player, ItemStack stack) {
         if(!stack.isEmpty() && (stack.getItem() instanceof IPlantable || Block.getBlockFromItem(stack.getItem()) instanceof IPlantable)) {
             if(stack.onItemUse(player, world, pos, EnumHand.OFF_HAND, EnumFacing.UP, pos.getX(), pos.getY(), pos.getZ()) == EnumActionResult.SUCCESS) {
-                //TODO: Particle effects
+                if(!world.isRemote) {
+                    PacketHandler.INSTANCE.sendToAllAround(
+                            new PacketFXDrawBamf(pos, 0x4d1f1a, true, true, player.getHorizontalFacing().getOpposite()),
+                            new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32)
+                        );
+                }
                 return true;
             }
         }
         return false;
     }
 
-    public void attemptHarvest(World world, EntityPlayer player, AxisAlignedBB area) {
-        //TODO: Do basic crop harvesting here. Use MI crop handling to expand the harvestable crop types.
+    public ItemStack getAdditionalSeeds(EntityPlayer player, ItemStack seedStack, EnumHand seedHand) {
+        for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
+            ItemStack stack = player.inventory.getStackInSlot(i);
+            if(ItemHandlerHelper.canItemStacksStack(stack, seedStack)) {
+                player.setHeldItem(seedHand, player.inventory.removeStackFromSlot(i));
+                return player.getHeldItem(seedHand);
+            }
+        }
+        return ItemStack.EMPTY;
     }
 
-    public void attemptDestroyCanopy(World world, EntityPlayer player, int radius) {
-        BlockPos start = player.getPosition().add(-radius, -2, -radius);
-        BlockPos end = player.getPosition().add(radius, radius, radius);
-        for(BlockPos pos : BlockPos.getAllInBox(start, end)) {
-            IBlockState state = world.getBlockState(pos);
-            if(state.getBlock().isLeaves(state, world, pos)) {
-                //TODO: Break effect
-                HarvestHelper.attemptHarvestBlock(world, player, pos);
+    public void attemptHarvest(World world, EntityPlayer player, int radius) {
+        if(!world.isRemote) {
+            AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 2, radius);
+            for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX - 1, area.maxY, area.maxZ - 1))) {
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() instanceof BlockCrops) {
+                    BlockCrops crop = (BlockCrops) state.getBlock();
+                    if (crop.isMaxAge(state)) {
+                        HarvestHelper.attemptHarvestBlock(world, player, pos);
+                        PacketHandler.INSTANCE.sendToAllAround(
+                                new PacketFXDrawBamf(pos, state.getMapColor(world, pos).colorValue, true, true, player.getHorizontalFacing().getOpposite()),
+                                new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32)
+                        );
+                    }
+                }
             }
         }
     }
 
-    public void attemptBeheading(World world, EntityPlayer player, AxisAlignedBB area) {
-        for(EntityLivingBase entity : world.getEntitiesWithinAABB(EntityLivingBase.class, area)) {
-            if(!this.isBeheadingTarget(player, entity)) continue;
-            player.attackTargetEntityWithCurrentItem(entity);
-            //TODO: Add an event listener that adds skulls to normal drops (only if skull is not already dropped). Use TiC implementation.
+    public void attemptMobReaping(World world, EntityPlayer player, int radius) {
+        if(!world.isRemote) {
+            int targets = 0;
+            AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 3, radius);
+            for (EntityLivingBase entity : world.getEntitiesWithinAABB(EntityLivingBase.class, area, entity -> isReapableTarget(player, entity))) {
+                player.attackTargetEntityWithCurrentItem(entity);
+                targets++;
+                PacketHandler.INSTANCE.sendToAllAround(
+                        new PacketFXDrawBamf(entity.posX, entity.posY, entity.posZ, 0xFF5555, true, true, player.getHorizontalFacing().getOpposite()),
+                        new NetworkRegistry.TargetPoint(world.provider.getDimension(), entity.posX, entity.posY, entity.posZ, 32)
+                );
+            }
+
+            if (targets > 0) {
+                float missingHP = player.getMaxHealth() - player.getHealth();
+                if (missingHP > 0) {
+                    player.heal(missingHP);
+                    targets -= (int) missingHP;
+                }
+
+                if (targets > 0) {
+                    player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 600, targets / 2, true, false));
+                }
+            }
         }
     }
 
-    public boolean isBeheadingTarget(EntityPlayer player, EntityLivingBase entity) {
+    public boolean isReapableTarget(EntityPlayer player, EntityLivingBase entity) {
         return entity.isEntityAlive()
                 && !entity.getIsInvulnerable()
                 && !(entity instanceof EntityPlayer)
@@ -220,12 +293,22 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
     }
 
     @Override
+    public boolean canHarvestBlock(@NotNull IBlockState blockIn) {
+        Material material = blockIn.getMaterial();
+        return material == Material.LEAVES
+                || material == Material.PLANTS
+                || material == Material.VINE
+                || material == Material.CACTUS
+                || material == Material.GOURD;
+    }
+
+    @Override
     public boolean onBlockStartBreak(@NotNull ItemStack stack, @NotNull BlockPos pos, @NotNull EntityPlayer player) {
         if(stack.getItem() instanceof IAreaBreakTool && player.getHeldItemMainhand() == stack) {
             ImmutableList<BlockPos> harvestPositions = this.getBreakAreaPositions(player, stack, pos, false);
             for(BlockPos harvestPos : harvestPositions) {
                 IBlockState state = player.world.getBlockState(harvestPos);
-                if(state.getMaterial() == Material.PLANTS && state.getBlockHardness(player.world, harvestPos) == 0) {
+                if(this.canHarvestBlock(state)) {
                     HarvestHelper.attemptHarvestBlock(player.world, player, harvestPos);
                 }
             }
@@ -262,8 +345,8 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
         GRASSLANDS(TextFormatting.GRAY),
         CANOPY(TextFormatting.DARK_PURPLE),
         SOW(TextFormatting.DARK_GREEN),
-        REAP(TextFormatting.BLUE),
-        BEHEAD(TextFormatting.DARK_RED);
+        HARVEST(TextFormatting.BLUE),
+        MOB_REAP(TextFormatting.DARK_RED);
 
         private final TextFormatting textColor;
 

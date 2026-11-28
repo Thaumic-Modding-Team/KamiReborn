@@ -16,13 +16,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HarvestHelper {
 
-    public static ImmutableList<BlockPos> getHarvestArea(World world, EntityPlayer player, @NotNull RayTraceResult trace, int diameter, int depth, boolean includeOrigin, boolean strictHarvestCheck) {
+    /**
+     * Returns a of all possible block positions for in a given area.
+     *
+     * @param trace The player raytrace to the block.
+     * @param diameter The harvest area diameter
+     * @param depth The harvest area depth
+     * @param includeOrigin If the origin block position be included in the returned set
+     * @return A list containing all blocks within a given area.
+     */
+    public static List<BlockPos> getHarvestArea(@NotNull RayTraceResult trace, int diameter, int depth, boolean includeOrigin) {
         EnumFacing side = trace.sideHit;
         BlockPos startPos = trace.getBlockPos();
-        IBlockState state = world.getBlockState(startPos);
-        Block block = state.getBlock();
 
         if (diameter % 2 == 0) {
             float hx = (float)trace.hitVec.x - (float)trace.getBlockPos().getX();
@@ -46,7 +56,7 @@ public class HarvestHelper {
                     -(side.getAxis() == EnumFacing.Axis.Z ? (side == EnumFacing.SOUTH ? depth - 1 : 0) : diameter / 2));
         }
 
-        ImmutableList.Builder<BlockPos> posBuilder = ImmutableList.builder();
+        List<BlockPos> posList = new ArrayList<>();
         for(int dd = 0; dd < depth; dd++) {
             for(int dw = 0; dw < diameter; dw++) {
                 for(int dh = 0; dh < diameter; dh++) {
@@ -56,16 +66,23 @@ public class HarvestHelper {
                             side.getAxis() == EnumFacing.Axis.Z ? dd : (side.getAxis() == EnumFacing.Axis.Y ? dh : dw)
                     );
                     if (!pos.equals(trace.getBlockPos()) || includeOrigin) {
-                        state = world.getBlockState(pos);
-                        block = state.getBlock();
-                        if(canHarvestBlock(world, pos, state, player, strictHarvestCheck)) {
-                            posBuilder.add(pos);
-                        }
+                        posList.add(pos);
                     }
                 }
             }
         }
 
+        return posList;
+    }
+
+    public static ImmutableList<BlockPos> getHarvestArea(World world, EntityPlayer player, @NotNull RayTraceResult trace, int diameter, int depth, boolean includeOrigin, boolean strictHarvestCheck) {
+        ImmutableList.Builder<BlockPos> posBuilder = ImmutableList.builder();
+        for(BlockPos pos : getHarvestArea(trace, diameter, depth, includeOrigin)) {
+            IBlockState state = world.getBlockState(pos);
+            if(canHarvestBlock(world, pos, state, player, strictHarvestCheck)) {
+                posBuilder.add(pos);
+            }
+        }
         return posBuilder.build();
     }
 
@@ -99,8 +116,9 @@ public class HarvestHelper {
         EntityPlayerMP playerMP = (player instanceof EntityPlayerMP) ? (EntityPlayerMP) player : null;
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
-        float hardness = state.getPlayerRelativeBlockHardness(player, world, pos);
-        if (hardness >= 0 && ForgeHooks.canHarvestBlock(block, player, world, pos)) {
+        float hardness = state.getBlockHardness(world, pos);
+        float relativeHardness = state.getPlayerRelativeBlockHardness(player, world, pos);
+        if (hardness >= 0 && relativeHardness >= 0 && ForgeHooks.canHarvestBlock(block, player, world, pos)) {
             int xpToDrop = 0;
             if (playerMP != null) {
                 xpToDrop = ForgeHooks.onBlockBreakEvent(world, playerMP.interactionManager.getGameType(), playerMP, pos);
