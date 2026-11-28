@@ -73,13 +73,18 @@ public class BlockElementalFirePerditio extends BlockElementalFire {
             return;
         }
 
-        if (!ConfigHandlerKami.elemental_fire._disableFireSpread) {
-            for (EnumFacing facing : EnumFacing.VALUES) {
-                BlockPos targetPos = pos.offset(facing);
-                IBlockState targetState = world.getBlockState(targetPos);
+        for(int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    BlockPos targetPos = pos.add(x, y, z);
+                    if (targetPos.equals(pos))
+                        continue;
 
-                if (isTransmutationTarget(world, targetPos, targetState)) {
-                    world.setBlockState(targetPos, this.getDefaultState().withProperty(AGE, 0), 3);
+                    IBlockState targetState = world.getBlockState(targetPos);
+
+                    if (isTransmutationTarget(world, targetPos, targetState)) {
+                        world.setBlockState(targetPos, this.getDefaultState().withProperty(AGE, 0), 3);
+                    }
                 }
             }
         }
