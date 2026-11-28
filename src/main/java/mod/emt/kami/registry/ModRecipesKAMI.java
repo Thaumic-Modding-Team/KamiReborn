@@ -181,25 +181,25 @@ public class ModRecipesKAMI {
                 "KAMI_INFUSED_ELEMENTAL_FIRE",
                 ElementalFireRegistry.getElementalFireBottle(Aspect.AIR),
                 Items.GLASS_BOTTLE,
-                new AspectList().add(Aspect.AIR, 50).add(Aspect.ALCHEMY, 50).add(Aspect.FIRE, 50).add(Aspect.VOID, 50)
+                new AspectList().add(Aspect.AIR, 25).add(Aspect.ALCHEMY, 25).add(Aspect.FIRE, 25).add(Aspect.VOID, 25)
         ));
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Kami.MOD_ID, "elemental_fire_bottle_aqua"), new CrucibleRecipe(
                 "KAMI_INFUSED_ELEMENTAL_FIRE",
                 ElementalFireRegistry.getElementalFireBottle(Aspect.WATER),
                 Items.GLASS_BOTTLE,
-                new AspectList().add(Aspect.ALCHEMY, 50).add(Aspect.FIRE, 50).add(Aspect.WATER, 50).add(Aspect.VOID, 50)
+                new AspectList().add(Aspect.ALCHEMY, 25).add(Aspect.FIRE, 25).add(Aspect.WATER, 25).add(Aspect.VOID, 25)
         ));
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Kami.MOD_ID, "elemental_fire_bottle_ignis"), new CrucibleRecipe(
                 "KAMI_INFUSED_ELEMENTAL_FIRE",
                 ElementalFireRegistry.getElementalFireBottle(Aspect.FIRE),
                 Items.GLASS_BOTTLE,
-                new AspectList().add(Aspect.ALCHEMY, 50).add(Aspect.FIRE, 100).add(Aspect.VOID, 50)
+                new AspectList().add(Aspect.ALCHEMY, 25).add(Aspect.FIRE, 50).add(Aspect.VOID, 25)
         ));
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Kami.MOD_ID, "elemental_fire_bottle_ordo"), new CrucibleRecipe(
                 "KAMI_INFUSED_ELEMENTAL_FIRE",
                 ElementalFireRegistry.getElementalFireBottle(Aspect.ORDER),
                 Items.GLASS_BOTTLE,
-                new AspectList().add(Aspect.ALCHEMY, 50).add(Aspect.FIRE, 50).add(Aspect.ORDER, 50).add(Aspect.VOID, 50)
+                new AspectList().add(Aspect.ALCHEMY, 25).add(Aspect.FIRE, 25).add(Aspect.ORDER, 25).add(Aspect.VOID, 25)
         ));
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation(Kami.MOD_ID, "elemental_fire_bottle_perditio"), new CrucibleRecipe(
                 "KAMI_INFUSED_ELEMENTAL_FIRE",
@@ -211,7 +211,7 @@ public class ModRecipesKAMI {
                 "KAMI_INFUSED_ELEMENTAL_FIRE",
                 ElementalFireRegistry.getElementalFireBottle(Aspect.EARTH),
                 Items.GLASS_BOTTLE,
-                new AspectList().add(Aspect.ALCHEMY, 50).add(Aspect.EARTH, 50).add(Aspect.FIRE, 50).add(Aspect.VOID, 50)
+                new AspectList().add(Aspect.ALCHEMY, 25).add(Aspect.EARTH, 25).add(Aspect.FIRE, 25).add(Aspect.VOID, 25)
         ));
     }
 
