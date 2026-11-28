@@ -8,8 +8,11 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 
+@SideOnly(Side.CLIENT)
 public class KamiItemTEISR extends TileEntityItemStackRenderer {
     public static final ResourceLocation AWAKENED_ICHORWEAVE_SHIELD_TEXTURE = new ResourceLocation(Kami.MOD_ID, "textures/models/awakened_ichorweave_shield.png");
     public static final ResourceLocation ICHORWEAVE_SHIELD_TEXTURE = new ResourceLocation(Kami.MOD_ID, "textures/models/ichorweave_shield.png");
