@@ -27,11 +27,18 @@ public class BlockElementalFirePerditio extends BlockElementalFire {
             return false;
         }
 
-        for (EnumFacing facing : EnumFacing.VALUES) {
-            BlockPos targetPos = pos.offset(facing);
+        //Checking all adjacent targets
+        for(int x = -1; x <= 1; x++) {
+            for(int y = -1; y <= 1; y++) {
+                for(int z = -1; z <= 1; z++) {
+                    BlockPos targetPos = pos.add(x, y, z);
+                    if(targetPos.equals(pos))
+                        continue;
 
-            if (isTransmutationTarget(world, targetPos, world.getBlockState(targetPos))) {
-                return true;
+                    if (isTransmutationTarget(world, targetPos, world.getBlockState(targetPos))) {
+                        return true;
+                    }
+                }
             }
         }
 
@@ -89,6 +96,6 @@ public class BlockElementalFirePerditio extends BlockElementalFire {
 
     @Override
     public int tickRate(@NotNull World world) {
-        return 5;
+        return 2;
     }
 }
