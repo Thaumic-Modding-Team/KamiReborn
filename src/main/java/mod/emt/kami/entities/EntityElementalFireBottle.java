@@ -88,8 +88,6 @@ public class EntityElementalFireBottle extends EntityThrowable {
             if(checkState.getBlock().isAir(checkState, this.world, checkPos)) {
                 if(!this.world.isRemote) {
                     this.world.setBlockState(checkPos, fireState);
-                } else {
-                    //TODO: Impact effect
                 }
             }
         }
