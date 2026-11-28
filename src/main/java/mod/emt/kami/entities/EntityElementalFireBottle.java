@@ -126,10 +126,10 @@ public class EntityElementalFireBottle extends EntityThrowable {
     static {
         IMPACT_OFFSETS = Collections.unmodifiableSet(new HashSet<BlockPos>() {{
             for (int y = -1; y <= 1; y++) {
-                add(new BlockPos(-2, y, -2));
-                add(new BlockPos(-2, y, 2));
-                add(new BlockPos(2, y, -2));
-                add(new BlockPos(2, y, 2));
+                add(new BlockPos(-2, y, 0));
+                add(new BlockPos(2, y, 0));
+                add(new BlockPos(0, y, -2));
+                add(new BlockPos(0, y, 2));
                 for (int x = -1; x <= 1; x++) {
                     for (int z = -1; z <= 1; z++) {
                         add(new BlockPos(x, y, z));
