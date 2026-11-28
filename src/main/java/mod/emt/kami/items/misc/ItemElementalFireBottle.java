@@ -111,9 +111,16 @@ public class ItemElementalFireBottle extends ItemBase {
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
         //TODO: Warning tooltip
         if(!ConfigHandlerKami.elemental_fire._disableTooltip) {
-            tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.0"));
-            tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.1"));
-            tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.2"));
+            Aspect aspect = ElementalFireRegistry.getAspectFromBottle(stack);
+            if(aspect != null) {
+                if(aspect != Aspect.ENTROPY) {
+                    tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.0"));
+                    tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.1"));
+                    tooltip.add(I18n.format("tooltip.kami.elemental_fire.warning.2"));
+                } else {
+                    tooltip.add(I18n.format("tooltip.kami.elemental_fire.perditio"));
+                }
+            }
         }
     }
 

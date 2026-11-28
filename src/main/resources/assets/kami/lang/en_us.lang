@@ -72,6 +72,7 @@ tooltip.kami.celestial_pearl.posy=Pos Y: %d
 tooltip.kami.celestial_pearl.posz=Pos Z: %d
 tooltip.kami.celestial_translocator.info1=Interact to open teleport menu.
 tooltip.kami.celestial_translocator.info2=Sneak interact to open inventory.
+tooltip.kami.elemental_fire.perditio=Use to cleanup other elemental fires
 tooltip.kami.elemental_fire.warning.0=§!§cWARNING!
 tooltip.kami.elemental_fire.warning.1=§cElemental fires can spread rapidly and destroy worlds.
 tooltip.kami.elemental_fire.warning.2=§cUse with caution.
