@@ -50,13 +50,11 @@ public class TinkersConstruct implements IProxy {
     // Modifiers
     public static Modifier modDivineMandate;
 
-    // TODO: Return bucket when picked from JEI
     public void registerFluid(Fluid fluid) {
+        FluidRegistry.registerFluid(fluid);
         FluidRegistry.addBucketForFluid(fluid);
         BlockMolten blockMolten = (BlockMolten) new BlockMolten(fluid).setRegistryName(Kami.MOD_ID, "molten_" + fluid.getName());
-        ItemBlock itemBlockMolten = (ItemBlock) new ItemBlock(blockMolten).setRegistryName(Objects.requireNonNull(blockMolten.getRegistryName()));
         ForgeRegistries.BLOCKS.register(blockMolten);
-        ForgeRegistries.ITEMS.register(itemBlockMolten);
     }
 
     @Override
@@ -120,11 +118,7 @@ public class TinkersConstruct implements IProxy {
     @SideOnly(Side.CLIENT)
     public void registerFluidRenderer(Fluid fluid) {
         Block block = fluid.getBlock();
-        Item item = Item.getItemFromBlock(block);
         FluidStateMapperKAMI mapper = new FluidStateMapperKAMI(fluid);
-        ModelBakery.registerItemVariants(item);
-        ModelLoader.setCustomMeshDefinition(item, mapper);
         ModelLoader.setCustomStateMapper(block, mapper);
     }
-
 }
