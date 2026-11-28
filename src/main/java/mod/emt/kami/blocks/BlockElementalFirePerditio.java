@@ -23,10 +23,6 @@ public class BlockElementalFirePerditio extends BlockElementalFire {
 
     @Override
     public boolean isNeighborTarget(World world, BlockPos pos) {
-        if (ConfigHandlerKami.elemental_fire._disableFireSpread) {
-            return false;
-        }
-
         //Checking all adjacent targets
         for(int x = -1; x <= 1; x++) {
             for(int y = -1; y <= 1; y++) {
@@ -64,7 +60,7 @@ public class BlockElementalFirePerditio extends BlockElementalFire {
 
     @Override
     public void updateTick(World world, @NotNull BlockPos pos, @NotNull IBlockState state, @NotNull Random rand) {
-        if (world.isRemote || !world.getGameRules().getBoolean("doFireTick")) {
+        if (world.isRemote || !world.getGameRules().getBoolean("doFireTick") || ConfigHandlerKami.elemental_fire._disableFireSpread) {
             return;
         }
 

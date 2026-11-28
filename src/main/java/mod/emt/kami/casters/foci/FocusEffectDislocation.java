@@ -179,7 +179,6 @@ public class FocusEffectDislocation extends FocusEffect {
     }
 
     private boolean storeEntity(EntityLivingBase entityHit, ItemStack focus) {
-        //TODO: Configurable blacklist for these entities
         if(!entityHit.isEntityAlive() || entityHit instanceof EntityPlayer || !entityHit.isNonBoss()) {
             return false;
         }

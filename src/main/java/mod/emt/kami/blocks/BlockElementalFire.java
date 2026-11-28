@@ -45,9 +45,6 @@ public class BlockElementalFire extends BlockFire {
     }
 
     public boolean isNeighborTarget(World world, BlockPos pos) {
-        if(ConfigHandlerKami.elemental_fire._disableFireSpread)
-            return false;
-
         for (EnumFacing facing : EnumFacing.VALUES) {
             BlockPos offset = pos.offset(facing);
             IBlockState state = world.getBlockState(offset);
@@ -65,8 +62,7 @@ public class BlockElementalFire extends BlockFire {
 
     @Override
     public void updateTick(World world, @NotNull BlockPos pos, @NotNull IBlockState state, @NotNull Random rand) {
-        //TODO: Add a config option to disable fire spread
-        if (world.isRemote || !world.getGameRules().getBoolean("doFireTick")) {
+        if (world.isRemote || !world.getGameRules().getBoolean("doFireTick") || ConfigHandlerKami.elemental_fire._disableFireSpread) {
             return;
         }
 

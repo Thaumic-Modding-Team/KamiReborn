@@ -9,9 +9,6 @@ import mod.emt.kami.compat.tinkers.traits.TraitGodComplex;
 import mod.emt.kami.config.ConfigHandlerKami;
 import mod.emt.kami.registry.ModItemsKAMI;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelBakery;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -32,8 +29,6 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.smeltery.block.BlockMolten;
-
-import java.util.Objects;
 
 public class TinkersConstruct implements IProxy {
     // These materials are used universally between tools and armor
