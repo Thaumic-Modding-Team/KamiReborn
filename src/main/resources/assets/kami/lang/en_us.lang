@@ -79,8 +79,8 @@ tooltip.kami.tool.dig_depth=Harvest Depth: %d
 tooltip.kami.tool.harvest_area=Reaping Area: %d
 tooltip.kami.tool.harvest_mode.canopy=Harvest: Canopy
 tooltip.kami.tool.harvest_mode.grasslands=Harvest: Grasslands
-tooltip.kami.tool.harvest_mode.harvest=Harvest: Harvest
-tooltip.kami.tool.harvest_mode.mob_reap=Harvest: Vitality
+tooltip.kami.tool.harvest_mode.crops=Harvest: Crops
+tooltip.kami.tool.harvest_mode.mob_reap=Harvest: Reap Vitality
 tooltip.kami.tool.harvest_mode.sow=Harvest: Sow
 tooltip.kami.tool.impact_mode.damage=Impact: Damaging
 tooltip.kami.tool.impact_mode.lightning=Impact: Thundering
@@ -125,8 +125,8 @@ kami.research.awakened_ichorium_pickaxe.stage.2=The awakened ichorium pickaxe ca
 # -- AWAKENED ICHORIUM SICKLE
 kami.research.awakened_ichorium_sickle.title=Ichorium Sickle of the Harvester
 kami.research.awakened_ichorium_sickle.title.subtitle=The reaping whirlwind
-# kami.research.awakened_ichorium_sickle.stage.1=
-# kami.research.awakened_ichorium_sickle.stage.2=
+kami.research.awakened_ichorium_sickle.stage.1=My attempts at awakening the ichorium hoe have largely been fruitless. The material seems to twist into an entirely different state during infusion, but snaps back to its original form when the process fails...
+kami.research.awakened_ichorium_sickle.stage.2=I don't know what I was expecting, but the awakened ichorium hoe harvest plants...<BR>While somewhat mundane in its ability, it is nonetheless powerful in its ability to filter the exact blocks it harvests.<BR>Sneaking and right-clicking while holding the tool allows me to cycle through the harvest modes.<BR>Holding right-click empowers the sickle, which, upon release, will perform actions in a large area surrounding me.<PAGE>Grasslands<DIV>Destroys all grass, plant, and vine blocks in an area surrounding the player.<PAGE>Canopy<DIV>Destroys all leaf blocks in an area surrounding the player.<PAGE>Sowing<DIV>Tills nearby dirt blocks. If I hold seeds in my offhand, they will be planted automatically once the ground is tilled.<BR>Should I run out of seeds, the sickle will automatically search for additional matching seeds from my and plant those as well.<PAGE>Crops<DIV>Harvests only fully mature plants in the area surrounding the player.<BR>This is especially effective when used in conjunction with the sowing mode.<PAGE>Reaping<DIV>This effect strangely has no effect on plants. Instead it allows me to swing the sickle in a massive arch, striking all nearby enemies.<BR>The damage caused heals me slightly, with overhealing granting me a temporary shield.
 
 # -- AWAKENED ICHORIUM SHOVEL
 kami.research.awakened_ichorium_shovel.title=Ichorium Shovel of the Gravedigger
@@ -238,7 +238,7 @@ kami.research.ichorweave_fabric.stage.2=I now am able to upgrade basic magical f
 kami.research.infused_elemental_fire.title=Infused Elemental Fire
 kami.research.infused_elemental_fire.title.subtitle="This is fine."
 kami.research.infused_elemental_fire.stage.1=The power of absolute boredom has given me an insane idea. Why not use what I learned from previous research like Dislocation and ichor to make something... destructive...
-kami.research.infused_elemental_fire.stage.2=What the hell did I just created? I'm not even sure how I was able to get this unstable fiery substance stored perfectly into a glass bottle.<BR>Just by holding it, the bottle shakes quite violently like it's waiting for me to break it and unleash what I created within.<BR>I MUST NOTE TO MYSELF RIGHT NOW! THESE ELEMENTAL FIRES CAN SPREAD RAPIDLY AND EVEN DESTROY MY WORLD, I MUST THEREFORE BE CAUTIOUS!<PAGE>§lAer§r<DIV>Fire infused by aer will transform most Overworld terrain blocks into desert-based blocks.<PAGE>§lAqua§r<DIV>When unleashing this in the Nether, the fire will transform most of the blocks there into ice-based blocks. I can create a winter wonderland this way!<PAGE>§lIgnis§r<DIV>The total opposite of aqua, fire infused with ignis will transform most Overworld terrain blocks into Nether blocks.<PAGE>§lOrdo§r<DIV>Does it put blocks in order? Definitely not, fire infused with ordo will actually completely destroy most Overworld terrain blocks. I really have to be careful with this one...<PAGE>§lPerditio§r<DIV>Despite what perditio implies, fire infused by it will rapidly put out other elemental fire. I can use this if the fire has gotten too out of control and I need a quick way to dispatch them.<PAGE>§lTerra§r<DIV>As terra implies, fire infused with it will transform many of the Overworld's terrain blocks into dirt and other earthy blocks.
+kami.research.infused_elemental_fire.stage.2=What the hell did I just created? I'm not even sure how I was able to get this unstable fiery substance stored perfectly into a glass bottle.<BR>Just by holding it, the bottle shakes quite violently like it's waiting for me to break it and unleash what I created within.<BR>I MUST NOTE TO MYSELF RIGHT NOW! THESE ELEMENTAL FIRES CAN SPREAD RAPIDLY AND EVEN DESTROY MY WORLD, I MUST THEREFORE BE CAUTIOUS!<PAGE>§lAer§r<DIV>Fire infused by aer will transform most Overworld terrain blocks into desert-based blocks.<PAGE>§lAqua§r<DIV>When unleashing this in the Nether, the fire will transform most of the blocks there into ice-based blocks. I can create a winter wonderland this way!<PAGE>§lIgnis§r<DIV>The total opposite of aqua, fire infused with ignis will transform most Overworld terrain blocks into Nether blocks.<PAGE>§lTerra§r<DIV>As terra implies, fire infused with it will transform many of the Overworld's terrain blocks into dirt and other earthy blocks.<PAGE>§lOrdo§r<DIV>Does it put blocks in order? Definitely not, fire infused with ordo will actually completely destroy most Overworld terrain blocks. I really have to be careful with this one...<PAGE>§lPerditio§r<DIV>Despite what perditio implies, fire infused by it will rapidly put out other elemental fires. I can use this if other fires have gotten out of control and I need a quick way to dispatch them.
 
 # -- INFUSION ENCHANTMENT: ETERNAL
 kami.research.eternal_infusion.title=Infusion Enchantment: Eternal

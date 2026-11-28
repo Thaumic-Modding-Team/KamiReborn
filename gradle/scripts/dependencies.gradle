@@ -55,6 +55,7 @@ dependencies {
     def loadMap = [:]
 
     modMap.put(["curse.maven:antique-armory-1394222:8363247"], project.use_constructsarmory)
+    modMap.put(["curse.maven:magiculture-integrations-1064613:9327436"], project.use_magicultureintegrations)
     modMap.put(["curse.maven:thaumcraftfix-1069346:8150308"], project.use_thaumcraftfix)
     modMap.put(["curse.maven:thaumic-augmentation-319441:6047659"], project.use_thaumicaugmentation)
     modMap.put(["curse.maven:thaumictweaker-1341797:8456304", "curse.maven:configanytime-870276:5212709"], project.use_thaumictweaker)

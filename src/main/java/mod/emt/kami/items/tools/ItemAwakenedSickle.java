@@ -3,19 +3,24 @@ package mod.emt.kami.items.tools;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
+import com.invadermonky.magicultureintegrations.api.block.IHarvestableCrop;
 import mod.emt.kami.api.item.IAreaBreakTool;
+import mod.emt.kami.compat.KamiCompatHandler;
 import mod.emt.kami.network.PacketHandler;
 import mod.emt.kami.network.packets.PacketFXDrawBamf;
 import mod.emt.kami.registry.ModSoundsKAMI;
 import mod.emt.kami.utils.helpers.HarvestHelper;
 import mod.emt.kami.utils.helpers.PlayerHelper;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockNetherWart;
 import net.minecraft.block.material.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,6 +28,7 @@ import net.minecraft.entity.IEntityOwnable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
@@ -41,6 +47,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -121,7 +129,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
                     EnumHand seedHand = player.getHeldItemMainhand() != stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
                     this.attemptTillAndPlant(worldIn, player, radius, seedHand);
                     break;
-                case HARVEST:
+                case CROPS:
                     this.attemptHarvest(worldIn, player, radius);
                     break;
                 case MOB_REAP:
@@ -219,16 +227,47 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
             AxisAlignedBB area = new AxisAlignedBB(player.getPosition()).grow(radius, 2, radius);
             for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ), new BlockPos(area.maxX - 1, area.maxY, area.maxZ - 1))) {
                 IBlockState state = world.getBlockState(pos);
+                boolean shouldHarvest = false;
                 if (state.getBlock() instanceof BlockCrops) {
-                    BlockCrops crop = (BlockCrops) state.getBlock();
-                    if (crop.isMaxAge(state)) {
-                        HarvestHelper.attemptHarvestBlock(world, player, pos);
-                        PacketHandler.INSTANCE.sendToAllAround(
-                                new PacketFXDrawBamf(pos, state.getMapColor(world, pos).colorValue, true, true, player.getHorizontalFacing().getOpposite()),
-                                new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32)
-                        );
+                    shouldHarvest = ((BlockCrops) state.getBlock()).isMaxAge(state);
+                } else if(state.getBlock() instanceof BlockCocoa) {
+                    shouldHarvest = !((BlockCocoa) state.getBlock()).canGrow(world, pos, state, false);
+                } else if(state.getBlock() instanceof BlockNetherWart) {
+                    shouldHarvest = state.getBlock().getMetaFromState(state) >= 3;
+                } else if(KamiCompatHandler.isMagicultureIntegrationsLoaded) {
+                    this.attemptHarvestMI(world, pos, state, player);
+                }
+
+                if(shouldHarvest) {
+                    HarvestHelper.attemptHarvestBlock(world, player, pos);
+                    PacketHandler.INSTANCE.sendToAllAround(
+                            new PacketFXDrawBamf(pos, state.getMapColor(world, pos).colorValue, true, true, player.getHorizontalFacing().getOpposite()),
+                            new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32)
+                    );
+                }
+            }
+        }
+    }
+
+    @Optional.Method(modid = "magicultureintegrations")
+    public void attemptHarvestMI(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+        if(state.getBlock() instanceof IHarvestableCrop) {
+            IHarvestableCrop crop = (IHarvestableCrop) state.getBlock();
+            if(crop.getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST) {
+                int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, player.getHeldItemMainhand());
+                NonNullList<ItemStack> drops = crop.harvestCrop(player, world, pos, false, fortune);
+                float chance = ForgeEventFactory.fireBlockHarvesting(drops, world, pos, state, fortune, 1.0f, false, player);
+
+                for(ItemStack drop : drops) {
+                    if(world.rand.nextFloat() <= chance) {
+                        Block.spawnAsEntity(world, pos, drop);
                     }
                 }
+
+                PacketHandler.INSTANCE.sendToAllAround(
+                        new PacketFXDrawBamf(pos, state.getMapColor(world, pos).colorValue, true, true, player.getHorizontalFacing().getOpposite()),
+                        new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32)
+                );
             }
         }
     }
@@ -345,7 +384,7 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
         GRASSLANDS(TextFormatting.GRAY),
         CANOPY(TextFormatting.DARK_PURPLE),
         SOW(TextFormatting.DARK_GREEN),
-        HARVEST(TextFormatting.BLUE),
+        CROPS(TextFormatting.BLUE),
         MOB_REAP(TextFormatting.DARK_RED);
 
         private final TextFormatting textColor;

@@ -13,6 +13,7 @@ import java.util.List;
 
 public class KamiCompatHandler {
     public static final boolean isConstructsArmoryLoaded = Loader.isModLoaded("conarm");
+    public static final boolean isMagicultureIntegrationsLoaded = Loader.isModLoaded("magicultureintegrations");
     public static final boolean isTinkersConstructLoaded = Loader.isModLoaded("tconstruct");
 
     private static final List<IProxy> MODULES = new ArrayList<>();
