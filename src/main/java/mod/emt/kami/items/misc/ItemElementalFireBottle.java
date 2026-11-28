@@ -109,7 +109,6 @@ public class ItemElementalFireBottle extends ItemBase {
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        //TODO: Warning tooltip
         if(!ConfigHandlerKami.elemental_fire._disableTooltip) {
             Aspect aspect = ElementalFireRegistry.getAspectFromBottle(stack);
             if(aspect != null) {
