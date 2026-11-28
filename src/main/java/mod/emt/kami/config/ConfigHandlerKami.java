@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = Kami.MOD_ID)
 public class ConfigHandlerKami {
     public static ArmorCategory armor = new ArmorCategory();
-    @Config.Ignore
     public static ToolCategory tools = new ToolCategory();
     public static ElementalFireCategory elemental_fire = new ElementalFireCategory();
     public static EnchantmentsCategory enchantments = new EnchantmentsCategory();
