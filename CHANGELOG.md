@@ -20,6 +20,7 @@
 - Fixed bug preventing Awakened Tools from breaking blocks with hardness of 0
 - Fixed unused sound event error
 - Fixed Awakened Ichorium Sword reequipping after every swing
+- Fixed Molten Ichorium fluid not returning a bucket on JEI like other molten fluids
 
 ---
 
