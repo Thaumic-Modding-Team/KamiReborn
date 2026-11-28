@@ -3,6 +3,7 @@ package mod.emt.kami.registry;
 import mod.emt.kami.Kami;
 import mod.emt.kami.blocks.BlockCelestialGateway;
 import mod.emt.kami.blocks.BlockElementalFire;
+import mod.emt.kami.blocks.BlockElementalFirePerditio;
 import mod.emt.kami.blocks.BlockMaterial;
 import mod.emt.kami.tiles.TileCelestialGateway;
 import net.minecraft.block.Block;
@@ -30,7 +31,11 @@ public class ModBlocksKAMI {
         MOD_BLOCKS.add(CELESTIAL_GATEWAY = new BlockCelestialGateway());
         ElementalFireRegistry.registerBaseTypes();
         for(Aspect aspect : ElementalFireRegistry.getElementalFireTypes()) {
-            ELEMENTAL_FIRES.add(new BlockElementalFire(aspect));
+            if (aspect == Aspect.ENTROPY) {
+                ELEMENTAL_FIRES.add(new BlockElementalFirePerditio());
+            } else {
+                ELEMENTAL_FIRES.add(new BlockElementalFire(aspect));
+            }
         }
         MOD_BLOCKS.addAll(ELEMENTAL_FIRES);
     }
