@@ -370,7 +370,6 @@ public class ItemAwakenedSickle extends ItemIchoriumHoe implements IAreaBreakToo
         if(!player.isSneaking() && !player.world.isAirBlock(origin)) {
             RayTraceResult trace = PlayerHelper.rayTrace(player, 0);
             if(trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK) {
-                //TODO: This probably needs a custom handler for the valid blocks.
                 return HarvestHelper.getHarvestArea(player.world, player, trace, 3, 1, includeOrigin, false);
             }
         }
